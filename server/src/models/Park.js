@@ -13,7 +13,7 @@ export const ParkSchema = new Schema(
         cost: { type: String },
         regions: { type: String, enum: ['Southeast', 'Southwest', 'North'], required: true },
         daysClosed: { type: String },
-        activities: { type: String, enum: [], required: true },
+        activities: { type: [String], enum: ['ATVs, UTVs, & Motorbikes', 'biking', 'bird watching', 'boating', 'camping', 'climbing', 'cross country skiing', 'disc golf', 'experience Idaho backpacks', 'first time adventure', 'fishing', 'hard path trail', 'hiking', 'history', 'horseback', 'horseshoe pits', 'junior ranger', 'learning', 'loaner fishing rods', 'paddlesports', 'playgrounds', 'RVing', 'sailing', 'sandboarding', 'OHV safety classes', 'snowmobiling', 'snowshoeing', 'swimming', 'volleyball area', 'volunteering', 'yurts'], required: true },
         logo: { type: String, required: true, maxLength: 500 }
     }, { timestamps: true, toJSON: { virtuals: true } }
 )
