@@ -15,5 +15,5 @@ export const ParkSchema = new Schema(
         daysClosed: { type: String },
         activities: { type: String, enum: [], required: true },
         logo: { type: String, required: true, maxLength: 500 }
-    }
+    }, { timestamps: true, toJSON: { virtuals: true } }
 )
