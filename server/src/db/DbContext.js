@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import { AccountSchema } from '../models/Account'
-import { ValueSchema } from '../models/Value'
 import { ParkSchema } from '../models/Park.js';
 import { PostSchema } from "../models/Post.js";
 import { ReputationSchema } from "../models/Reputation.js";
@@ -8,7 +7,6 @@ import { ThreadSchema } from "../models/Thread.js";
 import { VisitedSchema } from "../models/Visited.js";
 
 class DbContext {
-  Values = mongoose.model('Value', ValueSchema);
   Account = mongoose.model('Account', AccountSchema);
 
   Park = mongoose.model('Park', ParkSchema)
