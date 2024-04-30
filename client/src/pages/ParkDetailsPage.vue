@@ -29,6 +29,10 @@ onMounted(() => {
 
 <template>
   Park Details Page
+  <div class="container-fluid">
+    <h2>{{ park?.name }}</h2>
+    <img class="img-fluid" :src="park?.imgUrl" alt="">
+  </div>
 </template>
 
 
