@@ -2,8 +2,11 @@
 import { onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
+import { Park } from "../models/Park.js";
 
 const theme = ref(loadState('theme') || 'light')
+
+defineProps({park: {type: Park, required: true}})
 
 onMounted(() => {
   document.documentElement.setAttribute('data-bs-theme', theme.value)
@@ -33,6 +36,12 @@ function toggleTheme() {
         <li>
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
             About
+          </router-link>
+        </li>
+        <li>
+          <!-- //FIXME - Change the styling once ready -->
+          <router-link :to="{name: 'Home'}" class="btn text-success lighten-30 selectable text-uppercase">
+            Home
           </router-link>
         </li>
       </ul>
