@@ -7,7 +7,7 @@ import ParkCard from "../components/ParkCard.vue";
 
 const parks = computed(() => AppState.parks)
 
-async function getParks(){
+async function getParks() {
   try {
     await parksService.getParks()
   } catch (error) {
@@ -22,13 +22,11 @@ onMounted(() => {
 </script>
 
 <template>
-  Hello World
+  Hello World!
   <!-- {{ parks }} -->
   <div v-for="park in parks" :key="park.id" class="col-4">
-    <ParkCard :park="park"/>
+    <ParkCard :park="park" />
   </div>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
