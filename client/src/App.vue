@@ -1,25 +1,23 @@
 <script setup>
 import { useRoute } from 'vue-router';
-import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
 import { computed } from 'vue';
 
 const route = useRoute()
 
-// eslint-disable-next-line vue/return-in-computed-property
 const backgroundColor = computed(()=>{
-  switch(route.name){
+switch(route.name){
     case 'Home':
-      return '#FFFFFF'
+        return '#FFFFFF'
     case 'Park Details':
-      return '#A8A96A'
+        return '#A8A96A'
     case 'Forum':
-      return '#FFFFFF'
+        return '#FFFFFF'
     case 'About Us':
-      return '#A8A96A'
+        return '#A8A96A'
     default:
-    return 
-  }
+        return '#FFFFFF'
+}
 })
 
 </script>

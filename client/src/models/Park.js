@@ -7,7 +7,6 @@ export class Park {
         this.imgUrl = data.imgUrl
         this.webUrl = data.webUrl
         this.description = data.description
-		// TODO: Split location into lat and lon
         this.location = data.location
         this.type = data.type
         this.cost = data.cost

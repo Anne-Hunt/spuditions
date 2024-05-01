@@ -32,7 +32,7 @@ onMounted(() => {
 	<section>
 
 		<video class="video-container" autoplay loop muted>
-			<source src="../assets/Video/hero-video.mp4" type="video/mp4">
+			<source src="../assets/video/hero-video.mp4" type="video/mp4">
 		</video>
 		<h1 class="text-center">Visit A State Park Today!</h1>
 	</section>
