@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router';
 import Navbar from './components/Navbar.vue'
 import { computed } from 'vue';
+import Footer from './components/Footer.vue'
 
 const route = useRoute()
 
@@ -30,9 +31,7 @@ switch(route.name){
 		<main class="m-0 p-0 container-fluid background">
 			<router-view />
 		</main>
-		<!-- <footer class="bg-dark text-light">
-			Made with 💖 by the Spuditions team
-		</footer> -->
+		<Footer/>
 	</div>
 </template>
 
