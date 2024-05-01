@@ -72,6 +72,9 @@ class AccountService {
             role: 'Member'
         }
 
+        const users = await dbContext.Account.find({ ip: accountData.ip, role: 'Banned' })
+        if (users.length != 0) throw new Error('You cannot create another account if you have been banned before.')
+
         if (!accountData.password) throw new Error('A password is required to register an account.')
 
         // TODO Password Validation
