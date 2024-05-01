@@ -11,7 +11,7 @@ export class Weather{
         this.humidity = data.main.humidity
         this.lat = data.lat
         this.long = data.lon
-        this.iconId = data.weather.icon
+        this.iconId = data.weather[0].icon
         this.icon = this.WeatherIcon
         this.celcius = this.Celcius
         this.fahrenheit = this.Fahrenheit
