@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
+import SearchBar from "./SearchBar.vue";
 
 const theme = ref(loadState('theme') || 'light')
 
@@ -37,6 +38,9 @@ function toggleTheme() {
           </router-link>
         </li>
       </ul>
+      <div>
+        <SearchBar/>
+      </div>
       <!-- LOGIN COMPONENT HERE -->
       <!-- <div>
         <button class="btn text-light" @click="toggleTheme"
