@@ -33,7 +33,9 @@ class WeathersService {
 
 		// REVIEW: Does calling the array like this work?
 		const response = await weatherApi.get(`forecast?lat=${locationData[0]}&lon=${locationData[1]}`)
+
 		logger.log('GOT WEATHER ❄️', response.data);
+
 		const activeWeather = response.data.list.map(weatherData => new Weather(weatherData))
 
 		AppState.activeWeather = activeWeather

@@ -16,19 +16,19 @@ const park = computed(() => AppState.activePark)
 const weather = computed(() => AppState.activeWeather)
 
 async function getParkAndWeather() {
-    try {
-        await parksService.getParkById(route.params.parkId)
-        await weathersService.getWeather()
-    }
-    catch (error){
-      Pop.error(error);
-    }
+	try {
+		await parksService.getParkById(route.params.parkId)
+		await weathersService.getWeather()
+	}
+	catch (error) {
+		Pop.error(error);
+	}
 }
 
 //!SECTION - Loads the park on page load
 
 onMounted(() => {
-    getParkAndWeather()
+	getParkAndWeather()
 })
 
 </script>
