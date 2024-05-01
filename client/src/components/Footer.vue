@@ -20,7 +20,7 @@
         <p>Idaho Campgrounds</p>
     </div>
     <div class="col-6 d-flex justify-content-center">
-        <img src="src/assets/img/spudition logo.png" alt="">
+        <img src="../assets/img/spudition logo.png" alt="">
     </div>
 </footer>
 </template>
