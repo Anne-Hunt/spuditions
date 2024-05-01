@@ -69,7 +69,7 @@ onMounted(() => {
 					<h2>4 Day Forecast</h2>
 				</div>
 
-				<div v-for="day in weather" :key="day.dateDay" class="row">
+				<div v-for="day in weather" :key="day.dt" class="row">
 					<Weather4DayCard :weather="day" />
 				</div>
 			</div>
