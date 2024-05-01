@@ -5,6 +5,7 @@ import { parksService } from "../services/ParksService.js";
 import { AppState } from "../AppState.js";
 import ParkCard from "../components/ParkCard.vue";
 import ParkCarousel from "../components/ParkCarousel.vue";
+import { logger } from "../utils/Logger.js";
 
 
 const parks = computed(() => AppState.parks)
@@ -14,7 +15,7 @@ async function getParks() {
 		await parksService.getParks()
 	} catch (error) {
 		Pop.toast("Could not get Parks", 'error')
-		console.error(error)
+		logger.error(error)
 	}
 }
 
