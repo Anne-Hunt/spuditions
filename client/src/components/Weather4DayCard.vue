@@ -48,3 +48,4 @@ defineProps({
 // 	text-align: center;
 // }
 </style>
+<style scoped lang="scss"></style>
