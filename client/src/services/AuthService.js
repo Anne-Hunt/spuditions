@@ -12,7 +12,8 @@ class AuthService {
     }
 
     logout() {
-        document.cookie = ''
+        let date = new Date(0)
+        document.cookie = `spuditions=logout; Max-Age=0; Path=/; Expires=${date};`
         api.defaults.headers.authorization = ''
         AppState.account = null
         AppState.user = null
