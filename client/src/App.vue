@@ -1,19 +1,41 @@
 <script setup>
+import { useRoute } from 'vue-router';
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import { computed } from 'vue';
+
+const route = useRoute()
+
+// eslint-disable-next-line vue/return-in-computed-property
+const backgroundColor = computed(()=>{
+  switch(route.name){
+    case 'Home':
+      return '#FFFFFF'
+    case 'Park Details':
+      return '#A8A96A'
+    case 'Forum':
+      return '#FFFFFF'
+    case 'About Us':
+      return '#A8A96A'
+    default:
+    return 
+  }
+})
 
 </script>
 
 <template>
-	<header>
-		<Navbar />
-	</header>
-	<main class="m-0 p-0">
-		<router-view />
-	</main>
-	<!-- <footer class="bg-dark text-light">
-		Made with 💖 by the Spuditions team
-	</footer> -->
+	<div class="bColor m-0 p-0">
+		<header>
+			<Navbar />
+		</header>
+		<main class="m-0 p-0 container-fluid background">
+			<router-view />
+		</main>
+		<!-- <footer class="bg-dark text-light">
+			Made with 💖 by the Spuditions team
+		</footer> -->
+	</div>
 </template>
 
 <style lang="scss">
@@ -28,11 +50,14 @@ import Navbar from './components/Navbar.vue'
 	--orange: #D9814F;
 	--teal: #A5C9C9;
 
-	// EXTRAS:
+
 	--lightGreen: #A8A96A;
 	--btnPrimary: #00ADF8;
 }
 
+.bColor{
+	background-color: v-bind(backgroundColor);
+}
 
 footer {
 	display: grid;

@@ -7,6 +7,7 @@
 // 
 // #Modification Log:
 //     - 4/30/2024: Attempted to add get request for weather api
+//     - 5/1/2024: Finished getWeather request (for now), waiting on test to see if it works or not.
 //**************************************************************
 
 import axios from "axios";
@@ -14,6 +15,7 @@ import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import { api } from "./AxiosService.js";
 import { Weather } from "../models/Weather.js";
+import { Park } from "../models/Park.js";
 
 
 const weatherApi = axios.create({
@@ -28,8 +30,9 @@ const weatherApi = axios.create({
 class WeathersService {
 
 	async getWeather() {
-		// TODO: Once model is finished, get lat and lon called correctly
-		const response = await weatherApi.get(`forecast?lat=${lat}&lon=${lon}`)
+      const locationData = AppState.activePark.location.split(', ')
+
+		const response = await weatherApi.get(`forecast?lat=${locationData[0]}&lon=${locationData[1]}`)
 		logger.log('GOT WEATHER ❄️', response.data);
 		const activeWeather = response.data.list.map(weatherData => new Weather(weatherData))
 
