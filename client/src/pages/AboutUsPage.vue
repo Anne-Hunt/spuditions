@@ -58,6 +58,10 @@
       <h1>Contact Us</h1>
       <p><i class="mdi mdi-icon"></i></p>
     </div>
+    <div class="col-12 text-center">
+      <p>(208) 832-2913</p>
+      <p>iemail@gmail.com</p>
+    </div>
   </section>
 </template>
 
