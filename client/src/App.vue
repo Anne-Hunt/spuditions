@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router';
 import Navbar from './components/Navbar.vue'
 import { computed } from 'vue';
+import Footer from './components/Footer.vue'
 
 const route = useRoute()
 
@@ -23,16 +24,14 @@ switch(route.name){
 </script>
 
 <template>
-	<div class="bColor m-0 p-0">
+	<div class="bColor m-0 p-0 container-flex">
 		<header>
 			<Navbar />
 		</header>
 		<main class="m-0 p-0 container-fluid background">
 			<router-view />
 		</main>
-		<!-- <footer class="bg-dark text-light">
-			Made with 💖 by the Spuditions team
-		</footer> -->
+		<Footer/>
 	</div>
 </template>
 
@@ -55,11 +54,5 @@ switch(route.name){
 
 .bColor{
 	background-color: v-bind(backgroundColor);
-}
-
-footer {
-	display: grid;
-	place-content: center;
-	height: 32px;
 }
 </style>

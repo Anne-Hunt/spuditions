@@ -10,7 +10,7 @@ export const AppState = reactive({
     /** @type {import('./models/Account.js').Account} user info from the database*/
     account: null,
 
-    /**@type {Park[]} */
+  /**@type {Park[]} */
     parks: [],
 
   /**@type {Park} */
