@@ -1,4 +1,6 @@
 import { dbContext } from '../db/DbContext'
+import * as argon2 from 'argon2'
+import { authService } from './AuthService.js'
 
 // Private Methods
 
@@ -8,17 +10,17 @@ import { dbContext } from '../db/DbContext'
  * @param {any} user
  */
 async function createAccountIfNeeded(account, user) {
-  if (!account) {
-    user._id = user.id
-    if(typeof user.name == 'string' && user.name.includes('@')){
-      user.name = user.nickname
+    if (!account) {
+        user._id = user.id
+        if (typeof user.name == 'string' && user.name.includes('@')) {
+            user.name = user.nickname
+        }
+        account = await dbContext.Account.create({
+            ...user,
+            subs: [user.sub]
+        })
     }
-    account = await dbContext.Account.create({
-      ...user,
-      subs: [user.sub]
-    })
-  }
-  return account
+    return account
 }
 
 /**
@@ -27,55 +29,99 @@ async function createAccountIfNeeded(account, user) {
  * @param {any} user
  */
 async function mergeSubsIfNeeded(account, user) {
-  if (!account.subs.includes(user.sub)) {
-    // @ts-ignore
-    account.subs.push(user.sub)
-    await account.save()
-  }
+    if (!account.subs.includes(user.sub)) {
+        // @ts-ignore
+        account.subs.push(user.sub)
+        await account.save()
+    }
 }
 /**
  * Restricts changes to the body of the account object
  * @param {any} body
  */
 function sanitizeBody(body) {
-  const writable = {
-    name: body.name,
-    picture: body.picture
-  }
-  return writable
+    const writable = {
+        name: body.name,
+        picture: body.picture
+    }
+    return writable
 }
 
 class AccountService {
-  /**
-   * Returns a user account from the Auth0 user object
-   *
-   * Creates user if none exists
-   *
-   * Adds sub of Auth0 account to account if not currently on account
-   * @param {any} user
-   */
-  async getAccount(user) {
-    let account = await dbContext.Account.findOne({
-      _id: user.id
-    })
-    account = await createAccountIfNeeded(account, user)
-    await mergeSubsIfNeeded(account, user)
-    return account
-  }
 
-  /**
-   * Updates account with the request body, will only allow changes to editable fields
-   *  @param {any} user Auth0 user object
-   *  @param {any} body Updates to apply to user object
-   */
-  async updateAccount(user, body) {
-    const update = sanitizeBody(body)
-    const account = await dbContext.Account.findOneAndUpdate(
-      { _id: user.id },
-      { $set: update },
-      { runValidators: true, setDefaultsOnInsert: true, new: true }
-    )
-    return account
-  }
+    async fetchUserInfo(id) {
+        const account = await dbContext.Account.findById(id, '-password')
+        if (!account) throw new Error('Invalid session')
+        return account
+    }
+
+    async login(accountData) {
+        const user = await dbContext.Account.findOne({ email: accountData.email })
+        if (!user) throw new Error('Invalid login. The supplied email or password was incorrect.')
+
+        const token = await authService.validatePassword(user.id, accountData.password)
+        return { accessToken: token, expires_in: 86400, token_type: 'Bearer' }
+    }
+    async register(accountDataTemp) {
+        let accountData = {
+            email: accountDataTemp.email,
+            name: accountDataTemp.name,
+            picture: accountDataTemp.picture,
+            password: accountDataTemp.password,
+            role: 'Member'
+        }
+
+        if (!accountData.password) throw new Error('A password is required to register an account.')
+
+        // TODO Password Validation
+
+        let regex = /^[a-zA-Z0-9{\[\]}<>,.|:;`~!?@#$£%^&*()_\\\-=+'"/]{8,75}$/
+        if (!regex.test(accountData.password)) {
+            regex = /^[a-zA-Z0-9{\[\]}<>,.|:;`~!?@#$£%^&*()_\\\-=+'"/]$/
+            if (regex.test(accountData.password)) {
+                throw new Error('Password must be between 8 and 75 characters.')
+            } else {
+                throw new Error('Password contains an unsupported character. Passwords may only contain alphanumeric and select symbols.')
+            }
+        }
+
+        accountData.password = await argon2.hash(accountData.password, { secret: Buffer.from(process.env.ARGON2_KEY) })
+
+        const user = await dbContext.Account.create(accountData)
+        return user
+    }
+    /**
+     * Returns a user account from the Auth0 user object
+     *
+     * Creates user if none exists
+     *
+     * Adds sub of Auth0 account to account if not currently on account
+     * @param {any} user
+     */
+    async getAccount(user) {
+        console.log('getRan')
+        let account = await dbContext.Account.findOne({
+            _id: user.id
+        })
+        account = await createAccountIfNeeded(account, user)
+        await mergeSubsIfNeeded(account, user)
+        return account
+    }
+
+    /**
+     * Updates account with the request body, will only allow changes to editable fields
+     *  @param {any} user Auth0 user object
+     *  @param {any} body Updates to apply to user object
+     */
+    async updateAccount(user, body) {
+        console.log('updateRan')
+        const update = sanitizeBody(body)
+        const account = await dbContext.Account.findOneAndUpdate(
+            { _id: user.id },
+            { $set: update },
+            { runValidators: true, setDefaultsOnInsert: true, new: true }
+        )
+        return account
+    }
 }
 export const accountService = new AccountService()
