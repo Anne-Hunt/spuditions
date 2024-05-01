@@ -12,6 +12,7 @@ export class VisitedController extends BaseController {
       .use(Authware.AuthGuard)
   }
 
+  //!SECTION - Gets visited status for users
   async getVisited(request, response, next) {
     try {
       const visited = visitedService.getVisited()
@@ -20,4 +21,6 @@ export class VisitedController extends BaseController {
       next(error)
     }
   }
+
+
 }
