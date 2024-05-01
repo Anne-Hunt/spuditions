@@ -1,6 +1,5 @@
 <script setup>
 import { useRoute } from 'vue-router';
-import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
 import { computed } from 'vue';
 
