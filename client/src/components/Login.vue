@@ -1,15 +1,13 @@
 <script setup>
 import { computed } from 'vue'
 import { AppState } from '../AppState'
-import { AuthService } from '../services/AuthService'
+import { router } from '../router';
 
 const user = computed(() => AppState.user)
 const account = computed(() => AppState.account)
-async function login() {
-  AuthService.loginWithPopup()
-}
-async function logout() {
-  AuthService.logout({ returnTo: window.location.origin })
+
+function login() {
+    router.push('login')
 }
 
 </script>
@@ -17,7 +15,7 @@ async function logout() {
 <template>
   <span class="navbar-text">
     <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
-      v-if="!user?.isAuthenticated">
+      v-if="!user">
       Login
     </button>
     <div v-else>
@@ -35,7 +33,7 @@ async function logout() {
                 Manage Account
               </div>
             </router-link>
-            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
+            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable">
               <i class="mdi mdi-logout"></i>
               logout
             </div>

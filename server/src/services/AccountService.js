@@ -49,6 +49,12 @@ function sanitizeBody(body) {
 
 class AccountService {
 
+    async fetchUserInfo(id) {
+        const account = await dbContext.Account.findById(id, '-password')
+        if (!account) throw new Error('Invalid session')
+        return account
+    }
+
     async login(accountData) {
         const user = await dbContext.Account.findOne({ email: accountData.email })
         if (!user) throw new Error('Invalid login. The supplied email or password was incorrect.')

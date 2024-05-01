@@ -13,9 +13,17 @@ export class AccountController extends BaseController {
             .post('/register', this.register)
             .post('/login', this.login)
             .use(Authware.AuthGuard)
-            .get('/test', function (req, res, next) {
-                res.send('hi!')
-            })
+            .get('', this.fetchUserInfo)
+    }
+
+    async fetchUserInfo(request, response, next) {
+        try {
+            const account = await accountService.fetchUserInfo(request.userInfo.id)
+            response.send(account)
+        }
+        catch (error) {
+            next(error)
+        }
     }
 
     async login(request, response, next) {
