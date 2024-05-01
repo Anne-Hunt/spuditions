@@ -1,16 +1,16 @@
 import { parksService } from "../services/ParksService.js";
+import { Authware } from "../utils/Authware.js";
 import BaseController from "../utils/BaseController.js";
 
 
 
 export class ParksController extends BaseController {
   constructor() {
-    // REVIEW - Is this the correct api path?
-    //FIXME - - Will need to add middleware once auth is set up
     super('api/parks')
     this.router
       .get('', this.getParks)
       .get('/:parkId', this.getParkById)
+      .use(Authware.AuthGuard)
   }
 
 
