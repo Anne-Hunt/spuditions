@@ -23,4 +23,6 @@ export const AppState = reactive({
     /**@type {Park} */
     activePark: null,
     weatherConditions: [],
+
+    searchTerm: ''
 })
