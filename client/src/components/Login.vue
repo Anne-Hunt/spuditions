@@ -8,7 +8,7 @@ const user = computed(() => AppState.user)
 const account = computed(() => AppState.account)
 
 function login() {
-	router.push('login')
+	router.push({name: "Login"})
 }
 
 function logout() {
