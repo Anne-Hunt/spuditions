@@ -23,6 +23,7 @@ class AuthHandler {
         } catch (error) {
             AppState.hasCookie = false
             AppState.account = null
+            AppState.user = null
             api.defaults.headers.authorization = ""
         }
     }
