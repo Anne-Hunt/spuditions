@@ -23,6 +23,8 @@ class AuthHandler {
             await authService.fetchUserInfo()
         } catch (error) {
             console.error(error) // Clear cookie
+            AppState.account = null
+            api.defaults.headers.authorization = ""
         }
     }
 
