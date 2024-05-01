@@ -21,8 +21,11 @@ class AuthHandler {
         try {
             await authService.fetchUserInfo()
         } catch (error) {
+            let date = new Date(0)
+            document.cookie = `spuditions=logout; Max-Age=0; Path=/; Expires=${date};`
             AppState.hasCookie = false
             AppState.account = null
+            AppState.user = null
             api.defaults.headers.authorization = ""
         }
     }
