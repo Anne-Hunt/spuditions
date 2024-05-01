@@ -4,7 +4,6 @@ import Pop from '../utils/Pop';
 import { authService } from '../services/AuthService';
 import { router } from '../router.js';
 
-
 const formData = ref({
     email: '',
     password: ''
