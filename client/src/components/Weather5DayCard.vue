@@ -9,28 +9,34 @@ defineProps({
 
 
 <template>
-	<hr />
-	<div>
-		<h5 class="day">{{ weather.date }}</h5>
+	<div class="col-12 col-md-4 col-lg-3 col-xl-2 vertical text-center p-1">
+
+		<h3 class="day">{{ weather.date.toLocaleDateString('en-us', { weekday: 'long' }) }}</h3>
 
 		<!-- <div class="time">
 			<h2>{{ weather.date }}</h2>
 		</div> -->
 
 		<div class="forecast">
-			<div>{{ weather.WeatherIcon }}</div>
-			<div class="mt-3">{{ weather.description }}</div>
+			<img :src="weather.WeatherIcon" :alt="'icon of' + weather.main">
 		</div>
 
-		<div class="temp d-flex gap-2">
-			<h2 class="border">{{ weather.celcius }}</h2>
-			<h2 class="border">{{ weather.fahrenheit }}</h2>
+		<div class="temp d-flex gap-3 justify-content-center">
+			<h5>Celcius: {{ weather.celcius }}&#176;</h5>
+			<h5>Fahrenheit: {{ weather.fahrenheit }}&#176;</h5>
 		</div>
+
 	</div>
-	<hr />
 
 
 </template>
 
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.vertical {
+	border: 3px solid white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 15px;
+	background-color: #D9814F;
+}
+</style>

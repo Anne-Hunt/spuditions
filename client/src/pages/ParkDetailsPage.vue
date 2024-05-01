@@ -49,13 +49,15 @@ onMounted(() => {
 		<section class="text-light" v-if="weatherForecast">
 			<!-- <div v-if="forecast == today">
 
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row">
-						<h1>Today's Forecast</h1>
+						<h1><u>Today's Forecast</u></h1>
 					</div>
 
-					<div v-for="time in weather" :key="time.dateTime" class="row">
-						<WeatherTodayCard :time="time" />
+					<div class="row justify-content-evenly">
+
+						<WeatherTodayCard v-for="time in weatherForecast" :key="time.dt" :weather="time" />
+
 					</div>
 				</div>
 
@@ -64,13 +66,15 @@ onMounted(() => {
 
 			<!-- <div v-else> -->
 
-			<div class="container">
-				<div class="row">
-					<h2>5 Day Forecast</h2>
+			<div class="container-fluid pb-5">
+				<div class="row mb-4 text-center">
+					<h2>Next 5 Days Forecast</h2>
 				</div>
 
-				<div v-for="day in weatherForecast" :key="day.dt" class="row">
-					<Weather5DayCard :weather="day" />
+				<div class="row justify-content-evenly px-3 px-md-5 gap-1">
+
+					<Weather5DayCard v-for="day in weatherForecast" :key="day.dt" :weather="day" class="my-3" />
+
 				</div>
 			</div>
 
@@ -83,6 +87,12 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .pageColor {
-	background-color: var(--lightGreen)
+	background-color: var(--lightGreen);
+
+	// TODO: Tell me (emma) how these look for a redesign
+	// background-color: #7db834;
+	// background-color: #8ac87f;
+	// background-color: #5cb25d;
+
 }
 </style>
