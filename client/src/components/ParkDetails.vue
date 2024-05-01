@@ -85,6 +85,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .imgShadow {
-	filter: drop-shadow(8px 10px 4px #9290906b);
+	filter: drop-shadow(8px 10px 4px #696A42);
+
 }
 </style>
