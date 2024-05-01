@@ -25,19 +25,20 @@ const weatherApi = axios.create({
  })
 
 
-class WeatherService {
+class WeathersService {
 
 	async getWeather() {
+		// TODO: Once model is finished, get lat and lon called correctly
 		const response = await weatherApi.get(`forecast?lat=${lat}&lon=${lon}`)
 		logger.log('GOT WEATHER ❄️', response.data);
-		activeWeather = response.data.map(weatherData => new Weather(weatherData))
+		const activeWeather = response.data.list.map(weatherData => new Weather(weatherData))
 
 		AppState.activeWeather = activeWeather
 	}
 
 }
 
-export const weatherService = new WeatherService()
+export const weathersService = new WeathersService()
 
 
 
