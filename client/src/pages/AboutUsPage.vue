@@ -11,46 +11,66 @@
     </div>
     <h1 class="text-center mt-2">Meet the dev team</h1>
     <hr>
-    <div class="row align-items-center mt-5">
+    <div class="row mt-5">
 
-      <div class="col-12 col-md-3 pt-2 text-center">
-        <img class="dev-img" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">
-      </div>
-      <div class="col-12 col-md-9 pb-2">
-        <h1>Michael</h1>
-        <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+      <div class="col-12">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-3 pt-2 text-center order-1">
+            <img class="dev-img" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">
+          </div>
+          <div class="col-12 col-md-9 pb-2 order-2">
+            <h1>Michael</h1>
+            <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+          </div>
+        </div>
       </div>
       
-      <div class="col-12 col-md-9">
-        <h1 class="text-end">Jim</h1>
-        <p class="fs-5 text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
-      </div>
-      <div class="col-12 col-md-3 text-center">
-        <img class="dev-img" src="https://cdn.costumewall.com/wp-content/uploads/2019/07/jim-halpert.jpg" alt="Jim">
-      </div>
-
-      <div class="col-12 col-md-3 pt-2 text-center">
-        <img class="dev-img" src="https://www.myany.city/sites/default/files/styles/scaled_cropped_medium__260x260/public/field/image/node-related-images/sample-dwight-k-schrute.jpg?itok=8TfRscbA" alt="Dwight">
-      </div>
-      <div class="col-12 col-md-9 pb-2">
-        <h1>Dwight</h1>
-        <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+      <div class="col-12">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-9 order-2 order-md-1">
+            <h1 class="text-end">Jim</h1>
+            <p class="fs-5 text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+          </div>
+          <div class="col-12 col-md-3 order-1 order-md-2 text-center">
+            <img class="dev-img" src="https://cdn.costumewall.com/wp-content/uploads/2019/07/jim-halpert.jpg" alt="Jim">
+          </div>
+        </div>
       </div>
 
-      <div class="col-12 col-md-9">
-        <h1 class="text-end">Angela</h1>
-        <p class="fs-5 text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
-      </div>
-      <div class="col-12 col-md-3 text-center">
-        <img class="dev-img" src="https://www.looper.com/img/gallery/angela-kinsey-gives-context-to-the-prank-culture-on-the-office/l-intro-1678858629.jpg" alt="Angela">
+      <div class="col-12">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-3 pt-2 order-1 text-center">
+            <img class="dev-img" src="https://www.myany.city/sites/default/files/styles/scaled_cropped_medium__260x260/public/field/image/node-related-images/sample-dwight-k-schrute.jpg?itok=8TfRscbA" alt="Dwight">
+          </div>
+          <div class="col-12 col-md-9 pb-2 order-2">
+            <h1>Dwight</h1>
+            <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+          </div>
+        </div>
       </div>
 
-      <div class="col-12 col-md-3 pt-2 text-center">
-        <img class="dev-img" src="https://www.looper.com/img/gallery/the-offices-phyllis-smith-never-intended-on-auditioning-for-the-show/l-intro-1684705252.jpg" alt="Phyllis">
+      <div class="col-12">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-9 order-2 order-md-1">
+            <h1 class="text-end">Angela</h1>
+            <p class="fs-5 text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+          </div>
+          <div class="col-12 col-md-3 order-1 order-md-2 text-center">
+            <img class="dev-img" src="https://www.looper.com/img/gallery/angela-kinsey-gives-context-to-the-prank-culture-on-the-office/l-intro-1678858629.jpg" alt="Angela">
+          </div>
+        </div>
       </div>
-      <div class="col-12 col-md-9 pb-2">
-        <h1>Phyllis</h1>
-        <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+
+      <div class="col-12">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-3 pt-2 order-1 text-center">
+            <img class="dev-img" src="https://www.looper.com/img/gallery/the-offices-phyllis-smith-never-intended-on-auditioning-for-the-show/l-intro-1684705252.jpg" alt="Phyllis">
+          </div>
+          <div class="col-12 col-md-9 pb-2 order-2">
+            <h1>Phyllis</h1>
+            <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -68,7 +88,7 @@
 
 <style lang="scss" scoped>
 .dev-img{
-    height: 215px;
+    height: 180px;
     width: fit-content;
     aspect-ratio: 1/1;
     border-radius: 50em;
