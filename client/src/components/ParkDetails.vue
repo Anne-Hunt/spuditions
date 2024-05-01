@@ -70,6 +70,6 @@ const activeWeather = computed(() => AppState.activeWeather)
 
 <style lang="scss" scoped>
 .imgShadow {
-	filter: drop-shadow(8px 10px 4px #7f7c7c6b);
+	filter: drop-shadow(8px 10px 4px #9290906b);
 }
 </style>
