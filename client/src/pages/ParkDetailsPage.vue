@@ -4,6 +4,7 @@ import { parksService } from "../services/ParksService.js";
 import Pop from "../utils/Pop.js";
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
+import ParkDetails from "../components/ParkDetails.vue";
 
 //!SECTION - Allows us to use routes for getting to different pages
 const route = useRoute()
@@ -28,14 +29,19 @@ onMounted(() => {
 
 
 <template>
-  Park Details Page
-  <div class="container-fluid">
-    <h2>{{ park?.name }}</h2>
-    <img class="img-fluid" :src="park?.imgUrl" alt="">
-  </div>z
+  <div class="pageColor">
+    <ParkDetails/>
+  </div>
+
+
 </template>
 
 
 <style lang="scss" scoped>
+
+.pageColor {
+  background-color: var(--lightGreen)
+}
+
 
 </style>
