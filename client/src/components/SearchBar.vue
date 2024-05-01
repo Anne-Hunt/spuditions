@@ -12,7 +12,7 @@ const searchTerm = computed(() => AppState.searchTerm)
 <template>
 	<form class="me-5">
 		<div class="input-group">
-			<input v-model="searchQuery" type="text" class="form-control" placeholder="search" id="search-input">
+			<input v-model="searchQuery" type="text" class="form-control" placeholder="Search" id="search-input">
 			<button class="btn btn-orange w-25 p-0"><i class="mdi mdi-magnify text-white fs-5"></i></button>
 		</div>
 	</form>
