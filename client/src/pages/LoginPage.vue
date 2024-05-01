@@ -13,7 +13,7 @@ const formData = ref({
 async function handleLogin() {
     try {
       await authService.login(formData.value)
-      router.push('')
+      router.push({ name: 'Home'})
     }
     catch (error){
       Pop.error(error);
