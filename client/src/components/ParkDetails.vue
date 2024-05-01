@@ -1,30 +1,10 @@
 <script setup>
-import Pop from '../utils/Pop.js';
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
-import { Weather } from '../models/Weather.js';
-import Weather4DayCard from './Weather4DayCard.vue';
-import { weathersService } from '../services/WeathersService.js';
+
 
 const park = computed(() => AppState.activePark)
-const weather = computed(() => AppState.activeWeather)
-
-
-async function getWeather() {
-	try {
-		await weathersService.getWeather()
-	}
-	catch (error) {
-		Pop.error(error);
-	}
-}
-
-
-onMounted(() => {
-	getWeather()
-})
-
 
 </script>
 
@@ -64,21 +44,6 @@ onMounted(() => {
 				width="100%" height="200" style="border:0;" loading="lazy"
 				referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
-	</section>
-
-	<hr class="my-3" />
-
-	<!--************ SECTION: WEATHER ************-->
-	<section class="container p-3">
-
-		<div class="row">
-			<h1>4 Day Forecast</h1>
-		</div>
-
-		<div v-for="day in weather" :key="day.dateTime" class="row">
-			<Weather4DayCard :day="day" />
-		</div>
-
 	</section>
 </template>
 
