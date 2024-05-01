@@ -1,14 +1,3 @@
-// *************************************************************
-//					           MODIFICATION LOG
-//
-// Date Created: 4/30/2024
-// Date Last Modified: 4/30/2024
-// Last Modified By: Emma
-//
-// #Modification Log:
-//     - 4/30/2024: Attempted to add get request for weather api
-//     - 5/1/2024: Finished getWeather request (for now), waiting on test to see if it works or not.
-//**************************************************************
 
 import axios from "axios";
 import { AppState } from "../AppState.js";

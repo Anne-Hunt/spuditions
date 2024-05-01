@@ -5,7 +5,7 @@ import Pop from "../utils/Pop.js";
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import ParkDetails from "../components/ParkDetails.vue";
-import Weather4DayCard from "../components/Weather4DayCard.vue";
+import Weather5DayCard from "../components/Weather5DayCard.vue";
 import { weathersService } from "../services/WeathersService.js";
 
 
@@ -66,11 +66,11 @@ onMounted(() => {
 
 			<div class="container">
 				<div class="row">
-					<h2>4 Day Forecast</h2>
+					<h2>5 Day Forecast</h2>
 				</div>
 
 				<div v-for="day in weatherForecast" :key="day.dt" class="row">
-					<Weather4DayCard :weather="day" />
+					<Weather5DayCard :weather="day" />
 				</div>
 			</div>
 
