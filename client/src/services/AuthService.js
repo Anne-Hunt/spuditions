@@ -7,6 +7,8 @@ class AuthService {
         const response = await api.post('account/login', accountData)
         let date = new Date(Date.now() + 1000 * response.data.expires_in).toUTCString()
         document.cookie = `spuditions=${response.data.accessToken}; Max-Age=${response.data.expires_in}; Path=/; Expires=${date};`
+        api.defaults.headers.authorization = response.data.accessToken
+        this.fetchUserInfo()
     }
 
     async fetchUserInfo() {
