@@ -7,7 +7,7 @@ export class Park {
         this.imgUrl = data.imgUrl
         this.webUrl = data.webUrl
         this.description = data.description
-        this.Locati = data.location
+        this.location = data.location
         this.type = data.type
         this.cost = data.cost
         this.region = data.region
