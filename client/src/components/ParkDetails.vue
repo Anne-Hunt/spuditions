@@ -5,13 +5,79 @@ import { AppState } from '../AppState.js';
 
 
 const park = computed(() => AppState.activePark)
+const activities = computed(()=> AppState.activePark?.activities)
+
+const activityIcons = computed(()=>{
+	switch(park.value.activities){
+		case 'biking':
+			return `<i class= "mdi mdi-bicycle"></i>`
+		case 'bird watching':
+			return `<i class= "mdi mdi-bird"></i>`
+		case 'boating':
+			return`<i class= "mdi mdi-ferry"></i>`
+		case 'camping':
+			return `<i class= "mdi mdi-tent"></i>`
+		case 'climbing':
+			return `<i class= "mdi mdi-carabiner"></i>`
+		case 'cross country skiing':
+			return `<i class= "mdi mdi-ski-cross-country"></i>`
+		case 'disc golf':
+			return `<i class= "mdi mdi-circle-slice-8"></i>`
+		case 'experience idaho backpacks':
+			return `<i class= "mdi mdi-bag-personal"></i>`
+		case 'first time adventure':
+			return `<i class= "mdi mdi-forest-outline"></i>`
+		case 'fishing':
+			return `<i class= "mdi mdi-fish"></i>`
+		case 'hard path trails':
+			return `<i class= "mdi mdi-map-marker-path"></i>`
+		case 'hiking':
+			return `<i class= "mdi mdi-hiking"></i>`
+		case 'history':
+			return `<i class= "mdi mdi-history"></i>`
+		case ' horseback':
+			return `<i class= "mdi mdi-horse-human"></i>`
+		case 'horseshoe pits':
+			return `<i class= "mdi mdi-horseshoe"></i>`
+		case 'junior ranger':
+			return `<i class= "mdi mdi-account-cowboy-hat"></i>`
+		case 'learning':
+			return `mdi-book-information-variant`
+		case 'loaner fishing rods':
+			return `<i class= "mdi mdi-hook"></i>`
+		case 'paddlesports':
+			return `<i class= "mdi mdi-kayaking"></i>`
+		case 'playgrounds':
+			return `<i class= "mdi mdi-slide"></i>`
+		case 'RVing':
+			return `<i class= "mdi mdi-rv-truck"></i>`
+		case 'sailing':
+			return`<i class= "mdi mdi-sail-boat"></i>`
+		case 'sandboarding':
+			return `<i class= "mdi mdi-snowboard"></i>`
+		case 'snowmobiling':
+			return `<i class= "mdi mdi-snowmobile"></i>`
+		case 'snowshoeing':
+			return `<i class= "mdi mdi-snowshoeing"></i>`
+		case 'volunteering':
+			return `<i class= "mdi mdi-hand-heart"></i>`
+		case 'swimming':
+			return `<i class= "mdi mdi-swim"></i>`
+		case 'volleyball area':
+			return `<i class= "mdi mdi-volleyball"></i>`
+		case 'ATVs, UTVs, Motorbikes':
+			return `<i class= "mdi mdi-atv"></i>`
+		default:
+			return ``
+	}
+})
 
 </script>
 
 
 <template>
-	<div>
-		<h4 class="pt-3">{{ park?.activities }}</h4>
+	<div v-for="activity in activities" :key="activity">
+		<h4 class="pt-3">{{ activity }}</h4>
 	</div>
 	<!-- Park Image -->
 	<section class="container-fluid">
