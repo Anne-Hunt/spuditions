@@ -18,7 +18,7 @@ function toggleTheme() {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-sm forestGreen px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img alt="logo" src="../assets/img/spudition logo white.png" height="45" />
@@ -32,18 +32,18 @@ function toggleTheme() {
       <ul class="navbar-nav me-auto">
         <li>
           <!-- //FIXME - Change the styling once ready -->
-          <router-link :to="{name: 'Home'}" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{name: 'Home'}" class="btn text-light lighten-30 selectable text-uppercase">
             Home
           </router-link>
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <div>
+      <!-- <div>
         <button class="btn text-light" @click="toggleTheme"
           :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
           <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i>
         </button>
-      </div>
+      </div> -->
       <Login />
     </div>
   </nav>
@@ -58,8 +58,14 @@ a:hover {
   text-transform: uppercase;
 }
 
+.forestGreen {
+ background-color: var(--forestGreen);
+}
+
+
+
 .navbar-nav .router-link-exact-active {
-  border-bottom: 2px solid var(--bs-success);
+  border-bottom: 2px solid var(--lightGreen);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -68,5 +74,6 @@ a:hover {
   nav {
     height: 64px;
   }
+  
 }
 </style>
