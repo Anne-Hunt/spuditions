@@ -1,4 +1,5 @@
 import { dbContext } from "../db/DbContext.js"
+import { Forbidden } from "../utils/Errors.js"
 
 
 
@@ -16,7 +17,22 @@ class ThreadsService {
     return threads
   }
 
+  //!SECTION - Gets a thread by its id
+  async getThreadById(threadId) {
+    const thread = await dbContext.Thread.findById(threadId)
+    if (!thread) throw new Error(`No thread with the id ${threadId}`)
+    return thread
+  }
 
+  //!SECTION - Deletes a thread by its id
+  async destroyThread(threadId, creatorId) {
+    const threadToDelete = await this.getThreadById(threadId)
+
+    if (threadToDelete.creatorId != creatorId) throw new Forbidden("You cannot delete a thread you have not created")
+
+    await threadToDelete.deleteOne()
+    return threadToDelete
+  }
 
 }
 
