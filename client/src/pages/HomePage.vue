@@ -1,37 +1,70 @@
 <script setup>
+import { computed, onMounted } from "vue";
+import Pop from "../utils/Pop.js";
+import { parksService } from "../services/ParksService.js";
+import { AppState } from "../AppState.js";
+import ParkCard from "../components/ParkCard.vue";
 
+const parks = computed(() => AppState.parks)
+
+async function getParks() {
+  try {
+    await parksService.getParks()
+  } catch (error) {
+    Pop.toast("Could not get Parks", 'error')
+    console.error(error)
+  }
+}
+
+onMounted(() => {
+  getParks()
+})
 </script>
 
+
+
+
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <!-- Video Hero -->
+  <video class="video-container" autoplay loop muted>
+    <source src="../assets/Video/hero-video.mp4" type="video/mp4">
+  </video>
+
+  <!-- SECTION Home Page Introduction -->
+
+  <section class="container-fluid introduction">
+    <div class="row mx-5">
+      <div class="col-12 col-lg-8 col-md-5 text-white">
+        <h1 class="text-center">Visit A State Park Today!</h1>
+      </div>
     </div>
+  </section>
+
+
+
+
+  <!-- Parks Loading To Page -->
+  <div v-for="park in parks" :key="park.id" class="col-4">
+    <ParkCard :park="park" />
   </div>
 </template>
 
+
+
+
+
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
+.video-container {
+  filter: brightness(55%);
+  width: 100%;
+  height: 65vh;
+  object-fit: cover;
+}
 
-  .home-card {
-    width: clamp(500px, 50vw, 100%);
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
+.introduction {
+  position: absolute;
+  top: 45%;
+  left: 62%;
+  transform: translate(-50%, -50%);
 }
 </style>

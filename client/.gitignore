@@ -3,6 +3,9 @@ node_modules
 /dist
 /docs
 
+package.json
+package-lock.json
+
 # local env files
 .env.local
 .env.*.local
@@ -19,3 +22,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# .json files
+package-lock.json
+package.json

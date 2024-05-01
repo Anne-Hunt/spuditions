@@ -2,7 +2,7 @@
 
 export class Park {
     constructor(data) {
-        this.id = data.id
+        this.id = data._id
         this.name = data.name
         this.imgUrl = data.imgUrl
         this.webUrl = data.webUrl
