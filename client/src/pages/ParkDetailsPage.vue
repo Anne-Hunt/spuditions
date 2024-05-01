@@ -2,10 +2,9 @@
 import { useRoute } from "vue-router";
 import { parksService } from "../services/ParksService.js";
 import Pop from "../utils/Pop.js";
-import { computed, onBeforeMount, onMounted, watch } from "vue";
+import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import ParkDetails from "../components/ParkDetails.vue";
-import { Weather } from "../models/Weather.js";
 import Weather4DayCard from "../components/Weather4DayCard.vue";
 import { weathersService } from "../services/WeathersService.js";
 

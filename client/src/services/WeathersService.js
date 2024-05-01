@@ -13,9 +13,7 @@
 import axios from "axios";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
-import { api } from "./AxiosService.js";
 import { Weather } from "../models/Weather.js";
-import { Park } from "../models/Park.js";
 
 
 const weatherApi = axios.create({
