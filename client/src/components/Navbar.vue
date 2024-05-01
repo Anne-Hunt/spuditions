@@ -37,6 +37,11 @@ function toggleTheme() {
             Home
           </router-link>
         </li>
+        <li>
+          <router-link :to="{name: 'About Us'}" class="btn text-light lighten-30 selectable">
+            About Us
+          </router-link>
+        </li>
       </ul>
       <div>
         <SearchBar/>
