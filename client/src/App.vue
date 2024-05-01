@@ -24,7 +24,7 @@ switch(route.name){
 </script>
 
 <template>
-	<div class="bColor m-0 p-0">
+	<div class="bColor m-0 p-0 container-flex">
 		<header>
 			<Navbar />
 		</header>
@@ -54,11 +54,5 @@ switch(route.name){
 
 .bColor{
 	background-color: v-bind(backgroundColor);
-}
-
-footer {
-	display: grid;
-	place-content: center;
-	height: 32px;
 }
 </style>
