@@ -25,7 +25,7 @@ const weatherApi = axios.create({
  })
 
 
-class WeatherService {
+class WeathersService {
 
 	async getWeather() {
 		const response = await weatherApi.get(`forecast?lat=${lat}&lon=${lon}`)
@@ -37,7 +37,7 @@ class WeatherService {
 
 }
 
-export const weatherService = new WeatherService()
+export const weathersService = new WeathersService()
 
 
 
