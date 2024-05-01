@@ -1,11 +1,13 @@
 <script setup>
+import { useRoute } from 'vue-router';
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
 import { computed } from 'vue';
-import { router } from './router.js';
+
+const route = useRoute()
 
 const backgroundColor = computed(()=>{
-switch(router.currentRoute.value.name){
+switch(route.name){
     case 'Home':
         return '#FFFFFF'
     case 'Park Details':
