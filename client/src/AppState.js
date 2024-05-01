@@ -19,6 +19,7 @@ export const AppState = reactive({
   carouselParks: [],
 
    /**@type {Weather[]} */
-	activeWeather: [],
+	weatherConditions: [],
 
+    searchTerm: ''
 })

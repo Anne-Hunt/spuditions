@@ -29,7 +29,6 @@ export class AccountController extends BaseController {
     async login(request, response, next) {
         try {
             const token = await accountService.login(request.body)
-            response.cookie('spuditions', token.accessToken, { maxAge: 86400, httpOnly: true })
             response.send(token)
         } catch (error) {
             next(error)
@@ -38,6 +37,7 @@ export class AccountController extends BaseController {
 
     async register(request, response, next) {
         try {
+            request.body.ip = request.ip
             const account = await accountService.register(request.body)
             response.send(account)
         } catch (error) {
