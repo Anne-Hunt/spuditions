@@ -73,5 +73,7 @@ onMounted(() => {
 	object-fit: cover;
 }
 
-.heroText {}
+.heroText {
+	color: var(--beigeSand);
+}
 </style>
