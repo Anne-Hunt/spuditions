@@ -8,16 +8,16 @@ import ParkCard from "../components/ParkCard.vue";
 const parks = computed(() => AppState.parks)
 
 async function getParks() {
-  try {
-    await parksService.getParks()
-  } catch (error) {
-    Pop.toast("Could not get Parks", 'error')
-    console.error(error)
-  }
+	try {
+		await parksService.getParks()
+	} catch (error) {
+		Pop.toast("Could not get Parks", 'error')
+		console.error(error)
+	}
 }
 
 onMounted(() => {
-  getParks()
+	getParks()
 })
 </script>
 
@@ -25,28 +25,37 @@ onMounted(() => {
 
 
 <template>
-  <!-- Video Hero -->
-  <video class="video-container" autoplay loop muted>
-    <source src="../assets/Video/hero-video.mp4" type="video/mp4">
-  </video>
+	<!-- Video Hero -->
+	<section>
 
-  <!-- SECTION Home Page Introduction -->
+		<video class="video-container" autoplay loop muted>
+			<source src="../assets/Video/hero-video.mp4" type="video/mp4">
+		</video>
+		<h1 class="text-center">Visit A State Park Today!</h1>
+	</section>
 
-  <section class="container-fluid introduction">
-    <div class="row mx-5">
-      <div class="col-12 col-lg-8 col-md-5 text-white">
-        <h1 class="text-center">Visit A State Park Today!</h1>
-      </div>
-    </div>
-  </section>
+	<!-- SECTION Home Page Introduction -->
+
+	<section class="container-fluid heroText">
+		<div class="row">
+			<div class="col-12 col-lg-8 col-md-5 text-light">
+
+			</div>
+		</div>
+	</section>
 
 
+	<div class="mb-5">
+		<ParkCarousel />
+	</div>
 
+	<!-- Parks Loading To Page -->
 
-  <!-- Parks Loading To Page -->
-  <div v-for="park in parks" :key="park.id" class="col-4">
+	<!-- Populated correctly- not part of figma design -->
+
+	<!-- <div v-for="park in parks" :key="park.id" class="col-4">
     <ParkCard :park="park" />
-  </div>
+  </div> -->
 </template>
 
 
@@ -55,16 +64,11 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .video-container {
-  filter: brightness(55%);
-  width: 100%;
-  height: 65vh;
-  object-fit: cover;
+	filter: brightness(55%);
+	width: 100%;
+	height: 65vh;
+	object-fit: cover;
 }
 
-.introduction {
-  position: absolute;
-  top: 45%;
-  left: 62%;
-  transform: translate(-50%, -50%);
-}
+.heroText {}
 </style>

@@ -19,8 +19,7 @@ class AuthService {
     async validateToken(token) {
         const key = await fs.readFile('./jwtRS256.key')
         try {
-            await jwt.verify(token, key)
-            return true
+            return await jwt.verify(token, key)
         } catch (error) {
             return false
         }
