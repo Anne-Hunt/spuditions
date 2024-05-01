@@ -53,9 +53,9 @@ onMounted(() => {
 
 	<!-- Populated correctly- not part of figma design -->
 
-	<!-- <div v-for="park in parks" :key="park.id" class="col-4">
+	<div v-for="park in parks" :key="park.id" class="col-4">
     <ParkCard :park="park" />
-  </div> -->
+  </div>
 </template>
 
 
