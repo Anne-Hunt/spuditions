@@ -8,7 +8,7 @@ import Navbar from './components/Navbar.vue'
 	<header>
 		<Navbar />
 	</header>
-	<main class="m-0 p-0 container">
+	<main class="m-0 p-0 container-fluid">
 		<router-view />
 	</main>
 	<!-- <footer class="bg-dark text-light">
