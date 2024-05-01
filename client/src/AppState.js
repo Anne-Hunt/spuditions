@@ -12,5 +12,8 @@ export const AppState = reactive({
   parks: [],
 
   /**@type {Park} */
-  activePark: null
+  activePark: null,
+
+   /**@type {Weather[]} */
+	weatherConditions: [],
 })
