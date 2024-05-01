@@ -20,7 +20,4 @@ export const AppState = reactive({
 
    /**@type {Weather[]} */
 	weatherConditions: [],
-    /**@type {Park} */
-    activePark: null,
-    weatherConditions: [],
 })
