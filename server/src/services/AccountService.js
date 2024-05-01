@@ -50,7 +50,7 @@ function sanitizeBody(body) {
 class AccountService {
 
     async fetchUserInfo(id) {
-        const account = await dbContext.Account.findById(id, '-password')
+        const account = await dbContext.Account.findById(id, '-password -ip')
         if (!account) throw new Error('Invalid session')
         return account
     }
@@ -68,8 +68,12 @@ class AccountService {
             name: accountDataTemp.name,
             picture: accountDataTemp.picture,
             password: accountDataTemp.password,
+            ip: accountDataTemp.ip,
             role: 'Member'
         }
+
+        const users = await dbContext.Account.find({ ip: accountData.ip, role: 'Banned' })
+        if (users.length != 0) throw new Error('You cannot create another account if you have been banned before.')
 
         if (!accountData.password) throw new Error('A password is required to register an account.')
 

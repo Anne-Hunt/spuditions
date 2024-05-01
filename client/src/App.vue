@@ -2,14 +2,13 @@
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
 
-
 </script>
 
 <template>
 	<header>
 		<Navbar />
 	</header>
-	<main>
+	<main class="m-0 p-0">
 		<router-view />
 	</main>
 	<!-- <footer class="bg-dark text-light">

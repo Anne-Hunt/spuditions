@@ -11,19 +11,22 @@ class AuthHandler {
             return
         }
 
+        AppState.hasCookie = hasCookie
         const token = document.cookie.split('spuditions=')[1].split(';')[0]
-        console.log('ran')
         api.defaults.headers.authorization = token
-        console.log('ran')
         this.fetchUserInfo()
     }
 
     async fetchUserInfo() {
-        console.log('ran')
         try {
             await authService.fetchUserInfo()
         } catch (error) {
-            console.error(error)
+            let date = new Date(0)
+            document.cookie = `spuditions=logout; Max-Age=0; Path=/; Expires=${date};`
+            AppState.hasCookie = false
+            AppState.account = null
+            AppState.user = null
+            api.defaults.headers.authorization = ""
         }
     }
 
