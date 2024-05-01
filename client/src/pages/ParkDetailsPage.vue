@@ -13,7 +13,7 @@ import { weathersService } from "../services/WeathersService.js";
 const route = useRoute()
 //!SECTION - Gives us access to the active park from the AppState
 const park = computed(() => AppState.activePark)
-const weather = computed(() => AppState.activeWeather)
+const weatherForecast = computed(() => AppState.activeWeather.filter(x => x.date.getHours() == 12))
 
 async function getParkAndWeather() {
 	try {
@@ -46,7 +46,7 @@ onMounted(() => {
 
 
 		<!--****** SECTION: WEATHER ******-->
-		<section class="text-light" v-if="weather">
+		<section class="text-light" v-if="weatherForecast">
 			<!-- <div v-if="forecast == today">
 
 				<div class="container">
@@ -69,7 +69,7 @@ onMounted(() => {
 					<h2>4 Day Forecast</h2>
 				</div>
 
-				<div v-for="day in weather" :key="day.dt" class="row">
+				<div v-for="day in weatherForecast" :key="day.dt" class="row">
 					<Weather4DayCard :weather="day" />
 				</div>
 			</div>
