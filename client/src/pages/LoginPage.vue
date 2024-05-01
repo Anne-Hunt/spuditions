@@ -4,7 +4,6 @@ import Pop from '../utils/Pop';
 import { authService } from '../services/AuthService';
 import { router } from '../router.js';
 
-
 const formData = ref({
     email: '',
     password: ''
@@ -13,7 +12,7 @@ const formData = ref({
 async function handleLogin() {
     try {
       await authService.login(formData.value)
-      router.push('')
+      router.push({ name: 'Home'})
     }
     catch (error){
       Pop.error(error);
