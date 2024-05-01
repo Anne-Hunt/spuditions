@@ -4,6 +4,8 @@ import Pop from "../utils/Pop.js";
 import { parksService } from "../services/ParksService.js";
 import { AppState } from "../AppState.js";
 import ParkCard from "../components/ParkCard.vue";
+import ParkCarousel from "../components/ParkCarousel.vue";
+
 
 const parks = computed(() => AppState.parks)
 

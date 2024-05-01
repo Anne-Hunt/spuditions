@@ -14,15 +14,14 @@ class AuthHandler {
         AppState.hasCookie = hasCookie
         const token = document.cookie.split('spuditions=')[1].split(';')[0]
         api.defaults.headers.authorization = token
-        this.fetchUserInfo() // handle this on new login
-
+        this.fetchUserInfo()
     }
 
     async fetchUserInfo() {
         try {
             await authService.fetchUserInfo()
         } catch (error) {
-            console.error(error) // Clear cookie
+            AppState.hasCookie = false
             AppState.account = null
             api.defaults.headers.authorization = ""
         }
