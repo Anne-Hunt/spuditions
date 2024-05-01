@@ -31,7 +31,7 @@ class WeathersService {
 
 	async getWeather() {
 		// REVIEW: Does it split location into lat and lon?
-        const locationData = AppState.activePark.Locati.split(', ')
+        const locationData = AppState.activePark.location.split(', ')
 
 		// REVIEW: Does calling the array like this work?
 		const response = await weatherApi.get(`forecast?lat=${locationData[0]}&lon=${locationData[1]}`)

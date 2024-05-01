@@ -47,7 +47,7 @@ onMounted(() => {
 
 
 		<!--****** SECTION: WEATHER ******-->
-		<section class="text-light">
+		<section class="text-light" v-if="weather">
 			<!-- <div v-if="forecast == today">
 
 				<div class="container">
@@ -71,7 +71,7 @@ onMounted(() => {
 				</div>
 
 				<div v-for="day in weather" :key="day.dateDay" class="row">
-					<Weather4DayCard :day="day" />
+					<Weather4DayCard :weather="day" />
 				</div>
 			</div>
 
