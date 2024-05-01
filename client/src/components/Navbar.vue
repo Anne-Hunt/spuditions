@@ -31,7 +31,7 @@ function toggleTheme() {
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
-			<ul class="navbar-nav me-auto">
+			<ul class="navbar-nav me-auto gap-3">
 				<li>
 					<!-- //FIXME - Change the styling once ready -->
 					<router-link :to="{ name: 'Home' }" class="btn text-light lighten-30 selectable text-uppercase">
@@ -39,7 +39,7 @@ function toggleTheme() {
 					</router-link>
 				</li>
 				<li>
-					<router-link :to="{ name: 'About Us' }" class="btn text-light lighten-30 selectable">
+					<router-link :to="{ name: 'About Us' }" class="btn text-light lighten-30 selectable text-uppercase">
 						About Us
 					</router-link>
 				</li>
@@ -54,7 +54,7 @@ function toggleTheme() {
           <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i>
         </button>
       </div> -->
-			<Login />
+			<Login class="mx-2" />
 		</div>
 	</nav>
 </template>

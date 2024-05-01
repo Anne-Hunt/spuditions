@@ -2,12 +2,17 @@
 import { computed } from 'vue'
 import { AppState } from '../AppState'
 import { router } from '../router';
+import { authService } from '../services/AuthService.js';
 
 const user = computed(() => AppState.user)
 const account = computed(() => AppState.account)
 
 function login() {
 	router.push('login')
+}
+
+function logout() {
+    authService.logout()
 }
 
 </script>
@@ -31,10 +36,10 @@ function login() {
 								Manage Account
 							</div>
 						</router-link>
-						<div class="list-group-item dropdown-item list-group-item-action text-danger selectable">
+						<button @click="logout()" class="list-group-item dropdown-item list-group-item-action text-danger selectable">
 							<i class="mdi mdi-logout"></i>
 							Log out
-						</div>
+                        </button>
 					</div>
 				</div>
 			</div>

@@ -11,6 +11,14 @@ class AuthService {
         this.fetchUserInfo()
     }
 
+    logout() {
+        let date = new Date(0)
+        document.cookie = `spuditions=logout; Max-Age=0; Path=/; Expires=${date};`
+        api.defaults.headers.authorization = ''
+        AppState.account = null
+        AppState.user = null
+    }
+
     async fetchUserInfo() {
         const response = await api.get('account')
         AppState.account = new Account(response.data)
