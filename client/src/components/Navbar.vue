@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import SearchBar from "./SearchBar.vue";
+import { router } from '../router.js';
 
 const theme = ref(loadState('theme') || 'light')
 
@@ -43,7 +44,7 @@ function toggleTheme() {
 					</router-link>
 				</li>
 			</ul>
-			<div>
+			<div v-if="router.currentRoute.value.name != 'Home'">
 				<SearchBar />
 			</div>
 			<!-- LOGIN COMPONENT HERE -->

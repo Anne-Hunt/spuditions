@@ -1,13 +1,12 @@
 <script setup>
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
-import { router } from './router.js';
 
 </script>
 
 <template>
 	<header>
-		<Navbar v-if="router.currentRoute.value.name != 'Home'" />
+		<Navbar />
 	</header>
 	<main>
 		<router-view />
