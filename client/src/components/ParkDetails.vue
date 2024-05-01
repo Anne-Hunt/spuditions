@@ -53,4 +53,6 @@ const park = computed(() => AppState.activePark)
 	filter: drop-shadow(8px 10px 4px #696A42);
 
 }
+
+
 </style>

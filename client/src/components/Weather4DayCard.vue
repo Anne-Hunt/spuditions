@@ -32,18 +32,4 @@ defineProps({
 
 
 
-<style scoped lang="scss">
-// .forecast {
-// 	width: 422px;
-// 	background-color: #34495e;
-// 	padding: 15px;
-// 	border-radius: 5px;
-// }
-
-// .forecast .city {
-// 	font-size: 26px;
-// 	color: rgba(255, 255, 255, 0.9);
-// 	margin-bottom: 7px;
-// 	font-weight: bold;
-// 	text-align: center;
-// }</style>
+<style scoped lang="scss"></style>
