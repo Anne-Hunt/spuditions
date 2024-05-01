@@ -9,13 +9,13 @@ defineProps({
 
 
 <template>
-
+	<hr />
 	<div>
-		<h5 class="day">{{ weather.dateDay }}</h5>
+		<h5 class="day">{{ weather.date }}</h5>
 
-		<div class="time">
-			<h2>{{ weather.dateTime }}</h2>
-		</div>
+		<!-- <div class="time">
+			<h2>{{ weather.date }}</h2>
+		</div> -->
 
 		<div class="forecast">
 			<div>{{ weather.WeatherIcon }}</div>
@@ -27,6 +27,8 @@ defineProps({
 			<h2 class="border">{{ weather.fahrenheit }}</h2>
 		</div>
 	</div>
+	<hr />
+
 
 </template>
 
