@@ -50,7 +50,7 @@ function sanitizeBody(body) {
 class AccountService {
 
     async fetchUserInfo(id) {
-        const account = await dbContext.Account.findById(id, '-password')
+        const account = await dbContext.Account.findById(id, '-password -ip')
         if (!account) throw new Error('Invalid session')
         return account
     }
@@ -68,6 +68,7 @@ class AccountService {
             name: accountDataTemp.name,
             picture: accountDataTemp.picture,
             password: accountDataTemp.password,
+            ip: accountDataTemp.ip,
             role: 'Member'
         }
 
