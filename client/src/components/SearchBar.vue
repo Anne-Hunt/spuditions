@@ -10,15 +10,13 @@ const searchTerm = computed(() => AppState.searchTerm)
 
 <!-- //FIXME - This is just a static form rn, still need to add functionality -->
 <template>
-  <form>
-    <div class="input-group">
-      <input v-model="searchQuery" type="text" class="form-control" placeholder="search..." id="search-input">
-      <button class="btn btn-success w-25"><i class="mdi mdi-magnify"></i></button>
-    </div>
-  </form>
+	<form class="me-5">
+		<div class="input-group">
+			<input v-model="searchQuery" type="text" class="form-control" placeholder="search" id="search-input">
+			<button class="btn btn-orange w-25 p-0"><i class="mdi mdi-magnify text-white fs-5"></i></button>
+		</div>
+	</form>
 </template>
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
