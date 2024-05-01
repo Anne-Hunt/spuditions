@@ -4,7 +4,7 @@
 // Date Created: 4/30/2024
 // Date Last Modified: 4/30/2024
 // Last Modified By: Emma
-// 
+//
 // #Modification Log:
 //     - 4/30/2024: Attempted to add get request for weather api
 //     - 5/1/2024: Finished getWeather request (for now), waiting on test to see if it works or not.
@@ -30,9 +30,8 @@ const weatherApi = axios.create({
 class WeathersService {
 
 	async getWeather() {
-      console.log(location)
 		// REVIEW: Does it split location into lat and lon?
-      const locationData = AppState.activePark.location.split(', ')
+        const locationData = AppState.activePark.Locati.split(', ')
 
 		// REVIEW: Does calling the array like this work?
 		const response = await weatherApi.get(`forecast?lat=${locationData[0]}&lon=${locationData[1]}`)
@@ -45,7 +44,3 @@ class WeathersService {
 }
 
 export const weathersService = new WeathersService()
-
-
-
-
