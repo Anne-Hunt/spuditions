@@ -2,7 +2,7 @@
 import { useRoute } from "vue-router";
 import { parksService } from "../services/ParksService.js";
 import Pop from "../utils/Pop.js";
-import { computed, onMounted } from "vue";
+import { computed, onBeforeMount, onMounted, watch } from "vue";
 import { AppState } from "../AppState.js";
 import ParkDetails from "../components/ParkDetails.vue";
 import { Weather } from "../models/Weather.js";
@@ -16,29 +16,20 @@ const route = useRoute()
 const park = computed(() => AppState.activePark)
 const weather = computed(() => AppState.activeWeather)
 
-
-//!SECTION - Gets a park by its Id
-async function getParkById() {
-	try {
-		await parksService.getParkById(route.params.parkId)
-	} catch (error) {
-		Pop.toast("Could not get park by its Id", 'error')
-		console.error(error)
-	}
-}
-async function getWeather() {
-	try {
-		await weathersService.getWeather()
-	}
-	catch (error) {
-		Pop.error(error);
-	}
+async function getParkAndWeather() {
+    try {
+        await parksService.getParkById(route.params.parkId)
+        await weathersService.getWeather()
+    }
+    catch (error){
+      Pop.error(error);
+    }
 }
 
 //!SECTION - Loads the park on page load
+
 onMounted(() => {
-	getParkById()
-	getWeather()
+    getParkAndWeather()
 })
 
 </script>
@@ -56,7 +47,7 @@ onMounted(() => {
 
 
 		<!--****** SECTION: WEATHER ******-->
-		<section class="text-light">
+		<section class="text-light" v-if="weather">
 			<!-- <div v-if="forecast == today">
 
 				<div class="container">
@@ -80,7 +71,7 @@ onMounted(() => {
 				</div>
 
 				<div v-for="day in weather" :key="day.dateDay" class="row">
-					<Weather4DayCard :day="day" />
+					<Weather4DayCard :weather="day" />
 				</div>
 			</div>
 
