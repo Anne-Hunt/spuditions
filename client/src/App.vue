@@ -12,9 +12,9 @@ import Navbar from './components/Navbar.vue'
 	<main>
 		<router-view />
 	</main>
-	<footer class="bg-dark text-light">
+	<!-- <footer class="bg-dark text-light">
 		Made with 💖 by the Spuditions team
-	</footer>
+	</footer> -->
 </template>
 
 <style lang="scss">
@@ -29,7 +29,7 @@ import Navbar from './components/Navbar.vue'
 	--orange: #D9814F;
 	--teal: #A5C9C9;
 
-		// EXTRAS:
+	// EXTRAS:
 	--lightGreen: #A8A96A;
 	--btnPrimary: #00ADF8;
 }
