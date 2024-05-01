@@ -5,6 +5,7 @@ import { parksService } from "../services/ParksService.js";
 import { AppState } from "../AppState.js";
 import ParkCard from "../components/ParkCard.vue";
 import ParkCarousel from "../components/ParkCarousel.vue";
+import { logger } from "../utils/Logger.js";
 
 
 const parks = computed(() => AppState.parks)
@@ -14,7 +15,7 @@ async function getParks() {
 		await parksService.getParks()
 	} catch (error) {
 		Pop.toast("Could not get Parks", 'error')
-		console.error(error)
+		logger.error(error)
 	}
 }
 
@@ -55,9 +56,9 @@ onMounted(() => {
 
 	<!-- Populated correctly- not part of figma design -->
 
-	<!-- <div v-for="park in parks" :key="park.id" class="col-4">
+	<div v-for="park in parks" :key="park.id" class="col-4">
     <ParkCard :park="park" />
-  </div> -->
+  </div>
 </template>
 
 
