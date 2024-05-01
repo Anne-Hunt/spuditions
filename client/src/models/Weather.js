@@ -2,16 +2,16 @@
 
 export class Weather{
     constructor(data){
-        this.dateTime = new Date(data.list.dt).getHours()
-        this.dateDay = new Date (data.list.dt).getDay()
-        this.main = data.list.weather.main
-        this.description = data.list.weather.description
-        this.windSpeed = data.list.wind.speed
-        this.temperature = data.list.main.temp
-        this.humidity = data.list.main.humidity
+        this.dateTime = new Date(data.dt).getHours()
+        this.dateDay = new Date (data.dt).getDay()
+        this.main = data.weather.main
+        this.description = data.weather.description
+        this.windSpeed = data.wind.speed
+        this.temperature = data.main.temp
+        this.humidity = data.main.humidity
         this.lat = data.lat
         this.long = data.lon
-        this.iconId = data.list.weather.icon
+        this.iconId = data.weather.icon
         this.icon = this.WeatherIcon
         this.celcius = this.Celcius
         this.fahrenheit = this.Fahrenheit
