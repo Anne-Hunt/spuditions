@@ -22,6 +22,7 @@ class ParksService {
     const park = new Park(response.data)
     AppState.activePark = park
   }
+
 }
 
 export const parksService = new ParksService()
