@@ -66,7 +66,7 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<hr class="my-3" />
+	<hr class="my-4 text-light hr" />
 
 	<!--************ SECTION: WEATHER ************-->
 	<section class="container p-3">
@@ -88,4 +88,6 @@ onMounted(() => {
 	filter: drop-shadow(8px 10px 4px #696A42);
 
 }
+
+
 </style>
