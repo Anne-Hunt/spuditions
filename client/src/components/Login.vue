@@ -35,7 +35,7 @@ function login() {
             </router-link>
             <div class="list-group-item dropdown-item list-group-item-action text-danger selectable">
               <i class="mdi mdi-logout"></i>
-              logout
+              Log out
             </div>
           </div>
         </div>
