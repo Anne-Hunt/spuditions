@@ -1,58 +1,58 @@
 {
-    "folders": [
-        {
-            "path": "client",
-            "name": "client"
-        },
-        {
-            "path": "server",
-            "name": "server"
-        }
-    ],
-    "settings": {
-        "editor.suggestSelection": "first",
-        "git.enableSmartCommit": true,
-        "git.confirmSync": false,
-        "git.autofetch": true,
-        "javascript.referencesCodeLens.enabled": true,
-        "javascript.referencesCodeLens.showOnAllFunctions": true,
-        "typescript.implementationsCodeLens.enabled": true,
-        "typescript.referencesCodeLens.enabled": true,
-        "typescript.referencesCodeLens.showOnAllFunctions": true,
-        "js/ts.implicitProjectConfig.checkJs": true,
-        "files.exclude": {
-            "**/.nyc_*": true,
-            "**/coverage": true,
-            "**/node_modules": true
-        },
-        "javascript.updateImportsOnFileMove.enabled": "always",
-        "explorer.confirmDragAndDrop": false,
-        "eslint.alwaysShowStatus": true,
-        "eslint.format.enable": true,
-        "eslint.lintTask.enable": true,
-        "eslint.codeActionsOnSave.mode": "all",
-        "editor.codeActionsOnSave": {
-            "source.fixAll": "explicit"
-        },
-        "workbench.colorCustomizations": {
-            "sash.hoverBorder": "#f8a027",
-            "statusBar.background": "#e58707",
-            "statusBar.foreground": "#15202b",
-            "statusBarItem.hoverBackground": "#b36a05",
-            "statusBarItem.remoteBackground": "#e58707",
-            "statusBarItem.remoteForeground": "#15202b",
-            "activityBar.activeBackground": "#f8a027",
-            "activityBar.background": "#f8a027",
-            "activityBar.foreground": "#15202b",
-            "activityBar.inactiveForeground": "#15202b99",
-            "activityBarBadge.background": "#047b49",
-            "activityBarBadge.foreground": "#e7e7e7",
-            "commandCenter.border": "#15202b99",
-            "titleBar.activeBackground": "#e58707",
-            "titleBar.activeForeground": "#15202b",
-            "titleBar.inactiveBackground": "#e5870799",
-            "titleBar.inactiveForeground": "#15202b99"
-        },
-        "peacock.color": "#e58707"
-    }
+	"folders": [
+		{
+			"path": "client",
+			"name": "client"
+		},
+		{
+			"path": "server",
+			"name": "server"
+		}
+	],
+	"settings": {
+		"editor.suggestSelection": "first",
+		"git.enableSmartCommit": true,
+		"git.confirmSync": false,
+		"git.autofetch": true,
+		"javascript.referencesCodeLens.enabled": true,
+		"javascript.referencesCodeLens.showOnAllFunctions": true,
+		"typescript.implementationsCodeLens.enabled": true,
+		"typescript.referencesCodeLens.enabled": true,
+		"typescript.referencesCodeLens.showOnAllFunctions": true,
+		"js/ts.implicitProjectConfig.checkJs": true,
+		"files.exclude": {
+			"**/.nyc_*": true,
+			"**/coverage": true,
+			"**/node_modules": true
+		},
+		"javascript.updateImportsOnFileMove.enabled": "always",
+		"explorer.confirmDragAndDrop": false,
+		"eslint.alwaysShowStatus": true,
+		"eslint.format.enable": true,
+		"eslint.lintTask.enable": true,
+		"eslint.codeActionsOnSave.mode": "all",
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "explicit"
+		},
+		"workbench.colorCustomizations": {
+			"sash.hoverBorder": "#f8a027",
+			"statusBar.background": "#e58707",
+			"statusBar.foreground": "#15202b",
+			"statusBarItem.hoverBackground": "#b36a05",
+			"statusBarItem.remoteBackground": "#e58707",
+			"statusBarItem.remoteForeground": "#15202b",
+			"activityBar.activeBackground": "#f8a027",
+			"activityBar.background": "#f8a027",
+			"activityBar.foreground": "#15202b",
+			"activityBar.inactiveForeground": "#15202b99",
+			"activityBarBadge.background": "#047b49",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"commandCenter.border": "#15202b99",
+			"titleBar.activeBackground": "#e58707",
+			"titleBar.activeForeground": "#15202b",
+			"titleBar.inactiveBackground": "#e5870799",
+			"titleBar.inactiveForeground": "#15202b99"
+		},
+		"peacock.color": "#e58707"
+	}
 }

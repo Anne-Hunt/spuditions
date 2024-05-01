@@ -31,7 +31,8 @@ async function getWeather() {
 		await weathersService.getWeather()
 	}
 	catch (error) {
-		Pop.error(error);
+		Pop.toast("Could not get weather", 'error');
+		console.error(error)
 	}
 }
 
