@@ -17,4 +17,10 @@ export class Park {
       this.logo = data.logo
       this.rating = data.rating
     }
+
+    get GmapsLocation(){
+        const dataLoc = this.location
+        const latlong = dataLoc.replace(", ", "%2C")
+        return `https://www.google.com/maps/@?api=1&map_action=map&center=${latlong}&zoom=12&basemap=terrain`
+    }
 }
