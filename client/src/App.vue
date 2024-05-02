@@ -6,19 +6,19 @@ import Footer from './components/Footer.vue'
 
 const route = useRoute()
 
-const backgroundColor = computed(()=>{
-switch(route.name){
-    case 'Home':
-        return '#FFFFFF'
-    case 'Park Details':
-        return '#A8A96A'
-    case 'Forum':
-        return '#FFFFFF'
-    case 'About Us':
-        return '#A8A96A'
-    default:
-        return '#FFFFFF'
-}
+const backgroundColor = computed(() => {
+	switch (route.name) {
+		case 'Home':
+			return '#FFFFFF'
+		case 'Park Details':
+			return '#A8A96A'
+		case 'Forum':
+			return '#FFFFFF'
+		case 'About Us':
+			return '#A8A96A'
+		default:
+			return '#FFFFFF'
+	}
 })
 
 </script>
@@ -31,12 +31,18 @@ switch(route.name){
 		<main class="m-0 p-0 container-fluid background">
 			<router-view />
 		</main>
-		<Footer/>
+        <footer>
+            <Footer/>
+        </footer>
 	</div>
 </template>
 
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+main {
+    min-height: 100vh;
+}
 
 :root {
 	--main-height: calc(100vh - 32px - 64px);
@@ -52,7 +58,7 @@ switch(route.name){
 	--btnPrimary: #00ADF8;
 }
 
-.bColor{
+.bColor {
 	background-color: v-bind(backgroundColor);
 }
 </style>

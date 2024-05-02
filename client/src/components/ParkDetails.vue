@@ -80,11 +80,32 @@ const icon = {
 					<span class="selectable ms-4">800 ratings</span>
 				</div>
 
-				<!-- TODO: Add description dropdown arrow for when its too long. Allows user to read full description if they wish to without taking up too much page space -->
+				<div class="text-md-start mt-5 d-flex gap-3">
+
+					<!-- TODO: get marked visited button working -->
+					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0">
+						Mark As Visited
+					</button>
+
+					<!-- <button @click="changeVisitedStatus()" class="btn btn-success borderBtn text-light">
+						You Visited This Park!
+					</button> -->
+
+				</div>
+
 				<div class="text-center text-md-start text-light" v-if="park.description">
 					<hr>
-					<div class="fs6 mb-1"><b>About This Park:</b></div>
-					<p class="text-start">{{ park?.description }}</p>
+					<p class="d-inline-flex gap-1 mx-auto">
+						<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
+							role="button" aria-expanded="false" aria-controls="collapseExample">
+							Click here to learn more
+						</a>
+					</p>
+					<div class="collapse" id="collapseExample">
+						<div class="card card-body text-start text-dark">
+							{{ park?.description }}
+						</div>
+					</div>
 				</div>
 
 			</div>
@@ -110,7 +131,7 @@ const icon = {
 							<b><u>Park Rating</u>:</b> {{ park?.rating }}
 						</div>
 						<div class="mt-3 fs-5" v-if="park.region">
-							<b><u>Park Region</u>:</b> {{ park?.region }}
+							<b><u>Region</u>:</b> {{ park?.region }}
 						</div>
 						<div class="mt-5 fs7 text-center" v-if="park.webUrl">
 							<a :href="park.webUrl"><b>Click Here For Park Website</b></a>
@@ -132,8 +153,8 @@ const icon = {
 		</div>
 
 		<div>
-			<iframe class="mt-4 rounded" :src="park?.GmapsLocation" width="100%" height="300" style="border:0;"
-				loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			{{ park.location }}
+			<GMap/>
 		</div>
 	</section>
 </template>
@@ -171,5 +192,9 @@ a:hover {
 
 .fs7 {
 	font-size: 1.2em;
+}
+
+.btn {
+	border: 3px solid white;
 }
 </style>

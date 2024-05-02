@@ -1,16 +1,3 @@
-// **********************************************************************************************
-//					                        MODIFICATION LOG
-// Date Created: 4/30/2024
-// Date Last Modified: 4/30/2024
-// Last Modified By: Emma
-// 
-// #Modification Log:
-//     - 4/30/2024: Added color scheme for website into light theme
-// 
-// **********************************************************************************************
-
-
-
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/variables-dark";
@@ -28,7 +15,7 @@ $light-theme: (
 
 	// EXTRAS:
 	"lightGreen": #A8A96A,
-	"btnPrimary": #00ADF8,
+	"btnPrimary": #02a3e9,
 
 	// ------------------------
 
