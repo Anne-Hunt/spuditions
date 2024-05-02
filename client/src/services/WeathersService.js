@@ -17,7 +17,6 @@ const weatherApi = axios.create({
 class WeathersService {
 
 	async getWeather() {
-		// REVIEW: Does it split location into lat and lon?
         const locationData = AppState.activePark.location.split(', ')
 
 		// REVIEW: Does calling the array like this work?
@@ -28,6 +27,10 @@ class WeathersService {
 		const activeWeather = response.data.list.map(weatherData => new Weather(weatherData))
 
 		AppState.activeWeather = activeWeather
+	}
+
+	async changeForecast() {
+		// TODO: write this function out
 	}
 
 }
