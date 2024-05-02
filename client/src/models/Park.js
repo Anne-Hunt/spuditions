@@ -19,7 +19,7 @@ export class Park {
 
     get GmapsLocation(){
         const dataLoc = this.location
-        const latlong = dataLoc.replace(", ", "%2C")
-        return `https://www.google.com/maps/@?api=1&map_action=map&center=${latlong}&zoom=12&basemap=terrain`
+        const latlong = dataLoc.replace(" ", "")
+        return `https://www.google.com/maps/embed/v1/place?q=${latlong}`
     }
 }
