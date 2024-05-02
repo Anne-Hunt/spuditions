@@ -5,8 +5,74 @@ import { AppState } from '../AppState.js';
 
 
 const park = computed(() => AppState.activePark)
-const activities = computed(()=> AppState.activePark?.activities)
+const activities = computed(() => AppState.activePark?.activities)
 
+
+
+// const activityIcons = computed(()=>{
+// 	switch(park.value.activities){
+// 		case 'biking':
+// 			return `<i class= "mdi mdi-bicycle"></i>`
+// 		case 'bird watching':
+// 			return `<i class= "mdi mdi-bird"></i>`
+// 		case 'boating':
+// 			return`<i class= "mdi mdi-ferry"></i>`
+// 		case 'camping':
+// 			return `<i class= "mdi mdi-tent"></i>`
+// 		case 'climbing':
+// 			return `<i class= "mdi mdi-carabiner"></i>`
+// 		case 'cross country skiing':
+// 			return `<i class= "mdi mdi-ski-cross-country"></i>`
+// 		case 'disc golf':
+// 			return `<i class= "mdi mdi-circle-slice-8"></i>`
+// 		case 'experience idaho backpacks':
+// 			return `<i class= "mdi mdi-bag-personal"></i>`
+// 		case 'first time adventure':
+// 			return `<i class= "mdi mdi-forest-outline"></i>`
+// 		case 'fishing':
+// 			return `<i class= "mdi mdi-fish"></i>`
+// 		case 'hard path trails':
+// 			return `<i class= "mdi mdi-map-marker-path"></i>`
+// 		case 'hiking':
+// 			return `<i class= "mdi mdi-hiking"></i>`
+// 		case 'history':
+// 			return `<i class= "mdi mdi-history"></i>`
+// 		case ' horseback':
+// 			return `<i class= "mdi mdi-horse-human"></i>`
+// 		case 'horseshoe pits':
+// 			return `<i class= "mdi mdi-horseshoe"></i>`
+// 		case 'junior ranger':
+// 			return `<i class= "mdi mdi-account-cowboy-hat"></i>`
+// 		case 'learning':
+// 			return `mdi-book-information-variant`
+// 		case 'loaner fishing rods':
+// 			return `<i class= "mdi mdi-hook"></i>`
+// 		case 'paddlesports':
+// 			return `<i class= "mdi mdi-kayaking"></i>`
+// 		case 'playgrounds':
+// 			return `<i class= "mdi mdi-slide"></i>`
+// 		case 'RVing':
+// 			return `<i class= "mdi mdi-rv-truck"></i>`
+// 		case 'sailing':
+// 			return`<i class= "mdi mdi-sail-boat"></i>`
+// 		case 'sandboarding':
+// 			return `<i class= "mdi mdi-snowboard"></i>`
+// 		case 'snowmobiling':
+// 			return `<i class= "mdi mdi-snowmobile"></i>`
+// 		case 'snowshoeing':
+// 			return `<i class= "mdi mdi-snowshoeing"></i>`
+// 		case 'volunteering':
+// 			return `<i class= "mdi mdi-hand-heart"></i>`
+// 		case 'swimming':
+// 			return `<i class= "mdi mdi-swim"></i>`
+// 		case 'volleyball area':
+// 			return `<i class= "mdi mdi-volleyball"></i>`
+// 		case 'ATVs, UTVs, Motorbikes':
+// 			return `<i class= "mdi mdi-atv"></i>`
+// 		default:
+// 			return ``
+// 	}
+// })
 
 const icon = {
 	'biking': `mdi mdi-bicycle`,
@@ -44,13 +110,13 @@ const icon = {
 
 
 <template>
-	<section class="container-fluid">
+	<section class="container-fluid" v-if="park">
 		<div class="row">
 			<div class="col" v-for="activity in activities" :key="activity">
-					<i :class="icon[activity] || 'mdi mdi-tree'"></i>
+				<i :activity="activity" :class="icon[activity] || 'mdi mdi-tree'"></i>
 			</div>
 		</div>
-	<!-- Park Image -->
+		<!-- Park Image -->
 		<div class="row mt-5">
 			<div class="col-12 col-md-7">
 				<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
@@ -58,20 +124,63 @@ const icon = {
 
 			<!-- Park Info -->
 			<div class="col-12 col-md-5 mt-4 mt-md-0">
+
 				<div class="text-center text-md-start">
 					<h4 class="text-light">{{ park?.name }} , ID</h4>
-					<i class="mdi mdi-star p-1"></i>
-					<i class="mdi mdi-star p-1"></i>
-					<i class="mdi mdi-star p-1"></i>
-					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1 fs-5"></i>
+					<i class="mdi mdi-star p-1 fs-5"></i>
+					<i class="mdi mdi-star p-1 fs-5"></i>
+					<i class="mdi mdi-star p-1 fs-5"></i>
 					<span class="selectable ms-4">800 ratings</span>
 				</div>
-				<div>
-					<h5 class="mt-5 text-light">{{ park?.type }}</h5>
-					<h5 class="text-light">{{ park?.cost }}</h5>
-					<h5 class="text-light">{{ park?.daysClosed }}</h5>
-					<h5 class="text-light">{{ park?.rating }}</h5>
-					<h5 class="text-light">{{ park?.region }}</h5>
+
+				<!-- TODO: Add description dropdown arrow for when its too long. Allows user to read full description if they wish to without taking up too much page space -->
+				<div class="text-center text-md-start text-light" v-if="park.description">
+					<hr>
+					<div class="fs6 mb-1"><b>About This Park:</b></div>
+					<p class="text-start">{{ park?.description }}</p>
+				</div>
+
+			</div>
+
+
+			<div class="col-12">
+				<div class="text-light d-flex justify-content-evenly gap-md-5 row">
+
+					<div class="costsBox mt-5 mb-3 col-12 col-md-5">
+						<h5 class="text-center">Park Info:</h5>
+						<hr>
+
+						<div class="fs-5" v-if="park.type">
+							<b><u>Park Type</u>:</b> {{ park?.type }}
+						</div>
+						<div class="mt-3 fs-5" v-if="park.address">
+							<b><u>Address</u>:</b> {{ park?.address }}
+						</div>
+						<div class="mt-3 fs-5" v-if="park.daysClosed">
+							<b><u>Days Closed</u>:</b> {{ park?.daysClosed }}
+						</div>
+						<div class="mt-3 fs-5" v-if="park.rating">
+							<b><u>Park Rating</u>:</b> {{ park?.rating }}
+						</div>
+						<div class="mt-3 fs-5" v-if="park.region">
+							<b><u>Park Region</u>:</b> {{ park?.region }}
+						</div>
+						<div class="mt-5 fs7 text-center" v-if="park.webUrl">
+							<a :href="park.webUrl"><b>Click Here For Park Website</b></a>
+						</div>
+					</div>
+
+					<div class="costsBox mt-3 mt-md-5 mb-3 col-12 col-md-5">
+						<h5 class="text-center">Costs:</h5>
+						<hr>
+						<ul>
+							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+								{{ cost }}
+							</li>
+						</ul>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -89,9 +198,31 @@ const icon = {
 
 }
 
-i{
+i {
 	font-size: xx-large;
 	color: white;
 }
 
+.costsBox {
+	border: 3px solid white;
+	padding: 1em;
+	border-radius: 15px;
+}
+
+a {
+	color: #6700ed;
+	transition: 0.4s;
+}
+
+a:hover {
+	color: #3900ab;
+}
+
+.fs6 {
+	font-size: 1.1em;
+}
+
+.fs7 {
+	font-size: 1.2em;
+}
 </style>
