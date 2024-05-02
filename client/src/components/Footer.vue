@@ -30,6 +30,7 @@
 <style lang="scss" scoped>
 .bkcolor {
 	background-color: var(--forestGreen);
+	position: sticky;
 }
 
 .beige {

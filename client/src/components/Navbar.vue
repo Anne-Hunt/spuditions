@@ -33,7 +33,6 @@ onMounted(() => {
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav me-auto gap-3">
 				<li>
-					<!-- //FIXME - Change the styling once ready -->
 					<router-link :to="{ name: 'Home' }" class="btn text-light lighten-30 selectable text-uppercase">
 						Home
 					</router-link>
@@ -41,6 +40,11 @@ onMounted(() => {
 				<li>
 					<router-link :to="{ name: 'About Us' }" class="btn text-light lighten-30 selectable text-uppercase">
 						About Us
+					</router-link>
+				</li>
+				<li>
+					<router-link :to="{name: 'General Chat Forum'}" class="btn text-light lighten-30 selectable text-uppercase">
+						Forums
 					</router-link>
 				</li>
 			</ul>

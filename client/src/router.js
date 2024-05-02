@@ -22,6 +22,11 @@ const routes = [
     component: loadPage('SearchPage')
   },
   {
+    path: '/forums',
+    name: 'General Chat Forum',
+    component: loadPage('GeneralChatForum')
+  },
+  {
     path: '/parks/:parkId',
     name: 'Park Details',
     component: loadPage('ParkDetailsPage')
