@@ -1,10 +1,27 @@
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
-import { Park } from "../models/Park.js";
+import { parksService } from "../services/ParksService.js";
+import { weathersService } from "../services/WeathersService.js";
+import Pop from "../utils/Pop.js";
+import { useRoute } from "../../node_modules/vue-router/dist/vue-router.js";
 
+const route = useRoute()
+const park = computed(() => AppState.activePark)
 
-defineProps({park: Park})
+async function getParkAndWeather() {
+	try {
+		await parksService.getParkById(route.params.parkId)
+		await weathersService.getWeather()
+	}
+	catch (error) {
+		Pop.error(error);
+	}
+}
+
+onMounted(() => {
+	getParkAndWeather()
+})
 
 </script>
 
@@ -59,7 +76,7 @@ defineProps({park: Park})
       <div class="p-3 mt-3 fw-bold">
         <h1 class="d-inline">Parks Forum</h1>
         <button class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
-        <!-- <h5 class="py-3">discuss {{ park.name }}</h5> -->
+        <h5 class="py-3">discuss {{ park.name }}</h5>
       </div>
     </div>
 
