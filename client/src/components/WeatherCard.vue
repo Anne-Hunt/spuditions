@@ -22,7 +22,7 @@ defineProps({
 			<h5 class="text-capitalize">{{ weather.description }}</h5>
 		</div>
 
-		<div class="temp d-flex gap-3 justify-content-center">
+		<div class="mt-3 temp d-flex gap-3 justify-content-center">
 			<h5>Celcius: {{ weather.celcius }}&#176;</h5>
 			<h5>Fahrenheit: {{ weather.fahrenheit }}&#176;</h5>
 		</div>
