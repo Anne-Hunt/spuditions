@@ -18,7 +18,7 @@ function logout() {
 </script>
 
 <template>
-	<span class="ps-md-2 navbar-text">
+	<span class="navbar-text">
 		<button class="btn selectable text-light lighten-30 text-uppercase" @click="login" v-if="!user">
 			Login
 		</button>

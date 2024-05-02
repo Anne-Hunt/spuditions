@@ -22,7 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<nav class="navbar navbar-expand-sm forestGreen px-3">
+	<nav class="navbar navbar-expand-md forestGreen px-3">
 		<router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
 			<div class="d-flex flex-column align-items-center">
 				<img alt="logo" src="../assets/img/spuditionLogoWhite.png" height="45" />
@@ -32,18 +32,12 @@ onMounted(() => {
 			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarText">
+		<div class="collapse navbar-collapse text-center" id="navbarText">
 			<ul class="navbar-nav me-auto gap-3">
-				<li>
-					<router-link :to="{ name: 'Home' }"
-						class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
-						Home
-					</router-link>
-				</li>
 				<li>
 					<router-link :to="{ name: 'About Us' }"
 						class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
-						About Us
+						About
 					</router-link>
 				</li>
 				<li>
@@ -52,15 +46,13 @@ onMounted(() => {
 						Forums
 					</router-link>
 				</li>
-				<li>
-					<router-link :to="{ name: 'Login' }" class="text-sm-start text-md-center">
-
-						<Login class="mx-md-2" />
-
-					</router-link>
-				</li>
 			</ul>
-
+            <div v-if="router.currentRoute.value.name != 'Home' && router.currentRoute.value.name != 'Login'" class="d-flex justify-content-center forestGreen my-md-0 my-2 mt-3">
+                <SearchBar/>
+            </div>
+            <router-link :to="{ name: 'Login' }" class="text-sm-start text-md-center">
+				<Login/>
+			</router-link>
 			<!-- LOGIN COMPONENT HERE -->
 			<!-- <div>
         <button class="btn text-light" @click="toggleTheme"
@@ -70,10 +62,6 @@ onMounted(() => {
       </div> -->
 		</div>
 	</nav>
-
-	<div v-if="router.currentRoute.value.name != 'Home' || 'Login'" class="w-100 pb-3 forestGreen">
-		<SearchBar class="w-75 mx-auto" />
-	</div>
 </template>
 
 <style scoped>
@@ -97,7 +85,7 @@ a:hover {
 	border-bottom-right-radius: 0;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 768px) {
 	nav {
 		height: 64px;
 	}

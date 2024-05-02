@@ -31,12 +31,16 @@ const backgroundColor = computed(() => {
 		<main class="m-0 p-0 container-fluid background">
 			<router-view />
 		</main>
-		<Footer />
+		<Footer/>
 	</div>
 </template>
 
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+main {
+    min-height: 100vh;
+}
 
 :root {
 	--main-height: calc(100vh - 32px - 64px);
