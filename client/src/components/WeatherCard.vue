@@ -19,7 +19,7 @@ defineProps({
 		</div>
 
 		<div>
-			<h5>{{ weather.description }}</h5>
+			<h5 class="text-capitalize">{{ weather.description }}</h5>
 		</div>
 
 		<div class="temp d-flex gap-3 justify-content-center">
