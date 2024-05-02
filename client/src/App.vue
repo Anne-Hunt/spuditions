@@ -31,7 +31,9 @@ const backgroundColor = computed(() => {
 		<main class="m-0 p-0 container-fluid background">
 			<router-view />
 		</main>
-		<Footer/>
+        <footer>
+            <Footer/>
+        </footer>
 	</div>
 </template>
 
