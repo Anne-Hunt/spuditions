@@ -47,11 +47,16 @@ onMounted(() => {
 					</router-link>
 				</li>
 			</ul>
-            <div v-if="router.currentRoute.value.name != 'Home' && router.currentRoute.value.name != 'Login'" class="d-flex justify-content-center forestGreen my-md-0 my-2 mt-3">
-                <SearchBar/>
-            </div>
-            <router-link :to="{ name: 'Login' }" class="text-sm-start text-md-center">
-				<Login/>
+
+			<div v-if="router.currentRoute.value.name != 'Home' && router.currentRoute.value.name != 'Login'"
+				class="d-flex justify-content-center forestGreen my-md-0 my-2 mt-3">
+				<SearchBar />
+			</div>
+
+			<router-link :to="{ name: 'Login' }" class="text-center my-0">
+
+				<Login />
+
 			</router-link>
 			<!-- LOGIN COMPONENT HERE -->
 			<!-- <div>
