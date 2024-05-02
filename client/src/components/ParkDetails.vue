@@ -134,6 +134,7 @@ const icon = {
 					<span class="selectable ms-4">800 ratings</span>
 				</div>
 
+				<!-- TODO: Add description dropdown arrow for when its too long. Allows user to read full description if they wish to without taking up too much page space -->
 				<div class="text-center text-md-start text-light" v-if="park.description">
 					<hr>
 					<div class="fs6 mb-1"><b>About This Park:</b></div>
