@@ -4,7 +4,7 @@ import { AppState } from "../AppState.js";
 
 const searchQuery = ref('')
 
-const searchTerm = computed(() => AppState.searchTerm)
+// const searchTerm = computed(() => AppState.searchTerm)
 
 </script>
 
