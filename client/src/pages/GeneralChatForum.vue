@@ -49,7 +49,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum delectus error esse ipsum nesciunt, sunt architecto! Asperiores nemo architecto ex soluta rem deleniti, placeat iste facilis, eveniet, omnis eligendi repellendus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore molestias recusandae consequuntur, iste dignissimos provident praesentium aperiam accusamus doloremque, nesciunt maiores! Placeat cupiditate enim quas consequatur quibusdam labore facilis laborum!</p>
               </div>
               <div class="col-12">
-            <button class="btn btn-white rounded-pill float-end" type="button" data-toggle="collapse" data-target="#comments" aria-expanded="false" aria-controls="comments"><i class="mdi mdi-comment-outline"></i> #</button>
+            <button class="btn btn-white rounded-pill float-end" type="button" data-bs-toggle="collapse" data-bs-target="#comments" aria-expanded="false" aria-controls="comments"><i class="mdi mdi-comment-outline"></i> #</button>
             <h3 class="d-inline float-end px-3">#Tag</h3>
           </div>
         </div>
@@ -58,7 +58,7 @@
 
       <!-- //!SECTION - Leave comment button -->
       <div class="col-12">
-        <button class="btn btn-primary float-end me-4 collapse" id="comments">Leave Comment <i class="mdi mdi-plus"></i></button>
+        <button class="btn btn-primary float-end me-4 collapse.show" id="comments">Leave Comment <i class="mdi mdi-plus"></i></button>
       </div>
     </div>    
       
