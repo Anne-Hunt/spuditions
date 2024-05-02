@@ -57,8 +57,7 @@ onMounted(() => {
 
 		<!--****** SECTION: WEATHER ******-->
 		<section class="text-light container-fluid" v-if="weatherForecast">
-			<div v-if="weather == time">
-
+			<div>
 				<div class="pb-5">
 					<div class="row">
 						<button class="btn btn-orange borderBtn text-light ms-md-5 mb-5 mb-md-0 btnPlacement"
@@ -81,7 +80,7 @@ onMounted(() => {
 			</div>
 
 
-			<div v-else>
+			<div>
 
 				<div class="pb-5">
 					<div class="row">
