@@ -58,6 +58,7 @@ class AccountService {
     async login(accountData) {
         const user = await dbContext.Account.findOne({ email: accountData.email })
         if (!user) throw new Error('Invalid login. The supplied email or password was incorrect.')
+        if (user.role == "Banned") throw new Error("You have been banned from Spuditions.")
 
         const token = await authService.validatePassword(user.id, accountData.password)
         return { accessToken: token, expires_in: 86400, token_type: 'Bearer' }

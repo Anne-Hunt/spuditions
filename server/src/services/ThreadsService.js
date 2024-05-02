@@ -29,7 +29,7 @@ class ThreadsService {
         const threadToDelete = await this.getThreadById(threadId)
 
         if (userInfo.role != 'Moderator') {
-            if (threadToDelete.creatorId != userInfo.id) throw new Forbidden("You cannot delete a thread you have not created.")
+            if (threadToDelete.creatorId != userInfo.id) throw new Forbidden("You cannot delete a thread that you have not created.")
         }
 
         await threadToDelete.deleteOne()

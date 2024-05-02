@@ -9,10 +9,15 @@ export class Authware {
         const token = await authService.validateToken(req.headers.authorization.replace('Bearer ', ''))
         if (token == false) {
             next(new UnAuthorized('An invalid token was supplied.'))
+            return
         }
 
         // @ts-ignore
         const user = await dbContext.Account.findById(token._id)
+        if (user.role == "Banned") {
+            next(new Error("You have been banned from Spuditions."))
+            return
+        }
         // @ts-ignore
         req.userInfo = { id: token._id, role: user.role }
         next()

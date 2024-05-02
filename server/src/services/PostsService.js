@@ -24,7 +24,7 @@ class PostsService {
 
         if (!postToDelete) throw new Error(`No post with the id ${postId}`)
         if (userInfo.role != 'Moderator') {
-            if (postToDelete.creatorId != userInfo.id) throw new Forbidden("You cannot delete posts that are not yours")
+            if (postToDelete.creatorId != userInfo.id) throw new Forbidden("You cannot delete posts that you did not create.")
         }
         await postToDelete.deleteOne()
         return { status: 200, message: "Deleted post." }
