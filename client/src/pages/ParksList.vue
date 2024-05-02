@@ -79,11 +79,11 @@ onMounted(() => {
       <!-- //FIXME - Need to add functionality so when you click on a name it takes you to the specific park forum -->
       <!-- //FIXME - Also need to make the styling look better lol -->
       <div class="row me-0 px-3">
-        <router-link :to="{name: 'Parks Forum'}">
         <div v-for="park in parks" :key="park.id" class="col-6 col-md-4 text-center p-2 selectable shadow-sm rounded g-2 card-style">
+          <router-link :to="{name: 'Parks Forum'}" class="text-black m-0">
             <h3>{{ park.name }}</h3>
+          </router-link>
           </div>
-        </router-link>
       </div>
     </div>
 

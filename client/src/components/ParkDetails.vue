@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
-import {useFloating} from '@floating-ui/vue';
+import { useFloating } from '@floating-ui/vue';
 import bootstrap from 'bootstrap';
 
 
@@ -50,9 +50,9 @@ const icon = {
 	<section class="container-fluid" v-if="park">
 		<div class="row">
 			<div class="col" v-for="activity in activities" :key="activity">
-				<button  type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
-				data-bs-custom-class="custom-tooltip"
-				:data-bs-title="activity" :activity="activity" :class="icon[activity] || 'mdi mdi-tree'"></button>
+				<button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
+					data-bs-custom-class="custom-tooltip" :data-bs-title="activity" :activity="activity"
+					:class="icon[activity] || 'mdi mdi-tree'"></button>
 			</div>
 		</div>
 		<!-- Park Image -->
@@ -108,7 +108,10 @@ const icon = {
 				<div class="text-light d-flex justify-content-evenly gap-md-5 row">
 
 					<div class="costsBox mt-5 mb-3 col-12 col-md-5">
-						<h5 class="text-center">Park Info:</h5>
+						<h4 class="text-center">Park Info:</h4>
+						<div class="mt-1 fs7 text-center" v-if="park.webUrl">
+							<a :href="park?.webUrl" target="_blank"><b>Click Here For Park Website</b></a>
+						</div>
 						<hr>
 
 						<div class="fs-5" v-if="park.type">
@@ -126,13 +129,10 @@ const icon = {
 						<div class="mt-3 fs-5" v-if="park.region">
 							<b><u>Region</u>:</b> {{ park?.region }}
 						</div>
-						<div class="mt-5 fs7 text-center" v-if="park.webUrl">
-							<a :href="park.webUrl"><b>Click Here For Park Website</b></a>
-						</div>
 					</div>
 
 					<div class="costsBox mt-3 mt-md-5 mb-3 col-12 col-md-5">
-						<h5 class="text-center">Costs:</h5>
+						<h4 class="text-center">Costs:</h4>
 						<hr>
 						<ul>
 							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
@@ -147,7 +147,7 @@ const icon = {
 
 		<div>
 			{{ park.location }}
-			<GMap/>
+			<GMap />
 		</div>
 	</section>
 </template>
@@ -184,7 +184,7 @@ a:hover {
 }
 
 .fs7 {
-	font-size: 1.2em;
+	font-size: 1em;
 }
 
 .btn {
