@@ -4,8 +4,8 @@ export class Weather{
     constructor(data){
         this.dt = data.dt
         this.date = new Date(data.dt * 1000)
-        this.main = data.weather.main
-        this.description = data.weather.description
+        this.main = data.weather[0].main
+        this.description = data.weather[0].description
         this.windSpeed = data.wind.speed
         this.temperature = data.main.temp
         this.humidity = data.main.humidity

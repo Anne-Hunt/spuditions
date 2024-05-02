@@ -115,18 +115,20 @@ const icon = {
 		</div>
 	<!-- Park Image -->
 		<div class="row mt-5">
-			<div class="col-6 ms-2">
+			<div class="col-12 col-md-7">
 				<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
 			</div>
 
 			<!-- Park Info -->
-			<div class="col-5">
-				<h4 class="text-light">{{ park?.name }} , ID</h4>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<span class="selectable ms-4">800 ratings</span>
+			<div class="col-12 col-md-5 mt-4 mt-md-0">
+				<div class="text-center text-md-start">
+					<h4 class="text-light">{{ park?.name }} , ID</h4>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<span class="selectable ms-4">800 ratings</span>
+				</div>
 				<div>
 					<h5 class="mt-5 text-light">{{ park?.type }}</h5>
 					<h5 class="text-light">{{ park?.cost }}</h5>

@@ -2,23 +2,33 @@
 import { useRoute } from "vue-router";
 import { parksService } from "../services/ParksService.js";
 import Pop from "../utils/Pop.js";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { AppState } from "../AppState.js";
 import ParkDetails from "../components/ParkDetails.vue";
-import Weather5DayCard from "../components/Weather5DayCard.vue";
+import WeatherCard from "../components/WeatherCard.vue";
 import { weathersService } from "../services/WeathersService.js";
 
+const forecastSetting = ref(false) // true == 5day false == today
 
 //!SECTION - Allows us to use routes for getting to different pages
 const route = useRoute()
 //!SECTION - Gives us access to the active park from the AppState
 const park = computed(() => AppState.activePark)
-const weatherForecast = computed(() => AppState.activeWeather.filter(x => x.date.getHours() == 12))
+const weatherForecast = computed(() => forecastSetting.value ? AppState.activeWeather.filter(x => x.date.getHours() == 12) : AppState.activeWeather.filter(x => x.date.getDay() == new Date().getDay()))
 
 async function getParkAndWeather() {
 	try {
 		await parksService.getParkById(route.params.parkId)
 		await weathersService.getWeather()
+	}
+	catch (error) {
+		Pop.error(error);
+	}
+}
+
+async function changeForecast() {
+	try {
+		forecastSetting.value = !forecastSetting.value
 	}
 	catch (error) {
 		Pop.error(error);
@@ -42,45 +52,33 @@ onMounted(() => {
 		</section>
 
 
-		<hr class="my-4" />
-
 
 		<!--****** SECTION: WEATHER ******-->
-		<section class="text-light" v-if="weatherForecast">
-			<!-- <div v-if="forecast == today">
+		<section class="text-light container-fluid" v-if="weatherForecast">
 
-				<div class="container-fluid">
-					<div class="row">
-						<h1><u>Today's Forecast</u></h1>
-					</div>
+			<hr class="my-4" />
 
-					<div class="row justify-content-evenly">
-
-						<WeatherTodayCard v-for="time in weatherForecast" :key="time.dt" :weather="time" />
-
-					</div>
-				</div>
-
-			</div> -->
+			<div class="btnPlacement">
+				<button @click="changeForecast()" class="btn btn-orange borderBtn text-light ms-md-5 mb-5 mb-md-0">
+					{{ forecastSetting ? "Show Today's Forecast" : "Show 5-day Forecast" }}
+				</button>
+			</div>
 
 
-			<!-- <div v-else> -->
-
-			<div class="container-fluid pb-5">
-				<div class="row mb-4 text-center">
-					<h2>Next 5 Days Forecast</h2>
+			<div class="pb-5">
+				<div class="row mb-1 mb-md-4">
+					<h2 class="text-center">{{ forecastSetting ? "5-day Forecast" : "Today's Forecast" }}</h2>
 				</div>
 
 				<div class="row justify-content-evenly px-3 px-md-5 gap-1">
 
-					<Weather5DayCard v-for="day in weatherForecast" :key="day.dt" :weather="day" class="my-3" />
+					<WeatherCard v-for="day in weatherForecast" :key="day.dt" :weather="day"
+						:option="forecastSetting ? { weekday: 'long' } : { hour: 'numeric' }" class="my-3" />
 
 				</div>
 			</div>
 
-			<!-- </div> -->
 		</section>
-
 	</div>
 </template>
 
@@ -89,10 +87,26 @@ onMounted(() => {
 .pageColor {
 	background-color: var(--lightGreen);
 
-	// TODO: Tell me (emma) how these look for a redesign
+	// REVIEW: Tell me (emma) how these look for a redesign
 	// background-color: #7db834;
 	// background-color: #8ac87f;
 	// background-color: #5cb25d;
 
+}
+
+.borderBtn {
+	border: solid #674520;
+	width: 9em;
+}
+
+@media only screen and (max-width: 767px) {
+	.btnPlacement {
+		text-align: center;
+	}
+
+	.borderBtn {
+		border: solid #674520;
+		width: 15em;
+	}
 }
 </style>

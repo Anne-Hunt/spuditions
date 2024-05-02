@@ -17,7 +17,6 @@ const weatherApi = axios.create({
 class WeathersService {
 
 	async getWeather() {
-		// REVIEW: Does it split location into lat and lon?
         const locationData = AppState.activePark.location.split(', ')
 
 		// REVIEW: Does calling the array like this work?

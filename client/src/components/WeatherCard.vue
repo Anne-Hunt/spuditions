@@ -2,7 +2,8 @@
 import { Weather } from '../models/Weather.js';
 
 defineProps({
-	weather: Weather
+	weather: Weather,
+	option: Object
 })
 </script>
 
@@ -11,17 +12,17 @@ defineProps({
 <template>
 	<div class="col-12 col-md-4 col-lg-3 col-xl-2 vertical text-center p-1">
 
-		<h3 class="day">{{ weather.date.toLocaleDateString('en-us', { weekday: 'long' }) }}</h3>
-
-		<!-- <div class="time">
-			<h2>{{ weather.date }}</h2>
-		</div> -->
+		<h3 class="day">{{ weather.date.toLocaleString('en-us', option) }}</h3>
 
 		<div class="forecast">
 			<img :src="weather.WeatherIcon" :alt="'icon of' + weather.main">
 		</div>
 
-		<div class="temp d-flex gap-3 justify-content-center">
+		<div>
+			<h5 class="text-capitalize">{{ weather.description }}</h5>
+		</div>
+
+		<div class="mt-3 temp d-flex gap-3 justify-content-center">
 			<h5>Celcius: {{ weather.celcius }}&#176;</h5>
 			<h5>Fahrenheit: {{ weather.fahrenheit }}&#176;</h5>
 		</div>
