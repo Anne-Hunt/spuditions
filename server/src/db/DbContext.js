@@ -5,6 +5,7 @@ import { PostSchema } from "../models/Post.js";
 import { ReputationSchema } from "../models/Reputation.js";
 import { ThreadSchema } from "../models/Thread.js";
 import { VisitedSchema } from "../models/Visited.js";
+import { ProfileSchema } from '../models/Profile.js';
 
 class DbContext {
   Account = mongoose.model('Account', AccountSchema);
@@ -18,6 +19,8 @@ class DbContext {
   Thread = mongoose.model('Thread', ThreadSchema)
 
   Visited = mongoose.model('Visited', VisitedSchema)
+
+  Profile = mongoose.model('Profile', ProfileSchema)
 }
 
 export const dbContext = new DbContext()

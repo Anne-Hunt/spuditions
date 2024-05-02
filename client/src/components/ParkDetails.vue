@@ -2,8 +2,6 @@
 import { computed } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
-import { useFloating } from '@floating-ui/vue';
-import bootstrap from 'bootstrap';
 
 
 
@@ -41,6 +39,10 @@ const icon = {
 	'swimming': 'mdi mdi-swim',
 	'volleyball area': 'mdi mdi-volleyball',
 	'ATVs, UTVs, Motorbikes': 'mdi mdi-atv'
+}
+
+async function changeVisitedStatus(){
+	
 }
 
 </script>

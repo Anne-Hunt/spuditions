@@ -7,14 +7,17 @@ import { parksService } from "../services/ParksService.js";
 import { profileService } from "../services/ProfileService.js";
 import { postsService } from "../services/PostsService.js";
 import { threadsService } from "../services/ThreadsService.js";
+import { searchService } from "../services/SearchService.js";
+import { router } from "../router.js";
 
 const searchQuery = ref('')
 
-// const searchTerm = computed(() => AppState.searchTerm)
+const searchTerm = computed(() => AppState.searchTerm)
 
 async function clearSearch(){
 	try {
-		await parksService.clearSearch()
+		await searchService.clearSearch()
+		router.push({name: 'Home'})
 	} catch (error) {
 		logger.error("unable to clear search", error)
 		Pop.toast("Unable to clear search", 'error')
