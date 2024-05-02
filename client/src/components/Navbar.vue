@@ -11,6 +11,8 @@ onMounted(() => {
 	document.documentElement.setAttribute('data-bs-theme', theme.value)
 })
 
+
+
 // function toggleTheme() {
 // 	theme.value = theme.value == 'light' ? 'dark' : 'light'
 // 	document.documentElement.setAttribute('data-bs-theme', theme.value)
@@ -43,14 +45,13 @@ onMounted(() => {
 					</router-link>
 				</li>
 				<li>
-					<router-link :to="{name: 'General Chat Forum'}" class="btn text-light lighten-30 selectable text-uppercase">
+					<router-link :to="{ name: 'General Chat Forum' }"
+						class="btn text-light lighten-30 selectable text-uppercase">
 						Forums
 					</router-link>
 				</li>
 			</ul>
-			<div v-if="router.currentRoute.value.name != 'Home'">
-				<SearchBar />
-			</div>
+
 			<!-- LOGIN COMPONENT HERE -->
 			<!-- <div>
         <button class="btn text-light" @click="toggleTheme"
@@ -61,6 +62,10 @@ onMounted(() => {
 			<Login class="mx-2" />
 		</div>
 	</nav>
+
+	<div v-if="router.currentRoute.value.name != 'Home'" class="w-100 pb-3 forestGreen">
+		<SearchBar class="w-75 mx-auto" />
+	</div>
 </template>
 
 <style scoped>
@@ -88,6 +93,5 @@ a:hover {
 	nav {
 		height: 64px;
 	}
-
 }
 </style>
