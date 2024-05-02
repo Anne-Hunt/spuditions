@@ -2,21 +2,33 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
+@font-face {
+    font-family: "NationalPark";
+    src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Regular.woff") format('woff');
+}
+
+@font-face {
+    font-family: "NationalPark";
+    src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Bold.woff") format('woff');
+    font-weight: bold;
+}
+
 body {
-  overscroll-behavior: none;
+    font-family: 'NationalPark';
+    overscroll-behavior: none;
 }
 
 #app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--bs-page);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bs-page);
 }
 
 main {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }

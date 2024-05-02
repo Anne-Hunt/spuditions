@@ -31,12 +31,16 @@ const backgroundColor = computed(() => {
 		<main class="m-0 p-0 container-fluid background">
 			<router-view />
 		</main>
-		<Footer />
+		<Footer/>
 	</div>
 </template>
 
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+main {
+    min-height: 100vh;
+}
 
 :root {
 	--main-height: calc(100vh - 32px - 64px);
@@ -54,20 +58,5 @@ const backgroundColor = computed(() => {
 
 .bColor {
 	background-color: v-bind(backgroundColor);
-}
-
-main footer {
-	font-family: NationalPark;
-}
-
-@font-face {
-	font-family: "NationalPark";
-	src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Regular.woff") format('woff');
-}
-
-@font-face {
-	font-family: "NationalPark";
-	src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Bold.woff") format('woff');
-	font-weight: bold;
 }
 </style>

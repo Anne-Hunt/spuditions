@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { authHandler } from './handlers/AuthHandler'
 
 function loadPage(page) {
@@ -12,7 +12,7 @@ const routes = [
     component: loadPage('HomePage')
   },
   {
-    path: '/aboutUs',
+    path: '/about-us',
     name: 'About Us',
     component: loadPage('AboutUsPage')
   },
@@ -67,6 +67,6 @@ const routes = [
 export const router = createRouter({
   linkActiveClass: 'router-link-active',
   linkExactActiveClass: 'router-link-exact-active',
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })

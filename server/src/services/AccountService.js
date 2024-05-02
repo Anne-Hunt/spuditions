@@ -78,8 +78,7 @@ class AccountService {
 
         if (!accountData.password) throw new Error('A password is required to register an account.')
 
-        // TODO Password Validation
-
+        // REVIEW Validation must be done here and not in model because we want the plaintext to be checked not the hashed version.
         let regex = /^[a-zA-Z0-9{\[\]}<>,.|:;`~!?@#$£%^&*()_\\\-=+'"/]{8,75}$/
         if (!regex.test(accountData.password)) {
             regex = /^[a-zA-Z0-9{\[\]}<>,.|:;`~!?@#$£%^&*()_\\\-=+'"/]$/
