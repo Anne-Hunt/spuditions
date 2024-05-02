@@ -207,8 +207,7 @@ const icon = {
 		</div>
 
 		<div>
-			<iframe class="mt-4 rounded" :src="park?.GmapsLocation" width="100%" height="300" style="border:0;"
-				loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			{{ park?.location }}
 		</div>
 	</section>
 </template>
