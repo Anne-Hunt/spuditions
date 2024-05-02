@@ -136,7 +136,7 @@ const icon = {
 
 				<div class="text-center text-md-start text-light" v-if="park.description">
 					<hr>
-					<h5>Description:</h5>
+					<div class="fs6 mb-1"><b>About This Park:</b></div>
 					<p class="text-start">{{ park?.description }}</p>
 				</div>
 
@@ -146,7 +146,7 @@ const icon = {
 			<div class="col-12">
 				<div class="text-light d-flex justify-content-evenly gap-md-5 row">
 
-					<div class="costsBox mt-5 mb-3 col-12 col-md-6">
+					<div class="costsBox mt-5 mb-3 col-12 col-md-5">
 						<h5 class="text-center">Park Info:</h5>
 						<hr>
 
@@ -162,13 +162,16 @@ const icon = {
 						<div class="mt-3 fs-5" v-if="park.rating">
 							<b><u>Park Rating</u>:</b> {{ park?.rating }}
 						</div>
-						<div class="my-3 fs-5" v-if="park.region">
+						<div class="mt-3 fs-5" v-if="park.region">
 							<b><u>Park Region</u>:</b> {{ park?.region }}
+						</div>
+						<div class="mt-5 fs7 text-center" v-if="park.webUrl">
+							<a :href="park.webUrl"><b>Click Here For Park Website</b></a>
 						</div>
 					</div>
 
-					<div class="costsBox mt-5 mb-3 col-12 col-md-6">
-						<h5 class="text-center">Camping Costs:</h5>
+					<div class="costsBox mt-3 mt-md-5 mb-3 col-12 col-md-5">
+						<h5 class="text-center">Costs:</h5>
 						<hr>
 						<ul>
 							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
@@ -182,7 +185,7 @@ const icon = {
 		</div>
 
 		<div>
-			<iframe class="mt-4 rounded" :src="park?.GmapsLocation" width="100%" height="200" style="border:0;"
+			<iframe class="mt-4 rounded" :src="park?.GmapsLocation" width="100%" height="300" style="border:0;"
 				loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
 	</section>
@@ -204,5 +207,22 @@ i {
 	border: 3px solid white;
 	padding: 1em;
 	border-radius: 15px;
+}
+
+a {
+	color: #6700ed;
+	transition: 0.4s;
+}
+
+a:hover {
+	color: #3900ab;
+}
+
+.fs6 {
+	font-size: 1.1em;
+}
+
+.fs7 {
+	font-size: 1.2em;
 }
 </style>
