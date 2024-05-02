@@ -59,7 +59,7 @@ defineProps({park: Park})
       <div class="p-3 mt-3 fw-bold">
         <h1 class="d-inline">Parks Forum</h1>
         <button class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
-        <h5 class="py-3">discuss {{ park.name }}</h5>
+        <!-- <h5 class="py-3">discuss {{ park.name }}</h5> -->
       </div>
     </div>
 
