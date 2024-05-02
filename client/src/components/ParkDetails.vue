@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
-import {useFloating} from '@floating-ui/vue';
+import { useFloating } from '@floating-ui/vue';
 import bootstrap from 'bootstrap';
 
 
@@ -57,9 +57,9 @@ const icon = {
 	<section class="container-fluid" v-if="park">
 		<div class="row">
 			<div class="col" v-for="activity in activities" :key="activity">
-				<button  type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
-				data-bs-custom-class="custom-tooltip"
-				:data-bs-title="activity" :activity="activity" :class="icon[activity] || 'mdi mdi-tree'"></button>
+				<button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
+					data-bs-custom-class="custom-tooltip" :data-bs-title="activity" :activity="activity"
+					:class="icon[activity] || 'mdi mdi-tree'"></button>
 			</div>
 		</div>
 		<!-- Park Image -->
