@@ -20,7 +20,7 @@ export class Park {
 
     get GmapsLocation(){
         const dataLoc = this.location
-        const latlong = dataLoc.replace(" ", "")
-        return `https://www.google.com/maps/embed/v1/place?q=${latlong}`
+        const latlong = dataLoc.split(' ')
+        return `{lat: ${latlong[0]}, lng: ${latlong[1]}}`
     }
 }
