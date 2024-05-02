@@ -5,16 +5,16 @@ import { AppState } from '../AppState.js';
 
 
 const park = computed(() => AppState.activePark)
-const activities = computed(()=> AppState.activePark?.activities)
+const activities = computed(() => AppState.activePark?.activities)
 
-const activityIcons = computed(()=>{
-	switch(park.value.activities){
+const activityIcons = computed(() => {
+	switch (park.value.activities) {
 		case 'biking':
 			return `<i class= "mdi mdi-bicycle"></i>`
 		case 'bird watching':
 			return `<i class= "mdi mdi-bird"></i>`
 		case 'boating':
-			return`<i class= "mdi mdi-ferry"></i>`
+			return `<i class= "mdi mdi-ferry"></i>`
 		case 'camping':
 			return `<i class= "mdi mdi-tent"></i>`
 		case 'climbing':
@@ -52,7 +52,7 @@ const activityIcons = computed(()=>{
 		case 'RVing':
 			return `<i class= "mdi mdi-rv-truck"></i>`
 		case 'sailing':
-			return`<i class= "mdi mdi-sail-boat"></i>`
+			return `<i class= "mdi mdi-sail-boat"></i>`
 		case 'sandboarding':
 			return `<i class= "mdi mdi-snowboard"></i>`
 		case 'snowmobiling':
@@ -82,18 +82,20 @@ const activityIcons = computed(()=>{
 	<!-- Park Image -->
 	<section class="container-fluid">
 		<div class="row mt-5">
-			<div class="col-6 ms-2">
+			<div class="col-12 col-md-7">
 				<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
 			</div>
 
 			<!-- Park Info -->
-			<div class="col-5">
-				<h4 class="text-light">{{ park?.name }} , ID</h4>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<span class="selectable ms-4">800 ratings</span>
+			<div class="col-12 col-md-5 mt-4 mt-md-0">
+				<div class="text-center text-md-start">
+					<h4 class="text-light">{{ park?.name }} , ID</h4>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<span class="selectable ms-4">800 ratings</span>
+				</div>
 				<div>
 					<h5 class="mt-5 text-light">{{ park?.type }}</h5>
 					<h5 class="text-light">{{ park?.cost }}</h5>
@@ -119,6 +121,4 @@ const activityIcons = computed(()=>{
 	filter: drop-shadow(8px 10px 4px #696A42);
 
 }
-
-
 </style>
