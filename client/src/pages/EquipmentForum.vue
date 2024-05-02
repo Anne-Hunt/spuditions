@@ -1,17 +1,11 @@
 <script setup>
-import { computed } from "vue";
-import { AppState } from "../AppState.js";
-import { Park } from "../models/Park.js";
-
-
-defineProps({park: Park})
 
 </script>
 
 
 <template>
  <!-- //!SECTION - Sticky sidebar -->
-<section class="row me-0">
+ <section class="row me-0">
 
 <div class="col-md-2 d-none d-lg-block d-xl-block d-xxl-block">
   <nav class="sidenav">
@@ -57,9 +51,9 @@ defineProps({park: Park})
   <div class="row me-0">
     <div class="col-12">
       <div class="p-3 mt-3 fw-bold">
-        <h1 class="d-inline">Parks Forum</h1>
+        <h1 class="d-inline">Equipment Forum</h1>
         <button class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
-        <!-- <h5 class="py-3">discuss {{ park.name }}</h5> -->
+        <h5 class="py-3">ask others for equipment recommendations</h5>
       </div>
     </div>
 

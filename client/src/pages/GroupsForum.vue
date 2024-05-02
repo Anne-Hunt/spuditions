@@ -4,56 +4,55 @@
 
 
 <template>
-  <!-- //!SECTION - Sticky sidebar -->
-  <section class="row me-0">
+<section class="row me-0">
 
-    <div class="col-md-2 d-none d-lg-block d-xl-block d-xxl-block">
-      <nav class="sidenav">
-        <section class="text-center sticky-top">
-          <router-link :to="{ name: 'General Chat Forum' }">
-            <div>General</div>
-          </router-link>
-          <router-link :to="{ name: 'Parks List' }">
-            <div>Parks</div>
-          </router-link>
-          <router-link :to="{ name: 'Groups Forum' }">
-            <div>Find Group</div>
-          </router-link>
-          <router-link :to="{ name: 'Equipment Forum' }">
-            <div>Equipment</div>
-          </router-link>
-        </section>
-      </nav>
-    </div>
+<div class="col-md-2 d-none d-lg-block d-xl-block d-xxl-block">
+  <nav class="sidenav">
+    <section class="text-center sticky-top">
+      <router-link :to="{ name: 'General Chat Forum' }">
+        <div>General</div>
+      </router-link>
+      <router-link :to="{ name: 'Parks List' }">
+        <div>Parks</div>
+      </router-link>
+      <router-link :to="{ name: 'Groups Forum' }">
+        <div>Find Group</div>
+      </router-link>
+      <router-link :to="{ name: 'Equipment Forum' }">
+        <div>Equipment</div>
+      </router-link>
+    </section>
+  </nav>
+</div>
 
-    <div class="col-12 d-lg-none d-xl-none d-xxl-none sticky-top pe-0">
-      <nav class="topnav">
-        <section class="text-center">
-          <router-link :to="{ name: 'General Chat Forum' }">
-            <div>General</div>
-          </router-link>
-          <router-link :to="{ name: 'Parks List' }">
-            <div>Parks</div>
-          </router-link>
-          <router-link :to="{ name: 'Groups Forum' }">
-            <div>Find Group</div>
-          </router-link>
-          <router-link :to="{ name: 'Equipment Forum' }">
-            <div>Equipment</div>
-          </router-link>
-        </section>
-      </nav>
-    </div>
-      
-    <!-- //!SECTION - Main section of the page -->
-    <div class="col-12 col-md-12 col-lg-10">
+<div class="col-12 d-lg-none d-xl-none d-xxl-none sticky-top pe-0">
+  <nav class="topnav">
+    <section class="text-center">
+      <router-link :to="{ name: 'General Chat Forum' }">
+        <div>General</div>
+      </router-link>
+      <router-link :to="{ name: 'Parks List' }">
+        <div>Parks</div>
+      </router-link>
+      <router-link :to="{ name: 'Groups Forum' }">
+        <div>Find Group</div>
+      </router-link>
+      <router-link :to="{ name: 'Equipment Forum' }">
+        <div>Equipment</div>
+      </router-link>
+    </section>
+  </nav>
+</div>
+
+<!-- //!SECTION - Main section of the page -->
+<div class="col-12 col-md-12 col-lg-10">
       <!-- //!SECTION - Create Post button -->
       <div class="row me-0">
         <div class="col-12">
           <div class="p-3 mt-3 fw-bold">
-            <h1 class="d-inline">General Chat</h1>
+            <h1 class="d-inline">Groups Forum</h1>
             <button class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
-            <h5 class="py-3">discuss multiple topics</h5>
+            <h5 class="py-3">Post your trip details or ask to join another!</h5>
           </div>
         </div>
 
@@ -115,9 +114,9 @@
         </div>
       </div>
     </div>
-      
   </div>
-  </section>
+
+</section>
 </template>
 
 

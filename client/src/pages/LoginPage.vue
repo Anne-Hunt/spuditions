@@ -23,7 +23,7 @@ async function handleLogin() {
 
 
 <template>
-    <form class="mt-5" @submit.prevent="handleLogin()">
+    <form class="mt-5 px-5" @submit.prevent="handleLogin()">
         <label>Email</label>
         <input v-model="formData.email" type="email" class="form-control mb-3">
 

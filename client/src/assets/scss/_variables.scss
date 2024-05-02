@@ -1,16 +1,3 @@
-// **********************************************************************************************
-//					                        MODIFICATION LOG
-// Date Created: 4/30/2024
-// Date Last Modified: 4/30/2024
-// Last Modified By: Emma
-// 
-// #Modification Log:
-//     - 4/30/2024: Added color scheme for website into light theme
-// 
-// **********************************************************************************************
-
-
-
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/variables-dark";
@@ -80,6 +67,11 @@ $default-colors: (
 	"dark": $dark,
 	"custom": #3ba5dc
 );
+
+.custom-tooltip {
+	--bs-tooltip-bg: var(--bd-violet-bg);
+	--bs-tooltip-color: var(--bs-white);
+}
 
 @import "bootstrap";
 

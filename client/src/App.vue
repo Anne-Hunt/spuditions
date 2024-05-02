@@ -31,7 +31,9 @@ const backgroundColor = computed(() => {
 		<main class="m-0 p-0 container-fluid background">
 			<router-view />
 		</main>
-		<Footer/>
+        <footer>
+            <Footer/>
+        </footer>
 	</div>
 </template>
 
@@ -58,20 +60,5 @@ main {
 
 .bColor {
 	background-color: v-bind(backgroundColor);
-}
-
-main footer {
-	font-family: NationalPark;
-}
-
-@font-face {
-	font-family: "NationalPark";
-	src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Regular.woff") format('woff');
-}
-
-@font-face {
-	font-family: "NationalPark";
-	src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Bold.woff") format('woff');
-	font-weight: bold;
 }
 </style>
