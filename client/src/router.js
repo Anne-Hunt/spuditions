@@ -27,6 +27,21 @@ const routes = [
     component: loadPage('GeneralChatForum')
   },
   {
+    path: '/parksforum',
+    name: 'Parks Forum',
+    component: loadPage('ParksForum')
+  },
+  {
+    path: '/groupsForum',
+    name: 'Groups Forum',
+    component: loadPage('GroupsForum')
+  },
+  {
+    path: '/equipmentforum',
+    name: 'Equipment Forum',
+    component: loadPage('EquipmentForum')
+  },
+  {
     path: '/parks/:parkId',
     name: 'Park Details',
     component: loadPage('ParkDetailsPage')

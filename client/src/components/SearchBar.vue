@@ -13,10 +13,14 @@ const searchTerm = computed(() => AppState.searchTerm)
 	<form class="me-lg-4">
 		<div class="input-group">
 			<input v-model="searchQuery" type="text" class="form-control" placeholder="Search" id="search-input">
-			<button class="btn btn-orange w-25 p-0"><i class="mdi mdi-magnify text-white fs-5"></i></button>
+			<button class="btn btn-orange widthBtn p-0"><i class="mdi mdi-magnify text-white fs-5"></i></button>
 		</div>
 	</form>
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.widthBtn {
+	width: 4em;
+}
+</style>
