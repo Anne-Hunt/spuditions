@@ -6,19 +6,19 @@ import Footer from './components/Footer.vue'
 
 const route = useRoute()
 
-const backgroundColor = computed(()=>{
-switch(route.name){
-    case 'Home':
-        return '#FFFFFF'
-    case 'Park Details':
-        return '#A8A96A'
-    case 'Forum':
-        return '#FFFFFF'
-    case 'About Us':
-        return '#A8A96A'
-    default:
-        return '#FFFFFF'
-}
+const backgroundColor = computed(() => {
+	switch (route.name) {
+		case 'Home':
+			return '#FFFFFF'
+		case 'Park Details':
+			return '#A8A96A'
+		case 'Forum':
+			return '#FFFFFF'
+		case 'About Us':
+			return '#A8A96A'
+		default:
+			return '#FFFFFF'
+	}
 })
 
 </script>
@@ -38,6 +38,10 @@ switch(route.name){
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
+main {
+    min-height: 100vh;
+}
+
 :root {
 	--main-height: calc(100vh - 32px - 64px);
 	--forestGreen: #696a42;
@@ -52,7 +56,22 @@ switch(route.name){
 	--btnPrimary: #00ADF8;
 }
 
-.bColor{
+.bColor {
 	background-color: v-bind(backgroundColor);
+}
+
+main footer {
+	font-family: NationalPark;
+}
+
+@font-face {
+	font-family: "NationalPark";
+	src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Regular.woff") format('woff');
+}
+
+@font-face {
+	font-family: "NationalPark";
+	src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Bold.woff") format('woff');
+	font-weight: bold;
 }
 </style>

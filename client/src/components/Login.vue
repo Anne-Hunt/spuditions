@@ -8,18 +8,18 @@ const user = computed(() => AppState.user)
 const account = computed(() => AppState.account)
 
 function login() {
-	router.push({name: "Login"})
+	router.push({ name: "Login" })
 }
 
 function logout() {
-    authService.logout()
+	authService.logout()
 }
 
 </script>
 
 <template>
-	<span class="ps-2 navbar-text">
-		<button class="btn selectable text-light lighten-30 text-uppercase my-2 my-lg-0" @click="login" v-if="!user">
+	<span class="navbar-text">
+		<button class="btn selectable text-light lighten-30 text-uppercase" @click="login" v-if="!user">
 			Login
 		</button>
 		<div v-else>
@@ -36,10 +36,11 @@ function logout() {
 								Manage Account
 							</div>
 						</router-link>
-						<button @click="logout()" class="list-group-item dropdown-item list-group-item-action text-danger selectable">
+						<button @click="logout()"
+							class="list-group-item dropdown-item list-group-item-action text-danger selectable">
 							<i class="mdi mdi-logout"></i>
 							Log out
-                        </button>
+						</button>
 					</div>
 				</div>
 			</div>

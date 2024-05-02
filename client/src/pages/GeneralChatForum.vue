@@ -7,19 +7,46 @@
   <!-- //!SECTION - Sticky sidebar -->
   <section class="row me-0">
 
-    <div class="col-2">
+    <div class="col-md-2 d-none d-lg-block d-xl-block d-xxl-block">
       <nav class="sidenav">
-        <div class="text-center sticky-top">
-          <a href="/forums">General</a>
-          <a href="/parks">Parks</a>
-          <a href="/groups">Find Group</a>
-          <a href="/equipment">Equipment</a>
-        </div>
+        <section class="text-center sticky-top">
+          <router-link :to="{ name: 'General Chat Forum' }">
+            <div>General</div>
+          </router-link>
+          <router-link :to="{ name: 'Parks Forum' }">
+            <div>Parks</div>
+          </router-link>
+          <router-link :to="{ name: 'Groups Forum' }">
+            <div>Find Group</div>
+          </router-link>
+          <router-link :to="{ name: 'Equipment Forum' }">
+            <div>Equipment</div>
+          </router-link>
+        </section>
+      </nav>
+    </div>
+
+    <div class="col-12 d-lg-none d-xl-none d-xxl-none sticky-top pe-0">
+      <nav class="topnav">
+        <section class="text-center">
+          <router-link :to="{ name: 'General Chat Forum' }">
+            <div>General</div>
+          </router-link>
+          <router-link :to="{ name: 'Parks Forum' }">
+            <div>Parks</div>
+          </router-link>
+          <router-link :to="{ name: 'About Us' }">
+            <div>Find Group</div>
+          </router-link>
+          <router-link :to="{ name: 'About Us' }">
+            <div>Equipment</div>
+          </router-link>
+        </section>
       </nav>
     </div>
       
     <!-- //!SECTION - Main section of the page -->
-    <div class="col-10 p-0">
+    <div class="col-12 col-md-12 col-lg-10">
       <!-- //!SECTION - Create Post button -->
       <div class="row me-0">
         <div class="col-12">
@@ -34,13 +61,12 @@
         <!-- //!SECTION - Thread card -->
         <!-- //FIXME - Need to replace info with profiles and stuff -->
         <div class="col-12">
-
           <div class="card card-bg p-2 m-4">
             <div class="row">
-              <div class="col-1">
+              <div class="col-12 col-md-1">
                 <img class="profile-img d-inline" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">
               </div>
-              <div class="col-11">
+              <div class="col-12 col-md-11">
                 <p class="d-inline">Profile Name</p>
                 <p>"Days ago"</p>
               </div>
@@ -58,29 +84,28 @@
 
       <!-- //!SECTION - Leave comment button -->
       <div class="col-12">
-        <button class="btn btn-primary float-end me-4 collapse.show" id="comments">Leave Comment <i class="mdi mdi-plus"></i></button>
+        <button class="btn btn-primary float-end me-4">Leave Comment <i class="mdi mdi-plus"></i></button>
       </div>
     </div>    
       
       <!-- //!SECTION - Comments -->
       <!-- //FIXME - Need to v-for over these comments -->
       <div class="row me-0 justify-content-end">
-        <div class="col-9 ">
-          <div class="card card-bg p-2 m-4" >
+        <div class="col-9">
+          <div class="card card-bg p-2 m-4 collapse.show" id="comments">
             <div class="row">
-            <div class="col-1">
+            <div class="col-12 col-md-1">
               <img class="profile-img d-inline" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">
             </div>
-            <div class="col-10">
-              <p class="d-inline">Profile Name</p>
-              <p>"Days ago"</p>
+            <div class="col-10 col-sm-11 col-md-10">
+              <p class="d-inline ps-2">Profile Name</p>
+              <p class="ps-2">"Days ago"</p>
             </div>
             <!-- //FIXME - Add "v-if" to delete button -->
-            <div class="col-1">
+            <div class="col-1 col-sm-1 col-md-1">
               <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
             <div class="col-12">
-              <h4>Thread title</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum delectus error esse ipsum nesciunt, sunt architecto! Asperiores nemo architecto ex soluta.</p>
             </div>
             <div class="col-12">
@@ -100,12 +125,11 @@
 .sidenav{
   min-height: 100vh;
   height: 100%;
-  width: 200px;
   position: relative;
   background-color: #D9814F;
 }
 
-.sidenav a {
+.sidenav div {
   padding: 20px 8px 20px;
   font-size: 25px;
   color: white;
@@ -115,7 +139,28 @@
   margin-right: 6px;
 }
 
-.sidenav a:hover{
+.sidenav div:hover{
+  color: black;
+}
+
+.topnav{
+  padding-top: 10px;
+  height: 55px;
+  width: 100%;
+  position: relative;
+  max-height: max-content;
+  background-color: #D9814F;
+}
+
+.topnav div {
+  padding-top: 80px;
+  padding-right: 20px;
+  font-size: 20px;
+  color: white;
+  display: inline;
+}
+
+.topnav div:hover{
   color: black;
 }
 

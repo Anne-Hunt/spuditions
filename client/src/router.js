@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { authHandler } from './handlers/AuthHandler'
 
 function loadPage(page) {
@@ -12,7 +12,7 @@ const routes = [
     component: loadPage('HomePage')
   },
   {
-    path: '/aboutUs',
+    path: '/about-us',
     name: 'About Us',
     component: loadPage('AboutUsPage')
   },
@@ -25,6 +25,21 @@ const routes = [
     path: '/forums',
     name: 'General Chat Forum',
     component: loadPage('GeneralChatForum')
+  },
+  {
+    path: '/parksforum',
+    name: 'Parks Forum',
+    component: loadPage('ParksForum')
+  },
+  {
+    path: '/groupsForum',
+    name: 'Groups Forum',
+    component: loadPage('GroupsForum')
+  },
+  {
+    path: '/equipmentforum',
+    name: 'Equipment Forum',
+    component: loadPage('EquipmentForum')
   },
   {
     path: '/parks/:parkId',
@@ -47,6 +62,6 @@ const routes = [
 export const router = createRouter({
   linkActiveClass: 'router-link-active',
   linkExactActiveClass: 'router-link-exact-active',
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
