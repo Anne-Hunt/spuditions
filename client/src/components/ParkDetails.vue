@@ -5,7 +5,10 @@ import { AppState } from '../AppState.js';
 
 
 const park = computed(() => AppState.activePark)
-const activities = computed(()=> AppState.activePark?.activities)
+const activities = computed(() => AppState.activePark?.activities)
+
+
+
 // const activityIcons = computed(()=>{
 // 	switch(park.value.activities){
 // 		case 'biking':
@@ -107,13 +110,13 @@ const icon = {
 
 
 <template>
-	<section class="container-fluid">
+	<section class="container-fluid" v-if="park">
 		<div class="row">
 			<div class="col" v-for="activity in activities" :key="activity">
-					<i :activity="activity" :class="icon[activity] || 'mdi mdi-tree'"></i>
+				<i :activity="activity" :class="icon[activity] || 'mdi mdi-tree'"></i>
 			</div>
 		</div>
-	<!-- Park Image -->
+		<!-- Park Image -->
 		<div class="row mt-5">
 			<div class="col-12 col-md-7">
 				<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
@@ -121,20 +124,59 @@ const icon = {
 
 			<!-- Park Info -->
 			<div class="col-12 col-md-5 mt-4 mt-md-0">
+
 				<div class="text-center text-md-start">
 					<h4 class="text-light">{{ park?.name }} , ID</h4>
-					<i class="mdi mdi-star p-1"></i>
-					<i class="mdi mdi-star p-1"></i>
-					<i class="mdi mdi-star p-1"></i>
-					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1 fs-5"></i>
+					<i class="mdi mdi-star p-1 fs-5"></i>
+					<i class="mdi mdi-star p-1 fs-5"></i>
+					<i class="mdi mdi-star p-1 fs-5"></i>
 					<span class="selectable ms-4">800 ratings</span>
 				</div>
-				<div>
-					<h5 class="mt-5 text-light">{{ park?.type }}</h5>
-					<h5 class="text-light">{{ park?.cost }}</h5>
-					<h5 class="text-light">{{ park?.daysClosed }}</h5>
-					<h5 class="text-light">{{ park?.rating }}</h5>
-					<h5 class="text-light">{{ park?.region }}</h5>
+
+				<div class="text-center text-md-start text-light" v-if="park.description">
+					<hr>
+					<h5>Description:</h5>
+					<p class="text-start">{{ park?.description }}</p>
+				</div>
+
+			</div>
+
+
+			<div class="col-12">
+				<div class="text-light d-flex justify-content-evenly gap-md-5 row">
+
+					<div class="costsBox mt-5 mb-3 col-12 col-md-6">
+						<h5 class="text-center">Park Info:</h5>
+						<hr>
+
+						<div class="fs-5" v-if="park.type">
+							<b><u>Park Type</u>:</b> {{ park?.type }}
+						</div>
+						<div class="mt-3 fs-5" v-if="park.address">
+							<b><u>Address</u>:</b> {{ park?.address }}
+						</div>
+						<div class="mt-3 fs-5" v-if="park.daysClosed">
+							<b><u>Days Closed</u>:</b> {{ park?.daysClosed }}
+						</div>
+						<div class="mt-3 fs-5" v-if="park.rating">
+							<b><u>Park Rating</u>:</b> {{ park?.rating }}
+						</div>
+						<div class="my-3 fs-5" v-if="park.region">
+							<b><u>Park Region</u>:</b> {{ park?.region }}
+						</div>
+					</div>
+
+					<div class="costsBox mt-5 mb-3 col-12 col-md-6">
+						<h5 class="text-center">Camping Costs:</h5>
+						<hr>
+						<ul>
+							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+								{{ cost }}
+							</li>
+						</ul>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -155,9 +197,14 @@ const icon = {
 
 }
 
-i{
+i {
 	font-size: xx-large;
 	color: white;
 }
 
+.costsBox {
+	border: 3px solid white;
+	padding: 1em;
+	border-radius: 15px;
+}
 </style>

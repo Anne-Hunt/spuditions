@@ -67,7 +67,7 @@ onMounted(() => {
 
 			<div class="pb-5">
 				<div class="row mb-1 mb-md-4">
-					<h2 class="text-center">{{ forecastSetting ? "5-day Forecast" : "Today's Forecast" }}</h2>
+					<h2 class="text-center">{{ forecastSetting ? "Forecast: Next 5 Days" : "Forecast: Today" }}</h2>
 				</div>
 
 				<div class="row justify-content-evenly px-3 px-md-5 gap-1">
