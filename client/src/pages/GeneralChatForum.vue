@@ -81,12 +81,12 @@
             <div class="col-12 col-md-1">
               <img class="profile-img d-inline" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">
             </div>
-            <div class="col-10 col-md-11 col-sm-11">
+            <div class="col-10 col-sm-11 col-md-10">
               <p class="d-inline ps-2">Profile Name</p>
               <p class="ps-2">"Days ago"</p>
             </div>
             <!-- //FIXME - Add "v-if" to delete button -->
-            <div class="col-2 col-md-1 col-sm-1">
+            <div class="col-1 col-sm-1 col-md-1">
               <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
             <div class="col-12">
