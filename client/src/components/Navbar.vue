@@ -35,19 +35,28 @@ onMounted(() => {
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav me-auto gap-3">
 				<li>
-					<router-link :to="{ name: 'Home' }" class="btn text-light lighten-30 selectable text-uppercase">
+					<router-link :to="{ name: 'Home' }"
+						class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
 						Home
 					</router-link>
 				</li>
 				<li>
-					<router-link :to="{ name: 'About Us' }" class="btn text-light lighten-30 selectable text-uppercase">
+					<router-link :to="{ name: 'About Us' }"
+						class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
 						About Us
 					</router-link>
 				</li>
 				<li>
 					<router-link :to="{ name: 'General Chat Forum' }"
-						class="btn text-light lighten-30 selectable text-uppercase">
+						class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
 						Forums
+					</router-link>
+				</li>
+				<li>
+					<router-link :to="{ name: 'Login' }" class="text-sm-start text-md-center">
+
+						<Login class="mx-md-2" />
+
 					</router-link>
 				</li>
 			</ul>
@@ -59,11 +68,10 @@ onMounted(() => {
           <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i>
         </button>
       </div> -->
-			<Login class="mx-2" />
 		</div>
 	</nav>
 
-	<div v-if="router.currentRoute.value.name != 'Home'" class="w-100 pb-3 forestGreen">
+	<div v-if="router.currentRoute.value.name != 'Home' || 'Login'" class="w-100 pb-3 forestGreen">
 		<SearchBar class="w-75 mx-auto" />
 	</div>
 </template>
