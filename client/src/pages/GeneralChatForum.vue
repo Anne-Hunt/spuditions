@@ -9,23 +9,39 @@
 
     <div class="col-md-2 d-none d-lg-block d-xl-block d-xxl-block">
       <nav class="sidenav">
-        <div class="text-center sticky-top">
-          <a href="/forums">General</a>
-          <a href="/parks">Parks</a>
-          <a href="/groups">Find Group</a>
-          <a href="/equipment">Equipment</a>
-        </div>
+        <section class="text-center sticky-top">
+          <router-link :to="{ name: 'General Chat Forum' }">
+            <div>General</div>
+          </router-link>
+          <router-link :to="{ name: 'Parks Forum' }">
+            <div>Parks</div>
+          </router-link>
+          <router-link :to="{ name: 'Groups Forum' }">
+            <div>Find Group</div>
+          </router-link>
+          <router-link :to="{ name: 'Equipment Forum' }">
+            <div>Equipment</div>
+          </router-link>
+        </section>
       </nav>
     </div>
 
     <div class="col-12 d-lg-none d-xl-none d-xxl-none sticky-top pe-0">
       <nav class="topnav">
-        <div class="text-center">
-          <a href="/forums">General</a>
-          <a href="/parks">Parks</a>
-          <a href="/groups">Find Group</a>
-          <a href="/equipment">Equipment</a>
-        </div>
+        <section class="text-center">
+          <router-link :to="{ name: 'General Chat Forum' }">
+            <div>General</div>
+          </router-link>
+          <router-link :to="{ name: 'Parks Forum' }">
+            <div>Parks</div>
+          </router-link>
+          <router-link :to="{ name: 'About Us' }">
+            <div>Find Group</div>
+          </router-link>
+          <router-link :to="{ name: 'About Us' }">
+            <div>Equipment</div>
+          </router-link>
+        </section>
       </nav>
     </div>
       
@@ -90,7 +106,6 @@
               <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
             <div class="col-12">
-              <h4>Thread title</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum delectus error esse ipsum nesciunt, sunt architecto! Asperiores nemo architecto ex soluta.</p>
             </div>
             <div class="col-12">
@@ -114,7 +129,7 @@
   background-color: #D9814F;
 }
 
-.sidenav a {
+.sidenav div {
   padding: 20px 8px 20px;
   font-size: 25px;
   color: white;
@@ -124,7 +139,7 @@
   margin-right: 6px;
 }
 
-.sidenav a:hover{
+.sidenav div:hover{
   color: black;
 }
 
@@ -137,7 +152,7 @@
   background-color: #D9814F;
 }
 
-.topnav a {
+.topnav div {
   padding-top: 80px;
   padding-right: 20px;
   font-size: 20px;
@@ -145,7 +160,7 @@
   display: inline;
 }
 
-.topnav a:hover{
+.topnav div:hover{
   color: black;
 }
 
