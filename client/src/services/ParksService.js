@@ -6,6 +6,15 @@ import { api } from "./AxiosService.js"
 
 
 class ParksService {
+  clearSearch() {
+    throw new Error("Method not implemented.")
+  }
+  async searchParks(searchQuery) {
+    AppState.parks = []
+    const response = await api.get(`api/parks?query=${searchQuery}`)
+    const parks = response.data.map(parkData => new Park(parkData))
+    AppState.parks = parks
+  }
 
 //!SECTION - Gets all parks to the page
   async getParks() {
