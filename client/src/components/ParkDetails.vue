@@ -2,11 +2,21 @@
 import { computed } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
-import GMap from './GMap.vue';
+import {useFloating} from '@floating-ui/vue';
+import bootstrap from 'bootstrap';
+
+
+// vue popper const
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+
 
 
 const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
+
 
 const icon = {
 	'biking': `mdi mdi-bicycle`,
@@ -47,7 +57,9 @@ const icon = {
 	<section class="container-fluid" v-if="park">
 		<div class="row">
 			<div class="col" v-for="activity in activities" :key="activity">
-				<i :data-bs-title="activity" :class="icon[activity] || 'mdi mdi-tree'"></i>
+				<button  type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
+				data-bs-custom-class="custom-tooltip"
+				:data-bs-title="activity" :activity="activity" :class="icon[activity] || 'mdi mdi-tree'"></button>
 			</div>
 		</div>
 		<!-- Park Image -->

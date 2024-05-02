@@ -1,34 +1,11 @@
 <script setup>
-import { computed, onMounted } from "vue";
-import { AppState } from "../AppState.js";
-import { parksService } from "../services/ParksService.js";
-import { weathersService } from "../services/WeathersService.js";
-import Pop from "../utils/Pop.js";
-import { useRoute } from "../../node_modules/vue-router/dist/vue-router.js";
-
-const route = useRoute()
-const park = computed(() => AppState.activePark)
-
-async function getParkAndWeather() {
-	try {
-		await parksService.getParkById(route.params.parkId)
-		await weathersService.getWeather()
-	}
-	catch (error) {
-		Pop.error(error);
-	}
-}
-
-onMounted(() => {
-	getParkAndWeather()
-})
 
 </script>
 
 
 <template>
  <!-- //!SECTION - Sticky sidebar -->
-<section class="row me-0">
+ <section class="row me-0">
 
 <div class="col-md-2 d-none d-lg-block d-xl-block d-xxl-block">
   <nav class="sidenav">
@@ -74,9 +51,9 @@ onMounted(() => {
   <div class="row me-0">
     <div class="col-12">
       <div class="p-3 mt-3 fw-bold">
-        <h1 class="d-inline">Parks Forum</h1>
+        <h1 class="d-inline">Equipment Forum</h1>
         <button class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
-        <h5 class="py-3">discuss {{ park.name }}</h5>
+        <h5 class="py-3">ask others for equipment recommendations</h5>
       </div>
     </div>
 

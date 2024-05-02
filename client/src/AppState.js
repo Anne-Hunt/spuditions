@@ -21,4 +21,9 @@ export const AppState = reactive({
 
    /**@type {Weather[]} */
 	activeWeather: [],
+
+  searchTerm: '',
+  threads: [],
+  posts: [],
+  profiles: []
 })

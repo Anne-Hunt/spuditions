@@ -68,6 +68,11 @@ $default-colors: (
 	"custom": #3ba5dc
 );
 
+.custom-tooltip {
+	--bs-tooltip-bg: var(--bd-violet-bg);
+	--bs-tooltip-color: var(--bs-white);
+}
+
 @import "bootstrap";
 
 @mixin generate-theme-properties($theme, $overrides-colors) {
