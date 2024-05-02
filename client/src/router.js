@@ -27,7 +27,12 @@ const routes = [
     component: loadPage('GeneralChatForum')
   },
   {
-    path: '/parksforum',
+    path: '/parksList',
+    name: 'Parks List',
+    component: loadPage('ParksList')
+  },
+  {
+    path: '/parksForum',
     name: 'Parks Forum',
     component: loadPage('ParksForum')
   },
@@ -37,7 +42,7 @@ const routes = [
     component: loadPage('GroupsForum')
   },
   {
-    path: '/equipmentforum',
+    path: '/equipmentForum',
     name: 'Equipment Forum',
     component: loadPage('EquipmentForum')
   },
