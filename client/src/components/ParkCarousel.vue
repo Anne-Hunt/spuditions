@@ -14,21 +14,21 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active carouselStyling" data-bs-interval="10000">
-      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/CDAPKWY-Scenic4-scaled.jpg" class="d-block w-75 mx-auto" alt="...">
+      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/CDAPKWY-Scenic4-scaled.jpg" class="d-block w-75 mx-auto rounded" alt="...">
       <div class="carousel-caption d-none d-md-block mx-auto">
           <h5>First slide label</h5>
           <p>Some representative placeholder content for the first slide.</p>
         </div>
       </div>
     <div class="carousel-item carouselStyling" data-bs-interval="2000">
-      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/Bruneau_Panorama3-May-2017-scaled-e1605892154720.jpg" class="d-block w-75 mx-auto" alt="...">
+      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/Bruneau_Panorama3-May-2017-scaled-e1605892154720.jpg" class="d-block w-75 mx-auto rounded" alt="...">
       <div class="carousel-caption d-none d-md-block mx-auto">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item carouselStyling">
-      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/Dworshak-Cody-at-3M-scaled.jpeg" class="d-block w-75 mx-auto" alt="...">
+      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/Dworshak-Cody-at-3M-scaled.jpeg" class="d-block w-75 mx-auto rounded" alt="...">
       <div class="carousel-caption d-none d-md-block mx-auto">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
