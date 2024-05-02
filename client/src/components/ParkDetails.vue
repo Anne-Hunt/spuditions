@@ -7,93 +7,66 @@ import { AppState } from '../AppState.js';
 const park = computed(() => AppState.activePark)
 const activities = computed(()=> AppState.activePark?.activities)
 
-const activityIcons = computed(()=>{
-	switch(park.value.activities){
-		case 'biking':
-			return `<i class= "mdi mdi-bicycle"></i>`
-		case 'bird watching':
-			return `<i class= "mdi mdi-bird"></i>`
-		case 'boating':
-			return`<i class= "mdi mdi-ferry"></i>`
-		case 'camping':
-			return `<i class= "mdi mdi-tent"></i>`
-		case 'climbing':
-			return `<i class= "mdi mdi-carabiner"></i>`
-		case 'cross country skiing':
-			return `<i class= "mdi mdi-ski-cross-country"></i>`
-		case 'disc golf':
-			return `<i class= "mdi mdi-circle-slice-8"></i>`
-		case 'experience idaho backpacks':
-			return `<i class= "mdi mdi-bag-personal"></i>`
-		case 'first time adventure':
-			return `<i class= "mdi mdi-forest-outline"></i>`
-		case 'fishing':
-			return `<i class= "mdi mdi-fish"></i>`
-		case 'hard path trails':
-			return `<i class= "mdi mdi-map-marker-path"></i>`
-		case 'hiking':
-			return `<i class= "mdi mdi-hiking"></i>`
-		case 'history':
-			return `<i class= "mdi mdi-history"></i>`
-		case ' horseback':
-			return `<i class= "mdi mdi-horse-human"></i>`
-		case 'horseshoe pits':
-			return `<i class= "mdi mdi-horseshoe"></i>`
-		case 'junior ranger':
-			return `<i class= "mdi mdi-account-cowboy-hat"></i>`
-		case 'learning':
-			return `mdi-book-information-variant`
-		case 'loaner fishing rods':
-			return `<i class= "mdi mdi-hook"></i>`
-		case 'paddlesports':
-			return `<i class= "mdi mdi-kayaking"></i>`
-		case 'playgrounds':
-			return `<i class= "mdi mdi-slide"></i>`
-		case 'RVing':
-			return `<i class= "mdi mdi-rv-truck"></i>`
-		case 'sailing':
-			return`<i class= "mdi mdi-sail-boat"></i>`
-		case 'sandboarding':
-			return `<i class= "mdi mdi-snowboard"></i>`
-		case 'snowmobiling':
-			return `<i class= "mdi mdi-snowmobile"></i>`
-		case 'snowshoeing':
-			return `<i class= "mdi mdi-snowshoeing"></i>`
-		case 'volunteering':
-			return `<i class= "mdi mdi-hand-heart"></i>`
-		case 'swimming':
-			return `<i class= "mdi mdi-swim"></i>`
-		case 'volleyball area':
-			return `<i class= "mdi mdi-volleyball"></i>`
-		case 'ATVs, UTVs, Motorbikes':
-			return `<i class= "mdi mdi-atv"></i>`
-		default:
-			return ``
-	}
-})
+
+const icon = {
+	'biking': `mdi mdi-bicycle`,
+	'bird watching': 'mdi mdi-bird',
+	'boating': 'mdi mdi-ferry',
+	'camping': 'mdi mdi-tent',
+	'climbing': 'mdi mdi-carabiner',
+	'cross country skiing': 'mdi mdi-ski-cross-country',
+	'disc golf': 'mdi mdi-circle-slice-8',
+	'experience Idaho backpacks': 'mdi mdi-bag-personal',
+	'first time adventure': 'mdi mdi-forest-outline',
+	'fishing': 'mdi mdi-fish',
+	'hard path trails': 'mdi mdi-map-marker-path',
+	'hiking': 'mdi mdi-hiking',
+	'history': 'mdi mdi-history',
+	'horseback': 'mdi mdi-horse-human',
+	'horseshoe pits': 'mdi mdi-horseshoe',
+	'junior ranger': 'mdi mdi-account-cowboy-hat',
+	'learning': 'mdi mdi-book-account',
+	'loaner fishing rods': 'mdi mdi-hook',
+	'paddlesports': 'mdi mdi-kayaking',
+	'playgrounds': 'mdi mdi-slide',
+	'RVing': 'mdi mdi-rv-truck',
+	'sailing': 'mdi mdi-sail-boat',
+	'sandboarding': 'mdi mdi-snowboard',
+	'snowmobiling': 'mdi mdi-snowmobile',
+	'snowshoeing': 'mdi mdi-snowshoeing',
+	'volunteering': 'mdi mdi-hand-heart',
+	'swimming': 'mdi mdi-swim',
+	'volleyball area': 'mdi mdi-volleyball',
+	'ATVs, UTVs, Motorbikes': 'mdi mdi-atv'
+}
 
 </script>
 
 
 <template>
-	<div v-for="activity in activities" :key="activity">
-		<h4 class="pt-3">{{ activity }}</h4>
-	</div>
-	<!-- Park Image -->
 	<section class="container-fluid">
+		<div class="row">
+			<div class="col" v-for="activity in activities" :key="activity">
+					<i :class="icon[activity] || 'mdi mdi-tree'"></i>
+			</div>
+		</div>
+	<!-- Park Image -->
 		<div class="row mt-5">
-			<div class="col-6 ms-2">
+			<div class="col-12 col-md-7">
 				<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
 			</div>
 
 			<!-- Park Info -->
-			<div class="col-5">
-				<h4 class="text-light">{{ park?.name }} , ID</h4>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<i class="mdi mdi-star p-1"></i>
-				<span class="selectable ms-4">800 ratings</span>
+			<div class="col-12 col-md-5 mt-4 mt-md-0">
+				<div class="text-center text-md-start">
+					<h4 class="text-light">{{ park?.name }} , ID</h4>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<i class="mdi mdi-star p-1"></i>
+					<span class="selectable ms-4">800 ratings</span>
+					<span>{{ park?.location }}</span>
+				</div>
 				<div>
 					<h5 class="mt-5 text-light">{{ park?.type }}</h5>
 					<h5 class="text-light">{{ park?.cost }}</h5>
@@ -120,5 +93,9 @@ const activityIcons = computed(()=>{
 
 }
 
+i{
+	font-size: xx-large;
+	color: white;
+}
 
 </style>

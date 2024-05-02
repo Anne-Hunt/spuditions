@@ -29,10 +29,6 @@ class WeathersService {
 		AppState.activeWeather = activeWeather
 	}
 
-	async changeForecast() {
-		// TODO: write this function out
-	}
-
 }
 
 export const weathersService = new WeathersService()
