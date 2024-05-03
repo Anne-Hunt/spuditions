@@ -53,7 +53,7 @@ onMounted(() => {
 				<SearchBar />
 			</div>
 
-			<router-link :to="{ name: 'Login' }" class="order-2 order-md-3 text-center my-2 my-md-0">
+			<router-link :to="{ name: 'Login' }" class="order-2 order-md-3 text-center mb-2 my-md-0">
 
 				<Login />
 
@@ -94,5 +94,9 @@ a:hover {
 	nav {
 		height: 64px;
 	}
+
+    .w-100 {
+        width: unset !important;
+    }
 }
 </style>

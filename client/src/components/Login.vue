@@ -18,9 +18,12 @@ function logout() {
 </script>
 
 <template>
-	<span class="navbar-text">
-		<button class="btn selectable text-light lighten-30 text-uppercase" @click="login" v-if="!user">
+	<span class="navbar-text text-center">
+		<button class="d-md-inline d-block mx-auto me-md-1 btn selectable text-light lighten-30 text-uppercase" @click="login" v-if="!user">
 			Login
+		</button>
+        <button class="btn btn-orange selectable text-light lighten-30 text-uppercase" @click="login" v-if="!user">
+			Register
 		</button>
 		<div v-else>
 			<div class="dropdown my-2 my-lg-0">

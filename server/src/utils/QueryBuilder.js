@@ -5,8 +5,10 @@ export class QueryBuilder {
     static build(schema, searchTerm) {
         let searchQuery = {}
         Object.keys(schema.paths).forEach((path) => {
-            let regex = new RegExp(searchTerm.query, "i")
-            searchQuery[path] = { $regex: regex }
+            if (schema.path(path) instanceof Schema.Types.String && !(schema.path(path) instanceof Schema.Types.ObjectId)) {
+                let regex = new RegExp(searchTerm.query, "i")
+                searchQuery[path] = { $regex: regex }
+            }
         })
         return { $or: [searchQuery] }
     }

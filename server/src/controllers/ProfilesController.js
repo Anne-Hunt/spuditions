@@ -8,9 +8,19 @@ export class ProfilesController extends BaseController {
         super('api/profiles')
         this.router
             .get('', this.getProfiles)
+            .get('/search', this.searchProfile)
             .get('/:id', this.getProfile)
             .get('/:id/reputation', this.getReputationOnProfile)
             .get('/:id/visited', this.getVisited)
+    }
+
+    async searchProfile(request, response, next) {
+        try {
+            const profiles = await profileService.searchProfile(request.query)
+            response.send(profiles)
+        } catch (error) {
+            next(error)
+        }
     }
 
     async getVisited(request, response, next) {

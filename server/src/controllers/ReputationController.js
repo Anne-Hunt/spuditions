@@ -38,6 +38,7 @@ export class ReputationController extends BaseController {
             reputationData.amount = request.body.amount
             reputationData.body = request.body.body
             const reputation = await reputationService.editReputation(request.params.reputationId, request.userInfo, reputationData)
+            response.send(reputation)
         } catch (error) {
             next(error)
         }

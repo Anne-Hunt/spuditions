@@ -10,7 +10,7 @@ export class ThreadsController extends BaseController {
         super('api/threads')
         this.router
             .get('', this.getThreads)
-            .get('search', this.searchThreads)
+            .get('/search', this.searchThreads)
             .get('/:threadId', this.getThreadById)
             .get('/:threadId/posts', this.getThreadPosts)
             .use(Authware.AuthGuard)
@@ -19,7 +19,7 @@ export class ThreadsController extends BaseController {
     }
     async searchThreads(request, response, next) {
         try {
-            const result = await threadsService.searchThreads(request.params.query)
+            const result = await threadsService.searchThreads(request.query)
             response.send(result)
         } catch (error) {
             next(error)

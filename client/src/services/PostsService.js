@@ -6,7 +6,7 @@ import { api } from "./AxiosService.js"
 class PostsService{
     async searchPosts(searchQuery) {
         AppState.posts = []
-        const response = await api.get(`api/posts?query=${searchQuery}`)
+        const response = await api.get(`api/posts/search?query=${searchQuery}`)
         const posts = response.data.map(postData => new Post(postData))
         AppState.posts = posts
       }

@@ -1,4 +1,9 @@
 <script setup>
+import { computed } from "vue";
+import { AppState } from "../AppState.js";
+
+
+const parks = computed(() => AppState.parks)
 
 </script>
 
@@ -16,10 +21,10 @@
     <div class="carousel-item active carouselStyling" data-bs-interval="10000">
       <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/CDAPKWY-Scenic4-scaled.jpg" class="d-block w-75 mx-auto rounded" alt="...">
       <div class="carousel-caption d-none d-md-block mx-auto">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
       </div>
+    </div>
     <div class="carousel-item carouselStyling" data-bs-interval="2000">
       <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/Bruneau_Panorama3-May-2017-scaled-e1605892154720.jpg" class="d-block w-75 mx-auto rounded" alt="...">
       <div class="carousel-caption d-none d-md-block mx-auto">
