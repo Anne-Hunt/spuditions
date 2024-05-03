@@ -1,8 +1,12 @@
 <script setup>
+import { computed } from "vue";
 import CommentCard from "../components/CommentCard.vue";
 import Sidebar from "../components/Sidebar.vue";
 import ThreadCard from "../components/ThreadCard.vue";
+import { AppState } from "../AppState.js";
 
+const account = computed(() => AppState.account)
+const posts = computed(() => AppState.posts)
 
 </script>
 
@@ -39,8 +43,8 @@ import ThreadCard from "../components/ThreadCard.vue";
       
       <!-- //!SECTION - Comments -->
       <!-- //FIXME - Need to v-for over these comments -->
-      <div class="row me-0 justify-content-end">
-        <CommentCard class="collapse" id="comments"/>
+      <div v-for="post in posts" :key="post.id" class="row me-0 justify-content-end">
+        <CommentCard :post="post" class="collapse" id="comments"/>
       </div>
       
   </div>

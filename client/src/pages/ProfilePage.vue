@@ -1,10 +1,27 @@
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import CommentCard from "../components/CommentCard.vue";
+import Pop from "../utils/Pop.js";
+import { profileService } from "../services/ProfileService.js";
+import { useRoute } from "vue-router";
 
+const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
+
+async function getProfile(){
+  try {
+    await profileService.getProfile(route.params.profileId)
+  } catch (error) {
+    Pop.toast("Could not get profile", 'error')
+    console.error(error)
+  }
+}
+
+onMounted(() => {
+  getProfile()
+})
 
 </script>
 

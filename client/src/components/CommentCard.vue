@@ -1,4 +1,7 @@
 <script setup>
+import { Post } from "../models/Post.js";
+
+defineProps({post: Post})
 
 </script>
 
@@ -8,7 +11,7 @@
           <div class="card bg-teal p-2 m-4">
             <div class="row">
             <div class="col-12 col-md-1">
-              <img class="comment-img d-inline" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">
+              <img class="comment-img d-inline" :src="post?.creator.picture" alt="Michael">
             </div>
             <div class="col-10 col-sm-11 col-md-10">
               <p class="d-inline ps-2">Profile Name</p>
