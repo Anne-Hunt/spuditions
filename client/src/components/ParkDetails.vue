@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
+import GMap from './GMap.vue';
 
 
 
@@ -41,8 +42,8 @@ const icon = {
 	'ATVs, UTVs, Motorbikes': 'mdi mdi-atv'
 }
 
-async function changeVisitedStatus(){
-	
+async function changeVisitedStatus() {
+
 }
 
 </script>
@@ -147,9 +148,10 @@ async function changeVisitedStatus(){
 			</div>
 		</div>
 
-		<div>
+		<div class="d-flex justify-content-center">
 			<GMap />
 		</div>
+
 	</section>
 </template>
 
