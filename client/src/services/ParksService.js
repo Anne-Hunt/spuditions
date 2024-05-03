@@ -32,6 +32,16 @@ class ParksService {
     AppState.activePark = park
   }
 
+
+  
+
+  async createReview() {
+	// TODO: create function
+  }
+
+  async markVisited() {
+   // TODO: create function
+  }
 }
 
 export const parksService = new ParksService()

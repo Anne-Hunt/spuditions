@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
 import GMap from './GMap.vue';
-
+import ParkFormModal from './ParkFormModal.vue';
 
 
 const park = computed(() => AppState.activePark)
@@ -80,7 +80,8 @@ async function changeVisitedStatus() {
 				<div class="text-md-start mt-5 d-flex gap-3">
 
 					<!-- TODO: get marked visited button working -->
-					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0">
+					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+						title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
 						Mark As Visited
 					</button>
 
@@ -158,6 +159,8 @@ async function changeVisitedStatus() {
 		</div>
 
 	</section>
+
+	<ParkFormModal />
 </template>
 
 
