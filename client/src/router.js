@@ -22,7 +22,7 @@ const routes = [
     component: loadPage('SearchPage')
   },
   {
-    path: '/forums',
+    path: '/forums/general',
     name: 'General Chat Forum',
     component: loadPage('GeneralChatForum')
   },
@@ -32,17 +32,17 @@ const routes = [
     component: loadPage('ParksList')
   },
   {
-    path: '/parksForum',
+    path: '/forums/parks',
     name: 'Parks Forum',
     component: loadPage('ParksForum')
   },
   {
-    path: '/groupsForum',
+    path: '/forums/groups',
     name: 'Groups Forum',
     component: loadPage('GroupsForum')
   },
   {
-    path: '/equipmentForum',
+    path: '/forums/equipment',
     name: 'Equipment Forum',
     component: loadPage('EquipmentForum')
   },

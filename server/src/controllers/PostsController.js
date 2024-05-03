@@ -10,6 +10,7 @@ export class PostsController extends BaseController {
         this.router
             .use(Authware.AuthGuard)
             .post('', this.createPost)
+            .put('/:postId', this.editPost)
             .delete('/:postId', this.destroyPost)
     }
 
@@ -21,6 +22,18 @@ export class PostsController extends BaseController {
             const postData = request.body
             postData.creatorId = user.id
             const post = await postsService.createPost(postData)
+            response.send(post)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async editPost(request, response, next) {
+        try {
+            const user = request.userInfo
+            const postData = request.body
+            const postId = request.params.postId
+            const post = await postsService.editPost(postData, postId, user)
             response.send(post)
         } catch (error) {
             next(error)
