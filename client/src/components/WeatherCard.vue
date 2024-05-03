@@ -12,7 +12,7 @@ defineProps({
 <template>
 	<div class="col-12 col-md-4 col-lg-3 col-xl-2 vertical text-center p-1">
 
-		<h3 class="day">{{ weather.date.toLocaleString('en-us', option) }}</h3>
+		<h3 class="day mt-2">{{ weather.date.toLocaleString('en-us', option) }}</h3>
 
 		<div class="forecast">
 			<img :src="weather.WeatherIcon" :alt="'icon of' + weather.main">
