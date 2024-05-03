@@ -1,9 +1,16 @@
 import { dbContext } from "../db/DbContext.js"
+import { ThreadSchema } from "../models/Thread.js"
 import { Forbidden } from "../utils/Errors.js"
+import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 
 
 class ThreadsService {
+    async searchThreads(query) {
+        QueryBuilder.build(ThreadSchema, query)
+        const threads = await dbContext.Thread.find(query)
+        return threads
+    }
 
     //!SECTION - Creates a thread forming data from the thread model
     async createThread(threadData) {

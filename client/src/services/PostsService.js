@@ -11,6 +11,19 @@ class PostsService{
         AppState.posts = posts
       }
 
+      async getPosts(){
+        AppState.posts = []
+        const response = await api.get(`api/posts/:threadId`)
+        const posts = response.data.map(postData => new Post(postData))
+        AppState.posts = posts
+      }
+
+      async getPostsByUser(){
+        AppState.posts = []
+        const response = await api.get(`api/profile/:profileId`)
+        const posts = response.data.map(postData => new Post(postData))
+        AppState.posts = posts
+      }
 }
 
 export const postsService = new PostsService()

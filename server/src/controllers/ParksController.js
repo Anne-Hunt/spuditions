@@ -35,11 +35,12 @@ export class ParksController extends BaseController {
       next(error)
     }
   }
-
+  //!SECTION - searches parks and returns potential matches
   async searchParks(request, response, next) {
     try {
       const query = request.body
       const results = await parksService.searchParks(query)
+      response.send(results)
     } catch (error) {
       next(error)
     }

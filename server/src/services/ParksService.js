@@ -1,11 +1,14 @@
 import { dbContext } from "../db/DbContext.js"
+import { ParkSchema } from "../models/Park.js"
+import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 
 
 
 class ParksService {
   async searchParks(query) {
-    const results = await dbContext.Park.find()
+    QueryBuilder.build(ParkSchema, query)
+    const results = await dbContext.Park.find(query)
     return results
   }
 
