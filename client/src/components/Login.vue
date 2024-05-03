@@ -7,14 +7,6 @@ import { authService } from '../services/AuthService.js';
 const user = computed(() => AppState.user)
 const account = computed(() => AppState.account)
 
-function login() {
-	router.push({ name: "Login" })
-}
-
-function register() {
-	router.push({ name: "Register" })
-}
-
 function logout() {
 	authService.logout()
 }
@@ -23,12 +15,12 @@ function logout() {
 
 <template>
 	<span class="navbar-text text-center">
-		<button class="d-md-inline d-block mx-auto me-md-1 btn selectable text-light lighten-30 text-uppercase" @click="login" v-if="!user">
+		<router-link :to="{name: 'Login'}" class="d-md-inline d-block me-md-1 btn selectable text-light lighten-30 text-uppercase" v-if="!user">
 			Login
-		</button>
-        <button class="btn btn-orange selectable text-light lighten-30 text-uppercase" @click="register" v-if="!user">
+        </router-link>
+        <router-link :to="{name: 'Register'}" class="btn btn-orange selectable text-light lighten-30 text-uppercase" v-if="!user">
 			Register
-		</button>
+		</router-link>
 		<div v-else>
 			<div class="dropdown my-2 my-lg-0">
 				<div type="button" class="border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false">

@@ -48,7 +48,7 @@ onMounted(() => {
 				</li>
 			</ul>
 
-			<div v-if="router.currentRoute.value.name != 'Home' && router.currentRoute.value.name != 'Login'"
+			<div v-if="router.currentRoute.value.name != 'Home' && router.currentRoute.value.name != 'Login' && router.currentRoute.value.name != 'Register'"
 				class="order-3 order-md-2 d-flex justify-content-center forestGreen my-md-0 mb-2">
 				<SearchBar />
 			</div>
