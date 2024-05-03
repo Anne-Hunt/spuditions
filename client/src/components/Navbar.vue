@@ -53,11 +53,11 @@ onMounted(() => {
 				<SearchBar />
 			</div>
 
-			<router-link :to="{ name: 'Login' }" class="order-2 order-md-3 text-center mb-2 my-md-0">
+			<div class="order-2 order-md-3 text-center mb-2 my-md-0">
 
 				<Login />
 
-			</router-link>
+            </div>
 			<!-- LOGIN COMPONENT HERE -->
 			<!-- <div>
         <button class="btn text-light" @click="toggleTheme"
