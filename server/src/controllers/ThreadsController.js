@@ -10,7 +10,7 @@ export class ThreadsController extends BaseController {
         super('api/threads')
         this.router
             .get('', this.getThreads)
-            .get('search', this.searchThreads)
+            .get('/search', this.searchThreads)
             .get('/:threadId', this.getThreadById)
             .get('/:threadId/posts', this.getThreadPosts)
             .use(Authware.AuthGuard)

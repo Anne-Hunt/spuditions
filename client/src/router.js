@@ -57,6 +57,11 @@ const routes = [
     component: loadPage('LoginPage')
   },
   {
+    path: '/register',
+    name: 'Register',
+    component: loadPage('RegistrationPage')
+  },
+  {
     path: '/profile',
     name: 'Profile',
     component: loadPage('ProfilePage')
