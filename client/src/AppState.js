@@ -10,23 +10,33 @@ export const AppState = reactive({
     hasCookie: null,
     /** @type {{name, picture, id}} user info from Auth0*/ 
     user: null,
+  
     /** @type {import('./models/Account.js').Account} user info from the database*/
     account: null,
 
   /**@type {Park[]} */
     parks: [],
+
   /**@type {Park} */
   activePark: null,
+
   /**@type {Park[]} */
   carouselParks: [],
+
    /**@type {Weather[]} */
 	activeWeather: [],
+
   /**@type {Thread[]} */
   threads: [],
+
   /**@type {Post[]} */
   posts: [],
+
   /**@type {Profile[]} */
   profiles: [],
+
+  /**@type {Profile[]} */
+  activeProfile: null,
 
   searchTerm: '',
 })

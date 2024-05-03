@@ -6,7 +6,7 @@ import { api } from "./AxiosService.js"
 class ProfileService{
     async searchProfiles(searchQuery) {
         AppState.profiles = []
-        const response = await api.get(`api/profiles?query=${searchQuery}`)
+        const response = await api.get(`api/profiles/search?query=${searchQuery}`)
         const profiles = response.data.map(profileData => new Profile(profileData))
         AppState.profiles = profiles
       }
