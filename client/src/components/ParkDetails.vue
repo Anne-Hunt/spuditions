@@ -140,7 +140,6 @@ async function changeVisitedStatus() {
 						<div class="mt-1 text-center">
 							<i class="mdi mdi-information fs7 red"></i>&nbsp;
 							<i class="fs7">Non-resident charges are included on top of resident charges</i>
-							&nbsp;<i class="mdi mdi-information fs7 red"></i>
 						</div>
 						<hr>
 						<ul>
