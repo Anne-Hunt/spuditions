@@ -47,18 +47,21 @@ async function changeVisitedStatus() {
 
 }
 
+function getIconClass(activity) {
+    return icon[activity] ? icon[activity] + ' icon-color' : 'mdi mdi-tree icon-color';
+}
+
+
 </script>
 
 
 <template>
-	<section class="container-fluid" v-if="park">
-		<div class="row">
-			<div class="col" v-for="activity in activities" :key="activity">
-				<button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom"
-					data-bs-custom-class="custom-tooltip" :data-bs-title="activity" :activity="activity"
-					:class="icon[activity] || 'mdi mdi-tree'"></button>
-			</div>
-		</div>
+		<section class="container-fluid mt-md-0" v-if="park">
+        <div class="row">
+            <div class="col" v-for="activity in activities" :key="activity">
+                <button type="button" class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity" :activity="activity"></button>
+            </div>
+        </div>
 		<!-- Park Image -->
 		<div class="row mt-5">
 			<div class="col-12 col-md-7">
@@ -165,10 +168,16 @@ async function changeVisitedStatus() {
 
 
 <style lang="scss" scoped>
+
+.icon-color {
+    color: #3b3c25; /* Add your desired color here */
+}
+
 .imgShadow {
 	filter: drop-shadow(8px 10px 4px #696A42);
 
 }
+
 
 i {
 	font-size: xx-large;
@@ -198,9 +207,6 @@ a:hover {
 	font-size: 1em;
 }
 
-.btn {
-	border: 3px solid white;
-}
 
 .red {
 	color: #6700ed;

@@ -11,7 +11,7 @@ const backgroundColor = computed(() => {
 		case 'Home':
 			return '#FFFFFF'
 		case 'Park Details':
-			return '#A8A96A'
+			return '#FFFFFF'
 		case 'Forum':
 			return '#FFFFFF'
 		case 'About Us':
