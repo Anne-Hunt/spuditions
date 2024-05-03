@@ -92,7 +92,7 @@
   <!-- //FIXME - Need to v-for over these comments -->
   <div class="row me-0 justify-content-end">
     <div class="col-9">
-      <div class="card card-bg p-2 m-4 collapse.show" id="comments">
+      <div class="card card-bg p-2 m-4 collapse" id="comments">
         <div class="row">
         <div class="col-12 col-md-1">
           <img class="profile-img d-inline" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">

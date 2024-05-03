@@ -1,27 +1,4 @@
 <script setup>
-import { computed, onMounted } from "vue";
-import { AppState } from "../AppState.js";
-import { parksService } from "../services/ParksService.js";
-import { weathersService } from "../services/WeathersService.js";
-import Pop from "../utils/Pop.js";
-import { useRoute } from "../../node_modules/vue-router/dist/vue-router.js";
-
-const route = useRoute()
-const park = computed(() => AppState.activePark)
-
-async function getParkAndWeather() {
-	try {
-		await parksService.getParkById(route.params.parkId)
-		await weathersService.getWeather()
-	}
-	catch (error) {
-		Pop.error(error);
-	}
-}
-
-onMounted(() => {
-	getParkAndWeather()
-})
 
 </script>
 
@@ -76,7 +53,7 @@ onMounted(() => {
       <div class="p-3 mt-3 fw-bold">
         <h1 class="d-inline">Parks Forum</h1>
         <button class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
-        <h5 class="py-3">discuss {{ park.name }}</h5>
+        <h5 class="py-3">discuss {{ }}</h5>
       </div>
     </div>
 
@@ -115,7 +92,7 @@ onMounted(() => {
   <!-- //FIXME - Need to v-for over these comments -->
   <div class="row me-0 justify-content-end">
     <div class="col-9">
-      <div class="card card-bg p-2 m-4 collapse.show" id="comments">
+      <div class="card card-bg p-2 m-4 collapse" id="comments">
         <div class="row">
         <div class="col-12 col-md-1">
           <img class="profile-img d-inline" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">
