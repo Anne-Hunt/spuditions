@@ -19,7 +19,7 @@ export class ThreadsController extends BaseController {
     }
     async searchThreads(request, response, next) {
         try {
-            const result = await threadsService.searchThreads(request.params.query)
+            const result = await threadsService.searchThreads(request.query)
             response.send(result)
         } catch (error) {
             next(error)

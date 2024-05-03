@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, onUnmounted } from 'vue';
 import { AppState } from '../AppState.js';
 import Navbar from '../components/Navbar.vue';
 import PostResult from '../components/PostResult.vue';
@@ -7,20 +7,52 @@ import ParkResult from '../components/ParkResult.vue';
 import ThreadResult from '../components/ThreadResult.vue';
 import ProfileResult from '../components/ProfileResult.vue'
 import SearchBar from '../components/SearchBar.vue';
+import { useRoute } from 'vue-router';
+import Pop from '../utils/Pop.js';
+import { threadsService } from '../services/ThreadsService.js';
+import { profileService } from '../services/ProfileService.js';
+import { parksService } from '../services/ParksService.js';
+import { searchService } from '../services/SearchService.js';
 
 const parks = computed(()=> AppState.parks)
 const profiles = computed(()=> AppState.profiles)
 const threads = computed(()=> AppState.threads)
 const posts = computed(()=> AppState.posts)
 
+const route = useRoute()
+
+async function search() {
+    try {
+        await parksService.searchParks(route.params.query)
+		await profileService.searchProfiles(route.params.query)
+		await threadsService.searchThreads(route.params.query)
+    }
+    catch (error){
+      Pop.error(error);
+    }
+}
+
+async function clearSearch(){
+	try {
+		await searchService.clearSearch()
+	} catch (error) {
+		Pop.toast("Unable to clear search", 'error')
+	}
+}
+
+onMounted(() => {
+    search()
+})
+
+onUnmounted(() => {
+    clearSearch()
+})
+
 </script>
 
 <!-- //FIXME - Build out search page -->
 <template>
-<Navbar/>
-
 <div class="container justify-content-center">
-    <SearchBar class="col-md-8 col-10"/>
     <div class="row" v-for="park in parks" :key="park.id">
         <ParkResult :park="park"/>
     </div>
@@ -37,7 +69,7 @@ const posts = computed(()=> AppState.posts)
         <ProfileResult :profile="profile"/>
     </div>
 </div>
-    
+
 </template>
 
 

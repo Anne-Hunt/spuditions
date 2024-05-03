@@ -26,12 +26,7 @@ async function clearSearch(){
 
 async function search(){
 	try {
-		logger.log('sending search to multiple services', searchQuery.value)
-		await parksService.searchParks(searchQuery.value)
-		await profileService.searchProfiles(searchQuery.value)
-		await postsService.searchPosts(searchQuery.value)
-		await threadsService.searchThreads(searchQuery.value)
-		searchQuery.value = ''
+		this.router.push({ name: "Search Page", params: { query: searchQuery.value } })
 	} catch (error) {
 		logger.error('search failed', error)
 		Pop.toast("Unable to search", 'error')
