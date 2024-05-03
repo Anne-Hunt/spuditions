@@ -11,6 +11,7 @@ export class VisitedController extends BaseController {
             .get('', this.getVisited)
             .use(Authware.AuthGuard)
             .post('', this.postReview)
+            .delete('/:visitedId', this.destroyVisited)
     }
 
     //!SECTION - Gets visited status for users
@@ -35,7 +36,8 @@ export class VisitedController extends BaseController {
 
     async destroyVisited(request, response, next) {
         try {
-            const result = await visitedService.destroyVisited(request.params.visitedId)
+            const userInfo = request.userInfo
+            const result = await visitedService.destroyVisited(request.params.visitedId, userInfo)
             response.send(result)
         } catch (error) {
             next(error)
