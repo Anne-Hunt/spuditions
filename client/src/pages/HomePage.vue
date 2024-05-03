@@ -13,9 +13,19 @@ const parks = computed(() => AppState.parks)
 async function getParks() {
 	try {
 		await parksService.getParks()
+		setCarouselParks()
 	} catch (error) {
 		Pop.toast("Could not get Parks", 'error')
 		logger.error(error)
+	}
+}
+
+function setCarouselParks(){
+	for(let i = 0; i < 3; i++){
+		let chosen = []
+		let randomIndex = (Math.random() * AppState.parks.length)
+		chosen.push(AppState.parks[randomIndex])
+		AppState.carouselParks = chosen
 	}
 }
 
