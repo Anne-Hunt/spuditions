@@ -2,12 +2,14 @@
 import { computed } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
+import GMap from './GMap.vue';
 
 
 
 const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
 
+scroll(0, 0)
 
 const icon = {
 	'biking': `mdi mdi-bicycle`,
@@ -41,8 +43,8 @@ const icon = {
 	'ATVs, UTVs, Motorbikes': 'mdi mdi-atv'
 }
 
-async function changeVisitedStatus(){
-	
+async function changeVisitedStatus() {
+
 }
 
 </script>
@@ -135,6 +137,11 @@ async function changeVisitedStatus(){
 
 					<div class="costsBox mt-3 mt-md-5 mb-3 col-12 col-md-5">
 						<h4 class="text-center">Costs:</h4>
+						<div class="mt-1 text-center">
+							<i class="mdi mdi-information fs7 red"></i>&nbsp;
+							<i class="fs7">Non-resident charges are included on top of resident charges</i>
+							&nbsp;<i class="mdi mdi-information fs7 red"></i>
+						</div>
 						<hr>
 						<ul>
 							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
@@ -147,9 +154,10 @@ async function changeVisitedStatus(){
 			</div>
 		</div>
 
-		<div>
+		<div class="d-flex justify-content-center">
 			<GMap />
 		</div>
+
 	</section>
 </template>
 
@@ -190,5 +198,9 @@ a:hover {
 
 .btn {
 	border: 3px solid white;
+}
+
+.red {
+	color: #6700ed;
 }
 </style>

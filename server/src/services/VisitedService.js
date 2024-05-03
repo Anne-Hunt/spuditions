@@ -14,6 +14,10 @@ class VisitedService {
         const visited = await dbContext.Visited.create(visitedData)
         return visited
     }
+
+    async destroyVisited(visitedId) {
+
+    }
 }
 
 export const visitedService = new VisitedService()
