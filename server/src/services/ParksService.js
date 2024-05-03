@@ -4,6 +4,10 @@ import { dbContext } from "../db/DbContext.js"
 
 
 class ParksService {
+  async searchParks(query) {
+    const results = await dbContext.Park.find()
+    return results
+  }
 
   //!SECTION - Gets all of our parks
   async getParks() {

@@ -17,6 +17,17 @@ class PostsService {
         const posts = await dbContext.Post.find({ threadId: threadId }).populate('creator')
         return posts
     }
+    //!SECTION - edits specific post, checks for user's ownership or moderator
+    async editPost(postData, postId, user) {
+        const postEdit = await dbContext.Post.findById(postId)
+        if (!postEdit) throw new Error(`Unable to find post ${postId}`)
+        if (user.role != 'Moderator') {
+            if (postEdit.creatorId != user.id) throw new Forbidden("You shall not edit that which you have not created.")
+        }
+        postEdit.body = postData.body ?? postEdit.body
+        await postEdit.save()
+        return postEdit
+    }
 
     //!SECTION - Deletes posts and checks to make sure the post matches the creator
     async destroyPost(postId, userInfo) {
