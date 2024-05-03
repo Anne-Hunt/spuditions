@@ -9,6 +9,7 @@ import { logger } from "../utils/Logger.js";
 
 
 const parks = computed(() => AppState.parks)
+const carouselParks = computed(()=> AppState.carouselParks)
 
 async function getParks() {
 	try {
@@ -21,12 +22,12 @@ async function getParks() {
 }
 
 function setCarouselParks(){
-	for(let i = 0; i < 2; i++){
-		let chosen = []
-		let randomIndex = (Math.random() * AppState.parks.length)
-		chosen.push(AppState.parks[randomIndex])
-		AppState.carouselParks = chosen
+	AppState.carouselParks = []
+	for(let i = 0; i < 3; i++){
+		let randomIndex = (Math.floor((Math.random() * AppState.parks.length)))
+		AppState.carouselParks.push(AppState.parks[randomIndex])
 	}
+	logger.log("carousel", AppState.carouselParks)
 }
 
 onMounted(() => {
@@ -54,9 +55,36 @@ onMounted(() => {
   
 	<!-- Parks Loading To Page -->
 	<section>
- <div class="mb-5">
-		<ParkCarousel />
-	</div>
+		<div>
+			<div id="carouselExampleDark" class="carousel carousel-dark slide">
+				<!-- <div class="carousel-indicators hidden">
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+						aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+						aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+						aria-label="Slide 3"></button>
+				</div> -->
+				<div class="carousel-inner">
+					<div v-for="park in carouselParks" :key="park.id" class="carousel-item active carouselStyling"
+						data-bs-interval="10000">
+						<img :src="park?.imgUrl" class="d-block w-75 mx-auto rounded" :alt="park?.name">
+						<div class="carousel-caption d-none d-md-block mx-auto overflow">
+							<h2>{{park?.name}}</h2>
+							<h4>{{ park?.region }} | {{ park?.type }}</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="carousel-control-prev text-dark" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next text-dark" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
 	</section>
   
 	<!-- Populated correctly- not part of figma design -->
@@ -107,5 +135,33 @@ onMounted(() => {
 }
 }
 
+.hidden {
+  display: none;
+}
+
+.carousel-inner {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  height: 35vh; 
+  object-fit: cover;
+}
+
+.carousel-caption {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.overflow{
+	-webkit-line-clamp: 2;
+    overflow:hidden;
+}
 
 </style>

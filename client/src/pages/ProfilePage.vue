@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { AppState } from "../AppState.js";
+import CommentCard from "../components/CommentCard.vue";
 
 
 const profile = computed(() => AppState.activeProfile)
@@ -14,10 +15,10 @@ const profile = computed(() => AppState.activeProfile)
       <h3 class="fw-bold text-white">{Profile name}</h3>
     </div>
     <!-- //!SECTION - Clickable reputation potatoes -->
-    <div class="col text-end">
+    <div class="col-12 text-center">
       <img class="profile-img" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="">
     </div>
-    <div class="col-5 text-start d-flex align-items-center">
+    <div class="col-12 d-flex justify-content-center align-items-center pt-4">
       <img class="rotten-spud-img px-4 pb-2 selectable" src="/src/assets/img/rottenSpud.png" alt="">
       <h5 class="text-white">8</h5>
       <img class="spud-img px-4 selectable" src="/src/assets/img/spuditions.png" alt="">
@@ -29,12 +30,12 @@ const profile = computed(() => AppState.activeProfile)
     <div class="row justify-content-center mt-5">
       <div class="col-6 rounded bg-lightGreen p-3">
         <div class="row">
-          <div class="col-6 inner-border">
+          <div class="col-12 col-md-6 inner-border">
             <h4 class="text-white rounded bg-forestGreen text-center p-2">Threads Created:</h4>
             <!-- //FIXME - Add number of threads -->
             <h1 class="text-white text-center">#</h1>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <h4 class="text-white rounded bg-forestGreen text-center p-2">Replies Created:</h4>
             <!-- //FIXME - Add number of replies -->
             <h1 class="text-white text-center">#</h1>
@@ -44,7 +45,22 @@ const profile = computed(() => AppState.activeProfile)
     </div>
   </div>
 
-  
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-6 rounded bg-lightGreen p-3">
+        <h4 class="text-white rounded bg-forestGreen text-center p-2">You have visited {12} Idaho State Parks!</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-border"></div>
+
+  <h1 class="text-white text-center my-5">Threads:</h1>
+
+  <!-- //FIXME - v-for over comments -->
+  <div class="row me-0 justify-content-center">
+    <CommentCard/>
+  </div>
     
 </template>
 
@@ -75,5 +91,12 @@ const profile = computed(() => AppState.activeProfile)
 
 .inner-border{
   border-right: 2px solid white;
+}
+
+.bottom-border{
+  margin-top: 60px;
+  margin-right: 30px;
+  margin-left: 30px;
+  border-bottom: 4px solid white;
 }
 </style>
