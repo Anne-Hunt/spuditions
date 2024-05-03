@@ -19,10 +19,12 @@ const carouselParks = AppState.carouselParks
   </div>
   <div class="carousel-inner">
     <div v-for="park in carouselParks" :key="park.id" class="carousel-item active carouselStyling" data-bs-interval="10000">
-      <img :src="park.imgUrl" class="d-block w-75 mx-auto rounded" :alt="park.name">
-      <div class="carousel-caption d-none d-md-block mx-auto overflow">
-        <h5>{{park.name}}</h5>
-        <p>{{park.description}}</p>
+      <div :park="park">
+        <img :src="park?.imgUrl" class="d-block w-75 mx-auto rounded" :alt="park?.name">
+        <div class="carousel-caption d-none d-md-block mx-auto overflow">
+          <h5>{{park?.name}}</h5>
+          <p>{{park?.description}}</p>
+      </div>
       </div>
     </div>
     </div>
