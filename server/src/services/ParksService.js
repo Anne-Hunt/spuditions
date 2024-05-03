@@ -7,8 +7,8 @@ import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 class ParksService {
   async searchParks(query) {
-    QueryBuilder.build(ParkSchema, query)
-    const results = await dbContext.Park.find(query)
+    const searchQuery = QueryBuilder.build(ParkSchema, query)
+    const results = await dbContext.Park.find(searchQuery)
     return results
   }
 

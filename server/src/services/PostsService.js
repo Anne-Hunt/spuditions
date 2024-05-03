@@ -8,8 +8,8 @@ import { QueryBuilder } from "../utils/QueryBuilder.js"
 class PostsService {
     //!SECTION - searches posts from search bar
     async searchPosts(query) {
-        QueryBuilder.build(PostSchema, query)
-        const posts = await dbContext.Post.find(query)
+        const searchQuery = QueryBuilder.build(PostSchema, query)
+        const posts = await dbContext.Post.find(searchQuery)
         return posts
     }
 

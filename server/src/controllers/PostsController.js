@@ -8,8 +8,8 @@ export class PostsController extends BaseController {
     constructor() {
         super('api/posts')
         this.router
+            .get('/search', this.searchPosts)
             .use(Authware.AuthGuard)
-            .get('?query=:Query', this.searchPosts)
             .post('', this.createPost)
             .put('/:postId', this.editPost)
             .delete('/:postId', this.destroyPost)

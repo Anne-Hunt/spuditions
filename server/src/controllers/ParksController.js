@@ -10,7 +10,7 @@ export class ParksController extends BaseController {
         super('api/parks')
         this.router
             .get('', this.getParks)
-            .get('?query=:Query', this.searchParks)
+            .get('/search', this.searchParks)
             .get('/:parkId', this.getParkById)
             .get('/:parkId/visited', this.getVisitedByPark)
             .use(Authware.AuthGuard)
@@ -19,6 +19,7 @@ export class ParksController extends BaseController {
     async getVisitedByPark(request, response, next) {
         try {
             const visited = await visitedService.getVisitedByPark(request.params.parkId)
+            response.send(visited)
         } catch (error) {
             next(error)
         }
@@ -47,7 +48,7 @@ export class ParksController extends BaseController {
 
     async searchParks(request, response, next) {
         try {
-            const query = request.body
+            const query = request.query
             const results = await parksService.searchParks(query)
             response.send(results)
         } catch (error) {
