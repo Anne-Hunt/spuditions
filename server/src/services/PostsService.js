@@ -1,9 +1,17 @@
 import { dbContext } from "../db/DbContext.js"
+import { PostSchema } from "../models/Post.js"
 import { Forbidden } from "../utils/Errors.js"
+import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 
 
 class PostsService {
+    //!SECTION - searches posts from search bar
+    async searchPosts(query) {
+        QueryBuilder.build(PostSchema, query)
+        const posts = await dbContext.Post.find(query)
+        return posts
+    }
 
     //!SECTION - Creates posts by accessing the model and forming it to the data
     async createPost(postData) {

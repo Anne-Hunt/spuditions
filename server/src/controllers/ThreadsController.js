@@ -12,9 +12,18 @@ export class ThreadsController extends BaseController {
             .get('', this.getThreads)
             .get('/:threadId', this.getThreadById)
             .get('/:threadId/posts', this.getThreadPosts)
+            .get('?query=:Query', this.searchThreads)
             .use(Authware.AuthGuard)
             .post('', this.createThread)
             .delete('/:threadId', this.destroyThread)
+    }
+    async searchThreads(request, response, next) {
+        try {
+            const result = await threadsService.searchThreads(request.params.query)
+            response.send(result)
+        } catch (error) {
+            next(error)
+        }
     }
 
     async destroyThread(request, response, next) {

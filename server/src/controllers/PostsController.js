@@ -9,13 +9,21 @@ export class PostsController extends BaseController {
         super('api/posts')
         this.router
             .use(Authware.AuthGuard)
+            .get('?query=:Query', this.searchPosts)
             .post('', this.createPost)
             .put('/:postId', this.editPost)
             .delete('/:postId', this.destroyPost)
     }
 
+    async searchPosts(request, response, next) {
+        try {
+            const posts = await postsService.searchPosts(request.params.query)
+            response.send(posts)
+        } catch (error) {
+            next(error)
+        }
+    }
     //!SECTION - Creates posts, defines the user id & post data
-
     async createPost(request, response, next) {
         try {
             const user = request.userInfo

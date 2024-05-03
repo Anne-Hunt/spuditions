@@ -11,7 +11,11 @@ class ThreadsService{
         AppState.threads = threads
       }
 
-
+      async getThreads(){
+        const response = await api.get(`api/threads/:tag`)
+        const threads = response.data.map(threadData => new Thread(threadData))
+        AppState.threads = threads
+      }
 }
 
 export const threadsService = new ThreadsService()

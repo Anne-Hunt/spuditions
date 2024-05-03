@@ -49,6 +49,7 @@ export class ParksController extends BaseController {
         try {
             const query = request.body
             const results = await parksService.searchParks(query)
+            response.send(results)
         } catch (error) {
             next(error)
         }
