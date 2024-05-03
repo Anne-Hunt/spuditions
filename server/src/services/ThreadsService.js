@@ -7,8 +7,8 @@ import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 class ThreadsService {
     async searchThreads(query) {
-        QueryBuilder.build(ThreadSchema, query)
-        const threads = await dbContext.Thread.find(query)
+        const searchQuery = QueryBuilder.build(ThreadSchema, query)
+        const threads = await dbContext.Thread.find(searchQuery)
         return threads
     }
 

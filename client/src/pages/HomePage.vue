@@ -29,39 +29,32 @@ onMounted(() => {
 
 <template>
 	<!-- Video Hero -->
-	<section>
-
-		<video class="video-container" autoplay loop muted>
-			<source src="../assets/video/hero-video.mp4" type="video/mp4">
-		</video>
-		<h1 class="text-center">Visit A State Park Today!</h1>
-	</section>
-
-	<!-- SECTION Home Page Introduction -->
-
-	<section class="container-fluid heroText">
-		<div class="row">
-			<div class="col-12 col-lg-8 col-md-5 text-light">
-
-			</div>
+	<section class="position-relative">
+	<video id="video" class="video-container" autoplay loop muted>
+		<source src="../assets/video/hero-video.mp4" type="video/mp4">
+ </video>
+  
+	<div class="container overlay">
+		<div class="typewriter">
+		<h1 class="text-light fw-bold customSize">Visit A State Park Today</h1>
 		</div>
+	</div>
 	</section>
-
-
-	<div class="mb-5">
+  
+  
+	<!-- Parks Loading To Page -->
+	<section>
+ <div class="mb-5">
 		<ParkCarousel />
 	</div>
-
-	<!-- Parks Loading To Page -->
-
+	</section>
+  
 	<!-- Populated correctly- not part of figma design -->
-
 	<div v-for="park in parks" :key="park.id" class="col-4">
-    <ParkCard :park="park" />
-  </div>
-</template>
-
-
+	<ParkCard :park="park" />
+	</div>
+  </template>
+  
 
 
 
@@ -71,9 +64,38 @@ onMounted(() => {
 	width: 100%;
 	height: 65vh;
 	object-fit: cover;
+	
+}
+.overlay {
+	position: absolute;
+	width: 100%;
+	height: 65vh;
+	left: 10%;
+	top: 40%;
+	
+// 	.container {
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+.typewriter {
+  width: 40ch;
+  animation: typing 2s steps(27);
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 2em;
+}
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+.customSize {
+	font-size: 40px;
+}
 }
 
-.heroText {
-	color: var(--beigeSand);
-}
+
 </style>

@@ -17,7 +17,7 @@ const routes = [
     component: loadPage('AboutUsPage')
   },
   {
-    path: '/search',
+    path: '/search/:query',
     name: 'Search Page',
     component: loadPage('SearchPage')
   },
@@ -55,6 +55,16 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: loadPage('LoginPage')
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: loadPage('RegistrationPage')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: loadPage('ProfilePage')
   },
   {
     path: '/account',

@@ -1,4 +1,6 @@
 import { dbContext } from '../db/DbContext.js'
+import { AccountSchema } from '../models/Account.js'
+import { QueryBuilder } from '../utils/QueryBuilder.js'
 
 // IMPORTANT profiles should not be updated or modified in any way here. Use the AccountService
 
@@ -10,6 +12,13 @@ class ProfileService {
     async getProfileById(id) {
         const profile = await dbContext.Account.findById(id, '-password -ip')
         return profile
+    }
+
+    async searchProfile(searchQuery) {
+        const query = QueryBuilder.build(AccountSchema, searchQuery)
+        const profiles = await dbContext.Account.find(query, '-password -ip')
+
+        return profiles
     }
 
     /**

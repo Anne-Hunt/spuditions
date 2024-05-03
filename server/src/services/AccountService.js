@@ -81,8 +81,8 @@ class AccountService {
         // REVIEW Validation must be done here and not in model because we want the plaintext to be checked not the hashed version.
         let regex = /^[a-zA-Z0-9{\[\]}<>,.|:;`~!?@#$£%^&*()_\\\-=+'"/]{8,75}$/
         if (!regex.test(accountData.password)) {
-            regex = /^[a-zA-Z0-9{\[\]}<>,.|:;`~!?@#$£%^&*()_\\\-=+'"/]$/
-            if (regex.test(accountData.password)) {
+            let regex2 = /^[a-zA-Z0-9{\[\]}<>,.|:;`~!?@#$£%^&*()_\\\-=+'"/]{1,}$/
+            if (regex2.test(accountData.password)) {
                 throw new Error('Password must be between 8 and 75 characters.')
             } else {
                 throw new Error('Password contains an unsupported character. Passwords may only contain alphanumeric and select symbols.')
