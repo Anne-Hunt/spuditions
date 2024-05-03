@@ -19,6 +19,7 @@ export class ParksController extends BaseController {
     async getVisitedByPark(request, response, next) {
         try {
             const visited = await visitedService.getVisitedByPark(request.params.parkId)
+            response.send(visited)
         } catch (error) {
             next(error)
         }
