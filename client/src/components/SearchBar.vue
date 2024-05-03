@@ -42,10 +42,10 @@ async function search(){
 
 <!-- //FIXME - This is just a static form rn, still need to add functionality -->
 <template>
-	<form class="me-md-4">
+	<form class="me-md-4" @submit.prevent="search()">
 		<div class="input-group">
 			<input v-model="searchQuery" type="text" class="form-control" placeholder="Search" id="search-input">
-			<button class="btn btn-orange widthBtn p-0" @click="search"><i class="mdi mdi-magnify text-white fs-5"></i></button>
+			<button class="btn btn-orange widthBtn p-0" type="submit"><i class="mdi mdi-magnify text-white fs-5"></i></button>
 		</div>
 	</form>
 	<div v-if="searchTerm" class="mt-2"><div @click="clearSearch" role="button" class="btn btn-success clicky" title="clear search results">{{ searchTerm }}</div>
