@@ -9,6 +9,7 @@ import GMap from './GMap.vue';
 const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
 
+scroll(0,0)
 
 const icon = {
 	'biking': `mdi mdi-bicycle`,
