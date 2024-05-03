@@ -10,6 +10,7 @@ export class VisitedController extends BaseController {
         this.router
             .get('', this.getVisited)
             .use(Authware.AuthGuard)
+            .post('', this.postReview)
     }
 
     //!SECTION - Gets visited status for users
@@ -22,13 +23,23 @@ export class VisitedController extends BaseController {
         }
     }
 
-    async setVisited(request, response, next) {
+    async postReview(request, response, next) {
         try {
-
+            const reviewData = request.body
+            reviewData.creatorId = request.userInfo.id
+            const review = await visitedService.postReview(reviewData)
         } catch (error) {
             next(error)
         }
     }
 
+    async destroyVisited(request, response, next) {
+        try {
+            const result = await visitedService.destroyVisited(request.params.visitedId)
+            response.send(result)
+        } catch (error) {
+            next(error)
+        }
+    }
 
 }
