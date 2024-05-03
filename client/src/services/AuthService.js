@@ -11,6 +11,14 @@ class AuthService {
         this.fetchUserInfo()
     }
 
+    async register(accountData) {
+        await api.post('account/register', accountData)
+        const loginData = {}
+        loginData.email = accountData.email
+        loginData.password = accountData.password
+        await this.login(loginData)
+    }
+
     logout() {
         let date = new Date(0)
         document.cookie = `spuditions=logout; Max-Age=0; Path=/; Expires=${date};`
