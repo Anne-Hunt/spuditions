@@ -148,7 +148,6 @@ async function changeVisitedStatus(){
 		</div>
 
 		<div>
-			{{ park.location }}
 			<GMap />
 		</div>
 	</section>

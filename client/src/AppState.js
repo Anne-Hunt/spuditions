@@ -1,6 +1,9 @@
 import { reactive } from 'vue'
 import { Park } from "./models/Park.js"
 import { Weather } from './models/Weather.js'
+import { Thread } from './models/Thread.js'
+import { Post } from './models/Post.js'
+import { Profile } from './models/Profile.js'
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -12,18 +15,18 @@ export const AppState = reactive({
 
   /**@type {Park[]} */
     parks: [],
-
   /**@type {Park} */
   activePark: null,
-
   /**@type {Park[]} */
   carouselParks: [],
-
    /**@type {Weather[]} */
 	activeWeather: [],
+  /**@type {Thread[]} */
+  threads: [],
+  /**@type {Post[]} */
+  posts: [],
+  /**@type {Profile[]} */
+  profiles: [],
 
   searchTerm: '',
-  threads: [],
-  posts: [],
-  profiles: []
 })

@@ -3,18 +3,22 @@ import { computed } from 'vue';
 import { AppState } from '../AppState.js';
 import { Park } from '../models/Park.js';
 
-defineProps({park: Park})
+const park = computed(()=> AppState.activePark)
+
 
 </script>
 
 
 <template>
   <GMapMap
-      :center="park?.GmapsLocation"
+      :center="{lat: park.lat/1, lng: park.lng/1}"
       :zoom="7"
       map-type-id="terrain"
-      style="width: 500px; height: 200px"
+      style="width: 90vw; height: 200px"
   >
+      <GMapMarker
+          :position="{lat: park.lat/1, lng: park.lng/1}"
+      />
   </GMapMap>
 
 </template>

@@ -20,7 +20,21 @@ export class Park {
 
     get GmapsLocation(){
         const dataLoc = this.location
-        const latlong = dataLoc.split(' ')
+        const latlong = dataLoc.split(', ')
         return `{lat: ${latlong[0]}, lng: ${latlong[1]}}`
+    }
+
+    get lat(){
+      const dataLoc = this.location
+      const latlong = dataLoc.split(',')
+      const lat = parseFloat(latlong[0])
+      return lat
+    }
+
+    get lng(){
+      const dataLoc = this.location
+      const latlong = dataLoc.split(',')
+      const lng = parseFloat(latlong[1])
+      return lng
     }
 }
