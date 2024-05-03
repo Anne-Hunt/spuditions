@@ -32,8 +32,8 @@ onMounted(() => {
 			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse text-center" id="navbarText">
-			<ul class="navbar-nav me-auto gap-3">
+		<div class="collapse navbar-collapse text-center d-grid" id="navbarText">
+			<ul class="order-1 navbar-nav me-auto gap-md-3 w-100">
 				<li>
 					<router-link :to="{ name: 'About Us' }"
 						class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
@@ -49,11 +49,11 @@ onMounted(() => {
 			</ul>
 
 			<div v-if="router.currentRoute.value.name != 'Home' && router.currentRoute.value.name != 'Login'"
-				class="d-flex justify-content-center forestGreen my-md-0 my-2 mt-3">
+				class="order-3 order-md-2 d-flex justify-content-center forestGreen my-md-0 mb-2">
 				<SearchBar />
 			</div>
 
-			<router-link :to="{ name: 'Login' }" class="text-center my-0">
+			<router-link :to="{ name: 'Login' }" class="order-2 order-md-3 text-center my-2 my-md-0">
 
 				<Login />
 
