@@ -1,9 +1,9 @@
 <script setup>
-import { computed } from "vue";
 import { AppState } from "../AppState.js";
+import { Park } from "../models/Park.js";
 
-
-const parks = computed(() => AppState.parks)
+defineProps({park: Park})
+const carouselParks = AppState.carouselParks
 
 </script>
 
@@ -18,26 +18,13 @@ const parks = computed(() => AppState.parks)
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active carouselStyling" data-bs-interval="10000">
-      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/CDAPKWY-Scenic4-scaled.jpg" class="d-block w-75 mx-auto rounded" alt="...">
-      <div class="carousel-caption d-none d-md-block mx-auto">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
+    <div v-for="park in carouselParks" :key="park.id" class="carousel-item active carouselStyling" data-bs-interval="10000">
+      <img :src="park.imgUrl" class="d-block w-75 mx-auto rounded" :alt="park.name">
+      <div class="carousel-caption d-none d-md-block mx-auto overflow">
+        <h5>{{park.name}}</h5>
+        <p>{{park.description}}</p>
       </div>
     </div>
-    <div class="carousel-item carouselStyling" data-bs-interval="2000">
-      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/Bruneau_Panorama3-May-2017-scaled-e1605892154720.jpg" class="d-block w-75 mx-auto rounded" alt="...">
-      <div class="carousel-caption d-none d-md-block mx-auto">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item carouselStyling">
-      <img src="https://parksandrecreation.idaho.gov/wp-content/uploads/Dworshak-Cody-at-3M-scaled.jpeg" class="d-block w-75 mx-auto rounded" alt="...">
-      <div class="carousel-caption d-none d-md-block mx-auto">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -48,7 +35,6 @@ const parks = computed(() => AppState.parks)
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div>
 </div>
 </template>
 
@@ -79,5 +65,7 @@ const parks = computed(() => AppState.parks)
   padding: 10px;
 }
 
-
+.overflow{
+    overflow:hidden;
+}
 </style>

@@ -68,7 +68,7 @@
           </div>
           <div class="col-12 col-md-9 pb-2 order-2">
             <h1>Phyllis</h1>
-            <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+            <p class="fs-5 text-start">Anne began her career as a college English instructor teaching writing and rhetoric before tranisitoning to digital marketing in niche markets and finally full stack web development. She is constantly creating new projects and writing code. For more information please follow the links to Github or LinkedIn.</p>
           </div>
         </div>
       </div>
