@@ -3,10 +3,6 @@ import { computed, ref } from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
-import { parksService } from "../services/ParksService.js";
-import { profileService } from "../services/ProfileService.js";
-import { postsService } from "../services/PostsService.js";
-import { threadsService } from "../services/ThreadsService.js";
 import { searchService } from "../services/SearchService.js";
 import { router } from "../router.js";
 

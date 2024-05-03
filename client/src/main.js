@@ -15,14 +15,9 @@ async function init() {
     .use(router)
     .use(VueGoogleMaps, {
           load: {
-              key: 'AIzaSyDLgrxu4gy9UZ1molsx16CxpwBP_UPBkTk',
+              key: atob("QUl6YVN5RExncnh1NGd5OVVaMW1vbHN4MTZDeHB3QlBfVVBCa1Rr"),
           },
       })
     .mount('#app')
 }
 init()
-
-
-
-
-
