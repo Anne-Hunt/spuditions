@@ -11,7 +11,7 @@ const backgroundColor = computed(() => {
 		case 'Home':
 			return '#FFFFFF'
 		case 'Park Details':
-			return '#A8A96A'
+			return '#FFFFFF'
 		case 'Forum':
 			return '#FFFFFF'
 		case 'About Us':
@@ -33,9 +33,9 @@ const backgroundColor = computed(() => {
 		<main class="m-0 p-0 container-fluid background">
 			<router-view />
 		</main>
-        <footer>
-            <Footer/>
-        </footer>
+		<footer>
+			<Footer />
+		</footer>
 	</div>
 </template>
 
@@ -43,7 +43,7 @@ const backgroundColor = computed(() => {
 @import "./assets/scss/main.scss";
 
 main {
-    min-height: 100vh;
+	min-height: 100vh;
 }
 
 :root {
@@ -54,6 +54,8 @@ main {
 	--beigeSand: #B8914C;
 	--orange: #D9814F;
 	--teal: #A5C9C9;
+	--bgLightBlue: #2bb6cf;
+	--bgGreen: #22c122;
 
 
 	--lightGreen: #A8A96A;

@@ -39,7 +39,7 @@ async function createReview() {
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="parkFormModalLabel">Leave a review!</h1>
+					<h1 class="modal-title fs-5" id="parkFormModalLabel">Leave a Review!</h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -48,39 +48,44 @@ async function createReview() {
 					<form @submit.prevent="createReview()">
 
 						<div class="form-floating mb-3 text-center">
-							<div class="fs-5">Rate This Park</div>
+							<div class="fs-5 mb-2">Rate This Park</div>
 
 							<input type="hidden" v-model="editableReviewData.review" class="form-control rows" id="parkReview"
 								required min="1" max="5" />
 
-							<button @click="editableReviewData.review = 1" class="mx-2 starBtn"><i
-									class="mdi mdi-star-outline starBtnIcon fs-2"></i></button>
+							<button @click="editableReviewData.review = 1" class="mx-2 starBtn">
+								<span class="fa fa-star fs-2"></span>
+							</button>
 
-							<button @click="editableReviewData.review = 2" class="mx-2 starBtn"><i
-									class="mdi mdi-star-outline starBtnIcon fs-2"></i></button>
+							<button @click="editableReviewData.review = 2" class="mx-2 starBtn">
+								<span class="fa fa-star fs-2"></span>
+							</button>
 
-							<button @click="editableReviewData.review = 3" class="mx-2 starBtn"><i
-									class="mdi mdi-star-outline starBtnIcon fs-2"></i></button>
+							<button @click="editableReviewData.review = 3" class="mx-2 starBtn">
+								<span class="fa fa-star fs-2"></span>
+							</button>
 
-							<button @click="editableReviewData.review = 4" class="mx-2 starBtn"><i
-									class="mdi mdi-star-outline starBtnIcon fs-2"></i></button>
+							<button @click="editableReviewData.review = 4" class="mx-2 starBtn">
+								<span class="fa fa-star fs-2"></span>
+							</button>
 
-							<button @click="editableReviewData.review = 5" class="mx-2 starBtn"><i
-									class="mdi mdi-star-outline starBtnIcon fs-2"></i></button>
+							<button @click="editableReviewData.review = 5" class="mx-2 starBtn">
+								<span class="fa fa-star fs-2"></span>
+							</button>
 						</div>
 
 						<div class="form-floating mb-3">
 
 							<textarea v-model="editableReviewData.body" type="text" class="form-control rows" id="parkBody"
-								placeholder="Rating Reason" maxlength="500" cols="50">
+								placeholder="Rating Reason" maxlength="500">
 							</textarea>
 
 							<label for="postUrl">Reason for rating...</label>
 						</div>
 
 						<div class="text-end">
-							<button class="fs-4 text-light sendBtn rounded p-2 px-3" type="submit">
-								<div>Post <i class="mdi mdi-send"></i></div>
+							<button class=" sendBtn rounded p-2 px-3" type="submit">
+								<div class="text-light">Post&nbsp;&nbsp;<i class="mdi mdi-send"></i></div>
 							</button>
 						</div>
 
@@ -115,13 +120,17 @@ async function createReview() {
 	background-color: white;
 }
 
-.starBtnIcon {
-	border: none;
-	background-color: white;
+/* NOTE: This is for anyone who needs to know what the class is for changing the star colors */
+.checked {
+	color: orange;
 }
 
-.starBtnIcon:hover {
-	border: none;
-	background-color: gold;
+.fa-star:hover {
+	color: orange;
+	transition: 0.3s;
+}
+
+.fa-star:active {
+	color: orange;
 }
 </style>
