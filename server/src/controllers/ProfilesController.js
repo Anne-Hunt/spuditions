@@ -1,5 +1,6 @@
 import { profileService } from '../services/ProfileService.js'
 import { reputationService } from '../services/ReputationService.js'
+import { visitedService } from '../services/VisitedService.js'
 import BaseController from '../utils/BaseController'
 
 export class ProfilesController extends BaseController {
@@ -9,6 +10,16 @@ export class ProfilesController extends BaseController {
             .get('', this.getProfiles)
             .get('/:id', this.getProfile)
             .get('/:id/reputation', this.getReputationOnProfile)
+            .get('/:id/visited', this.getVisited)
+    }
+
+    async getVisited(request, response, next) {
+        try {
+            const visited = await visitedService.getVisited(request.params.id)
+            response.send(visited)
+        } catch (error) {
+            next(error)
+        }
     }
 
     async getReputationOnProfile(request, response, next) {

@@ -8,19 +8,9 @@ export class VisitedController extends BaseController {
     constructor() {
         super('api/visited')
         this.router
-            .get('', this.getVisited)
             .use(Authware.AuthGuard)
             .post('', this.postReview)
-    }
-
-    //!SECTION - Gets visited status for users
-    async getVisited(request, response, next) {
-        try {
-            const visited = await visitedService.getVisited()
-            response.send(visited)
-        } catch (error) {
-            next(error)
-        }
+            .delete('/:visitedId', this.destroyVisited)
     }
 
     async postReview(request, response, next) {
@@ -28,6 +18,7 @@ export class VisitedController extends BaseController {
             const reviewData = request.body
             reviewData.creatorId = request.userInfo.id
             const review = await visitedService.postReview(reviewData)
+            response.send(review)
         } catch (error) {
             next(error)
         }
@@ -35,7 +26,8 @@ export class VisitedController extends BaseController {
 
     async destroyVisited(request, response, next) {
         try {
-            const result = await visitedService.destroyVisited(request.params.visitedId)
+            const userInfo = request.userInfo
+            const result = await visitedService.destroyVisited(request.params.visitedId, userInfo)
             response.send(result)
         } catch (error) {
             next(error)
