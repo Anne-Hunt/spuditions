@@ -4,7 +4,6 @@ import Pop from "../utils/Pop.js";
 import { parksService } from "../services/ParksService.js";
 import { AppState } from "../AppState.js";
 import ParkCard from "../components/ParkCard.vue";
-import ParkCarousel from "../components/ParkCarousel.vue";
 import { logger } from "../utils/Logger.js";
 
 
@@ -22,13 +21,17 @@ async function getParks() {
 }
 
 function setCarouselParks(){
-	AppState.carouselParks = []
-	for(let i = 0; i < 3; i++){
-		let randomIndex = (Math.floor((Math.random() * AppState.parks.length)))
-		AppState.carouselParks.push(AppState.parks[randomIndex])
+	try {
+		AppState.carouselParks = []
+		let randomIndex = (Math.floor((Math.random() * (AppState.parks.length -=3))))
+		AppState.carouselParks.push(AppState.parks[randomIndex], AppState.parks[randomIndex + 1], AppState.parks[randomIndex + 2])
+		logger.log('parks in carousel', AppState.carouselParks)
+	} catch (error) {
+		logger.error("unable to select carousel parks", error)
+		Pop.toast("Unable to show carousel", 'error')
 	}
-	logger.log("carousel", AppState.carouselParks)
-}
+	}
+
 
 onMounted(() => {
 	getParks()
@@ -54,10 +57,36 @@ onMounted(() => {
   
   
 	<!-- Parks Loading To Page -->
-	<section>
+	<section class="container p-3">
 		<div>
-			<div id="carouselExampleDark" class="carousel carousel-dark slide">
-				<!-- <div class="carousel-indicators hidden">
+			<div id="carouselPark" class="carousel slide">
+				<div class="carousel-inner">
+					<div v-for="park in carouselParks" :key="park?.id" class="carousel-item active carouselStyling"
+						data-bs-interval="10000">
+						<RouterLink :to="{name: 'Park Details', params: {parkId: park?.id}}">
+							<div>
+								<img  :src="park?.imgUrl" class="d-block w-75 mx-auto rounded" :alt="park?.name">
+								<div class="carousel-caption d-block d-md-block mx-auto overflow">
+								<h2>{{park?.name}}</h2>
+								<h4>{{ park?.region }} | {{ park?.type }}</h4>
+								</div>
+							</div>
+					</RouterLink>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselPark" data-bs-slide="prev">
+					<span class="carousel-control-prev text-dark text-center" aria-hidden="true"><i class="mdi mdi-arrow-left fs-1"></i></span>
+					<!-- <span class="visually-hidden">Previous</span> -->
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselPark" data-bs-slide="next">
+					<span class="carousel-control-next text-dark" aria-hidden="true"><i class="mdi mdi-arrow-right fs-1"></i></span>
+					<!-- <span class="visually-hidden">Next</span> -->
+				</button>
+			</div>
+		</div>
+			<!--THE PROBLEM-->
+			<!-- <div id="carouselExampleDark" class="carousel carousel-dark slide">
+				<div class="carousel-indicators hidden">
 					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
 						aria-current="true" aria-label="Slide 1"></button>
 					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
@@ -65,7 +94,7 @@ onMounted(() => {
 					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
 						aria-label="Slide 3"></button>
 				</div> -->
-				<div class="carousel-inner">
+				<!-- <div class="carousel-inner">
 					<div v-for="park in carouselParks" :key="park.id" class="carousel-item active carouselStyling"
 						data-bs-interval="10000">
 						<img :src="park?.imgUrl" class="d-block w-75 mx-auto rounded" :alt="park?.name">
@@ -84,9 +113,8 @@ onMounted(() => {
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>
-		</div>
+		</div> -->
 	</section>
-  
 	<!-- Populated correctly- not part of figma design -->
 	<div v-for="park in parks" :key="park.id" class="col-4">
 	<ParkCard :park="park" />
