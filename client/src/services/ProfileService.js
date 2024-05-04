@@ -11,11 +11,10 @@ class ProfileService{
         AppState.profiles = profiles
       }
     
-    async getProfile(){
-      AppState.profiles = []
-      const response = await api.get(`api/profiles/:profileId`)
-      const profiles = response.data.maps(profileData => new Profile(profileData))
-      AppState.profiles = profiles
+    async getProfile(profileId){
+      AppState.activeProfile = null
+      const response = await api.get(`api/profiles/${profileId}`)
+      AppState.activeProfile = response.data
     }
 }
 

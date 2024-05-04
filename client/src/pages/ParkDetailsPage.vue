@@ -45,7 +45,7 @@ onMounted(() => {
 
 
 <template>
-	<div class="container-fluid pageColor">
+	<div class="container-fluid">
 
 		<section>
 			<ParkDetails />
@@ -84,15 +84,7 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
-.pageColor {
-	background-color: var(--lightGreen);
 
-	// REVIEW: Tell me (emma) how these look for a redesign
-	// background-color: #7db834;
-	// background-color: #8ac87f;
-	// background-color: #5cb25d;
-
-}
 
 .borderBtn {
 	border: solid #674520;
