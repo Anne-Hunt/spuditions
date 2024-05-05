@@ -16,6 +16,7 @@ export class Park {
       this.activities = data.activities
       this.logo = data.logo
       this.rating = data.rating
+      this.parkCode = data.parkCode
     }
 
     get GmapsLocation(){

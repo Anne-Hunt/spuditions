@@ -6,6 +6,7 @@ import { api } from "./AxiosService.js"
 
 
 class ParksService {
+
   async searchParks(searchQuery) {
     AppState.parks = []
     const response = await api.get(`api/parks/search?query=${searchQuery}`)

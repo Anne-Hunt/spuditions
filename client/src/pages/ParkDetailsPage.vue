@@ -7,6 +7,8 @@ import { AppState } from "../AppState.js";
 import ParkDetails from "../components/ParkDetails.vue";
 import WeatherCard from "../components/WeatherCard.vue";
 import { weathersService } from "../services/WeathersService.js";
+import { logger } from "../utils/Logger.js";
+import { nationalParksService } from "../services/NationaParksService.js";
 
 const forecastSetting = ref(false) // true == 5day false == today
 
@@ -23,6 +25,15 @@ async function getParkAndWeather() {
 	}
 	catch (error) {
 		Pop.error(error);
+	}
+}
+
+async function getWebcam(){
+	try {
+		await nationalParksService.getWebcam()
+	} catch (error) {
+		logger.error("Unable to get webcam", error)
+		Pop.toast("Unable to load webcam", error)
 	}
 }
 
