@@ -61,7 +61,7 @@ onMounted(() => {
 		<div>
 			<div id="carouselPark" class="carousel slide">
 				<div class="carousel-inner">
-					<div v-for="park in carouselParks" :key="park?.id" class="carousel-item active carouselStyling"
+					<div v-for="(park, i) in carouselParks" :key="park?.id" :class="i === 0 ? 'active carousel-item carouselStyling':'carousel-item carouselStyling'"
 						data-bs-interval="10000">
 						<RouterLink :to="{name: 'Park Details', params: {parkId: park?.id}}">
 							<div>

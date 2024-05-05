@@ -4,7 +4,6 @@ import { Weather } from './models/Weather.js'
 import { Thread } from './models/Thread.js'
 import { Post } from './models/Post.js'
 import { Profile } from './models/Profile.js'
-import { Review } from './models/Visited.js'
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -40,7 +39,4 @@ export const AppState = reactive({
   activeProfile: null,
 
   searchTerm: '',
-
-/**@type {Review[]} */
-  reviews: []
 })
