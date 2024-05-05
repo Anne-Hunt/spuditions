@@ -1,10 +1,24 @@
 import { Schema } from "mongoose";
 
 
-
 export const VisitedSchema = new Schema({
-    parkId: { type: Schema.ObjectId, required: true, ref: 'Park' },
     creatorId: { type: Schema.ObjectId, required: true, ref: 'Account' },
-    userRating: { type: Number, required: true, enum: [1, 2, 3, 4, 5] },
-    body: { type: String, maxLength: 500 }
-}, { timestamps: true })
+    parkId: { type: Schema.ObjectId, required: true, ref: 'Park' },
+    body: { type: String, maxLength: 500 },
+    userRating: { type: Number, max: 5, min: 1, required: true },
+}, { timestamps: true, toJSON: { virtuals: true } }
+)
+
+VisitedSchema.virtual('park', {
+    localField: 'creatorId',
+    ref: 'Account',
+    foreignField: '_id',
+    justOne: true
+})
+
+VisitedSchema.virtual('park', {
+    localField: 'parkId',
+    ref: 'Park',
+    foreignField: '_id',
+    justOne: true
+})
