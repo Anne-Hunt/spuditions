@@ -15,7 +15,7 @@ class AccountService {
 
 	async updateAccount(accountData) {
 		const response = await api.put('/account', accountData)
-		console.log('🧑‍🎨👍', response.data);
+		logger.log('🧑‍🎨👍', response.data);
 		AppState.account = new Account(response.data)
 	}
 }

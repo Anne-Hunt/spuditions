@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue';
 import { AppState } from '../AppState.js';
-import { Park } from '../models/Park.js';
 
 const park = computed(() => AppState.activePark)
 
