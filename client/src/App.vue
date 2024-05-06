@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router';
 import Navbar from './components/Navbar.vue'
 import { computed } from 'vue';
 import Footer from './components/Footer.vue'
+import 'floating-vue/dist/style.css'
 
 const route = useRoute()
 

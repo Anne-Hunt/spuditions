@@ -27,9 +27,9 @@ onMounted(() => {
 
 
 <template>
-    <div v-if="profile" class="container-fluid bg-forestGreen">
-        <div class="row me-0 align-items-center">
-            <div class="col-12 text-center p-4">
+    <div v-if="profile" class="container-fluid">
+        <div class="row me-0 align-items-center bg-forestGreen">
+            <div class="col-12 text-center p-3 pt-5">
                 <h3 class="fw-bold text-white">{{ profile.name }}</h3>
             </div>
             <div class="col-12 text-center">
@@ -38,13 +38,13 @@ onMounted(() => {
             <div class="col-12 text-center text-white pt-4 fs-4">
                 Reputation
             </div>
-            <div class="col-12 d-flex justify-content-center align-items-center">
-                <img v-if="profile.reputation < 0" class="rotten-spud-img px-4 pb-2 selectable" src="/src/assets/img/rottenSpud.png" alt="">
-                <img v-else class="spud-img px-4 selectable" src="/src/assets/img/spuditions.png" alt="">
+            <div class="col-12 d-flex justify-content-center align-items-center mt-1">
+                <img v-if="profile.reputation < 0" class="rotten-spud-img pe-3 pb-2 selectable" src="/src/assets/img/rottenSpud.png" alt="">
+                <img v-else class="spud-img pe-3 selectable" src="/src/assets/img/spuditions.png" alt="">
                 <h5 class="text-white"> {{ profile.reputation }}</h5>
             </div>
         </div>
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center pt-4 pb-5 bg-forestGreen">
             <div class="col-6 rounded bg-lightGreen p-3">
                 <div class="row">
                     <div class="col-12 col-md-6 inner-border">
@@ -59,7 +59,7 @@ onMounted(() => {
             </div>
         </div>
         <div class="row justify-content-center">
-            <h1 class="text-white text-center my-5">Threads:</h1>
+            <h1 class="text-dark text-center my-5">Threads:</h1>
 
             <CommentCard/>
         </div>

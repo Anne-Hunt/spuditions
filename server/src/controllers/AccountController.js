@@ -20,6 +20,7 @@ export class AccountController extends BaseController {
     async editAccount(request, response, next) {
         try {
             const account = await accountService.editAccount(request.userInfo, request.body)
+            response.send(account)
         } catch (error) {
             next(error)
         }

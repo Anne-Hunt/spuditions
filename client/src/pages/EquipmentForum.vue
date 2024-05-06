@@ -1,7 +1,9 @@
 <script setup>
 import CommentCard from "../components/CommentCard.vue";
+import ModalWrap from "../components/ModalWrap.vue";
 import Sidebar from "../components/Sidebar.vue";
 import ThreadCard from "../components/ThreadCard.vue";
+import ThreadModal from "../components/ThreadModal.vue";
 
 
 </script>
@@ -19,7 +21,10 @@ import ThreadCard from "../components/ThreadCard.vue";
     <div class="col-12">
       <div class="p-3 mt-3 fw-bold">
         <h1 class="d-inline">Equipment Forum</h1>
-        <button class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
+        <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
+        <ModalWrap modalId="create-thread-modal">
+          <ThreadModal/>
+        </ModalWrap>
         <h5 class="py-3">ask others for equipment recommendations</h5>
       </div>
     </div>
@@ -33,7 +38,7 @@ import ThreadCard from "../components/ThreadCard.vue";
 
   <!-- //!SECTION - Leave comment button -->
   <div class="col-12">
-    <button class="btn btn-primary float-end me-4">Leave Comment <i class="mdi mdi-plus"></i></button>
+    <button class="btn btn-primary float-end me-4 collapse" id="comments" >Leave Comment <i class="mdi mdi-plus"></i></button>
   </div>
 </div>    
   
