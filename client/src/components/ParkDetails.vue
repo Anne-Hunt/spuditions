@@ -100,11 +100,21 @@ function getIconClass(activity) {
 					<div class="mt-3 fs-5" v-if="park.region">
 						<b class="fontColorDk">Region:</b> {{ park?.region }}
 					</div>
-					<div class="mt-4 fs- text-center" v-if="park.webUrl">
-						<a :href="park?.webUrl" target="_blank"><b>Click Here For Park Website</b></a>
+					<div class="mt-4 fs-5 text-center d-flex">
+						<div v-if="park.webUrl">
+							<a :href="park?.webUrl" target="_blank" class="btn btn-">
+								<b>Click Here For Park Website</b>
+							</a>
+						</div>
+
+						<div>
+							<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+								title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
+								Mark As Visited
+							</button>
+						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		<!-- Costs Box and Buttons -->
