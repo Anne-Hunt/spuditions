@@ -75,6 +75,8 @@ function toggleShowAll() {
 				<h2 class="accordion-header">
 					<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
 						data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+ <!-- Image instead of dropdown arrow -->
+  <img src="/src/assets/img/spuditions.png" alt="Dropdown Arrow" class="spudDropDown">
 						Activities
 					</button>
 				</h2>
@@ -360,12 +362,3 @@ a:hover {
 	}
 }
 
-// // .activity-icons {
-// //   display: flex;
-// //   flex-wrap: wrap;
-// //   gap: 10px; 
-// // }
-
-// .activity-icons .btn {
-//  
-// }</style>
