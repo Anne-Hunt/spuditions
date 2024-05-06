@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { reviewService } from '../services/ReviewService.js';
+import { visitedService } from '../services/VisitedService.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 
@@ -11,9 +11,9 @@ const reviewData = ref({
 })
 
 
-async function createReview(){
+async function createVisited(){
     try {
-        await reviewService.createReview(reviewData)
+        await visitedService.createVisited(reviewData)
         reviewData.value = {body: '', rating: 0}
     } catch (error) {
         logger.error("Unable to review at this time", error)
@@ -25,7 +25,7 @@ async function createReview(){
 
 <template>
 <div class="p-3">
-    <form @submit.prevent="createReview()">
+    <form @submit.prevent="createVisited()">
     <div class="mb-3">
         <label for="body">Your review</label>
         <input type="textarea" v-model="reviewData.body" name="reviewBody" id="body">

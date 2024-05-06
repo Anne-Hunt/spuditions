@@ -104,7 +104,6 @@ function toggleShowAll() {
 			</div>
 		</div>
 
-
 		<!-- Park Image and Info -->
 		<div class="row mt-5 position-relative">
 			<div class="col-12 col-md-7">
@@ -292,6 +291,71 @@ a:hover {
 .red {
 	color: var(--lightGreen);
 }
+
+
+.accordion-header {
+	background-color: #f8f9fa;
+	border-bottom: 1px solid var(--forestGreen);
+}
+
+.accordion-header button {
+	color: var(--forestGreen);
+	font-weight: bold;
+}
+
+.accordion-header button:hover {
+	color: var(--forestGreen);
+}
+
+
+/* Styling for accordion body */
+.accordion-body {
+	background-color: #fff;
+	border-top: none;
+}
+
+.activity-icons {
+	margin-top: 10px;
+}
+
+.activity-icons .btn {
+	margin-right: 10px;
+}
+
+.spudDropDown {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	/* Adjust the right distance as needed */
+	transform: translateY(-50%);
+	width: 20px;
+	/* Adjust the width of the image */
+	height: auto;
+	/* Maintain aspect ratio */
+}
+
+.accordion-button {
+	position: relative;
+	padding-right: 40px;
+	/* Adjust the padding to leave space for the image */
+}
+
+.accordion-button::after {
+	display: none !important;
+}
+
+
+/* Styling for button */
+.btn-primary {
+	background-color: var(--forestGreen);
+	border-color: var(--lightGreen);
+}
+
+.btn-primary:hover {
+	background-color: var(--lightGreen);
+}
+
+
 
 @media only screen and (max-width: 767px) {
 	.widthCustom {
