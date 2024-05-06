@@ -1,12 +1,11 @@
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import Pop from "../utils/Pop.js";
 import { parksService } from "../services/ParksService.js";
 import { AppState } from "../AppState.js";
-import ParkCard from "../components/ParkCard.vue";
 import { logger } from "../utils/Logger.js";
 
-
+const searchQuery = ref('')
 const parks = computed(() => AppState.parks)
 const carouselParks = computed(() => AppState.carouselParks)
 
@@ -29,6 +28,15 @@ function setCarouselParks() {
 	} catch (error) {
 		logger.error("unable to select carousel parks", error)
 		Pop.toast("Unable to show carousel", 'error')
+	}
+}
+
+async function search(){
+	try {
+		this.router.push({ name: "Search Page", params: { query: searchQuery.value } })
+	} catch (error) {
+		logger.error('search failed', error)
+		Pop.toast("Unable to search", 'error')
 	}
 }
 
@@ -93,10 +101,32 @@ onMounted(() => {
 			</div>
 		</div>
 	</section>
-	<!-- Populated correctly- not part of figma design -->
-	<div v-for="park in parks" :key="park.id" class="col-4">
-		<ParkCard :park="park" />
+
+	<!--Search/Parks List-->
+	<section class="p-4"> 
+		<div class="row bg-dark rounded p-2">
+		<div class="col-12 col-md-3 d-flex align-items-center">
+			<div class="bg-warning rounded p-3">
+				<div class="my-2"><i class="mdi mdi-magnify fs-3"></i><span class="fs-3">Search</span></div>
+				<form @submit.prevent="search()">
+					<div class="form-floating mb-5">
+						<input class="form-control rounded" type="text" name="searchbar" id="searchBar">
+						<label for="searchbar text-light">@</label>
+					</div>
+					<button type="submit" class="btn btn-danger text-end">SEARCH</button>
+			</form>
+			</div>
+		</div>
+		<div class="col-12 col-md-9 text-light">
+			<h4 class="text-center">All Parks</h4>
+			<div class="row">
+				<div v-for="park in parks" :key="park.id" class="col-4">
+					<p>{{ park.name }}</p>
+				</div>
+			</div>
+		</div>
 	</div>
+	</section>
 </template>
 
 
