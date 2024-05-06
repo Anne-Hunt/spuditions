@@ -19,8 +19,6 @@ class DbContext {
   Thread = mongoose.model('Thread', ThreadSchema)
 
   Visited = mongoose.model('Visited', VisitedSchema)
-
-  Profile = mongoose.model('Profile', ProfileSchema)
 }
 
 export const dbContext = new DbContext()
