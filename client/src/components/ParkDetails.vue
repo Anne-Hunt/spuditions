@@ -58,9 +58,9 @@ const topFiveActivities = computed(() => {
 });
 
 // Method
-function showAllActivities() {
-  showAll.value = true;
-}
+  function toggleShowAll() {
+    showAll.value = !showAll.value;
+  }
 </script>
 
 
@@ -80,22 +80,27 @@ function showAllActivities() {
         <div id="flush-collapseOne" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
             <!-- Show the top 5 most popular activities -->
-            <div class="activity-icons">
-				<VTooltip>
-					<i v-for="(activity, index) in topFiveActivities" :key="index" class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
-                :activity="activity"></i>
-				<template #popper>{{ activity }}</template>
-				</VTooltip>
+            <div class="activity-icons d-flex flex-wrap">
+<template v-for="(activity, index) in topFiveActivities" :key="index">
+  <VTooltip>
+    <i class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
+      data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
+      :activity="activity"></i>
+    <template #popper>{{ activity }}</template>
+  </VTooltip>
+</template>
 			</div>
 
 
             <!-- Button to view more activities -->
-            <button class="btn btn-primary" @click="showAllActivities">Show All Activities</button>
+            <button class="btn btn-primary" @click="toggleShowAll">
+				{{ showAll ? 'Close All' : 'Show All' }} Activities</button>
           </div>
         </div>
       </div>
     </div>
+
+
 		<!-- Park Image and Info -->
 		<div class="row mt-5 position-relative">
 			<div class="col-12 col-md-7">
