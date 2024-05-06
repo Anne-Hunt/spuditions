@@ -49,6 +49,17 @@ function sanitizeBody(body) {
 
 class AccountService {
 
+    async editAccount(userInfo, accountData) {
+        const account = await dbContext.Account.findById(userInfo, '-password -ip')
+        if (!account) throw new Error("Invalid session")
+
+        account.name = accountData.name ?? account.name
+        account.picture = accountData.picture ?? account.picture
+
+        await account.save()
+        return account
+    }
+
     async fetchUserInfo(id) {
         const account = await dbContext.Account.findById(id, '-password -ip')
         if (!account) throw new Error('Invalid session')
