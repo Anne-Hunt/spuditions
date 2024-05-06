@@ -9,7 +9,7 @@ export class ReputationController extends BaseController {
             .use(Authware.AuthGuard)
             .post('', this.postReputation)
             .put('/:reputationId', this.editReputation)
-            .delete('/:reputationId')
+            .delete('/:reputationId', this.destroyReputation)
     }
 
     async destroyReputation(request, response, next) {
