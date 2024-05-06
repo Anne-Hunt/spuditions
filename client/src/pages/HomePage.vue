@@ -50,7 +50,7 @@ onMounted(() => {
 
 		<div class="container-fluid overlay">
 			<div class="typewriter">
-				<div class="text-light fw-bold customSize d-flex flex-wrap">Visit A State Park Today</div>
+				<div class="text-light fw-bold customSize">Visit A State Park Today</div>
 			</div>
 		</div>
 	</section>
