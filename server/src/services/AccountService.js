@@ -50,7 +50,7 @@ function sanitizeBody(body) {
 class AccountService {
 
     async editAccount(userInfo, accountData) {
-        const account = await dbContext.Account.findById(userInfo, '-password -ip')
+        const account = await dbContext.Account.findById(userInfo.id, '-password -ip')
         if (!account) throw new Error("Invalid session")
 
         account.name = accountData.name ?? account.name
