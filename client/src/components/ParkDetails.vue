@@ -54,13 +54,13 @@ const showAll = ref(false);
 
 // Computed property
 const topFiveActivities = computed(() => {
-  return showAll.value ? activities.value : activities.value.slice(0, 5);
+	return showAll.value ? activities.value : activities.value.slice(0, 5);
 });
 
 // Method
-  function toggleShowAll() {
-    showAll.value = !showAll.value;
-  }
+function toggleShowAll() {
+	showAll.value = !showAll.value;
+}
 </script>
 
 
@@ -68,37 +68,41 @@ const topFiveActivities = computed(() => {
 
 
 <template>
-  <section class="container-fluid mt-md-0" v-if="park">
-    <div class="accordion accordion-flush row" id="accordionFlushExample">
-      <div class="accordion-item col-6">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            Activities
-          </button>
-        </h2>
+	<section class="container-fluid mt-md-0" v-if="park">
 
-        <div id="flush-collapseOne" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <!-- Show the top 5 most popular activities -->
-            <div class="activity-icons d-flex flex-wrap">
-<template v-for="(activity, index) in topFiveActivities" :key="index">
-  <VTooltip>
-    <i class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
-      data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
-      :activity="activity"></i>
-    <template #popper>{{ activity }}</template>
-  </VTooltip>
-</template>
+		<div class="accordion accordion-flush row" id="accordionFlushExample">
+			<div class="accordion-item col-12">
+				<h2 class="accordion-header">
+					<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
+						data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+						Activities
+					</button>
+				</h2>
+
+				<div id="flush-collapseOne" class="accordion-collapse collapse" v-if="park"
+					data-bs-parent="#accordionFlushExample">
+					<div class="accordion-body">
+						<!-- Show the top 5 most popular activities -->
+						<div class="activity-icons d-flex flex-wrap">
+							<template v-for="(activity, index) in topFiveActivities" :key="index">
+								<VTooltip>
+									<i class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
+										data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
+										:activity="activity"></i>
+									<template #popper>{{ activity }}</template>
+								</VTooltip>
+							</template>
+						</div>
+
+						<div class="d-flex justify-content-center">
+							<!-- Button to view more activities -->
+							<button class="btn btn-primary mt-3 mx-auto" @click="toggleShowAll">
+								{{ showAll ? 'Close All' : 'Show All' }} Activities</button>
+						</div>
+					</div>
+				</div>
 			</div>
-
-
-            <!-- Button to view more activities -->
-            <button class="btn btn-primary" @click="toggleShowAll">
-				{{ showAll ? 'Close All' : 'Show All' }} Activities</button>
-          </div>
-        </div>
-      </div>
-    </div>
+		</div>
 
 
 		<!-- Park Image and Info -->
@@ -304,5 +308,4 @@ a:hover {
 
 // .activity-icons .btn {
 //  
-// }
-</style>
+// }</style>
