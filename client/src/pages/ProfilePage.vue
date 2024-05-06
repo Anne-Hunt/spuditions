@@ -27,13 +27,13 @@ onMounted(() => {
 
 
 <template>
-  <div class="row me-0 align-items-center">
+  <div v-if="profile" class="row me-0 align-items-center">
     <div class="col-12 text-center p-4">
-      <h3 class="fw-bold text-white">{Profile name}</h3>
+      <h3 class="fw-bold text-white">{{ profile.name }}</h3>
     </div>
     <!-- //!SECTION - Clickable reputation potatoes -->
     <div class="col-12 text-center">
-      <img class="profile-img" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="">
+      <img class="profile-img" :src="profile.picture" alt="">
     </div>
     <div class="col-12 d-flex justify-content-center align-items-center pt-4">
       <img class="rotten-spud-img px-4 pb-2 selectable" src="/src/assets/img/rottenSpud.png" alt="">
