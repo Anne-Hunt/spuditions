@@ -207,6 +207,17 @@ function getIconClass(activity) {
 	text-decoration: none;
 }
 
+.parkWebsiteLink:hover {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.579);
+	padding: 8px 16px;
+	color: #02a3e9;
+	text-decoration: none;
+}
+
 i {
 	font-size: xx-large;
 	color: var(--beigeSand);
