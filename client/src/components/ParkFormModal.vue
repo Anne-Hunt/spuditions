@@ -4,23 +4,29 @@ import { ref } from 'vue'
 import Pop from '../utils/Pop.js';
 import { Modal } from 'bootstrap';
 import { parksService } from '../services/ParksService.js';
+import { useRoute } from 'vue-router';
+import { AppState } from '../AppState.js';
+
+
+const route = useRoute()
 
 const editableReviewData = ref({
 	// REVIEW: review: 0 may break this somehow so keep your eye on it. Not sure what sets the default
-	review: 0,
+	userRating: 5,
 	body: '',
+	// isVisited: 
 })
 
 async function createReview() {
 	try {
 		logger.log('Creating review! ⭐', editableReviewData)
 		// NOTE .value pulls out the data stored inside of the ref object (whatever is inside the parentheses)
-
-		await parksService.createReview(editableReviewData.value)
+		const parkId = AppState.activePark.id
+		await parksService.createReview(editableReviewData.value, parkId)
 
 		// NOTE form.reset()
 		editableReviewData.value = {
-			review: 0,
+			userRating: 5,
 			body: '',
 		}
 
@@ -50,17 +56,17 @@ async function createReview() {
 						<div class="form-floating mb-3 text-center">
 							<div class="fs-5 mb-2">Rate This Park</div>
 
-							<input type="hidden" v-model="editableReviewData.review" class="form-control rows" id="parkRating"
-								required min="1" max="5" />
+							<!-- <input type="hidden" v-model="editableReviewData.review" class="form-control rows" id="parkRating"
+								required min="1" max="5" /> -->
 
 
-							<select class="form-select py-0 mb-5 fs-3" id="parkRating"
+							<select v-model="editableReviewData.userRating" class="form-select py-0 mb-5 fs-3" id="parkRating"
 								aria-label="Floating label select example">
-								<option value="1">⭐</option>
-								<option value="2">⭐⭐</option>
-								<option value="3">⭐⭐⭐</option>
-								<option value="4">⭐⭐⭐⭐</option>
-								<option selected value="5">⭐⭐⭐⭐⭐</option>
+								<option :value="1">⭐</option>
+								<option :value="2">⭐⭐</option>
+								<option :value="3">⭐⭐⭐</option>
+								<option :value="4">⭐⭐⭐⭐</option>
+								<option selected :value="5">⭐⭐⭐⭐⭐</option>
 							</select>
 
 							<!-- <button @click="editableReviewData.review = 1" class="mx-2 starBtn" role="button">

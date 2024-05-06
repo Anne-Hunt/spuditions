@@ -32,11 +32,13 @@ class ParksService {
   }
 
 	// TODO: get createReview working
-  async createReview(reviewData) {
-		const response = await api.post('api/visited', reviewData)
+  async createReview(parkId, reviewData) {
+		const response = await api.post(`api/parks/${parkId}/visited`, reviewData)
 		logger.log('CREATED REVIEW ⭐🔧', response.data)
 		const newReview = new Visited(response.data)
 		AppState.visited.unshift(newReview)
+
+		// const park.isVisited = true
 	}
 }
 
