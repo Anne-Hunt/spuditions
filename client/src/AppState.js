@@ -29,6 +29,9 @@ export const AppState = reactive({
   /**@type {Thread[]} */
   threads: [],
 
+  /**@type {Thread} */
+  activeThread: null,
+
   /**@type {Post[]} */
   posts: [],
 

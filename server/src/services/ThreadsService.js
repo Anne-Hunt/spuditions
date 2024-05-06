@@ -20,7 +20,7 @@ class ThreadsService {
 
     //!SECTION - Gets all of our threads
     async getThreads(query) {
-        const threads = await dbContext.Thread.find(query)
+        const threads = await dbContext.Thread.find(query).populate('creator')
         return threads
     }
 
