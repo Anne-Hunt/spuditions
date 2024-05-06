@@ -6,5 +6,6 @@ export class Post {
         this.creatorId = data.creatorId
         this.creator = new Account(data.creator)
         this.body = data.body
+        this.threadId = data.threadId
     }
 }
