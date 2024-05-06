@@ -43,7 +43,12 @@ onMounted(() => {
 
 <template>
 	<!-- Video Hero -->
-	<section class="position-relative">
+	<section class="imgText row align-items-center">
+		<div class="typewriter text-center">
+				<div class="text-light fw-bold"><h2>Visit A State Park Today</h2></div>
+			</div>
+	</section>
+	<section class="position-relative vidText">
 		<video id="video" class="video-container" autoplay loop muted>
 			<source src="../assets/video/hero-video.mp4" type="video/mp4">
 		</video>
@@ -106,6 +111,13 @@ onMounted(() => {
 
 }
 
+.typewriter {
+			width: 60ch;
+			animation: typing 2s steps(27);
+			font-family: monospace;
+			font-size: 1em;
+		}
+
 .overlay {
 	position: absolute;
 	width: 50%;
@@ -141,6 +153,12 @@ onMounted(() => {
 }
 
 @media screen and (min-width: 768px) and (max-width: 900px) {
+	.vidText{
+		display: contents;
+	}
+	.imgText{
+		display: none;
+	}
 	.overlay {
 		position: absolute;
 		width: 50%;
@@ -168,6 +186,19 @@ onMounted(() => {
 			font-size: 40px;
 		}
 	}
+}
+
+@media only screen and (max-width: 768px) {
+  .vidText {
+    display:none;
+  }
+  .imgText {
+	display:flex;
+	background-image: url('https://images.unsplash.com/photo-1599584290793-3cef41047738?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+	background-position: center;
+	max-width: 100%;
+	height: 40dvh;
+  }
 }
 
 
