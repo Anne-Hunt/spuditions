@@ -8,9 +8,9 @@
 		<div class="row bkcolor text-light p-3 py-md-4 px-md-5 w-100 m-0">
 			<div class="col-6 col-md-3 text-start">
 				<h5 class="fw-bold text-uppercase">Connect</h5>
-				<a href="/Forums" class="footlink">Forums</a><br>
-				<a href="/Search" class="footlink">Search</a><br>
-				<a href="/About" class="footlink">Contact Us</a>
+				<router-link :to="{ name: 'General Chat Forum' }" class="footlink">Forums</router-link><br>
+				<router-link :to="{ name: 'Search Page', params: { query: 'Park' } }" class="footlink">Search</router-link><br>
+				<router-link :to="{ name: 'About Us' }" class="footlink">About Us</router-link>
 			</div>
 			<div class="col-6 col-md-3">
 				<h5 class="fw-bold text-uppercase">Resources</h5>

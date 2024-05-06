@@ -62,7 +62,7 @@ const routes = [
     component: loadPage('RegistrationPage')
   },
   {
-    path: '/profile',
+    path: '/profile/:profileId',
     name: 'Profile',
     component: loadPage('ProfilePage')
   },

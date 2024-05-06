@@ -160,10 +160,10 @@ function getIconClass(activity) {
     </div>
 
 
-		
 
-	
-			
+
+
+
 
 		<div class="d-flex justify-content-center">
 			<GMap />
@@ -176,7 +176,6 @@ function getIconClass(activity) {
 
 
 <style lang="scss" scoped>
-
 .fontColorDk {
 	color: #3b3c25;
 }
@@ -186,7 +185,7 @@ function getIconClass(activity) {
 }
 
 .icon-color {
-    color: #3b3c25; 
+	color: #3b3c25;
 }
 
 .imgShadow {

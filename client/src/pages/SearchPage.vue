@@ -2,7 +2,6 @@
 import { computed, onMounted, onUnmounted } from 'vue';
 import { AppState } from '../AppState.js';
 import Navbar from '../components/Navbar.vue';
-import PostResult from '../components/PostResult.vue';
 import ParkResult from '../components/ParkResult.vue';
 import ThreadResult from '../components/ThreadResult.vue';
 import ProfileResult from '../components/ProfileResult.vue'
@@ -59,10 +58,6 @@ onUnmounted(() => {
     <hr>
     <div class="row" v-for="thread in threads" :key="thread.id">
         <ThreadResult :thread="thread"/>
-    </div>
-    <hr>
-    <div class="row" v-for="post in posts" :key="post.id">
-        <PostResult :post="post"/>
     </div>
     <hr>
     <div class="row" v-for="profile in profiles" :key="profile.id">
