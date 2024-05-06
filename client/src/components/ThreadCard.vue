@@ -37,6 +37,7 @@ defineProps({thread: Thread})
           </ModalWrap>
       </div>
       <div class="row me-0 justify-content-end">
+        <!-- //FIXME - The "show comments" button is attached to everything rn -->
         <CommentCard class="collapse" id="comments"/>
       </div>
 </template>
