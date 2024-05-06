@@ -3,7 +3,7 @@ import { AppState } from "../AppState.js"
 import { logger } from "../utils/Logger.js"
 
 const npsApi = axios.create({
-	baseURL: 'https://developer.nps.gov/api/',
+	baseURL: 'https://developer.nps.gov/',
 	timeout: 10000,
 	params: {
 	appid: 'q3UaeZF3jn0ALJgfRnxHAOjqeJKam0OrPLEciKe8'
@@ -13,7 +13,7 @@ const npsApi = axios.create({
 class NationalParksService{
 
     async getWebcam(parkCode) {
-        if(AppState.activePark.parkCode){
+        if(AppState.activePark.parkCode != 'yell'){
             return
         }
         const response = await npsApi.get(`api/v1/webcam/?parkCode=${parkCode}`)

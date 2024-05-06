@@ -51,6 +51,7 @@ async function changeForecast() {
 
 onMounted(() => {
 	getParkAndWeather()
+	getWebcam()
 })
 
 </script>
@@ -59,8 +60,10 @@ onMounted(() => {
 <template>
 	<div class="container-fluid">
 
-		<section>
-			<ParkDetails />
+		<section class="row">
+			<div class="col-10">
+				<ParkDetails />
+			</div>
 		</section>
 
 
