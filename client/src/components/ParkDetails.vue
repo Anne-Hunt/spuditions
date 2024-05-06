@@ -326,18 +326,14 @@ a:hover {
 	position: absolute;
 	top: 50%;
 	right: 10px;
-	/* Adjust the right distance as needed */
 	transform: translateY(-50%);
 	width: 20px;
-	/* Adjust the width of the image */
 	height: auto;
-	/* Maintain aspect ratio */
 }
 
 .accordion-button {
 	position: relative;
 	padding-right: 40px;
-	/* Adjust the padding to leave space for the image */
 }
 
 .accordion-button::after {
