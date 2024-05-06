@@ -79,15 +79,18 @@ function getIconClass(activity) {
 
 
 			<div class="col-12 col-md-5 mt-4 mt-md-0">
-				<div class="text-center text-md-start">
-					<h4 class="fontColorDk fw-bold">{{ park?.name }} , ID</h4>
-					<!-- Park Ratings -->
-					<div class="d-flex align-items-center">
-						<i class="mdi mdi-star p-1 fs-5"></i>
-						<i class="mdi mdi-star p-1 fs-5"></i>
-						<i class="mdi mdi-star p-1 fs-5"></i>
-						<i class="mdi mdi-star p-1 fs-5"></i>
-						<span class="selectable ms-4 fontColorDk">800 ratings</span>
+				<div>
+					<div class="text-center text-md-start">
+						<h4 class="fontColorDk fw-bold">{{ park?.name }} , ID</h4>
+
+						<!-- Park Ratings -->
+						<div class="d-flex align-items-center justify-content-center justify-content-md-start">
+							<i class="mdi mdi-star p-1 fs-5"></i>
+							<i class="mdi mdi-star p-1 fs-5"></i>
+							<i class="mdi mdi-star p-1 fs-5"></i>
+							<i class="mdi mdi-star p-1 fs-5"></i>
+							<span class="selectable ms-4 fontColorDk">800 ratings</span>
+						</div>
 					</div>
 					<!-- Park Info -->
 					<div class="fs-5 mt-4" v-if="park.type">
@@ -106,6 +109,12 @@ function getIconClass(activity) {
 						<b class="fontColorDk">Region:</b> {{ park?.region }}
 					</div>
 				</div>
+				<div class="mt-5 text-center">
+					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+						title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
+						Mark Park As Visited
+					</button>
+				</div>
 			</div>
 		</div>
 		<!-- Costs Box and Buttons -->
@@ -114,8 +123,8 @@ function getIconClass(activity) {
 				<div class="container-fluid">
 					<div class="row">
 						<!-- Costs Box -->
-						<div class="col-12 col-md-6">
-							<div class="box mt-3 mt-md-5 mb-3">
+						<div class="col-12 col-md-6 my-5">
+							<div class="box mb-3">
 								<h4 class="text-center">Costs:</h4>
 								<div class="mt-1 text-center">
 									<i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
@@ -130,14 +139,8 @@ function getIconClass(activity) {
 							</div>
 						</div>
 						<!-- Buttons -->
-						<div class="col-12 col-md-6">
-							<div class="text-md-start mt-5 d-flex flex-column align-items-center align-md-start">
-								<!-- TODO: get marked visited button working -->
-								<button @click="changeVisitedStatus()"
-									class="btn btn-orange borderBtn text-light mx-auto mx-md-0" title="Mark As Visited"
-									data-bs-toggle="modal" data-bs-target="#parkFormModal">
-									Mark As Visited
-								</button>
+						<div class="col-12 col-md-6 my-5">
+							<div class="text-md-start d-flex flex-column align-items-center align-md-start">
 								<!-- Learn More Button -->
 								<div class="text-center text-light" v-if="park.description">
 									<hr>
