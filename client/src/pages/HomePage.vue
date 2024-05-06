@@ -48,9 +48,9 @@ onMounted(() => {
 			<source src="../assets/video/hero-video.mp4" type="video/mp4">
 		</video>
 
-		<div class="container overlay">
+		<div class="container-fluid overlay">
 			<div class="typewriter">
-				<h1 class="text-light fw-bold customSize">Visit A State Park Today</h1>
+				<div class="text-light fw-bold customSize d-flex flex-wrap">Visit A State Park Today</div>
 			</div>
 		</div>
 	</section>
@@ -68,8 +68,8 @@ onMounted(() => {
 							<div>
 								<img :src="park?.imgUrl" class="d-block w-75 mx-auto rounded" :alt="park?.name">
 								<div class="carousel-caption d-block d-md-block mx-auto overflow">
-									<h2>{{ park?.name }}</h2>
-									<h4>{{ park?.region }} | {{ park?.type }}</h4>
+									<h5>{{ park?.name }}</h5>
+									<!-- <p class="mb-0">{{ park?.region }} | {{ park?.type }}</p> -->
 								</div>
 							</div>
 						</RouterLink>
@@ -138,8 +138,8 @@ onMounted(() => {
 
 .overlay {
 	position: absolute;
-	width: 100%;
-	height: 65vh;
+	width: 50%;
+	// height: 65vh;
 	left: 10%;
 	top: 40%;
 
@@ -149,8 +149,9 @@ onMounted(() => {
 	//   justify-content: center;
 	//   align-items: center;
 	// }
+
 	.typewriter {
-		width: 40ch;
+		width: 30ch;
 		animation: typing 2s steps(27);
 		white-space: nowrap;
 		overflow: hidden;
@@ -168,6 +169,37 @@ onMounted(() => {
 		font-size: 40px;
 	}
 }
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+	.overlay {
+		position: absolute;
+		width: 50%;
+		// height: 65vh;
+		left: 17%;
+		top: 40%;
+		padding: 0;
+
+		@keyframes typing {
+			from {
+				width: 0
+			}
+		}
+
+		.typewriter {
+			width: 60ch;
+			animation: typing 2s steps(27);
+			font-family: monospace;
+			font-size: 1em;
+		}
+
+		.customSize {
+			display: flex;
+			justify-content: center;
+			font-size: 40px;
+		}
+	}
+}
+
 
 .hidden {
 	display: none;
@@ -196,5 +228,15 @@ onMounted(() => {
 .overflow {
 	-webkit-line-clamp: 2;
 	overflow: hidden;
+}
+
+
+.imgWidth {
+	width: 90%;
+}
+
+.widthCustom {
+	width: 50%;
+	text-align: center;
 }
 </style>
