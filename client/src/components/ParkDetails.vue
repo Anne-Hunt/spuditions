@@ -58,9 +58,9 @@ const topFiveActivities = computed(() => {
 });
 
 // Method
-function showAllActivities() {
-  showAll.value = true;
-}
+  function toggleShowAll() {
+    showAll.value = !showAll.value;
+  }
 </script>
 
 
@@ -93,11 +93,14 @@ function showAllActivities() {
 
 
             <!-- Button to view more activities -->
-            <button class="btn btn-primary" @click="showAllActivities">Show All Activities</button>
+            <button class="btn btn-primary" @click="toggleShowAll">
+				{{ showAll ? 'Close All' : 'Show All' }} Activities</button>
           </div>
         </div>
       </div>
     </div>
+
+
 		<!-- Park Image and Info -->
 		<div class="row mt-5 position-relative">
 			<div class="col-12 col-md-7">
