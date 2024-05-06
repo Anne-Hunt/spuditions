@@ -17,6 +17,7 @@ class VisitedService {
     }
 
     async postVisited(visitedData) {
+        //*FIXME - THIS MAKES MAD CRAZY ERRORS
         // const previous = await dbContext.Visited.find({ parkId: visitedData.parkId, creatorId: visitedData.creatorId })
         // if (previous) throw new Error('You already left a review for this park.')
 
