@@ -65,25 +65,30 @@ function getIconClass(activity) {
 			</div>
 		</div>
 		<!-- Park Image and Info -->
-		<div class="row mt-5">
+		<div class="row mt-5 position-relative">
 			<div class="col-12 col-md-7">
-				<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
+				<!-- Park Image -->
+				<div class="position-relative">
+					<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
+					<!-- Overlay for Park Website Link -->
+					<a :href="park?.webUrl" target="_blank" class=" mb-3 parkWebsiteLink rounded">
+						Click Here For Park Website
+					</a>
+				</div>
 			</div>
-			<div class="col-12 col-md-5 mt-4 mt-md-0">
 
+
+			<div class="col-12 col-md-5 mt-4 mt-md-0">
 				<div class="text-center text-md-start">
 					<h4 class="fontColorDk fw-bold">{{ park?.name }} , ID</h4>
 					<!-- Park Ratings -->
-					<div class="d-flex align-items-center justify-content-center justify-content-md-start">
+					<div class="d-flex align-items-center">
 						<i class="mdi mdi-star p-1 fs-5"></i>
 						<i class="mdi mdi-star p-1 fs-5"></i>
 						<i class="mdi mdi-star p-1 fs-5"></i>
 						<i class="mdi mdi-star p-1 fs-5"></i>
 						<span class="selectable ms-4 fontColorDk">800 ratings</span>
 					</div>
-				</div>
-
-				<div>
 					<!-- Park Info -->
 					<div class="fs-5 mt-4" v-if="park.type">
 						<b class="fontColorDk">Park Type:</b> {{ park?.type }}
@@ -100,71 +105,57 @@ function getIconClass(activity) {
 					<div class="mt-3 fs-5" v-if="park.region">
 						<b class="fontColorDk">Region:</b> {{ park?.region }}
 					</div>
-					<div class="mt-4 fs-5 text-center d-flex">
-						<div v-if="park.webUrl">
-							<a :href="park?.webUrl" target="_blank" class="btn btn-">
-								<b>Click Here For Park Website</b>
-							</a>
-						</div>
-
-						<div>
-							<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
-								title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
-								Mark As Visited
-							</button>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 		<!-- Costs Box and Buttons -->
-		<div class="row mt-2 mb-5">
-			<div class="container-fluid">
-				<div class="d-flex flex-wrap">
-
-					<!-- Costs Box -->
-					<div class="col-12 col-md-7 order-2 order-md-1">
-						<div class="box mt-5 mb-3">
-							<h4 class="text-center">Costs:</h4>
-							<div class="mt-1 text-center">
-								<i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
-								<i class="fs7">Non-resident charges are included on top of resident charges</i>
-							</div>
-							<hr>
-							<ul>
-								<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
-									{{ cost }}
-								</li>
-							</ul>
-						</div>
-					</div>
-
-					<!-- Buttons -->
-					<div class="col-12 col-md-5 order-1 order-md-2">
-						<div class="text-md-start mt-5 d-flex flex-column align-items-center align-md-start">
-							<!-- TODO: get marked visited button working -->
-							<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
-								title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
-								Mark As Visited
-							</button>
-							<!-- Learn More Button -->
-							<div class="text-center text-light" v-if="park.description">
+		<div class="row mt-2">
+			<div class="col">
+				<div class="container-fluid">
+					<div class="row">
+						<!-- Costs Box -->
+						<div class="col-12 col-md-6">
+							<div class="box mt-3 mt-md-5 mb-3">
+								<h4 class="text-center">Costs:</h4>
+								<div class="mt-1 text-center">
+									<i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
+									<i class="fs7">Non-resident charges are included on top of resident charges</i>
+								</div>
 								<hr>
-								<p class="d-inline-flex gap-1 mx-auto">
-									<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
-										role="button" aria-expanded="false" aria-controls="collapseExample">
-										Click here to learn more
-									</a>
-								</p>
-								<div class="collapse mb-3" id="collapseExample">
-									<div class="card card-body text-start text-dark">
-										{{ park?.description }}
+								<ul>
+									<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+										{{ cost }}
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- Buttons -->
+						<div class="col-12 col-md-6">
+							<div class="text-md-start mt-5 d-flex flex-column align-items-center align-md-start">
+								<!-- TODO: get marked visited button working -->
+								<button @click="changeVisitedStatus()"
+									class="btn btn-orange borderBtn text-light mx-auto mx-md-0" title="Mark As Visited"
+									data-bs-toggle="modal" data-bs-target="#parkFormModal">
+									Mark As Visited
+								</button>
+								<!-- Learn More Button -->
+								<div class="text-center text-light" v-if="park.description">
+									<hr>
+									<p class="d-inline-flex gap-1 mx-auto">
+										<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
+											role="button" aria-expanded="false" aria-controls="collapseExample">
+											Click here to learn more
+										</a>
+									</p>
+									<div class="collapse mb-3" id="collapseExample">
+										<div class="card card-body text-start text-dark">
+											{{ park?.description }}
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -203,6 +194,17 @@ function getIconClass(activity) {
 
 }
 
+.parkWebsiteLink {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.579);
+	padding: 8px 16px;
+	color: white;
+	text-decoration: none;
+}
+
 i {
 	font-size: xx-large;
 	color: var(--beigeSand);
@@ -211,12 +213,13 @@ i {
 
 
 a {
-	color: #6700ed;
+	color: var(--lightGreen);
 	transition: 0.4s;
 }
 
 a:hover {
-	color: #3900ab;
+	color: var(--lightGreen);
+
 }
 
 .fs6 {
@@ -229,6 +232,6 @@ a:hover {
 
 
 .red {
-	color: #6700ed;
+	color: var(--lightGreen);
 }
 </style>
