@@ -30,7 +30,8 @@ async function getParkAndWeather() {
 
 async function getWebcam(){
 	try {
-		await nationalParksService.getWebcam()
+		const parkCode = AppState.activePark.parkCode
+		await nationalParksService.getWebcam(parkCode)
 	} catch (error) {
 		logger.error("Unable to get webcam", error)
 		Pop.toast("Unable to load webcam", error)
