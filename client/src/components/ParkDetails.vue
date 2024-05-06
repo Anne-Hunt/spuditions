@@ -108,51 +108,55 @@ function getIconClass(activity) {
 			</div>
 		</div>
 		<!-- Costs Box and Buttons -->
-		<div class="row mt-2 mb-5 container-fluid">
+		<div class="row mt-2 mb-5">
+			<div class="container-fluid">
+				<div class="d-flex flex-wrap">
 
-			<!-- Costs Box -->
-			<div class="col-12 col-md-7 order-2 order-md-1">
-				<div class="box mt-5 mb-3">
-					<h4 class="text-center">Costs:</h4>
-					<div class="mt-1 text-center">
-						<i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
-						<i class="fs7">Non-resident charges are included on top of resident charges</i>
+					<!-- Costs Box -->
+					<div class="col-12 col-md-7 order-2 order-md-1">
+						<div class="box mt-5 mb-3">
+							<h4 class="text-center">Costs:</h4>
+							<div class="mt-1 text-center">
+								<i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
+								<i class="fs7">Non-resident charges are included on top of resident charges</i>
+							</div>
+							<hr>
+							<ul>
+								<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+									{{ cost }}
+								</li>
+							</ul>
+						</div>
 					</div>
-					<hr>
-					<ul>
-						<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
-							{{ cost }}
-						</li>
-					</ul>
-				</div>
-			</div>
 
-			<!-- Buttons -->
-			<div class="col-12 col-md-5 order-1 order-md-2">
-				<div class="text-md-start mt-5 d-flex flex-column align-items-center align-md-start">
-					<!-- TODO: get marked visited button working -->
-					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
-						title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
-						Mark As Visited
-					</button>
-					<!-- Learn More Button -->
-					<div class="text-center text-light" v-if="park.description">
-						<hr>
-						<p class="d-inline-flex gap-1 mx-auto">
-							<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
-								role="button" aria-expanded="false" aria-controls="collapseExample">
-								Click here to learn more
-							</a>
-						</p>
-						<div class="collapse mb-3" id="collapseExample">
-							<div class="card card-body text-start text-dark">
-								{{ park?.description }}
+					<!-- Buttons -->
+					<div class="col-12 col-md-5 order-1 order-md-2">
+						<div class="text-md-start mt-5 d-flex flex-column align-items-center align-md-start">
+							<!-- TODO: get marked visited button working -->
+							<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+								title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
+								Mark As Visited
+							</button>
+							<!-- Learn More Button -->
+							<div class="text-center text-light" v-if="park.description">
+								<hr>
+								<p class="d-inline-flex gap-1 mx-auto">
+									<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
+										role="button" aria-expanded="false" aria-controls="collapseExample">
+										Click here to learn more
+									</a>
+								</p>
+								<div class="collapse mb-3" id="collapseExample">
+									<div class="card card-body text-start text-dark">
+										{{ park?.description }}
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
-
 		</div>
 
 
