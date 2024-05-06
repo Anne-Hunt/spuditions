@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import CommentCard from "../components/CommentCard.vue";
 import Sidebar from "../components/Sidebar.vue";
 import ThreadCard from "../components/ThreadCard.vue";
@@ -13,18 +13,22 @@ import PostModal from "../components/PostModal.vue";
 
 const account = computed(() => AppState.account)
 const posts = computed(() => AppState.posts)
+const threads = computed(() => AppState.threads)
 const route = useRoute()
 
 
-// async function getGeneralThread(){
-//   try {
-//     await threadsService.getSingleThread()
-    
-//   } catch (error) {
-//     Pop.toast("Could not get posts", 'error')
-//     console.error(error)
-//   }
-// }
+async function getThreads(){
+  try {
+    await threadsService.getThreads()
+  } catch (error) {
+    Pop.toast("Could not get threads", 'error')
+    console.error(error)
+  }
+}
+
+onMounted(() => {
+  getThreads()
+})
 
 </script>
 
@@ -49,28 +53,12 @@ const route = useRoute()
           </div>
         </div>
 
-        
         <!-- //!SECTION - Thread card -->
         <!-- //FIXME - Need to replace info with profiles and stuff -->
-        <div class="col-12">
-          <ThreadCard/>
-        </div>
-
-        <!-- //!SECTION - Leave comment button -->
-        <div class="col-12">
-          <button data-bs-toggle="modal" data-bs-target="#create-post-modal" class="btn btn-primary float-end me-4">Leave Comment <i class="mdi mdi-plus"></i></button>
-          <ModalWrap modalId="create-post-modal">
-            <PostModal/>
-          </ModalWrap>
+        <div v-for="thread in threads" :key="thread?.id" class="col-12">
+          <ThreadCard :thread="thread"/>
         </div>
       </div>    
-      
-      <!-- //!SECTION - Comments -->
-      <!-- //FIXME - Need to v-for over these comments -->
-      <div v-for="post in posts" :key="post.id" class="row me-0 justify-content-end">
-        <CommentCard :post="post" class="collapse" id="comments"/>
-      </div>
-      
   </div>
   </section>
 </template>

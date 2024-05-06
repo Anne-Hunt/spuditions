@@ -4,6 +4,7 @@ import { Weather } from './models/Weather.js'
 import { Thread } from './models/Thread.js'
 import { Post } from './models/Post.js'
 import { Profile } from './models/Profile.js'
+import { Visited } from './models/Visited.js'
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -15,7 +16,10 @@ export const AppState = reactive({
     account: null,
 
   /**@type {Park[]} */
-    parks: [],
+   parks: [],
+
+	/**@type {Visited[]} */
+	visited: [],
 
   /**@type {Park} */
   activePark: null,
@@ -28,6 +32,9 @@ export const AppState = reactive({
 
   /**@type {Thread[]} */
   threads: [],
+
+  /**@type {Thread} */
+  activeThread: null,
 
   /**@type {Post[]} */
   posts: [],

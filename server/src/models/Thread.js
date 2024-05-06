@@ -14,3 +14,10 @@ ThreadSchema.virtual('posts', {
     ref: 'Post',
     justOne: false
 })
+
+ThreadSchema.virtual('creator', {
+    localField: 'creatorId',
+    ref: 'Account',
+    foreignField: '_id',
+    justOne: true
+})
