@@ -5,7 +5,7 @@ import { api } from '../services/AxiosService.js'
 
 class AuthHandler {
     constructor() {
-        let hasCookie = document.cookie != ""
+        let hasCookie = document.cookie != "" && document.cookie.includes('spuditions=')
         if (!hasCookie) {
             AppState.hasCookie = hasCookie
             return

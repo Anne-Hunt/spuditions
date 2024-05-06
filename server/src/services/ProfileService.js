@@ -7,6 +7,7 @@ class ProfileService {
         const profile = await dbContext.Account.findById(id, '-password -ip')
 
         await profile.populate('threadCount')
+        await profile.populate('postCount')
 
         let result = JSON.parse(JSON.stringify(profile))
         const reputation = await dbContext.Reputation.aggregate([

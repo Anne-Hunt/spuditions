@@ -16,9 +16,9 @@ class ThreadsService{
         const response = await api.get(`api/threads/:tag`)
         const threads = response.data.map(threadData => new Thread(threadData))
         AppState.threads = threads
-      }
+    }
 
-      async getSingleThread(){
+    async getSingleThread() {
         const response = await api.get(`api/threads/:threadId`)
         const thread = response.data.map(threadData => new Thread(threadData))
         AppState.threads = thread

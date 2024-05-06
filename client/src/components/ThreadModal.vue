@@ -12,7 +12,6 @@ const threadData = ref({
   title: '',
   body: '',
   tags: '',
-  threadId: route.params.threadId
 })
 
 function resetForm(){
@@ -20,7 +19,6 @@ threadData.value = {
   title: '',
   body: '',
   tags: '',
-  threadId: route.params.threadId
 }
 }
 
