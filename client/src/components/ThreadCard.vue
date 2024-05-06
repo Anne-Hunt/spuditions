@@ -16,7 +16,7 @@ defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
                 </div>
                 <div class="pe-5 ps-3 w-100">
                     <span class="fw-bold fs-5"><span v-for="tag in thread.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> {{ thread.title }}</span>
-                    <p class="w-100" :class="{ 'noWrap' : !fullView }">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum delectus error esse ipsum nesciunt, sunt architecto! Asperiores nemo architecto ex soluta rem deleniti, placeat iste facilis, eveniet, omnis eligendi repellendus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore molestias recusandae consequuntur, iste dignissimos provident praesentium aperiam accusamus doloremque, nesciunt maiores! Placeat cupiditate enim quas consequatur quibusdam labore facilis laborum!</p>
+                    <p class="w-100" :class="{ 'noWrap' : !fullView }">{{ thread.body }}</p>
                 </div>
             </div>
             <div class="col-12">
