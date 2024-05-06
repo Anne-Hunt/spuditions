@@ -27,62 +27,43 @@ onMounted(() => {
 
 
 <template>
-  <div v-if="profile" class="row me-0 align-items-center">
-    <div class="col-12 text-center p-4">
-      <h3 class="fw-bold text-white">{{ profile.name }}</h3>
-    </div>
-    <!-- //!SECTION - Clickable reputation potatoes -->
-    <div class="col-12 text-center">
-      <img class="profile-img" :src="profile.picture" alt="">
-    </div>
-    <div class="col-12 text-center text-white pt-4 fs-4">
-        Reputation
-    </div>
-    <div class="col-12 d-flex justify-content-center align-items-center">
-        <img v-if="profile.reputation < 0" class="rotten-spud-img px-4 pb-2 selectable" src="/src/assets/img/rottenSpud.png" alt="">
-        <img v-else class="spud-img px-4 selectable" src="/src/assets/img/spuditions.png" alt="">
-        <h5 class="text-white"> {{ profile.reputation }}</h5>
-      
-    </div>
-  </div>
-
-  <!-- //!SECTION - Thread & Reply container -->
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-6 rounded bg-lightGreen p-3">
-        <div class="row">
-          <div class="col-12 col-md-6 inner-border">
-            <h4 class="text-white rounded bg-forestGreen text-center p-2">Threads Created:</h4>
-            <!-- //FIXME - Add number of threads -->
-            <h1 class="text-white text-center">#</h1>
-          </div>
-          <div class="col-12 col-md-6">
-            <h4 class="text-white rounded bg-forestGreen text-center p-2">Replies Created:</h4>
-            <!-- //FIXME - Add number of replies -->
-            <h1 class="text-white text-center">#</h1>
-          </div>
+    <div v-if="profile" class="container-fluid bg-forestGreen">
+        <div class="row me-0 align-items-center">
+            <div class="col-12 text-center p-4">
+                <h3 class="fw-bold text-white">{{ profile.name }}</h3>
+            </div>
+            <div class="col-12 text-center">
+                <img class="profile-img" :src="profile.picture" alt="">
+            </div>
+            <div class="col-12 text-center text-white pt-4 fs-4">
+                Reputation
+            </div>
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <img v-if="profile.reputation < 0" class="rotten-spud-img px-4 pb-2 selectable" src="/src/assets/img/rottenSpud.png" alt="">
+                <img v-else class="spud-img px-4 selectable" src="/src/assets/img/spuditions.png" alt="">
+                <h5 class="text-white"> {{ profile.reputation }}</h5>
+            </div>
         </div>
-      </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-6 rounded bg-lightGreen p-3">
+                <div class="row">
+                    <div class="col-12 col-md-6 inner-border">
+                        <h4 class="text-white rounded bg-forestGreen text-center p-2">Threads</h4>
+                        <h1 class="text-white text-center">{{ profile.threadCount }}</h1>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h4 class="text-white rounded bg-forestGreen text-center p-2">Posts</h4>
+                        <h1 class="text-white text-center">{{ profile.postCount }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <h1 class="text-white text-center my-5">Threads:</h1>
+
+            <CommentCard/>
+        </div>
     </div>
-  </div>
-
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-6 rounded bg-lightGreen p-3">
-        <h4 class="text-white rounded bg-forestGreen text-center p-2">You have visited {12} Idaho State Parks!</h4>
-      </div>
-    </div>
-  </div>
-
-  <div class="bottom-border"></div>
-
-  <h1 class="text-white text-center my-5">Threads:</h1>
-
-  <!-- //FIXME - v-for over comments -->
-  <div class="row me-0 justify-content-center">
-    <CommentCard/>
-  </div>
-    
 </template>
 
 
