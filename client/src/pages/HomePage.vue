@@ -43,21 +43,21 @@ onMounted(() => {
 
 <template>
 	<!-- Video Hero -->
-	<section class="imgText row align-items-center">
-		<div class="typewriter text-center">
-				<div class="text-light fw-bold"><h2>Visit A State Park Today</h2></div>
-			</div>
-	</section>
 	<section class="position-relative vidText">
 		<video id="video" class="video-container" autoplay loop muted>
 			<source src="../assets/video/hero-video.mp4" type="video/mp4">
 		</video>
-
+		
 		<div class="container-fluid overlay">
 			<div class="typewriter">
 				<div class="text-light fw-bold customSize">Visit A State Park Today</div>
 			</div>
 		</div>
+	</section>
+	<section class="imgText row align-items-center">
+		<div class="typewriter texty text-center">
+				<div class="text-light texty fw-bold"><h2 class="texty">Visit A State Park Today</h2></div>
+			</div>
 	</section>
 
 
@@ -159,6 +159,9 @@ onMounted(() => {
 	.imgText{
 		display: none;
 	}
+	.texty{
+		display: none !important;;
+	}
 	.overlay {
 		position: absolute;
 		width: 50%;
@@ -198,6 +201,9 @@ onMounted(() => {
 	background-position: center;
 	max-width: 100%;
 	height: 40dvh;
+  }
+  .texty{
+	display:contents !important;
   }
 }
 
