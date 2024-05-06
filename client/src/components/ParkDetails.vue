@@ -71,7 +71,7 @@ function toggleShowAll() {
 	<section class="container-fluid mt-md-0" v-if="park">
 
 		<div class="accordion accordion-flush row" id="accordionFlushExample">
-			<div class="accordion-item col-12">
+			<div class="accordion-item col-6">
 				<h2 class="accordion-header">
 					<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
 						data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -225,6 +225,30 @@ function toggleShowAll() {
 
 
 <style lang="scss" scoped>
+.accordion-button:not(.collapsed) {
+	color: var(--bs-accordion-active-color);
+	background-color: white;
+	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
+}
+
+.accordion-button:is(.collapsed) {
+	color: var(--bs-accordion-active-color);
+	background-color: white;
+	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
+}
+
+.accordion-button[data-v-81550567]:not(.collapsed) {
+	color: var(--forestGreen);
+	background-color: white;
+	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
+}
+
+.accordion-button[data-v-81550567]:is(.collapsed) {
+	color: var(--forestGreen);
+	background-color: white;
+	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
+}
+
 .fontColorDk {
 	color: #3b3c25;
 }
