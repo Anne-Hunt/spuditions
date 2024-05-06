@@ -81,12 +81,14 @@ function showAllActivities() {
           <div class="accordion-body">
             <!-- Show the top 5 most popular activities -->
             <div class="activity-icons">
-				<VTooltip>
-					<i v-for="(activity, index) in topFiveActivities" :key="index" class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
-                :activity="activity"></i>
-				<template #popper>{{ activity }}</template>
-				</VTooltip>
+<template v-for="(activity, index) in topFiveActivities" :key="index">
+  <VTooltip>
+    <i class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
+      data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
+      :activity="activity"></i>
+    <template #popper>{{ activity }}</template>
+  </VTooltip>
+</template>
 			</div>
 
 
