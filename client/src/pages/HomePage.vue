@@ -103,8 +103,7 @@ onMounted(() => {
 	</section>
 
 	<!--Search/Parks List-->
-	<section class="p-4"> 
-		<div class="row bg-dark rounded p-2">
+	<section class="row bg-dark p-2">
 		<div class="col-12 col-md-3 d-flex align-items-center">
 			<div class="bg-warning rounded p-3">
 				<div class="my-2"><i class="mdi mdi-magnify fs-3"></i><span class="fs-3">Search</span></div>
@@ -125,7 +124,6 @@ onMounted(() => {
 				</div>
 			</div>
 		</div>
-	</div>
 	</section>
 </template>
 
