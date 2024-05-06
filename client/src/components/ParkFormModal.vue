@@ -55,9 +55,6 @@ async function createVisited() {
 						<div class="form-floating mb-3 text-center">
 							<div class="fs-5 mb-2">Rate This Park</div>
 
-							<!-- <input type="hidden" v-model="editableReviewData.review" class="form-control rows" id="parkRating"
-								required min="1" max="5" /> -->
-								<label for="parkRating">Rate this park:</label>
 							<select v-model="editableReviewData.userRating" class="form-select py-0 mb-5 fs-3" id="parkRating"
 								aria-label="Floating label select example">
 								<option :value="1">⭐</option>
@@ -66,32 +63,12 @@ async function createVisited() {
 								<option :value="4">⭐⭐⭐⭐</option>
 								<option selected :value="5">⭐⭐⭐⭐⭐</option>
 							</select>
-
-							<!-- <button @click="editableReviewData.review = 1" class="mx-2 starBtn" role="button">
-								<span class="fa fa-star fs-2"></span>
-							</button>
-
-							<button @click="editableReviewData.review = 2" class="mx-2 starBtn" role="button">
-								<span class="fa fa-star fs-2"></span>
-							</button>
-
-							<button @click="editableReviewData.review = 3" class="mx-2 starBtn" role="button">
-								<span class="fa fa-star fs-2"></span>
-							</button>
-
-							<button @click="editableReviewData.review = 4" class="mx-2 starBtn" role="button">
-								<span class="fa fa-star fs-2"></span>
-							</button>
-
-							<button @click="editableReviewData.review = 5" class="mx-2 starBtn" role="button">
-								<span class="fa fa-star fs-2"></span>
-							</button> -->
 						</div>
 
 						<div class="form-floating mb-3">
 
-							<textarea v-model="editableReviewData.body" type="text" class="form-control rows" id="parkBody" name="parkBody"
-								placeholder="Rating Reason" maxlength="500">
+							<textarea v-model="editableReviewData.body" type="text" class="form-control rows" id="parkBody"
+								name="parkBody" placeholder="Rating Reason" maxlength="500">
 							</textarea>
 
 							<label for="parkBody">Reason for rating...</label>
@@ -128,24 +105,4 @@ async function createVisited() {
 .sendBtn:hover {
 	background-color: var(--bgGreen);
 }
-
-
-
-/* .starBtn {
-	border: none;
-	background-color: white;
-}
-
-.checked {
-	color: orange;
-}
-
-.fa-star:hover {
-	color: orange;
-	transition: 0.3s;
-}
-
-.fa-star:active::after {
-	color: orange;
-} */
 </style>
