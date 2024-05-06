@@ -54,13 +54,13 @@ const showAll = ref(false);
 
 // Computed property
 const topFiveActivities = computed(() => {
-  return showAll.value ? activities.value : activities.value.slice(0, 5);
+	return showAll.value ? activities.value : activities.value.slice(0, 5);
 });
 
 // Method
-  function toggleShowAll() {
-    showAll.value = !showAll.value;
-  }
+function toggleShowAll() {
+	showAll.value = !showAll.value;
+}
 </script>
 
 
@@ -68,38 +68,43 @@ const topFiveActivities = computed(() => {
 
 
 <template>
-  <section class="container-fluid mt-md-0" v-if="park">
-    <div class="accordion accordion-flush row" id="accordionFlushExample">
-      <div class="accordion-item col-6">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            Activities
-          </button>
-        </h2>
+	<section class="container-fluid mt-md-0" v-if="park">
 
-        <div id="flush-collapseOne" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <!-- Show the top 5 most popular activities -->
-            <div class="activity-icons d-flex flex-wrap">
-<template v-for="(activity, index) in topFiveActivities" :key="index">
-  <VTooltip>
-    <i class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
-      data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
-      :activity="activity"></i>
-    <template #popper>{{ activity }}</template>
-  </VTooltip>
-</template>
+		<div class="accordion accordion-flush row" id="accordionFlushExample">
+			<div class="accordion-item col-6">
+				<h2 class="accordion-header">
+					<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
+						data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+ <!-- Image instead of dropdown arrow -->
+  <img src="/src/assets/img/spuditions.png" alt="Dropdown Arrow" class="spudDropDown">
+						Activities
+					</button>
+				</h2>
+
+				<div id="flush-collapseOne" class="accordion-collapse collapse" v-if="park"
+					data-bs-parent="#accordionFlushExample">
+					<div class="accordion-body">
+						<!-- Show the top 5 most popular activities -->
+						<div class="activity-icons d-flex flex-wrap">
+							<template v-for="(activity, index) in topFiveActivities" :key="index">
+								<VTooltip>
+									<i class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
+										data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
+										:activity="activity"></i>
+									<template #popper>{{ activity }}</template>
+								</VTooltip>
+							</template>
+						</div>
+
+						<div class="d-flex justify-content-center">
+							<!-- Button to view more activities -->
+							<button class="btn btn-primary mt-3 mx-auto" @click="toggleShowAll">
+								{{ showAll ? 'Close All' : 'Show All' }} Activities</button>
+						</div>
+					</div>
+				</div>
 			</div>
-
-
-            <!-- Button to view more activities -->
-            <button class="btn btn-primary" @click="toggleShowAll">
-				{{ showAll ? 'Close All' : 'Show All' }} Activities</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+		</div>
 
 		<!-- Park Image and Info -->
 		<div class="row mt-5 position-relative">
@@ -220,6 +225,34 @@ const topFiveActivities = computed(() => {
 
 
 <style lang="scss" scoped>
+.accordion-button:not(.collapsed) {
+	color: var(--bs-accordion-active-color);
+	background-color: white;
+	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
+}
+
+.accordion-button:is(.collapsed) {
+	color: var(--bs-accordion-active-color);
+	background-color: white;
+	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
+}
+
+.accordion-button[data-v-81550567]:not(.collapsed) {
+	color: var(--forestGreen);
+	background-color: white;
+	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
+}
+
+.accordion-button[data-v-81550567]:is(.collapsed) {
+	color: var(--forestGreen);
+	background-color: white;
+	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
+}
+
+.accordion-button:hover {
+	background-color: var(--lightGreen);
+}
+
 .fontColorDk {
 	color: #3b3c25;
 }
@@ -289,20 +322,71 @@ a:hover {
 	color: var(--lightGreen);
 }
 
+
+.accordion-header {
+	background-color: #f8f9fa;
+	border-bottom: 1px solid var(--forestGreen);
+}
+
+.accordion-header button {
+	color: var(--forestGreen);
+	font-weight: bold;
+}
+
+.accordion-header button:hover {
+	color: var(--forestGreen);
+}
+
+
+/* Styling for accordion body */
+.accordion-body {
+	background-color: #fff;
+	border-top: none;
+}
+
+.activity-icons {
+	margin-top: 10px;
+}
+
+.activity-icons .btn {
+	margin-right: 10px;
+}
+
+.spudDropDown {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	width: 20px;
+	height: auto;
+}
+
+.accordion-button {
+	position: relative;
+	padding-right: 40px;
+}
+
+.accordion-button::after {
+	display: none !important;
+}
+
+
+/* Styling for button */
+.btn-primary {
+	background-color: var(--forestGreen);
+	border-color: var(--lightGreen);
+}
+
+.btn-primary:hover {
+	background-color: var(--lightGreen);
+}
+
+
+
 @media only screen and (max-width: 767px) {
 	.widthCustom {
 		width: 85%;
 		text-align: center;
 	}
 }
-
-// // .activity-icons {
-// //   display: flex;
-// //   flex-wrap: wrap;
-// //   gap: 10px; 
-// // }
-
-// .activity-icons .btn {
-//  
-// }
 </style>

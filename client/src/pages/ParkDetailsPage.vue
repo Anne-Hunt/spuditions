@@ -28,7 +28,7 @@ async function getParkAndWeather() {
 	}
 }
 
-async function getWebcam(){
+async function getWebcam() {
 	try {
 		const parkCode = AppState.activePark.parkCode
 		await nationalParksService.getWebcam(parkCode)
@@ -61,7 +61,7 @@ onMounted(() => {
 	<div class="container-fluid">
 
 		<section class="row">
-			<div class="col-10">
+			<div class="col-12">
 				<ParkDetails />
 			</div>
 		</section>
@@ -99,8 +99,6 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
-
-
 .borderBtn {
 	border: solid #674520;
 	width: 9em;
