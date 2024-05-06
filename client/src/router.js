@@ -62,6 +62,11 @@ const routes = [
     component: loadPage('RegistrationPage')
   },
   {
+    path: '/thread/:threadId',
+    name: 'Thread',
+    component: loadPage('Thread')
+  },
+  {
     path: '/profile',
     name: 'Profile',
     component: loadPage('ProfilePage')
