@@ -73,33 +73,33 @@ const topFiveActivities = computed(() => {
       <div class="accordion-item col-6">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            Activities
-          </button>
+ <!-- Replace the text with an image -->
+			<img class="spudDropDown" src="/src/assets/img/spuditions.png" alt="Dropdown Arrow">Activities</button>
         </h2>
 
         <div id="flush-collapseOne" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
+
             <!-- Show the top 5 most popular activities -->
             <div class="activity-icons d-flex flex-wrap">
-<template v-for="(activity, index) in topFiveActivities" :key="index">
-  <VTooltip>
-    <i class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
-      data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
-      :activity="activity"></i>
-    <template #popper>{{ activity }}</template>
-  </VTooltip>
-</template>
-			</div>
-
+              <template v-for="(activity, index) in topFiveActivities" :key="index">
+                <VTooltip>
+                  <i class="btn fs-3" :class="getIconClass(activity)" data-bs-toggle="tooltip"
+                    data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
+                    :activity="activity"></i>
+                  <template #popper>{{ activity }}</template>
+                </VTooltip>
+              </template>
+            </div>
 
             <!-- Button to view more activities -->
             <button class="btn btn-primary" @click="toggleShowAll">
-				{{ showAll ? 'Close All' : 'Show All' }} Activities</button>
+              {{ showAll ? 'Close All' : 'Show All' }} Activities
+            </button>
           </div>
         </div>
       </div>
     </div>
-
 
 		<!-- Park Image and Info -->
 		<div class="row mt-5 position-relative">
@@ -289,6 +289,67 @@ a:hover {
 	color: var(--lightGreen);
 }
 
+
+.accordion-header {
+  background-color: #f8f9fa; 
+  border-bottom: 1px solid var(--forestGreen); 
+}
+
+.accordion-header button {
+  color: var(--forestGreen); 
+  font-weight: bold; 
+}
+
+.accordion-header button:hover {
+  color: var(--forestGreen); 
+}
+
+
+/* Styling for accordion body */
+.accordion-body {
+  background-color: #fff; 
+  border-top: none; 
+}
+
+.activity-icons {
+  margin-top: 10px; 
+}
+
+.activity-icons .btn {
+  margin-right: 10px; 
+}
+
+.spudDropDown {
+	position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right distance as needed */
+  transform: translateY(-50%);
+  width: 20px; /* Adjust the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.accordion-button {
+  position: relative;
+  padding-right: 40px; /* Adjust the padding to leave space for the image */
+}
+
+.accordion-button::after {
+  display: none !important;
+}
+
+
+/* Styling for button */
+.btn-primary {
+  background-color: var(--forestGreen); 
+  border-color: var(--lightGreen); 
+}
+
+.btn-primary:hover {
+  background-color: var(--lightGreen); 
+}
+
+
+
 @media only screen and (max-width: 767px) {
 	.widthCustom {
 		width: 85%;
@@ -296,13 +357,4 @@ a:hover {
 	}
 }
 
-// // .activity-icons {
-// //   display: flex;
-// //   flex-wrap: wrap;
-// //   gap: 10px; 
-// // }
-
-// .activity-icons .btn {
-//  
-// }
 </style>
