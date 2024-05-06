@@ -65,10 +65,19 @@ function getIconClass(activity) {
         </div>
     </div>
     <!-- Park Image and Info -->
-    <div class="row mt-5">
-        <div class="col-12 col-md-7">
-            <img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
+    <div class="row mt-5 position-relative">
+      <div class="col-12 col-md-7">
+        <!-- Park Image -->
+        <div class="position-relative">
+          <img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
+          <!-- Overlay for Park Website Link -->
+          <a :href="park?.webUrl" target="_blank" class=" mb-3 parkWebsiteLink rounded">
+            Click Here For Park Website
+          </a>
         </div>
+      </div>
+
+
         <div class="col-12 col-md-5 mt-4 mt-md-0">
             <div class="text-center text-md-start">
                 <h4 class="fontColorDk fw-bold">{{ park?.name }} , ID</h4>
@@ -96,14 +105,11 @@ function getIconClass(activity) {
                 <div class="mt-3 fs-5" v-if="park.region">
                     <b class="fontColorDk">Region:</b> {{ park?.region }}
                 </div>
-                <div class="mt-4 fs- text-center" v-if="park.webUrl">
-                    <a :href="park?.webUrl" target="_blank"><b>Click Here For Park Website</b></a>
-                </div>
             </div>
         </div>
     </div>
     <!-- Costs Box and Buttons -->
-    <div class="row mt-5">
+    <div class="row mt-2">
         <div class="col">
             <div class="container-fluid">
                 <div class="row">
@@ -188,6 +194,17 @@ function getIconClass(activity) {
 
 }
 
+.parkWebsiteLink {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.579); 
+  padding: 8px 16px; 
+  color: white;
+  text-decoration: none;
+}
+
 i {
 	font-size: xx-large;
 	color: var(--beigeSand);
@@ -196,12 +213,13 @@ i {
 
 
 a {
-	color: #6700ed;
+	color: var(--lightGreen);
 	transition: 0.4s;
 }
 
 a:hover {
-	color: #3900ab;
+	color: var(--lightGreen);
+	
 }
 
 .fs6 {
@@ -214,6 +232,7 @@ a:hover {
 
 
 .red {
-	color: #6700ed;
+	color: var(--lightGreen);
 }
+
 </style>
