@@ -80,7 +80,7 @@ function showAllActivities() {
         <div id="flush-collapseOne" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
             <!-- Show the top 5 most popular activities -->
-            <div class="activity-icons">
+            <div class="activity-icons d-flex flex-wrap">
 <template v-for="(activity, index) in topFiveActivities" :key="index">
   <VTooltip>
     <i class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
