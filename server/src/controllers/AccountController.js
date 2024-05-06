@@ -14,6 +14,15 @@ export class AccountController extends BaseController {
             .post('/login', this.login)
             .use(Authware.AuthGuard)
             .get('', this.fetchUserInfo)
+            .put('', this.editAccount)
+    }
+
+    async editAccount(request, response, next) {
+        try {
+            const account = await accountService.editAccount(request.userInfo, request.body)
+        } catch (error) {
+            next(error)
+        }
     }
 
     async fetchUserInfo(request, response, next) {

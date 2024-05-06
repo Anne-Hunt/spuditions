@@ -66,7 +66,7 @@ onMounted(() => {
 
 
 		<!--****** SECTION: WEATHER ******-->
-		<section class="text-light container-fluid" v-if="weatherForecast">
+		<section class="container-fluid" v-if="weatherForecast">
 
 			<hr class="my-4" />
 
