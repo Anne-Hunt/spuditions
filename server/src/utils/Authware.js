@@ -5,10 +5,10 @@ import { UnAuthorized } from "./Errors.js";
 export class Authware {
     // @ts-ignore
     static async AuthGuard(req, res, next) {
-        if (req.headers.authorization == null) next(new UnAuthorized('An invalid token was supplied.'))
+        if (req.headers.authorization == null) next(new UnAuthorized('No auth token was supplied.'))
         const token = await authService.validateToken(req.headers.authorization.replace('Bearer ', ''))
         if (token == false) {
-            next(new UnAuthorized('An invalid token was supplied.'))
+            next(new UnAuthorized('An invalid auth token was supplied.'))
             return
         }
 

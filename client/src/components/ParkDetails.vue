@@ -56,108 +56,117 @@ function getIconClass(activity) {
 
 
 <template>
-<section class="container-fluid mt-md-0" v-if="park">
-    <div class="row">
-        <div class="col" v-for="activity in activities" :key="activity">
-            <button type="button" class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
-                :activity="activity"></button>
-        </div>
-    </div>
-    <!-- Park Image and Info -->
-    <div class="row mt-5">
-        <div class="col-12 col-md-7">
-            <img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
-        </div>
-        <div class="col-12 col-md-5 mt-4 mt-md-0">
-            <div class="text-center text-md-start">
-                <h4 class="fontColorDk fw-bold">{{ park?.name }} , ID</h4>
-                <!-- Park Ratings -->
-                <div class="d-flex align-items-center">
-                    <i class="mdi mdi-star p-1 fs-5"></i>
-                    <i class="mdi mdi-star p-1 fs-5"></i>
-                    <i class="mdi mdi-star p-1 fs-5"></i>
-                    <i class="mdi mdi-star p-1 fs-5"></i>
-                    <span class="selectable ms-4 fontColorDk">800 ratings</span>
-                </div>
-                <!-- Park Info -->
-                <div class="fs-5 mt-4" v-if="park.type">
-                    <b class="fontColorDk">Park Type:</b> {{ park?.type }}
-                </div>
-                <div class="mt-3 fs-5" v-if="park.address">
-                    <b class="fontColorDk">Address:</b> {{ park?.address }}
-                </div>
-                <div class="mt-3 fs-5" v-if="park.daysClosed">
-                    <b class="fontColorDk">Days Closed:</b> {{ park?.daysClosed }}
-                </div>
-                <div class="mt-3 fs-5" v-if="park.rating">
-                    <b class="fontColorDk">Park Rating:</b> {{ park?.rating }}
-                </div>
-                <div class="mt-3 fs-5" v-if="park.region">
-                    <b class="fontColorDk">Region:</b> {{ park?.region }}
-                </div>
-                <div class="mt-4 fs- text-center" v-if="park.webUrl">
-                    <a :href="park?.webUrl" target="_blank"><b>Click Here For Park Website</b></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Costs Box and Buttons -->
-    <div class="row mt-5">
-        <div class="col">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- Costs Box -->
-                    <div class="col-12 col-md-6">
-                        <div class="box mt-3 mt-md-5 mb-3">
-                            <h4 class="text-center">Costs:</h4>
-                            <div class="mt-1 text-center">
-                                <i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
-                                <i class="fs7">Non-resident charges are included on top of resident charges</i>
-                            </div>
-                            <hr>
-                            <ul>
-                                <li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
-                                    {{ cost }}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Buttons -->
-                    <div class="col-12 col-md-6">
-                        <div class="text-md-start mt-5 d-flex flex-column align-items-center align-md-start">
-                            <!-- TODO: get marked visited button working -->
-                            <button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
-                                title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
-                                Mark As Visited
-                            </button>
-                            <!-- Learn More Button -->
-                            <div class="text-center text-light" v-if="park.description">
-                                <hr>
-                                <p class="d-inline-flex gap-1 mx-auto">
-                                    <a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
-                                        role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        Click here to learn more
-                                    </a>
-                                </p>
-                                <div class="collapse mb-3" id="collapseExample">
-                                    <div class="card card-body text-start text-dark">
-                                        {{ park?.description }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<section class="container-fluid mt-md-0" v-if="park">
+		<div class="row">
+			<div class="col" v-for="activity in activities" :key="activity">
+				<button type="button" class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
+					data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
+					:activity="activity"></button>
+			</div>
+		</div>
+		<!-- Park Image and Info -->
+		<div class="row mt-5 position-relative">
+			<div class="col-12 col-md-7">
+				<!-- Park Image -->
+				<div class="position-relative">
+					<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
+					<!-- Overlay for Park Website Link -->
+					<a :href="park?.webUrl" target="_blank" class="mb-2 mb-md-3 parkWebsiteLink rounded widthCustom">
+						Click Here For Park Website
+					</a>
+				</div>
+			</div>
 
 
-		
+			<div class="col-12 col-md-5 mt-4 mt-md-0">
+				<div>
+					<div class="text-center text-md-start">
+						<h4 class="fontColorDk fw-bold">{{ park?.name }} , ID</h4>
 
-	
-			
+						<!-- Park Ratings -->
+						<div class="d-flex align-items-center justify-content-center justify-content-md-start">
+							<i class="mdi mdi-star p-1 fs-5"></i>
+							<i class="mdi mdi-star p-1 fs-5"></i>
+							<i class="mdi mdi-star p-1 fs-5"></i>
+							<i class="mdi mdi-star p-1 fs-5"></i>
+							<span class="selectable ms-4 fontColorDk">800 ratings</span>
+						</div>
+					</div>
+					<!-- Park Info -->
+					<div class="fs-5 mt-4" v-if="park.type">
+						<b class="fontColorDk">Park Type:</b> {{ park?.type }}
+					</div>
+					<div class="mt-3 fs-5" v-if="park.address">
+						<b class="fontColorDk">Address:</b> {{ park?.address }}
+					</div>
+					<div class="mt-3 fs-5" v-if="park.daysClosed">
+						<b class="fontColorDk">Days Closed:</b> {{ park?.daysClosed }}
+					</div>
+					<div class="mt-3 fs-5" v-if="park.rating">
+						<b class="fontColorDk">Park Rating:</b> {{ park?.rating }}
+					</div>
+					<div class="mt-3 fs-5" v-if="park.region">
+						<b class="fontColorDk">Region:</b> {{ park?.region }}
+					</div>
+				</div>
+				<div class="my-5 text-center">
+					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+						title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
+						Mark Park As Visited
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- Costs Box and Buttons -->
+		<div class="row mt-2">
+			<div class="col">
+				<div class="container-fluid">
+					<div class="row">
+						<!-- Costs Box -->
+						<div class="col-12 col-md-6 mt-3 mb-4 mt-md-5 mb-md-5">
+							<div class="box mb-3">
+								<h4 class="text-center">Costs:</h4>
+								<div class="mt-1 text-center">
+									<i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
+									<i class="fs7">Non-resident charges are included on top of resident charges</i>
+								</div>
+								<hr>
+								<ul>
+									<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+										{{ cost }}
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- Buttons -->
+						<div class="col-12 col-md-6 mt-0 mb-5 mt-md-5">
+							<div class="text-md-start d-flex flex-column align-items-center align-md-start">
+								<!-- Learn More Button -->
+								<div class="text-center text-light" v-if="park.description">
+									<p class="d-inline-flex gap-1 mx-auto">
+										<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
+											role="button" aria-expanded="false" aria-controls="collapseExample">
+											Click here to learn more
+										</a>
+									</p>
+									<div class="collapse mb-3" id="collapseExample">
+										<div class="card card-body text-start text-dark">
+											{{ park?.description }}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
 
 		<div class="d-flex justify-content-center">
 			<GMap />
@@ -170,7 +179,6 @@ function getIconClass(activity) {
 
 
 <style lang="scss" scoped>
-
 .fontColorDk {
 	color: #3b3c25;
 }
@@ -180,12 +188,34 @@ function getIconClass(activity) {
 }
 
 .icon-color {
-    color: #3b3c25; 
+	color: #3b3c25;
 }
 
 .imgShadow {
 	filter: drop-shadow(8px 10px 4px #adadaae0);
 
+}
+
+.parkWebsiteLink {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.579);
+	padding: 8px 16px;
+	color: white;
+	text-decoration: none;
+}
+
+.parkWebsiteLink:hover {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.579);
+	padding: 8px 16px;
+	color: #02a3e9;
+	text-decoration: none;
 }
 
 i {
@@ -196,12 +226,13 @@ i {
 
 
 a {
-	color: #6700ed;
+	color: var(--lightGreen);
 	transition: 0.4s;
 }
 
 a:hover {
-	color: #3900ab;
+	color: var(--lightGreen);
+
 }
 
 .fs6 {
@@ -214,6 +245,13 @@ a:hover {
 
 
 .red {
-	color: #6700ed;
+	color: var(--lightGreen);
+}
+
+@media only screen and (max-width: 767px) {
+	.widthCustom {
+		width: 85%;
+		text-align: center;
+	}
 }
 </style>

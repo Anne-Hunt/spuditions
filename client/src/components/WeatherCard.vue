@@ -10,37 +10,64 @@ defineProps({
 
 
 <template>
-	<div class="col-12 col-md-4 col-lg-3 col-xl-2 vertical text-center p-1">
-
-		<h3 class="day mt-2">{{ weather.date.toLocaleString('en-us', option) }}</h3>
-
-		<div class="forecast">
-			<img :src="weather.WeatherIcon" :alt="'icon of' + weather.main">
-		</div>
-
-		<div>
-			<h5 class="text-capitalize">{{ weather.description }}</h5>
-		</div>
-
-		<div class="mt-3 temp d-flex gap-3 justify-content-center">
-			<h5>Celcius: {{ weather.celcius }}&#176;</h5>
-			<h5>Fahrenheit: {{ weather.fahrenheit }}&#176;</h5>
-		</div>
-
+	<div class="col-12 col-md-4 col-lg-3 col-xl-2 weather-card p-1">
+		<!-- Time -->
+ <h3 class="day d-flex justify-content-center align-items-center mt-2 fw-bold">{{ weather.date.toLocaleString('en-us', option) }}</h3>
+  
+ <!-- Weather Icon -->
+	<div class="d-flex justify-content-center align-items-center">
+		<img :src="weather.WeatherIcon" :alt="'icon of' + weather.main">
 	</div>
-
-
-</template>
-
-
-<style scoped lang="scss">
-.vertical {
-	border: 3px solid white;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+	<!-- Weather Description -->
+	<div>
+		<h5 class="d-flex justify-content-center align-items-center text-capitalize fw-bold">{{ weather.description }}</h5>
+ </div>
+  
+ <!-- Weather Temp -->
+	<div class="d-flex justify-content-center align-items-center">
+		<div class="temperature">
+ <h5>Celsius: {{ weather.celcius }}&#176;</h5>
+ <h5>Fahrenheit: {{ weather.fahrenheit }}&#176;</h5>
+		</div>
+ </div>
+	</div>
+  </template>
+  
+  <style scoped lang="scss">
+  .weather-card {
+	// border: 3px solid white;
 	border-radius: 15px;
-
-	// REVIEW: Which one should we pick
-	background-color: rgb(88, 168, 184);
-	// background-color: rgb(104, 199, 218);
-}
-</style>
+	background: linear-gradient(to bottom, #4481eb, #04befe);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+  }
+  
+  .weather-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+//   .forecast {
+// 	margin-bottom: 10px;
+//   }
+  
+  .forecast img {
+	max-width: 100px;
+  }
+  
+  .temperature {
+	text-align: center;
+  }
+  
+  .temperature h5 {
+	margin: 5px 0;
+  }
+  
+  .day {
+	font-size: 18px; 
+	margin-bottom: 10px;
+  }
+  
+  </style>
+  

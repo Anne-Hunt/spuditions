@@ -35,8 +35,8 @@ export const AppState = reactive({
   /**@type {Profile[]} */
   profiles: [],
 
-  /**@type {Profile[]} */
   activeProfile: null,
 
   searchTerm: '',
+  webcam: ''
 })

@@ -23,53 +23,57 @@ onMounted(() => {
 
 <template>
 	<nav class="navbar navbar-expand-md forestGreen px-3">
-		<router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-			<div class="d-flex flex-column align-items-center">
-				<img alt="logo" src="../assets/img/spuditionLogoWhite.png" height="45" />
-			</div>
-		</router-link>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        <div class="container-fluid">
+            <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+                <div class="d-flex flex-column align-items-center">
+                    <img alt="logo" src="../assets/img/spuditionLogoWhite.png" height="45" />
+                </div>
+            </router-link>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
 			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse text-center d-grid" id="navbarText">
-			<ul class="order-1 navbar-nav me-auto gap-md-3 w-100">
-				<li>
-					<router-link :to="{ name: 'About Us' }"
-						class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
-						About
-					</router-link>
-				</li>
-				<li>
-					<router-link :to="{ name: 'General Chat Forum' }"
-						class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
-						Forums
-					</router-link>
-				</li>
-			</ul>
-
-			<div v-if="router.currentRoute.value.name != 'Home' && router.currentRoute.value.name != 'Login' && router.currentRoute.value.name != 'Register'"
-				class="order-3 order-md-2 d-flex justify-content-center forestGreen my-md-0 mb-2">
-				<SearchBar />
-			</div>
-
-			<div class="order-2 order-md-3 text-center mb-2 my-md-0">
-
-				<Login />
-
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center " id="navbarText">
+                <ul class="order-1 navbar-nav me-auto gap-md-3 w-100">
+                    <li>
+                        <router-link :to="{ name: 'About Us' }"
+                        class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
+                            About
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{ name: 'General Chat Forum' }"
+                        class="btn text-light lighten-30 selectable text-uppercase text-sm-start text-md-center">
+                            Forums
+                        </router-link>
+                    </li>
+                </ul>
+        
+                <div v-if="router.currentRoute.value.name != 'Home' && router.currentRoute.value.name != 'Login' && router.currentRoute.value.name != 'Register'"
+                class="order-3 order-md-2 d-flex justify-content-center forestGreen my-md-0 mb-2">
+                    <SearchBar />
+                </div>
+                
+                <div class="order-2 order-md-3 text-center mb-2 my-md-0">
+                    <Login />
+                </div>
+                <!-- LOGIN COMPONENT HERE -->
+                <!-- <div>
+                    <button class="btn text-light" @click="toggleTheme"
+                    :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
+                    <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i>
+                </button>
+            </div> -->
             </div>
-			<!-- LOGIN COMPONENT HERE -->
-			<!-- <div>
-        <button class="btn text-light" @click="toggleTheme"
-          :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
-          <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i>
-        </button>
-      </div> -->
-		</div>
+        </div>
 	</nav>
 </template>
 
 <style scoped>
+.show {
+    display: grid !important;
+}
+
 a:hover {
 	text-decoration: none;
 }
