@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js"
 import { Park } from "../models/Park.js"
+import { Visited } from "../models/Visited.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
@@ -30,15 +31,13 @@ class ParksService {
     AppState.activePark = park
   }
 
-
-  
-  async createReview() {
-	// TODO: create function
-  }
-
-  async markVisited() {
-   // TODO: create function
-  }
+	// TODO: get createReview working
+  async createReview(reviewData) {
+	const response = await api.post('api/visited', reviewData)
+	logger.log('CREATED REVIEW ⭐🔧', response.data)
+	const newReview = new Visited(response.data)
+	AppState.visited.unshift(newReview)
+}
 }
 
 export const parksService = new ParksService()

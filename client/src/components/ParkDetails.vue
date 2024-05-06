@@ -43,9 +43,6 @@ const icon = {
 	'ATVs, UTVs, Motorbikes': 'mdi mdi-atv'
 }
 
-async function changeVisitedStatus() {
-
-}
 
 function getIconClass(activity) {
 	return icon[activity] ? icon[activity] + ' icon-color' : 'mdi mdi-tree icon-color';
@@ -110,12 +107,21 @@ function getIconClass(activity) {
 						<b class="fontColorDk">Region:</b> {{ park?.region }}
 					</div>
 				</div>
-				<div class="my-5 text-center">
-					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
-						title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
-						Mark Park As Visited
+
+				<div v-if="park.isVisited == false" class="my-5 text-center">
+					<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+						title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
+						Have you visited this park?
 					</button>
 				</div>
+
+				<div v-else class="my-5 text-center">
+					<button disabled class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+						title="Park has been visited">
+						You've Visited This Park!
+					</button>
+				</div>
+
 			</div>
 		</div>
 		<!-- Costs Box and Buttons -->
@@ -162,11 +168,6 @@ function getIconClass(activity) {
 				</div>
 			</div>
 		</div>
-
-
-
-
-
 
 
 		<div class="d-flex justify-content-center">
