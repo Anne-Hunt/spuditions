@@ -50,10 +50,20 @@ async function createReview() {
 						<div class="form-floating mb-3 text-center">
 							<div class="fs-5 mb-2">Rate This Park</div>
 
-							<input type="hidden" v-model="editableReviewData.review" class="form-control rows" id="parkReview"
+							<input type="hidden" v-model="editableReviewData.review" class="form-control rows" id="parkRating"
 								required min="1" max="5" />
 
-							<button @click="editableReviewData.review = 1" class="mx-2 starBtn" role="button">
+
+							<select class="form-select py-0 mb-5 fs-3" id="parkRating"
+								aria-label="Floating label select example">
+								<option value="1">⭐</option>
+								<option value="2">⭐⭐</option>
+								<option value="3">⭐⭐⭐</option>
+								<option value="4">⭐⭐⭐⭐</option>
+								<option selected value="5">⭐⭐⭐⭐⭐</option>
+							</select>
+
+							<!-- <button @click="editableReviewData.review = 1" class="mx-2 starBtn" role="button">
 								<span class="fa fa-star fs-2"></span>
 							</button>
 
@@ -71,7 +81,7 @@ async function createReview() {
 
 							<button @click="editableReviewData.review = 5" class="mx-2 starBtn" role="button">
 								<span class="fa fa-star fs-2"></span>
-							</button>
+							</button> -->
 						</div>
 
 						<div class="form-floating mb-3">
@@ -115,12 +125,13 @@ async function createReview() {
 	background-color: var(--bgGreen);
 }
 
-.starBtn {
+
+
+/* .starBtn {
 	border: none;
 	background-color: white;
 }
 
-/* NOTE: This is for anyone who needs to know what the class is for changing the star colors */
 .checked {
 	color: orange;
 }
@@ -132,5 +143,5 @@ async function createReview() {
 
 .fa-star:active::after {
 	color: orange;
-}
+} */
 </style>

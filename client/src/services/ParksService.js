@@ -33,11 +33,11 @@ class ParksService {
 
 	// TODO: get createReview working
   async createReview(reviewData) {
-	const response = await api.post('api/visited', reviewData)
-	logger.log('CREATED REVIEW ⭐🔧', response.data)
-	const newReview = new Visited(response.data)
-	AppState.visited.unshift(newReview)
-}
+		const response = await api.post('api/visited', reviewData)
+		logger.log('CREATED REVIEW ⭐🔧', response.data)
+		const newReview = new Visited(response.data)
+		AppState.visited.unshift(newReview)
+	}
 }
 
 export const parksService = new ParksService()
