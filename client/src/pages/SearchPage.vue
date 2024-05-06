@@ -61,10 +61,6 @@ onUnmounted(() => {
         <ThreadResult :thread="thread"/>
     </div>
     <hr>
-    <div class="row" v-for="post in posts" :key="post.id">
-        <PostResult :post="post"/>
-    </div>
-    <hr>
     <div class="row" v-for="profile in profiles" :key="profile.id">
         <ProfileResult :profile="profile"/>
     </div>
