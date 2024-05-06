@@ -26,11 +26,17 @@ defineProps({thread: Thread})
             <h3 class="d-inline float-end px-3">#Tag</h3>
           </div>
         </div>
-      </div>
+    </div>
 </template>
 
 
 <style lang="scss" scoped>
+.noWrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .profile-img{
   height: 50px;
   width: fit-content;

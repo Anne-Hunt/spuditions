@@ -59,9 +59,10 @@ function getIconClass(activity) {
 	<section class="container-fluid mt-md-0" v-if="park">
 		<div class="row">
 			<div class="col" v-for="activity in activities" :key="activity">
-				<button type="button" class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
-					data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
-					:activity="activity"></button>
+				<VTooltip>
+					<button type="button" class="btn fs-5" :class="getIconClass(activity)" :activity="activity"></button>
+					<template #popper>{{ activity }}</template>
+				</VTooltip>
 			</div>
 		</div>
 		<!-- Park Image and Info -->

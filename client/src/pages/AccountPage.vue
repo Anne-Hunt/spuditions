@@ -8,7 +8,7 @@ const account = computed(() => AppState.account)
 </script>
 
 <template>
-	<div class="about text-center">
+	<div class="about text-center mt-4">
 		<div v-if="account">
 			<h1>Welcome {{ account.name }}</h1>
 			<img class="rounded" :src="account.picture" alt="" />
@@ -26,5 +26,6 @@ const account = computed(() => AppState.account)
 <style scoped lang="scss">
 img {
 	max-width: 100px;
+    aspect-ratio: 1/1;
 }
 </style>
