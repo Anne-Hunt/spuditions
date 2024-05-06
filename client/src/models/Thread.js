@@ -6,5 +6,6 @@ export class Thread {
         this.creator = data.creator
         this.title = data.title
         this.body = data.body
+        this.tags = data.tags
     }
 }
