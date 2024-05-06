@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { reviewService } from '../services/ReviewService.js';
+// import { reviewService } from '../services/VisitedService.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 
@@ -11,21 +11,21 @@ const reviewData = ref({
 })
 
 
-async function editReview(){
-    try {
-        await reviewService.editReview(reviewData)
-        reviewData.value = {body: '', userRating: 0}
-    } catch (error) {
-        logger.error("Unable to edit review at this time", error)
-        Pop.toast("Unable to edit review at this time", 'error')
-    }
-}
+// async function editReview(){
+//     try {
+//         await reviewService.editReview(reviewData)
+//         reviewData.value = {body: '', userRating: 0}
+//     } catch (error) {
+//         logger.error("Unable to edit review at this time", error)
+//         Pop.toast("Unable to edit review at this time", 'error')
+//     }
+// }
 </script>
 
 
 <template>
 <div class="p-3">
-    <form @submit.prevent="editReview()">
+    <!-- <form @submit.prevent="editReview()"> -->
     <div class="mb-3">
         <label for="body">Your review</label>
         <input type="textarea" v-model="reviewData.body" name="reviewBody" id="body">
@@ -35,7 +35,7 @@ async function editReview(){
         <input type="number" required default="5" v-model="reviewData.userRating">
     </div>
     <button class="btn btn-primary" type="submit">SUBMIT</button>
-    </form>
+    <!-- </form> -->
 </div>
 </template>
 
