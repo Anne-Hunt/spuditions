@@ -9,21 +9,21 @@ class ThreadsService{
         const response = await api.get(`api/threads/search?query=${searchQuery}`)
         const threads = response.data.map(threadData => new Thread(threadData))
         AppState.threads = threads
-      }
+    }
 
-      async getThreads(){
+    async getThreads() {
         const response = await api.get(`api/threads/:tag`)
         const threads = response.data.map(threadData => new Thread(threadData))
         AppState.threads = threads
-      }
+    }
 
-      async getSingleThread(){
+    async getSingleThread() {
         const response = await api.get(`api/threads/:threadId`)
         const thread = response.data.map(threadData => new Thread(threadData))
         AppState.threads = thread
-      }
+    }
 
-      async editThread(threadData, threadId){
+    async editThread(threadData, threadId) {
         const response = await api.put(`api/threads/:threadId`, threadData)
         const thread = new Thread(response.data)
         const asThread = AppState.threads.findIndex(threadId)
@@ -31,7 +31,7 @@ class ThreadsService{
         AppState.threads.push(thread)
     }
 
-    async deleteThread(threadId){
+    async deleteThread(threadId) {
       await api.delete(`api/thread/:threadId`)
       const threadDelete = AppState.threads.findIndex(threadId)
       AppState.threads.splice(threadDelete, 1)

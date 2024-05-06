@@ -16,8 +16,6 @@ const backgroundColor = computed(() => {
 			return '#FFFFFF'
 		case 'About Us':
 			return '#A8A96A'
-		case 'Profile':
-			return '#696A42'
 		default:
 			return '#FFFFFF'
 	}
