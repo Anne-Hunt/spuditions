@@ -13,3 +13,20 @@ export const AccountSchema = new Schema(
     },
     { timestamps: true, toJSON: { virtuals: true } }
 )
+
+AccountSchema.virtual('threadCount', {
+    localField: '_id',
+    foreignField: 'creatorId',
+    ref: 'Thread',
+    justOne: false,
+    count: true
+})
+
+
+AccountSchema.virtual('postCount', {
+    localField: '_id',
+    foreignField: 'creatorId',
+    ref: 'Post',
+    justOne: false,
+    count: true
+})

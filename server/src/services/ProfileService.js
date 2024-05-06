@@ -6,6 +6,8 @@ class ProfileService {
     async getProfileById(id) {
         const profile = await dbContext.Account.findById(id, '-password -ip')
 
+        await profile.populate('threadCount')
+
         let result = JSON.parse(JSON.stringify(profile))
         const reputation = await dbContext.Reputation.aggregate([
             { $match: { receiverId: new mongoose.Types.ObjectId(id) } },

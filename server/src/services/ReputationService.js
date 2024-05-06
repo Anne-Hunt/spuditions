@@ -17,6 +17,7 @@ class ReputationService {
     }
 
     async postReputation(reputationData, userInfo) {
+        if (reputationData.senderId == userInfo.id) throw new Error("You can't leave reputation on your own profile.")
         const previousReputation = await dbContext.Reputation.find({ senderId: reputationData.senderId, receiverId: reputationData.receiverId })
 
         if (previousReputation.length != 0) throw new Error("You can't leave reputation on this user because you've already given them reputation in the past.")
