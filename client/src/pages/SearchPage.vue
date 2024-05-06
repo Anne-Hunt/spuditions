@@ -2,7 +2,6 @@
 import { computed, onMounted, onUnmounted } from 'vue';
 import { AppState } from '../AppState.js';
 import Navbar from '../components/Navbar.vue';
-import PostResult from '../components/PostResult.vue';
 import ParkResult from '../components/ParkResult.vue';
 import ThreadResult from '../components/ThreadResult.vue';
 import ProfileResult from '../components/ProfileResult.vue'
