@@ -53,23 +53,23 @@ async function createReview() {
 							<input type="hidden" v-model="editableReviewData.review" class="form-control rows" id="parkReview"
 								required min="1" max="5" />
 
-							<button @click="editableReviewData.review = 1" class="mx-2 starBtn">
+							<button @click="editableReviewData.review = 1" class="mx-2 starBtn" role="button">
 								<span class="fa fa-star fs-2"></span>
 							</button>
 
-							<button @click="editableReviewData.review = 2" class="mx-2 starBtn">
+							<button @click="editableReviewData.review = 2" class="mx-2 starBtn" role="button">
 								<span class="fa fa-star fs-2"></span>
 							</button>
 
-							<button @click="editableReviewData.review = 3" class="mx-2 starBtn">
+							<button @click="editableReviewData.review = 3" class="mx-2 starBtn" role="button">
 								<span class="fa fa-star fs-2"></span>
 							</button>
 
-							<button @click="editableReviewData.review = 4" class="mx-2 starBtn">
+							<button @click="editableReviewData.review = 4" class="mx-2 starBtn" role="button">
 								<span class="fa fa-star fs-2"></span>
 							</button>
 
-							<button @click="editableReviewData.review = 5" class="mx-2 starBtn">
+							<button @click="editableReviewData.review = 5" class="mx-2 starBtn" role="button">
 								<span class="fa fa-star fs-2"></span>
 							</button>
 						</div>
@@ -80,12 +80,12 @@ async function createReview() {
 								placeholder="Rating Reason" maxlength="500">
 							</textarea>
 
-							<label for="postUrl">Reason for rating...</label>
+							<label for="parkBody">Reason for rating...</label>
 						</div>
 
 						<div class="text-end">
-							<button class=" sendBtn rounded p-2 px-3" type="submit">
-								<div class="text-light">Post&nbsp;&nbsp;<i class="mdi mdi-send"></i></div>
+							<button class="sendBtn rounded p-2 px-3" type="submit" role="submit">
+								<div class="text-light">Submit&nbsp;&nbsp;<i class="mdi mdi-send"></i></div>
 							</button>
 						</div>
 
@@ -130,7 +130,7 @@ async function createReview() {
 	transition: 0.3s;
 }
 
-.fa-star:active {
+.fa-star:active::after {
 	color: orange;
 }
 </style>
