@@ -3,7 +3,7 @@ import { logger } from '../utils/Logger.js';
 import { ref } from 'vue'
 import Pop from '../utils/Pop.js';
 import { Modal } from 'bootstrap';
-import { parksService } from '../services/ParksService.js';
+import { visitedService } from '../services/VisitedService.js';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 
@@ -17,12 +17,11 @@ const editableReviewData = ref({
 	// isVisited: 
 })
 
-async function createReview() {
+async function createVisited() {
 	try {
 		logger.log('Creating review! ⭐', editableReviewData)
 		// NOTE .value pulls out the data stored inside of the ref object (whatever is inside the parentheses)
-		const parkId = AppState.activePark.id
-		await parksService.createReview(editableReviewData.value, parkId)
+		await visitedService.createVisited(editableReviewData.value)
 
 		// NOTE form.reset()
 		editableReviewData.value = {
@@ -51,15 +50,14 @@ async function createReview() {
 				<div class="modal-body">
 
 					<!-- NOTE .prevent is the equivalent of event.preventDefault() -->
-					<form @submit.prevent="createReview()">
+					<form @submit.prevent="createVisited()">
 
 						<div class="form-floating mb-3 text-center">
 							<div class="fs-5 mb-2">Rate This Park</div>
 
 							<!-- <input type="hidden" v-model="editableReviewData.review" class="form-control rows" id="parkRating"
 								required min="1" max="5" /> -->
-
-
+								<label for="parkRating">Rate this park:</label>
 							<select v-model="editableReviewData.userRating" class="form-select py-0 mb-5 fs-3" id="parkRating"
 								aria-label="Floating label select example">
 								<option :value="1">⭐</option>
@@ -92,7 +90,7 @@ async function createReview() {
 
 						<div class="form-floating mb-3">
 
-							<textarea v-model="editableReviewData.body" type="text" class="form-control rows" id="parkBody"
+							<textarea v-model="editableReviewData.body" type="text" class="form-control rows" id="parkBody" name="parkBody"
 								placeholder="Rating Reason" maxlength="500">
 							</textarea>
 
@@ -100,8 +98,8 @@ async function createReview() {
 						</div>
 
 						<div class="text-end">
-							<button class="sendBtn rounded p-2 px-3" type="submit" role="submit">
-								<div class="text-light">Submit&nbsp;&nbsp;<i class="mdi mdi-send"></i></div>
+							<button class="sendBtn rounded p-2 px-3" type="submit">
+								<div class="text-light">Submit <i class="mdi mdi-send"></i></div>
 							</button>
 						</div>
 

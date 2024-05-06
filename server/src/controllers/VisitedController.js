@@ -9,15 +9,14 @@ export class VisitedController extends BaseController {
         super('api/visited')
         this.router
             .use(Authware.AuthGuard)
-            .post('', this.postReview)
+            .post('', this.postVisited)
             .delete('/:visitedId', this.destroyVisited)
     }
 
-    async postReview(request, response, next) {
+    async postVisited(request, response, next) {
         try {
             const reviewData = request.body
-            reviewData.creatorId = request.userInfo.id
-            const review = await visitedService.postReview(reviewData)
+            const review = await visitedService.postVisited(reviewData)
             response.send(review)
         } catch (error) {
             next(error)
