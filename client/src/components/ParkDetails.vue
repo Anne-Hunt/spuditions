@@ -247,6 +247,10 @@ function toggleShowAll() {
 	box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 white;
 }
 
+.accordion-button:hover {
+	background-color: var(--lightGreen);
+}
+
 .fontColorDk {
 	color: #3b3c25;
 }
