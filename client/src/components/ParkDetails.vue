@@ -75,8 +75,8 @@ function toggleShowAll() {
 				<h2 class="accordion-header">
 					<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
 						data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
- <!-- Image instead of dropdown arrow -->
-  <img src="/src/assets/img/spuditions.png" alt="Dropdown Arrow" class="spudDropDown">
+						<!-- Image instead of dropdown arrow -->
+						<img src="/src/assets/img/spuditions.png" alt="Dropdown Arrow" class="spudDropDown">
 						Activities
 					</button>
 				</h2>
@@ -152,24 +152,43 @@ function toggleShowAll() {
 					</div>
 				</div>
 
-				<div v-if="park.isVisited == false" class="my-5 text-center">
-					<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
-						title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
-						Have you visited this park?
-					</button>
+				<div class="d-flex flex-wrap justify-content-center justify-content-md-start my-5">
+
+					<div v-if="park.isVisited == false">
+						<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+							title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
+							Have you visited this park?
+						</button>
+					</div>
+
+					<div v-else>
+						<button disabled class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+							title="Park has been visited">
+							You've Visited This Park!
+						</button>
+					</div>
+
+					<!-- MORE INFO BUTTON -->
+					<div v-if="park.description" class="text-center my-5">
+						<p class="d-inline-flex gap-1 mx-auto">
+							<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
+								role="button" aria-expanded="false" aria-controls="collapseExample">
+								Click here to learn more
+							</a>
+						</p>
+						<div class="collapse mb-3" id="collapseExample">
+							<div class="card card-body text-start text-dark">
+								{{ park?.description }}
+							</div>
+						</div>
+					</div>
 				</div>
 
-				<div v-else class="my-5 text-center">
-					<button disabled class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
-						title="Park has been visited">
-						You've Visited This Park!
-					</button>
-				</div>
 
 			</div>
 		</div>
 		<!-- Costs Box and Buttons -->
-		<div class="row mt-2">
+		<div class="row">
 			<div class="col">
 				<div class="container-fluid">
 					<div class="row">
@@ -187,25 +206,6 @@ function toggleShowAll() {
 										{{ cost }}
 									</li>
 								</ul>
-							</div>
-						</div>
-						<!-- Buttons -->
-						<div class="col-12 col-md-6 mt-0 mb-5 mt-md-5">
-							<div class="text-md-start d-flex flex-column align-items-center align-md-start">
-								<!-- Learn More Button -->
-								<div class="text-center text-light" v-if="park.description">
-									<p class="d-inline-flex gap-1 mx-auto">
-										<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
-											role="button" aria-expanded="false" aria-controls="collapseExample">
-											Click here to learn more
-										</a>
-									</p>
-									<div class="collapse mb-3" id="collapseExample">
-										<div class="card card-body text-start text-dark">
-											{{ park?.description }}
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
