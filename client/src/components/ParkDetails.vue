@@ -322,15 +322,15 @@ a:hover {
 .spudDropDown {
 	position: absolute;
   top: 50%;
-  right: 10px; /* Adjust the right distance as needed */
+  right: 10px; 
   transform: translateY(-50%);
-  width: 20px; /* Adjust the width of the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 20px; 
+  height: auto; 
 }
 
 .accordion-button {
   position: relative;
-  padding-right: 40px; /* Adjust the padding to leave space for the image */
+  padding-right: 40px; 
 }
 
 .accordion-button::after {
