@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
 import GMap from './GMap.vue';
@@ -43,28 +43,59 @@ const icon = {
 	'ATVs, UTVs, Motorbikes': 'mdi mdi-atv'
 }
 
-async function changeVisitedStatus() {
-
-}
 
 function getIconClass(activity) {
 	return icon[activity] ? icon[activity] + ' icon-color' : 'mdi mdi-tree icon-color';
 }
 
 
+// Data
+const showAll = ref(false);
+
+// Computed property
+const topFiveActivities = computed(() => {
+  return showAll.value ? activities.value : activities.value.slice(0, 5);
+});
+
+// Method
+function showAllActivities() {
+  showAll.value = true;
+}
 </script>
 
 
+
+
+
 <template>
-	<section class="container-fluid mt-md-0" v-if="park">
-		<div class="row">
-			<div class="col" v-for="activity in activities" :key="activity">
+  <section class="container-fluid mt-md-0" v-if="park">
+    <div class="accordion accordion-flush row" id="accordionFlushExample">
+      <div class="accordion-item col-6">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Activities
+          </button>
+        </h2>
+
+        <div id="flush-collapseOne" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <!-- Show the top 5 most popular activities -->
+            <div class="activity-icons">
 				<VTooltip>
-					<button type="button" class="btn fs-5" :class="getIconClass(activity)" :activity="activity"></button>
-					<template #popper>{{ activity }}</template>
+					<i v-for="(activity, index) in topFiveActivities" :key="index" class="btn fs-5" :class="getIconClass(activity)" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" :data-bs-title="activity"
+                :activity="activity"></i>
+				<template #popper>{{ activity }}</template>
 				</VTooltip>
 			</div>
-		</div>
+
+
+            <!-- Button to view more activities -->
+            <button class="btn btn-primary" @click="showAllActivities">Show All Activities</button>
+          </div>
+        </div>
+      </div>
+    </div>
 		<!-- Park Image and Info -->
 		<div class="row mt-5 position-relative">
 			<div class="col-12 col-md-7">
@@ -110,12 +141,21 @@ function getIconClass(activity) {
 						<b class="fontColorDk">Region:</b> {{ park?.region }}
 					</div>
 				</div>
-				<div class="my-5 text-center">
-					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
-						title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
-						Mark Park As Visited
+
+				<div v-if="park.isVisited == false" class="my-5 text-center">
+					<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+						title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
+						Have you visited this park?
 					</button>
 				</div>
+
+				<div v-else class="my-5 text-center">
+					<button disabled class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
+						title="Park has been visited">
+						You've Visited This Park!
+					</button>
+				</div>
+
 			</div>
 		</div>
 		<!-- Costs Box and Buttons -->
@@ -162,11 +202,6 @@ function getIconClass(activity) {
 				</div>
 			</div>
 		</div>
-
-
-
-
-
 
 
 		<div class="d-flex justify-content-center">
@@ -255,4 +290,14 @@ a:hover {
 		text-align: center;
 	}
 }
+
+// // .activity-icons {
+// //   display: flex;
+// //   flex-wrap: wrap;
+// //   gap: 10px; 
+// // }
+
+// .activity-icons .btn {
+//  
+// }
 </style>
