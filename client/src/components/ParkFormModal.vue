@@ -106,7 +106,7 @@ async function createReview() {
 }
 
 .sendBtn {
-	background-color: var(--bgLightBlue);
+	background-color: #02a3e9;
 	border: none;
 	transition: 0.4s;
 }

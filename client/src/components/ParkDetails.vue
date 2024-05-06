@@ -71,7 +71,7 @@ function getIconClass(activity) {
 				<div class="position-relative">
 					<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
 					<!-- Overlay for Park Website Link -->
-					<a :href="park?.webUrl" target="_blank" class=" mb-3 parkWebsiteLink rounded">
+					<a :href="park?.webUrl" target="_blank" class="mb-2 mb-md-3 parkWebsiteLink rounded widthCustom">
 						Click Here For Park Website
 					</a>
 				</div>
@@ -109,7 +109,7 @@ function getIconClass(activity) {
 						<b class="fontColorDk">Region:</b> {{ park?.region }}
 					</div>
 				</div>
-				<div class="mt-5 text-center">
+				<div class="my-5 text-center">
 					<button @click="changeVisitedStatus()" class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
 						title="Mark As Visited" data-bs-toggle="modal" data-bs-target="#parkFormModal">
 						Mark Park As Visited
@@ -123,7 +123,7 @@ function getIconClass(activity) {
 				<div class="container-fluid">
 					<div class="row">
 						<!-- Costs Box -->
-						<div class="col-12 col-md-6 my-5">
+						<div class="col-12 col-md-6 mt-3 mb-4 mt-md-5 mb-md-5">
 							<div class="box mb-3">
 								<h4 class="text-center">Costs:</h4>
 								<div class="mt-1 text-center">
@@ -139,11 +139,10 @@ function getIconClass(activity) {
 							</div>
 						</div>
 						<!-- Buttons -->
-						<div class="col-12 col-md-6 my-5">
+						<div class="col-12 col-md-6 mt-0 mb-5 mt-md-5">
 							<div class="text-md-start d-flex flex-column align-items-center align-md-start">
 								<!-- Learn More Button -->
 								<div class="text-center text-light" v-if="park.description">
-									<hr>
 									<p class="d-inline-flex gap-1 mx-auto">
 										<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
 											role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -208,6 +207,17 @@ function getIconClass(activity) {
 	text-decoration: none;
 }
 
+.parkWebsiteLink:hover {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.579);
+	padding: 8px 16px;
+	color: #02a3e9;
+	text-decoration: none;
+}
+
 i {
 	font-size: xx-large;
 	color: var(--beigeSand);
@@ -236,5 +246,12 @@ a:hover {
 
 .red {
 	color: var(--lightGreen);
+}
+
+@media only screen and (max-width: 767px) {
+	.widthCustom {
+		width: 85%;
+		text-align: center;
+	}
 }
 </style>
