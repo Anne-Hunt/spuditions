@@ -9,10 +9,12 @@ import ThreadModal from "../components/ThreadModal.vue";
 import { threadsService } from "../services/ThreadsService.js";
 import { useRoute } from "vue-router";
 import Pop from "../utils/Pop.js";
+import PostModal from "../components/PostModal.vue";
 
 const account = computed(() => AppState.account)
 const posts = computed(() => AppState.posts)
 const route = useRoute()
+
 
 // async function getGeneralThread(){
 //   try {
@@ -56,7 +58,10 @@ const route = useRoute()
 
         <!-- //!SECTION - Leave comment button -->
         <div class="col-12">
-          <button class="btn btn-primary float-end me-4">Leave Comment <i class="mdi mdi-plus"></i></button>
+          <button data-bs-toggle="modal" data-bs-target="#create-post-modal" class="btn btn-primary float-end me-4">Leave Comment <i class="mdi mdi-plus"></i></button>
+          <ModalWrap modalId="create-post-modal">
+            <PostModal/>
+          </ModalWrap>
         </div>
       </div>    
       
