@@ -7,16 +7,17 @@ import { api } from "./AxiosService.js"
 class VisitedService{
 
     async createVisited(reviewData){
-        const userId = AppState.account.id
-        reviewData.creatorId = userId
-        reviewData.parkId = AppState.activePark.id
-        const response = await api.post(`api/visited`, reviewData)
-        const review = new Visited(response.data)
-        AppState.visited.push(review)
+		const userId = AppState.account.id
+		reviewData.creatorId = userId
+		reviewData.parkId = AppState.activePark.id
+		const response = await api.post(`api/visited`,reviewData)
+		logger.log('CREATED VISITED/REVIEW ⭐🔧', response.data)
+		const review = new Visited(response.data)
+		AppState.visited.push(review)
     }
 
     async editVisited(reviewData, reviewId){
-        const response = await api.put(`api/visted`, reviewData)
+        const response = await api.put(`api/visited`, reviewData)
         const review = new Visited(response.data)
         const reviewOld = AppState.visited.findIndex(reviewId)
         AppState.visited.splice(reviewOld, 1)

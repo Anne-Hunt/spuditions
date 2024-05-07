@@ -31,17 +31,16 @@ class ParksService {
     AppState.activePark = park
   }
 
-	// TODO: get createReview working
-  async createReview(reviewData, parkId) {
-		const userId = AppState.account.id
+//   async createReview(reviewData, parkId) {
+// 		const userId = AppState.account.id
 
-		const response = await api.post(`api/parks/${parkId}/visited`, reviewData)
-		logger.log('CREATED REVIEW ⭐🔧', response.data)
-		const newReview = new Visited(response.data)
-		AppState.visited.unshift(newReview)
+// 		const response = await api.post(`api/parks/${parkId}/visited`, reviewData)
+// 		logger.log('CREATED REVIEW ⭐🔧', response.data)
+// 		const newReview = new Visited(response.data)
+// 		AppState.visited.unshift(newReview)
 
-		// const park.isVisited = true
-	}
+// 		// const park.isVisited = true
+// 	}
 }
 
 export const parksService = new ParksService()
