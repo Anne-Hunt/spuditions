@@ -6,12 +6,12 @@ import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 
 class PostsService {
-    //!SECTION - searches posts from search bar
-    async searchPosts(query) {
-        const searchQuery = QueryBuilder.build(PostSchema, query)
-        const posts = await dbContext.Post.find(searchQuery)
-        return posts
-    }
+    //!SECTION - searches posts from search bar - decided to remove functionality
+    // async searchPosts(query) {
+    //     const searchQuery = QueryBuilder.build(PostSchema, query)
+    //     const posts = await dbContext.Post.find(searchQuery)
+    //     return posts
+    // }
 
     //!SECTION - Creates posts by accessing the model and forming it to the data
     async createPost(postData) {
