@@ -24,7 +24,6 @@ class ThreadsService{
     AppState.threads = threads
   }
   
-  
   async getSingleThread() {
     const response = await api.get(`api/threads/:threadId`)
     const thread = response.data.map(threadData => new Thread(threadData))

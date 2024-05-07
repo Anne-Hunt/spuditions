@@ -71,6 +71,11 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authHandler.authGuard
+  },
+  {
+    path: '/thread/:threadId',
+    name: 'Forum Thread',
+    component: loadPage('ThreadPage')
   }
 ]
 

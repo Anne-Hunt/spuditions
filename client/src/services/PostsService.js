@@ -17,7 +17,7 @@ class PostsService{
         const posts = response.data.map(postData => new Post(postData))
         AppState.posts = posts
       }
-
+      
       async getPosts(){
         AppState.posts = []
         const response = await api.get(`api/posts/:threadId`)

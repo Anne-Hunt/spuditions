@@ -1,6 +1,5 @@
 import { AppState } from "../AppState.js"
 import { Park } from "../models/Park.js"
-import { Visited } from "../models/Visited.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
@@ -31,16 +30,16 @@ class ParksService {
     AppState.activePark = park
   }
 
-//   async createReview(reviewData, parkId) {
-// 		const userId = AppState.account.id
-
-// 		const response = await api.post(`api/parks/${parkId}/visited`, reviewData)
-// 		logger.log('CREATED REVIEW ⭐🔧', response.data)
-// 		const newReview = new Visited(response.data)
-// 		AppState.visited.unshift(newReview)
-
-// 		// const park.isVisited = true
-// 	}
+	// // NOTE: goes through visitedService now
+  // async createReview(reviewData, parkId) {
+	// 	logger.log("happy lil' star")
+	// 	const userId = AppState.account.id
+	// 	const response = await api.post(`api/parks/${parkId}/visited`, reviewData)
+	// 	logger.log('CREATED REVIEW ⭐🔧', response.data)
+	// 	const newReview = new Visited(response.data)
+	// 	AppState.visited.unshift(newReview)
+	// 	// const park.isVisited = true
+	// }
 }
 
 export const parksService = new ParksService()
