@@ -95,6 +95,8 @@ onMounted(() => {
 		</div>
 	</section>
 
+
+	<!--Search/Parks List-->
 	<section class="container-fluid bg-lightGreen py-4 rounded">
   <!-- Adjusted container class for full-width background -->
   <div class="row">

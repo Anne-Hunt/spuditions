@@ -16,10 +16,10 @@
       <div class="col-12">
         <div class="row align-items-center">
           <div class="col-12 col-md-3 pt-2 text-center order-1">
-            <img class="dev-img" src="https://www.slashfilm.com/img/gallery/michael-scotts-12-most-redeeming-moments-in-the-office/l-intro-1634858598.jpg" alt="Michael">
+            <img class="dev-img" src="/src/assets/img/jarrett.jpg" alt="Jarrett">
           </div>
           <div class="col-12 col-md-9 pb-2 order-2">
-            <h1>Michael</h1>
+            <h1>Jarrett</h1>
             <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
           </div>
         </div>
@@ -28,11 +28,11 @@
       <div class="col-12">
         <div class="row align-items-center">
           <div class="col-12 col-md-9 order-2 order-md-1">
-            <h1 class="text-end">Jim</h1>
+            <h1 class="text-end">Anne</h1>
             <p class="fs-5 text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
           </div>
           <div class="col-12 col-md-3 order-1 order-md-2 text-center">
-            <img class="dev-img" src="https://cdn.costumewall.com/wp-content/uploads/2019/07/jim-halpert.jpg" alt="Jim">
+            <img class="dev-img" src="/src/assets/img/anne.png" alt="Anne">
           </div>
         </div>
       </div>
@@ -95,4 +95,5 @@
     object-fit: cover;
     object-position: center
   }
+
 </style>
