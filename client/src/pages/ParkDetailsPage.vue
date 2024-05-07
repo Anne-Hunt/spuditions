@@ -22,6 +22,9 @@ async function getParkAndWeather() {
 	try {
 		await parksService.getParkById(route.params.parkId)
 		await weathersService.getWeather()
+		if(AppState.activePark.parkCode == 'yell') {
+			getWebcam()
+		}
 	}
 	catch (error) {
 		Pop.error(error);
@@ -51,7 +54,6 @@ async function changeForecast() {
 
 onMounted(() => {
 	getParkAndWeather()
-	getWebcam()
 })
 
 </script>
