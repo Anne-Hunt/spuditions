@@ -96,9 +96,7 @@ onMounted(() => {
 		</div>
 	</section>
 
-
-	<!--Search/Parks List-->
-	<section class="container-fluid bg-lightGreen py-4">
+	<section class="container-fluid bg-lightGreen py-4 rounded">
   <!-- Adjusted container class for full-width background -->
   <div class="row">
     <div class="col-12 col-md-3">
@@ -125,7 +123,9 @@ onMounted(() => {
   <div class="row row-cols-1 row-cols-md-3 g-3">
     <div v-for="park in parks" :key="park.id" class="col mb-3 parkFont"> 
       <!-- Adjusted column width for small screens -->
-      <p>{{ park.name }}</p>
+	<RouterLink :to="{name: 'Park Details', params: {parkId: park.id}}">
+		<p>{{ park.name }}</p>
+	</RouterLink>
     </div>
   </div>
 </div>
