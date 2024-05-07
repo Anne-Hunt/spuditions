@@ -32,17 +32,17 @@ onMounted(() => {
   <!-- //!SECTION - Sticky sidebar -->
   <section class="row me-0">
     <Sidebar/>
-      
+
     <!-- //!SECTION - Main section of the page -->
     <div class="col-12 col-md-12 col-lg-10">
       <!-- //!SECTION - Create Post button -->
       <div class="row me-0">
         <!-- //!SECTION - Thread card -->
         <!-- //FIXME - Need to replace info with profiles and stuff -->
-        <div v-for="thread in threads" :key="thread?.id" class="col-12">
+        <div class="col-12">
           <ThreadCard :thread="threads" :fullView="true"/>
         </div>
-      </div>    
+      </div>
   </div>
   </section>
 </template>
