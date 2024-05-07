@@ -109,8 +109,8 @@ onMounted(() => {
 				<div class="my-2"><i class="mdi mdi-magnify fs-3"></i><span class="fs-3">Search</span></div>
 				<form @submit.prevent="search()">
 					<div class="form-floating mb-5">
-						<input class="form-control rounded" type="text" name="searchbar" id="searchBar">
-						<label for="searchbar text-light">@</label>
+						<input v-model="searchQuery" class="form-control rounded" type="text" name="searchbar" id="searchBar">
+						<label for="searchbar text-light"><i class="mdi mdi-magnify"></i></label>
 					</div>
 					<button type="submit" class="btn btn-danger text-end">SEARCH</button>
 			</form>
