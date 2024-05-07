@@ -4,6 +4,7 @@ import Pop from "../utils/Pop.js";
 import { parksService } from "../services/ParksService.js";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
+import { router } from "../router.js";
 
 const searchQuery = ref('')
 const parks = computed(() => AppState.parks)
@@ -33,7 +34,7 @@ function setCarouselParks() {
 
 async function search() {
 	try {
-		this.router.push({ name: "Search Page", params: { query: searchQuery.value } })
+		router.push({ name: "Search Page", params: { query: searchQuery.value } })
 	} catch (error) {
 		logger.error('search failed', error)
 		Pop.toast("Unable to search", 'error')
