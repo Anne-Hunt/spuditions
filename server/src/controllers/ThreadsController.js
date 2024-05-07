@@ -72,8 +72,7 @@ export class ThreadsController extends BaseController {
     //!SECTION - Gets the posts on a particular thread
     async getThreadPosts(request, response, next) {
         try {
-            const threadId = request.params.threadId
-            const posts = await postsService.getThreadPosts(threadId)
+            const posts = await postsService.getThreadPosts(request.params.threadId)
             response.send(posts)
         } catch (error) {
             next(error)
