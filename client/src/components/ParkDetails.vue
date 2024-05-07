@@ -1,6 +1,5 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
 import GMap from './GMap.vue';
 import ParkFormModal from './ParkFormModal.vue';
@@ -47,7 +46,6 @@ const icon = {
 function getIconClass(activity) {
 	return icon[activity] ? icon[activity] + ' icon-color' : 'mdi mdi-tree icon-color';
 }
-
 
 // Data
 const showAll = ref(false);
