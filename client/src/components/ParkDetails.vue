@@ -16,7 +16,6 @@ const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
 const userId = computed(() => AppState.account.id)
 const visited = computed(() => AppState.visited)
-const checkVisit = computed(()=>  AppState.visited.find(creatorId => creatorId == userId.value))
 
 const route = useRoute()
 
@@ -74,7 +73,6 @@ function toggleShowAll() {
 }
 
 
-
 async function getVisitedByPark() {
 	try {
 		await visitedService.getVisitedByPark(route.params.parkId)
@@ -84,6 +82,13 @@ async function getVisitedByPark() {
 		logger.error(error)
 	}
 }
+
+
+const isVisited = computed(() => {
+	const review = AppState.visited.find(review => review.creatorId == userId.value)
+
+	return review != undefined
+});
 
 
 onMounted(() => {
@@ -184,7 +189,7 @@ onMounted(() => {
 				<!-- SECTION: Mark visited buttons -->
 				<div class="d-flex flex-wrap justify-content-center justify-content-md-start mt-5 mb-5">
 
-					<div v-if="!checkVisit">
+					<div v-if="!isVisited">
 						<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
 							title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
 							Have you visited this park?
