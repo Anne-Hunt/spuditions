@@ -16,6 +16,7 @@ export class VisitedController extends BaseController {
     async postVisited(request, response, next) {
         try {
             const reviewData = request.body
+            reviewData.creatorId = request.userInfo.id
             const review = await visitedService.postVisited(reviewData)
             response.send(review)
         } catch (error) {

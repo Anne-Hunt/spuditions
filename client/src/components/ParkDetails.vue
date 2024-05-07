@@ -1,6 +1,5 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
 import GMap from './GMap.vue';
 import ParkFormModal from './ParkFormModal.vue';
@@ -47,7 +46,6 @@ const icon = {
 function getIconClass(activity) {
 	return icon[activity] ? icon[activity] + ' icon-color' : 'mdi mdi-tree icon-color';
 }
-
 
 // Data
 const showAll = ref(false);
@@ -152,6 +150,8 @@ function toggleShowAll() {
 					</div>
 				</div>
 
+
+				<!-- SECTION: Mark visited buttons -->
 				<div class="d-flex flex-wrap justify-content-center justify-content-md-start mt-5 mb-5">
 
 					<div v-if="park.isVisited == false">
@@ -167,7 +167,6 @@ function toggleShowAll() {
 							You've Visited This Park!
 						</button>
 					</div>
-
 					<!-- MORE INFO BUTTON -->
 					<!-- <div v-if="park.description" class="text-center my-5">
 						<p class="d-inline-flex gap-1 mx-auto">
@@ -183,11 +182,10 @@ function toggleShowAll() {
 						</div>
 					</div> -->
 				</div>
-
-
 			</div>
 		</div>
-		<!-- Costs Box and Buttons -->
+
+
 		<div class="container-fluid mt-md-5">
 			<div class="row justify-content-around flex-wrap">
 
@@ -215,7 +213,6 @@ function toggleShowAll() {
 						</div>
 					</div>
 				</div>
-
 
 
 				<!-- SECTION: Park description box -->

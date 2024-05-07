@@ -94,41 +94,30 @@ onMounted(() => {
 		</div>
 	</div>
 	</section>
-  
 
-	<!-- Search/Parks List -->
-
-	<section class="container-fluid bg-lightGreen py-3">
-  <!-- Adjusted container class for full-width background -->
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-3 d-flex align-items-center verticalLine">
-      <div class="bg-Gray rounded p-3">
-        <div class="my-2 text-center">
-          <i class="mdi mdi-magnify fs-4 me-2"></i>
-          <span class="fs-4">Find A Park</span>
-        </div>
-        <form @submit.prevent="search()">
-          <div class="form-floating mb-3">
-            <input class="form-control rounded" type="text" v-model="searchQuery" id="searchBar">
-            <!-- Added v-model for two-way binding -->
-            <label for="searchBar" class="text-light"></label>
-          </div>
-          <!-- Adjusted button width -->
-          <button type="submit" class="btn bg-beigeSand w-100">SEARCH</button>
-        </form>
-      </div>
-    </div>
-    <div class="col-12 col-md-9">
-   <h4 class="text-center fw-bold mb-4">All Parks: (sorted A-Z)</h4> <hr>  
-      <div class="row ms-3">
-        <div v-for="park in parks" :key="park.id" class="col-12 col-md-4 mb-3"> 
-          <!-- Adjusted column width for small screens -->
-          <p>{{ park.name }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+	<!--Search/Parks List-->
+	<section class="row bg-dark p-2">
+		<div class="col-12 col-md-3 d-flex align-items-center">
+			<div class="bg-warning rounded p-3">
+				<div class="my-2"><i class="mdi mdi-magnify fs-3"></i><span class="fs-3">Search</span></div>
+				<form @submit.prevent="search()">
+					<div class="form-floating mb-5">
+						<input v-model="searchQuery" class="form-control rounded" type="text" name="searchbar" id="searchBar">
+						<label for="searchbar text-light"><i class="mdi mdi-magnify"></i></label>
+					</div>
+					<button type="submit" class="btn btn-danger text-end">SEARCH</button>
+			</form>
+			</div>
+		</div>
+		<div class="col-12 col-md-9 text-light">
+			<h4 class="text-center">All Parks</h4>
+			<div class="row">
+				<div v-for="park in parks" :key="park.id" class="col-4">
+					<p>{{ park.name }}</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </template>
 
 
