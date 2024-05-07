@@ -12,7 +12,7 @@ class VisitedService {
     }
 
     async getVisitedByPark(parkId) {
-        const visited = await dbContext.Visited.find({ parkId: parkId })
+        const visited = await dbContext.Visited.find({ parkId: parkId }).populate('creator')
         return visited
     }
 

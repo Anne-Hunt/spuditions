@@ -10,6 +10,7 @@ import { threadsService } from "../services/ThreadsService.js";
 import { useRoute } from "vue-router";
 import Pop from "../utils/Pop.js";
 import PostModal from "../components/PostModal.vue";
+import { logger } from "../utils/Logger.js";
 
 const account = computed(() => AppState.account)
 const posts = computed(() => AppState.posts)
@@ -22,7 +23,7 @@ async function getThreads(){
     await threadsService.getThreads()
   } catch (error) {
     Pop.toast("Could not get threads", 'error')
-    console.error(error)
+    logger.error(error)
   }
 }
 

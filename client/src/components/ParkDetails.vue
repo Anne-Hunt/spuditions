@@ -8,6 +8,7 @@ import Pop from '../utils/Pop.js';
 import { visitedService } from '../services/VisitedService.js';
 import { useRoute } from 'vue-router';
 import { Visited } from '../models/Visited.js';
+import { logger } from '../utils/Logger.js';
 
 
 
@@ -15,8 +16,7 @@ const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
 const userId = computed(() => AppState.account.id)
 const visited = computed(() => AppState.visited)
-
-
+const isVisited = computed(()=> visited.value.creator.find(id => id == userId.value))
 
 const route = useRoute()
 
@@ -79,7 +79,7 @@ async function getVisitedByPark() {
 	}
 	catch (error) {
 		Pop.toast("Could not get visited status by park id", 'error')
-		console.error(error)
+		logger.error(error)
 	}
 }
 
@@ -157,7 +157,7 @@ onMounted(() => {
 					<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
 					<!-- Overlay for Park Website Link -->
 					<a :href="park?.webUrl" target="_blank" class="mb-2 mb-md-3 parkWebsiteLink rounded widthCustom">
-						Click Here For Park Website
+						Click Here For Park Website {{ visited }}
 					</a>
 				</div>
 			</div>
@@ -199,7 +199,7 @@ onMounted(() => {
 				<!-- SECTION: Mark visited buttons -->
 				<div class="d-flex flex-wrap justify-content-center justify-content-md-start mt-5 mb-5">
 
-					<div v-if="park.isVisited">
+					<div v-if="userId == ">
 						<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
 							title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
 							Have you visited this park?
