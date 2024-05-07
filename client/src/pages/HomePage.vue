@@ -4,6 +4,7 @@ import Pop from "../utils/Pop.js";
 import { parksService } from "../services/ParksService.js";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
+import { router } from "../router.js";
 
 const searchQuery = ref('')
 const parks = computed(() => AppState.parks)
@@ -31,9 +32,9 @@ function setCarouselParks() {
 	}
 }
 
-async function search(){
+async function search() {
 	try {
-		this.router.push({ name: "Search Page", params: { query: searchQuery.value } })
+		router.push({ name: "Search Page", params: { query: searchQuery.value } })
 	} catch (error) {
 		logger.error('search failed', error)
 		Pop.toast("Unable to search", 'error')
@@ -96,50 +97,48 @@ onMounted(() => {
 		</div>
 	</section>
 
+	<section class="container-fluid bg-lightGreen py-4 rounded">
+		<!-- Adjusted container class for full-width background -->
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<div class="d-flex align-items-center justify-content-center verticalLine">
+					<div class="bg-Gray rounded p-3 me-2 ms-2">
+						<div class="my-2 text-center">
+							<i class="mdi mdi-magnify fs-4 me-2"></i>
+							<span class="fs-4 me-3">Find A Park</span>
+						</div>
+						<form @submit.prevent="search()">
+							<div class="form-floating mb-3">
+								<input class="form-control rounded" type="text" v-model="searchQuery" id="searchBar">
+								<!-- Added v-model for two-way binding -->
+								<label for="searchBar" class="text-light"></label>
+							</div>
+							<!-- Adjusted button width -->
+							<button type="submit" class="btn bg-beigeSand w-100">SEARCH</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-9">
+				<h4 class="text-center fw-bold mb-5 fs-3">All Parks: (sorted A-Z)</h4>
+				<div class="row row-cols-1 row-cols-md-3 g-3">
+					<div v-for="park in parks" :key="park.id" class="col mb-3 parkFont">
+						<!-- Adjusted column width for small screens -->
+						<RouterLink :to="{ name: 'Park Details', params: { parkId: park.id } }">
+							<p>{{ park.name }}</p>
+						</RouterLink>
+					</div>
+				</div>
+			</div>
 
-	<!--Search/Parks List-->
-	<section class="container-fluid bg-lightGreen py-4">
-  <!-- Adjusted container class for full-width background -->
-  <div class="row">
-    <div class="col-12 col-md-3">
-      <div class="d-flex align-items-center justify-content-center verticalLine">
-        <div class="bg-Gray rounded p-3 me-2 ms-2">
-          <div class="my-2 text-center">
-            <i class="mdi mdi-magnify fs-4 me-2"></i>
-            <span class="fs-4 me-3">Find A Park</span>
-          </div>
-          <form @submit.prevent="search()">
-            <div class="form-floating mb-3">
-              <input class="form-control rounded" type="text" v-model="searchQuery" id="searchBar">
-              <!-- Added v-model for two-way binding -->
-              <label for="searchBar" class="text-light"></label>
-            </div>
-            <!-- Adjusted button width -->
-            <button type="submit" class="btn bg-beigeSand w-100">SEARCH</button>
-          </form>
-        </div>
-      </div>
-    </div>
-	<div class="col-12 col-md-9">
-  <h4 class="text-center fw-bold mb-5 fs-3">All Parks: (sorted A-Z)</h4>
-  <div class="row row-cols-1 row-cols-md-3 g-3">
-    <div v-for="park in parks" :key="park.id" class="col mb-3 parkFont"> 
-      <!-- Adjusted column width for small screens -->
-      <p>{{ park.name }}</p>
-    </div>
-  </div>
-</div>
-
-  </div>
-</section>
+		</div>
+	</section>
 </template>
 
 
 
 
 <style scoped lang="scss">
-
-
 .parkFont {
 	font-size: 20px;
 }
@@ -153,11 +152,11 @@ onMounted(() => {
 }
 
 .typewriter {
-			width: 60ch;
-			animation: typing 2s steps(27);
-			font-family: monospace;
-			font-size: 1em;
-		}
+	width: 60ch;
+	animation: typing 2s steps(27);
+	font-family: monospace;
+	font-size: 1em;
+}
 
 .overlay {
 	position: absolute;
@@ -189,9 +188,10 @@ onMounted(() => {
 }
 
 @media screen and (min-width: 768px) and (max-width: 900px) {
-	.vidText{
+	.vidText {
 		display: contents;
 	}
+
 	.overlay {
 		position: absolute;
 		width: 50%;
@@ -211,23 +211,24 @@ onMounted(() => {
 }
 
 @media only screen and (max-width: 768px) {
-  .vidText {
-    display:none;
-  }
-  
+	.vidText {
+		display: none;
+	}
+
 }
+
 .imgText {
 	display: flex;
-  background-image: url('https://images.unsplash.com/photo-1599584290793-3cef41047738?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-position: center;
-  max-width: 100%;
-  height: 65dvh;
+	background-image: url('https://images.unsplash.com/photo-1599584290793-3cef41047738?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+	background-position: center;
+	max-width: 100%;
+	height: 65dvh;
 }
 
 
-.verticalLine{
-  border-right: 5px solid var(--forestGreen); 
-  height: 800px;
+.verticalLine {
+	border-right: 5px solid var(--forestGreen);
+	height: 800px;
 }
 
 
