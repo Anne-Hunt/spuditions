@@ -6,7 +6,7 @@ const npsApi = axios.create({
 	baseURL: 'https://developer.nps.gov/',
 	timeout: 10000,
 	params: {
-	appid: 'q3UaeZF3jn0ALJgfRnxHAOjqeJKam0OrPLEciKe8'
+	api_key: 'q3UaeZF3jn0ALJgfRnxHAOjqeJKam0OrPLEciKe8'
 	}
  })
 

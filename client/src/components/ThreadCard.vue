@@ -20,7 +20,7 @@ defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
                 </div>
             </div>
             <div class="col-12">
-                
+            
             </div>
         </div>
     </div>

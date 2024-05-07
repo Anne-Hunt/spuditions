@@ -34,12 +34,10 @@ class ParksService {
   // async createReview(reviewData, parkId) {
 	// 	logger.log("happy lil' star")
 	// 	const userId = AppState.account.id
-
 	// 	const response = await api.post(`api/parks/${parkId}/visited`, reviewData)
 	// 	logger.log('CREATED REVIEW ⭐🔧', response.data)
 	// 	const newReview = new Visited(response.data)
 	// 	AppState.visited.unshift(newReview)
-
 	// 	// const park.isVisited = true
 	// }
 }
