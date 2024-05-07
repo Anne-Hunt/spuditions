@@ -55,10 +55,11 @@ onMounted(() => {
 		<video id="video" class="video-container" autoplay loop muted>
 			<source src="../assets/video/hero-video.mp4" type="video/mp4">
 		</video>
-
-		<div class="container-fluid overlay">
-			<div class="typewriter">
-				<div class="text-light fw-bold customSize text-center">Visit A State Park Today</div>
+		<div class="d-flex justify-content-center">
+			<div class="container-fluid overlay justify-self-center">
+				<div class="typewriter">
+					<div class="text-light fw-bold customSize text-center">Visit A State Park Today</div>
+				</div>
 			</div>
 		</div>
 	</section>
