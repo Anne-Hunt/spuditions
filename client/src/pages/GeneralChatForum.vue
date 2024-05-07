@@ -30,7 +30,7 @@ onMounted(() => {
   <!-- //!SECTION - Sticky sidebar -->
   <section class="row me-0">
     <Sidebar/>
-      
+
     <!-- //!SECTION - Main section of the page -->
     <div class="col-12 col-md-12 col-lg-10">
       <!-- //!SECTION - Create Post button -->
@@ -53,7 +53,7 @@ onMounted(() => {
             <ThreadCard :thread="thread"/>
           </router-link>
           </div>
-      </div>    
+      </div>
   </div>
   </section>
 </template>

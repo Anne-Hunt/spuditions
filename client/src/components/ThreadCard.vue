@@ -8,7 +8,7 @@ defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
 
 
 <template>
-    <div class="card bg-teal p-2 m-4 my-2 pb-0">
+    <div v-if="thread" class="card bg-teal p-2 m-4 my-2 pb-0">
         <div class="row py-2">
             <div class="px-4 col-12 d-flex">
                 <div>
@@ -20,7 +20,7 @@ defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
                 </div>
             </div>
             <div class="col-12">
-            
+
             </div>
         </div>
     </div>
