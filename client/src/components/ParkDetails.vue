@@ -71,7 +71,7 @@ function toggleShowAll() {
 	<section class="container-fluid mt-md-0" v-if="park">
 
 		<div class="accordion accordion-flush row" id="accordionFlushExample">
-			<div class="accordion-item col-6">
+			<div class="accordion-item col-12 col-md-6">
 				<h2 class="accordion-header">
 					<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
 						data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -152,7 +152,7 @@ function toggleShowAll() {
 					</div>
 				</div>
 
-				<div class="d-flex flex-wrap justify-content-center justify-content-md-start my-5">
+				<div class="d-flex flex-wrap justify-content-center justify-content-md-start mt-5 mb-5">
 
 					<div v-if="park.isVisited == false">
 						<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
@@ -169,7 +169,7 @@ function toggleShowAll() {
 					</div>
 
 					<!-- MORE INFO BUTTON -->
-					<div v-if="park.description" class="text-center my-5">
+					<!-- <div v-if="park.description" class="text-center my-5">
 						<p class="d-inline-flex gap-1 mx-auto">
 							<a class="btn btn-btnPrimary text-white" data-bs-toggle="collapse" href="#collapseExample"
 								role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -181,40 +181,89 @@ function toggleShowAll() {
 								{{ park?.description }}
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 
 			</div>
 		</div>
 		<!-- Costs Box and Buttons -->
-		<div class="row">
-			<div class="col">
-				<div class="container-fluid">
-					<div class="row">
-						<!-- Costs Box -->
-						<div class="col-12 col-md-6 mt-3 mb-4 mt-md-5 mb-md-5">
-							<div class="box mb-3">
-								<h4 class="text-center">Costs:</h4>
-								<div class="mt-1 text-center">
-									<i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
-									<i class="fs7">Non-resident charges are included on top of resident charges</i>
-								</div>
-								<hr>
-								<ul>
-									<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
-										{{ cost }}
-									</li>
-								</ul>
+		<div class="container-fluid mt-md-5">
+			<div class="row justify-content-around flex-wrap">
+
+				<!-- SECTION: Costs box -->
+				<div class="accordion accordion-item col-12 col-md-5 mb-5 order-2 order-md-1" id="accordion2">
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
+							data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+							<!-- Image instead of dropdown arrow -->
+							<img src="/src/assets/img/spuditions.png" alt="Dropdown Arrow" class="spudDropDown">
+
+							<div>
+								<h3 class="text-center">Costs:</h3>
+								<i class="mdi mdi-information-outline fs6 color"></i>&nbsp;
+								<i class="fs7">Non-resident charges are included on top of resident charges</i>
 							</div>
+						</button>
+					</h2>
+
+					<div id="flush-collapseTwo" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordion2">
+						<div class="accordion-body">
+							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+								{{ cost }}
+							</li>
+						</div>
+					</div>
+				</div>
+
+
+
+				<!-- SECTION: Park description box -->
+				<div class="accordion accordion-item col-12 col-md-5 mb-5 order-1 order-md-2" id="accordion3">
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed mt-3 text-center" type="button" data-bs-toggle="collapse"
+							data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+							<!-- Image instead of dropdown arrow -->
+							<img src="/src/assets/img/spuditions.png" alt="Dropdown Arrow" class="spudDropDown">
+
+							<div>
+								<i class="fs7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</i>
+								<h4 class="text-center">Click Here To Learn More:</h4>
+							</div>
+						</button>
+					</h2>
+
+					<div id="flush-collapseThree" class="accordion-collapse collapse" v-if="park"
+						data-bs-parent="#accordion3">
+						<div class="accordion-body">
+							{{ park?.description }}
 						</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
+		<!-- Costs Box -->
+		<!-- <div class="col-12 col-md-6 mt-3 mb-4 mt-md-5 mb-md-5">
+					<div class="box mb-3">
+						<h4 class="text-center">Costs:</h4>
+						<div class="mt-1 text-center">
+							<i class="mdi mdi-information-outline fs6 red"></i>&nbsp;
+							<i class="fs7">Non-resident charges are included on top of resident charges</i>
+						</div>
+						<hr>
+						<ul>
+							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+								{{ cost }}
+							</li>
+						</ul>
+					</div>
+				</div> -->
 
 
-		<div class="d-flex justify-content-center">
+
+		<div class="d-flex justify-content-center mt-5">
 			<GMap />
 		</div>
 
@@ -225,6 +274,10 @@ function toggleShowAll() {
 
 
 <style lang="scss" scoped>
+.accordion {
+	border: none;
+}
+
 .accordion-button:not(.collapsed) {
 	color: var(--bs-accordion-active-color);
 	background-color: white;
@@ -318,7 +371,7 @@ a:hover {
 }
 
 
-.red {
+.color {
 	color: var(--lightGreen);
 }
 
@@ -387,6 +440,14 @@ a:hover {
 	.widthCustom {
 		width: 85%;
 		text-align: center;
+	}
+
+	.fs6 {
+		font-size: 0.8em;
+	}
+
+	.fs7 {
+		font-size: .70em;
 	}
 }
 </style>
