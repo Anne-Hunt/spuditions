@@ -5,17 +5,23 @@ import { api } from "./AxiosService.js"
 
 
 class ThreadsService{
+  async createThread(threadData) {
+    const response = await api.post('api/threads', threadData)
+    logger.log("Creating a thread", response.data)
+    const thread = new Thread(response.data)
+    AppState.threads.unshift(thread)
+  }
   async getThreads(){
     const response = await api.get('api/threads')
     logger.log("Got threads", response.data)
     const threads = response.data.map(threadData => new Thread(threadData))
     AppState.threads = threads
   }
-  async createThread(threadData) {
-    const response = await api.post('api/threads', threadData)
-    logger.log("Creating a thread", response.data)
+  async getThreadById(threadId) {
+    const response = await api.get(`api/threads/${threadId}`)
+    logger.log("Got thread by id", response.data)
     const thread = new Thread(response.data)
-    AppState.threads.unshift(thread)
+    AppState.activeThread = thread
   }
   async searchThreads(searchQuery) {
     AppState.threads = []
