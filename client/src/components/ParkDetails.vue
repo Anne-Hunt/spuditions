@@ -93,6 +93,7 @@ const isVisited = computed(() => {
 
 
 onMounted(() => {
+	AppState.visited = null
 	getVisitedByPark()
 })
 </script>

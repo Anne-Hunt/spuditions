@@ -22,7 +22,7 @@ async function getParkAndWeather() {
 	try {
 		await parksService.getParkById(route.params.parkId)
 		await weathersService.getWeather()
-		if(AppState.activePark.parkCode == 'yell') {
+		if (AppState.activePark.parkCode == 'yell') {
 			getWebcam()
 		}
 	}
@@ -33,7 +33,7 @@ async function getParkAndWeather() {
 
 async function getWebcam() {
 	try {
-		if(AppState.activePark.parkCode == null) return
+		if (AppState.activePark.parkCode == null) return
 		await nationalParksService.getWebcam()
 	} catch (error) {
 		logger.error("Unable to get webcam", error)
@@ -53,6 +53,7 @@ async function changeForecast() {
 //!SECTION - Loads the park on page load
 
 onMounted(() => {
+	AppState.activePark = null
 	getParkAndWeather()
 })
 
