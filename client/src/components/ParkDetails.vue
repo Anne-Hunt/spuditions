@@ -17,7 +17,6 @@ const userId = computed(() => AppState.account.id)
 const visited = computed(() => AppState.visited)
 
 
-
 const route = useRoute()
 
 
@@ -62,6 +61,7 @@ function getIconClass(activity) {
 // Data
 const showAll = ref(false);
 
+
 // Computed property
 const topFiveActivities = computed(() => {
 	return showAll.value ? activities.value : activities.value.slice(0, 5);
@@ -78,32 +78,36 @@ async function getVisitedByPark() {
 		await visitedService.getVisitedByPark(route.params.parkId)
 	}
 	catch (error) {
-		Pop.toast("Could not get visited status by park id", 'error')
+		Pop.toast("Could not get reviews or visited status by park id", 'error')
 		console.error(error)
 	}
 }
 
+
+const isVisited = computed(() => {
+
+	const creatorId = visited.value
+	const reviewCreatorId = AppState.visited.find(creatorId => creatorId == userId.value)
+
+	// const reviewCreatorId = visited.creatorId
+
+	// userId = reviewCreatorId ? result = true : result = false
+	// return result
+
+	if (userId.value == reviewCreatorId) {
+		const visited = true
+		return visited
+	}
+	else {
+		const visited = false
+		return visited
+	}
+});
+
+
 onMounted(() => {
 	getVisitedByPark()
 })
-
-
-// const props = defineProps({ visited: { type: Visited, required: true } })
-
-// const isVisited = computed(() => {
-// 	return props.visited.creatorId.find(p => p == AppState.account?.id)
-// })
-
-// function getVisitedByPark() {
-// 	try {
-// 		visitedService.getVisitedByPark(props.visited)
-// 	}
-// 	catch (error) {
-// 		Pop.toast('Could not get review', 'error');
-// 	}
-// }
-
-
 </script>
 
 
@@ -199,7 +203,7 @@ onMounted(() => {
 				<!-- SECTION: Mark visited buttons -->
 				<div class="d-flex flex-wrap justify-content-center justify-content-md-start mt-5 mb-5">
 
-					<div v-if="park.isVisited">
+					<div v-if="park.isVisited == false">
 						<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
 							title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
 							Have you visited this park?
