@@ -33,7 +33,6 @@ class ParksService {
 
 	// TODO: get createReview working
   async createReview(reviewData, parkId) {
-		console.log("happy lil' star")
 		const userId = AppState.account.id
 
 		const response = await api.post(`api/parks/${parkId}/visited`, reviewData)
