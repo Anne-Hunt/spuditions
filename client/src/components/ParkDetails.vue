@@ -215,7 +215,6 @@ function toggleShowAll() {
 				</div>
 
 
-
 				<!-- SECTION: Park description box -->
 				<div class="accordion accordion-item col-12 col-md-5 mb-5 order-1 order-md-2" id="accordion3">
 					<h2 class="accordion-header">
