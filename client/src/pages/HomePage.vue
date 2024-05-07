@@ -51,12 +51,12 @@ onMounted(() => {
 
 <template>
 	<!-- Video Hero -->
-	<section class="position-relative vidText">
-		<video id="video" class="video-container" autoplay loop muted>
+	<section class="position-relative imgText">
+		<video id="video" class="video-container vidText" autoplay loop muted>
 			<source src="../assets/video/hero-video.mp4" type="video/mp4">
 		</video>
 		<div class="d-flex justify-content-center">
-			<div class="container-fluid overlay justify-self-center">
+			<div class="container-fluid overlay">
 				<div class="typewriter">
 					<div class="text-light fw-bold customSize text-center">Visit A State Park Today</div>
 				</div>
@@ -190,12 +190,6 @@ onMounted(() => {
 	.vidText{
 		display: contents;
 	}
-	.imgText{
-		display: none;
-	}
-	.texty{
-		display: none !important;;
-	}
 	.overlay {
 		position: absolute;
 		width: 50%;
@@ -218,14 +212,14 @@ onMounted(() => {
   .vidText {
     display:none;
   }
-  .imgText {
-	display:flex;
-	background-image: url('https://images.unsplash.com/photo-1599584290793-3cef41047738?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-	background-position: center;
-	max-width: 100%;
-	height: 40dvh;
-  }
-
+  
+}
+.imgText {
+	display: flex;
+  background-image: url('https://images.unsplash.com/photo-1599584290793-3cef41047738?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-position: center;
+  max-width: 100%;
+  height: 65dvh;
 }
 
 
