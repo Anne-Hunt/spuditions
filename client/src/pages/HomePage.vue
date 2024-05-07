@@ -95,45 +95,52 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<!-- Search/Parks List -->
+	<section class="container-fluid bg-lightGreen py-4 rounded">
+  <!-- Adjusted container class for full-width background -->
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <div class="d-flex align-items-center justify-content-center verticalLine">
+        <div class="bg-Gray rounded p-3 me-2 ms-2">
+          <div class="my-2 text-center">
+            <i class="mdi mdi-magnify fs-4 me-2"></i>
+            <span class="fs-4 me-3">Find A Park</span>
+          </div>
+          <form @submit.prevent="search()">
+            <div class="form-floating mb-3">
+              <input class="form-control rounded" type="text" v-model="searchQuery" id="searchBar">
+              <!-- Added v-model for two-way binding -->
+              <label for="searchBar" class="text-light"></label>
+            </div>
+            <!-- Adjusted button width -->
+            <button type="submit" class="btn bg-beigeSand w-100">SEARCH</button>
+          </form>
+        </div>
+      </div>
+    </div>
+	<div class="col-12 col-md-9">
+  <h4 class="text-center fw-bold mb-5 fs-3">All Parks: (sorted A-Z)</h4>
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+    <div v-for="park in parks" :key="park.id" class="col mb-3 parkFont"> 
+      <!-- Adjusted column width for small screens -->
+      <p>{{ park.name }}</p>
+    </div>
+  </div>
+</div>
 
-	<section class="container-fluid bg-lightGreen py-3">
-		<!-- Adjusted container class for full-width background -->
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-3 d-flex align-items-center verticalLine">
-				<div class="bg-Gray rounded p-3">
-					<div class="my-2 text-center">
-						<i class="mdi mdi-magnify fs-4 me-2"></i>
-						<span class="fs-4">Find A Park</span>
-					</div>
-					<form @submit.prevent="search()">
-						<div class="form-floating mb-3">
-							<input class="form-control rounded" type="text" v-model="searchQuery" id="searchBar">
-							<!-- Added v-model for two-way binding -->
-							<label for="searchBar" class="text-light"></label>
-						</div>
-						<!-- Adjusted button width -->
-						<button type="submit" class="btn bg-beigeSand w-100">SEARCH</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-12 col-md-9">
-				<h4 class="text-center fw-bold mb-4">All Parks: (sorted A-Z)</h4>
-				<hr>
-				<div class="row ms-3">
-					<div v-for="park in parks" :key="park.id" class="col-12 col-md-4 mb-3">
-						<!-- Adjusted column width for small screens -->
-						<p>{{ park.name }}</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section></template>
+  </div>
+</section>
+</template>
 
 
 
 
 <style scoped lang="scss">
+
+
+.parkFont {
+	font-size: 20px;
+}
+
 .video-container {
 	filter: brightness(55%);
 	width: 100%;
@@ -223,8 +230,7 @@ onMounted(() => {
 
 .verticalLine{
   border-right: 5px solid var(--forestGreen); 
-  height: 650px;
-  border-radius: 2px;
+  height: 800px;
 }
 
 

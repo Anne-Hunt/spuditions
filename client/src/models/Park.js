@@ -1,3 +1,4 @@
+import { AppState } from "../AppState.js"
 
 
 export class Park {
@@ -38,9 +39,4 @@ export class Park {
       const lng = parseFloat(latlong[1])
       return lng
     }
-
-	get isVisited() {
-		const visited = false
-		return visited
-	}
 }

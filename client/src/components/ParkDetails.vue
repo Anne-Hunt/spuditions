@@ -62,6 +62,7 @@ function getIconClass(activity) {
 // Data
 const showAll = ref(false);
 
+
 // Computed property
 const topFiveActivities = computed(() => {
 	return showAll.value ? activities.value : activities.value.slice(0, 5);
@@ -83,27 +84,31 @@ async function getVisitedByPark() {
 	}
 }
 
+
+const isVisited = computed(() => {
+
+	const creatorId = visited.value
+	const reviewCreatorId = AppState.visited.find(creatorId => creatorId == userId.value)
+
+	// const reviewCreatorId = visited.creatorId
+
+	// userId = reviewCreatorId ? result = true : result = false
+	// return result
+
+	if (userId.value == reviewCreatorId) {
+		const visited = true
+		return visited
+	}
+	else {
+		const visited = false
+		return visited
+	}
+});
+
+
 onMounted(() => {
 	getVisitedByPark()
 })
-
-
-// const props = defineProps({ visited: { type: Visited, required: true } })
-
-// const isVisited = computed(() => {
-// 	return props.visited.creatorId.find(p => p == AppState.account?.id)
-// })
-
-// function getVisitedByPark() {
-// 	try {
-// 		visitedService.getVisitedByPark(props.visited)
-// 	}
-// 	catch (error) {
-// 		Pop.toast('Could not get review', 'error');
-// 	}
-// }
-
-
 </script>
 
 
