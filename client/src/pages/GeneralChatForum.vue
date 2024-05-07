@@ -1,21 +1,14 @@
 <script setup>
 import { computed, onMounted } from "vue";
-import CommentCard from "../components/CommentCard.vue";
 import Sidebar from "../components/Sidebar.vue";
 import ThreadCard from "../components/ThreadCard.vue";
 import { AppState } from "../AppState.js";
 import ModalWrap from "../components/ModalWrap.vue";
 import ThreadModal from "../components/ThreadModal.vue";
 import { threadsService } from "../services/ThreadsService.js";
-import { useRoute } from "vue-router";
 import Pop from "../utils/Pop.js";
-import PostModal from "../components/PostModal.vue";
 
-const account = computed(() => AppState.account)
-const posts = computed(() => AppState.posts)
 const threads = computed(() => AppState.threads)
-const route = useRoute()
-
 
 async function getThreads(){
   try {
@@ -56,7 +49,7 @@ onMounted(() => {
         <!-- //!SECTION - Thread card -->
         <!-- //FIXME - Need to replace info with profiles and stuff -->
         <div v-for="thread in threads" :key="thread?.id" class="col-12">
-          <router-link :to="{ name: 'Thread Page' }">
+          <router-link :to="{ name: 'Thread Page', params: {threadId: thread.id}}">
             <ThreadCard :thread="thread"/>
           </router-link>
           </div>
