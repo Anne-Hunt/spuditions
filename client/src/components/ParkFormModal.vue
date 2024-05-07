@@ -11,7 +11,6 @@ import { AppState } from '../AppState.js';
 const route = useRoute()
 
 const editableReviewData = ref({
-	// REVIEW: review: 0 may break this somehow so keep your eye on it. Not sure what sets the default
 	userRating: 5,
 	body: '',
 	// isVisited: 

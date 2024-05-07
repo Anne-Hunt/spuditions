@@ -41,7 +41,6 @@ export class Park {
 
 	get isVisited() {
 		const visited = false
-
 		return visited
 	}
 }
