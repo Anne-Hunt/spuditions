@@ -148,7 +148,7 @@ onMounted(() => {
 					<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
 					<!-- Overlay for Park Website Link -->
 					<a :href="park?.webUrl" target="_blank" class="mb-2 mb-md-3 parkWebsiteLink rounded widthCustom">
-						Click Here For Park Website {{ visited }}
+						Click Here For Park Website
 					</a>
 				</div>
 			</div>
