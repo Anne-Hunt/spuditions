@@ -1,12 +1,25 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { Park } from '../models/Park.js';
 import { AppState } from '../AppState.js';
 import GMap from './GMap.vue';
 import ParkFormModal from './ParkFormModal.vue';
+import Pop from '../utils/Pop.js';
+import { visitedService } from '../services/VisitedService.js';
+import { useRoute } from 'vue-router';
+import { Visited } from '../models/Visited.js';
+
 
 
 const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
+const userId = computed(() => AppState.account.id)
+const visited = computed(() => AppState.visited)
+
+
+
+const route = useRoute()
+
 
 scroll(0, 0)
 
@@ -42,7 +55,6 @@ const icon = {
 	'ATVs, UTVs, Motorbikes': 'mdi mdi-atv'
 }
 
-
 function getIconClass(activity) {
 	return icon[activity] ? icon[activity] + ' icon-color' : 'mdi mdi-tree icon-color';
 }
@@ -59,6 +71,39 @@ const topFiveActivities = computed(() => {
 function toggleShowAll() {
 	showAll.value = !showAll.value;
 }
+
+
+async function getVisitedByPark() {
+	try {
+		await visitedService.getVisitedByPark(route.params.parkId)
+	}
+	catch (error) {
+		Pop.toast("Could not get visited status by park id", 'error')
+		console.error(error)
+	}
+}
+
+onMounted(() => {
+	getVisitedByPark()
+})
+
+
+// const props = defineProps({ visited: { type: Visited, required: true } })
+
+// const isVisited = computed(() => {
+// 	return props.visited.creatorId.find(p => p == AppState.account?.id)
+// })
+
+// function getVisitedByPark() {
+// 	try {
+// 		visitedService.getVisitedByPark(props.visited)
+// 	}
+// 	catch (error) {
+// 		Pop.toast('Could not get review', 'error');
+// 	}
+// }
+
+
 </script>
 
 
@@ -154,7 +199,7 @@ function toggleShowAll() {
 				<!-- SECTION: Mark visited buttons -->
 				<div class="d-flex flex-wrap justify-content-center justify-content-md-start mt-5 mb-5">
 
-					<div v-if="park.isVisited == false">
+					<div v-if="park.isVisited">
 						<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
 							title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
 							Have you visited this park?
@@ -238,8 +283,8 @@ function toggleShowAll() {
 						</div>
 					</div>
 				</div>
-			</div>
 
+			</div>
 		</div>
 		<!-- Costs Box -->
 		<!-- <div class="col-12 col-md-6 mt-3 mb-4 mt-md-5 mb-md-5">

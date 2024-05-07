@@ -31,8 +31,8 @@ class VisitedService{
         logger.log("Deleted", response.data)
     }
 
-    async getVisitedByPark(){
-        const response = await api.get(`api/parks/:parkId`)
+    async getVisitedByPark(parkId){
+        const response = await api.get(`api/parks/${parkId}/visited`)
         const reviews = response.data.map(reviewData => new Visited(reviewData))
         AppState.visited = reviews
     }
