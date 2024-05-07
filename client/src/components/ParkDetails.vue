@@ -16,7 +16,7 @@ const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
 const userId = computed(() => AppState.account.id)
 const visited = computed(() => AppState.visited)
-const isVisited = computed(()=> visited.value.creator.find(id => id == userId.value))
+const checkVisit = computed(()=>  AppState.visited.find(creatorId => creatorId == userId.value))
 
 const route = useRoute()
 
@@ -74,6 +74,7 @@ function toggleShowAll() {
 }
 
 
+
 async function getVisitedByPark() {
 	try {
 		await visitedService.getVisitedByPark(route.params.parkId)
@@ -83,27 +84,6 @@ async function getVisitedByPark() {
 		logger.error(error)
 	}
 }
-
-
-const isVisited = computed(() => {
-
-	const creatorId = visited.value
-	const reviewCreatorId = AppState.visited.find(creatorId => creatorId == userId.value)
-
-	// const reviewCreatorId = visited.creatorId
-
-	// userId = reviewCreatorId ? result = true : result = false
-	// return result
-
-	if (userId.value == reviewCreatorId) {
-		const visited = true
-		return visited
-	}
-	else {
-		const visited = false
-		return visited
-	}
-});
 
 
 onMounted(() => {
@@ -204,7 +184,7 @@ onMounted(() => {
 				<!-- SECTION: Mark visited buttons -->
 				<div class="d-flex flex-wrap justify-content-center justify-content-md-start mt-5 mb-5">
 
-					<div v-if="userId == ">
+					<div v-if="!checkVisit">
 						<button class="btn btn-orange borderBtn text-light mx-auto mx-md-0"
 							title="Mark As Visited & Leave Review" data-bs-toggle="modal" data-bs-target="#parkFormModal">
 							Have you visited this park?
