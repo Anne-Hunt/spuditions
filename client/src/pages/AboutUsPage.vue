@@ -28,11 +28,11 @@
       <div class="col-12">
         <div class="row align-items-center">
           <div class="col-12 col-md-9 order-2 order-md-1">
-            <h1 class="text-end">Anne</h1>
+            <h1 class="text-end">Emma</h1>
             <p class="fs-5 text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
           </div>
           <div class="col-12 col-md-3 order-1 order-md-2 text-center">
-            <img class="dev-img" src="/src/assets/img/anne.png" alt="Anne">
+            <img class="dev-img" src="/src/assets/img/emma.jpg" alt="Emma">
           </div>
         </div>
       </div>
@@ -40,10 +40,10 @@
       <div class="col-12">
         <div class="row align-items-center">
           <div class="col-12 col-md-3 pt-2 order-1 text-center">
-            <img class="dev-img" src="https://www.myany.city/sites/default/files/styles/scaled_cropped_medium__260x260/public/field/image/node-related-images/sample-dwight-k-schrute.jpg?itok=8TfRscbA" alt="Dwight">
+            <img class="dev-img" src="/src/assets/img/kyler.jpg" alt="Kyler">
           </div>
           <div class="col-12 col-md-9 pb-2 order-2">
-            <h1>Dwight</h1>
+            <h1>Kyler</h1>
             <p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
           </div>
         </div>
@@ -52,11 +52,11 @@
       <div class="col-12">
         <div class="row align-items-center">
           <div class="col-12 col-md-9 order-2 order-md-1">
-            <h1 class="text-end">Angela</h1>
+            <h1 class="text-end">Tara</h1>
             <p class="fs-5 text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
           </div>
           <div class="col-12 col-md-3 order-1 order-md-2 text-center">
-            <img class="dev-img" src="https://www.looper.com/img/gallery/angela-kinsey-gives-context-to-the-prank-culture-on-the-office/l-intro-1678858629.jpg" alt="Angela">
+            <img class="dev-img" src="/src/assets/img/tara2.jpg" alt="Angela">
           </div>
         </div>
       </div>
@@ -64,10 +64,10 @@
       <div class="col-12">
         <div class="row align-items-center">
           <div class="col-12 col-md-3 pt-2 order-1 text-center">
-            <img class="dev-img" src="https://www.looper.com/img/gallery/the-offices-phyllis-smith-never-intended-on-auditioning-for-the-show/l-intro-1684705252.jpg" alt="Phyllis">
+            <img class="dev-img" src="/src/assets/img/anne.jpg" alt="Anne">
           </div>
           <div class="col-12 col-md-9 pb-2 order-2">
-            <h1>Phyllis</h1>
+            <h1>Anne</h1>
             <p class="fs-5 text-start">Anne began her career as a college English instructor teaching writing and rhetoric before tranisitoning to digital marketing in niche markets and finally full stack web development. She is constantly creating new projects and writing code. For more information please follow the links to Github or LinkedIn.</p>
           </div>
         </div>
@@ -94,6 +94,7 @@
     border-radius: 50em;
     object-fit: cover;
     object-position: center
+    
   }
 
 </style>
