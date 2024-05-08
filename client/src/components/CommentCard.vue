@@ -45,7 +45,7 @@ async function destroyPost(postId) {
 					</div>
 				</div>
 				<div class="col-12">
-					<p>{{ post?.body }}</p>
+					<p class="ps-2">{{ post?.body }}</p>
 				</div>
 			</div>
 		</div>
