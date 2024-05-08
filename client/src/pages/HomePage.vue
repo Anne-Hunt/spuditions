@@ -124,7 +124,7 @@ onMounted(() => {
 			<div class="col-12 col-md-9">
 				<h4 class="text-center fw-bold mb-5 fs-3">All Parks: (sorted A-Z)</h4>
 				<div class="row row-cols-1 row-cols-md-3 g-3">
-					<div v-for="park in parks" :key="park.id" class="col mb-3 parkFont">
+					<div v-for="park in parks" :key="park.id" class="col parkFont">
 						<!-- Adjusted column width for small screens -->
 						<RouterLink :to="{ name: 'Park Details', params: { parkId: park.id } }">
 							<p>{{ park.name }}</p>
