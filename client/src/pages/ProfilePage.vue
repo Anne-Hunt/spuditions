@@ -1,17 +1,19 @@
 <script setup>
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
-import CommentCard from "../components/CommentCard.vue";
 import Pop from "../utils/Pop.js";
 import { profileService } from "../services/ProfileService.js";
 import { useRoute } from "vue-router";
 import { logger } from "../utils/Logger.js";
+import ThreadCard from "../components/ThreadCard.vue";
+import { threadsService } from "../services/ThreadsService.js";
 
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
 const user = computed(()=> AppState.account)
 const reviewedAlready = computed(()=> AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
+const threads = computed(() => AppState.profileThreads)
 
 async function getProfile(){
   try {
@@ -26,8 +28,18 @@ async function getProfile(){
   }
 }
 
+async function getProfileThreads(){
+  try {
+    await threadsService.getProfileThreads(route.params.profileId)
+  } catch (error) {
+    Pop.toast("Could not get profile's threads", 'error')
+    logger.error(error)
+  }
+}
+
 onMounted(() => {
   getProfile()
+  getProfileThreads()
 })
 
 </script>
@@ -52,7 +64,7 @@ onMounted(() => {
       </div>
       <div v-if="profile.id != user.id">
         <div class="dropdown">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+          <button type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
             data-bs-auto-close="outside">
             Review Profile
           </button>
@@ -87,8 +99,9 @@ onMounted(() => {
     </div>
     <div class="row justify-content-center">
       <h1 class="text-dark text-center my-5">Threads:</h1>
-
-      <CommentCard />
+      <!-- <div class v-for="thread in threads" :key="thread.id">
+        <ThreadCard :thread="thread"/>
+      </div> -->
     </div>
   </div>
 </template>

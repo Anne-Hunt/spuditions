@@ -7,7 +7,7 @@ import { api } from "./AxiosService.js"
 
 
 class ThreadsService{
-
+  
   async getPostByThreadId(threadId) {
     const response = await api.get(`api/threads/${threadId}/posts`)
     logger.log("Got posts on this thread", response.data)
@@ -34,6 +34,13 @@ class ThreadsService{
     const thread = new Thread(response.data)
     AppState.activeThread = thread
   }
+  async getProfileThreads(profileId) {
+    AppState.profileThreads = []
+    const response = await api.get(`api/threads?creatorId=${profileId}`)
+    logger.log("Got threads by this profile", response.data)
+    const threads = response.data.map(threads => new Thread(threads))
+    AppState.profileThreads = threads
+  }
   async searchThreads(searchQuery) {
     AppState.threads = []
     const response = await api.get(`api/threads/search?query=${searchQuery}`)
@@ -48,7 +55,7 @@ class ThreadsService{
       Pop.success("Deleted thread")
       AppState.threads.splice(threadToDelete, 1)
   }
-  
+
     // async editThread(threadData, threadId){
     //     const response = await api.put(`api/threads/:threadId`, threadData)
     //     const thread = new Thread(response.data)

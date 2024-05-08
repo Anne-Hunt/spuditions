@@ -46,5 +46,5 @@ class ProfileService{
       AppState.reputation = reputations
   }
 }
-
+    
 export const profileService = new ProfileService()
