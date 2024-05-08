@@ -20,14 +20,14 @@ class ThreadsService {
 
     //!SECTION - Gets all of our threads
     async getThreads(query) {
-        const threads = await dbContext.Thread.find(query).populate('creator', '-email -id -password')
+        const threads = await dbContext.Thread.find(query).populate('creator', '-email -ip -password')
         return threads
     }
 
     //!SECTION - Gets a thread by its id
     async getThreadById(threadId) {
         const thread = await dbContext.Thread.findById(threadId)
-        await thread.populate('creator', '-email -id -password')
+        await thread.populate('creator', '-email -ip -password')
         if (!thread) throw new Error(`No thread with the id ${threadId}`)
         return thread
     }
