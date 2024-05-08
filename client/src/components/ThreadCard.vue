@@ -1,8 +1,12 @@
 <script setup>
+import { computed } from "vue";
 import { Thread } from "../models/Thread.js";
+import { AppState } from "../AppState.js";
 
 
 defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
+
+const account = computed(() => AppState.account)
 
 </script>
 
@@ -19,8 +23,8 @@ defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
                     <p class="w-100" :class="{ 'noWrap' : !fullView }">{{ thread?.body }}</p>
                 </div>
             </div>
-            <div class="col-12">
-
+            <div v-if="thread?.creatorId == account.id" class="col-12 col-sm-12 col-md-12">
+                <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
         </div>
     </div>
