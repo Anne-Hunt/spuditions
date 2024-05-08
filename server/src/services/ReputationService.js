@@ -12,7 +12,7 @@ class ReputationService {
         if (userInfo.role == "Banned") throw new Error("Banned users cannot modify reputation.")
     }
     async getReputationOnProfile(profileId) {
-        const reputation = await dbContext.Reputation.find({ profileId: profileId })
+        const reputation = await dbContext.Reputation.find({ profileId: profileId }).populate('creator', '-email -ip -password')
         return reputation
     }
 
