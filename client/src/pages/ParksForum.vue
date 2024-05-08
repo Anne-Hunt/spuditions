@@ -45,7 +45,7 @@ onMounted(() => {
         <div class="col-12">
           <div class="p-3 mt-3 fw-bold">
             <h1 class="d-inline">Parks Chat</h1>
-            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn bg-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
+            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
             <ModalWrap modalId="create-thread-modal">
               <ThreadModal/>
             </ModalWrap>
@@ -60,7 +60,6 @@ onMounted(() => {
       <div class="p-2 ">
             <h5 class="py-3">Explore park discussions, from general chatter to specific spots – pick your park above!</h5>
             </div>
-
           </div>
         </div>
 
@@ -79,7 +78,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 
-.btn.bg-forestGreen:hover {
+.btn.btn-forestGreen:hover {
   background-color: var(--lightGreen);
     }
 
