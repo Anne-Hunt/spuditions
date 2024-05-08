@@ -28,7 +28,7 @@
         </div>
       </div>
       
-      <div class="col-12 ms-2">
+      <div class="col-12 ps-5">
         <div class="row align-items-center">
           <div class="col-12 col-md-9 order-2 order-md-1">
             <h1 class="text-end">Emma</h1>
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div class="col-12 ms-2">
+      <div class="col-12 ps-5">
         <div class="row align-items-center">
           <div class="col-12 col-md-9 order-2 order-md-1">
             <h1 class="text-end">Tara</h1>
