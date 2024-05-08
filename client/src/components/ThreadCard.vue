@@ -45,10 +45,10 @@ async function destroyThread(threadId) {
 				</div>
 
 				<div>
-					<button v-if="thread.creatorId == userId" @click.prevent="destroyThread(thread.id)"
+					<!-- <button v-if="thread.creatorId == userId" @click.prevent="destroyThread(thread.id)"
 						class="btn btn-danger fs-5 float-end delete-post" :title="`Delete Comment`">
 						<i class="mdi mdi-trash-can"></i>
-					</button>
+					</button> -->
 				</div>
 			</div>
 		</div>
