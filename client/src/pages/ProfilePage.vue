@@ -14,6 +14,9 @@ const profile = computed(() => AppState.activeProfile)
 const user = computed(()=> AppState.account)
 const reviewedAlready = computed(()=> AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
 const threads = computed(() => AppState.profileThreads)
+const posts = computed(()=> AppState.posts)
+const visits = computed(()=> AppState.visited)
+const reps = computed(()=> AppState.reputation)
 
 const reputation = ref({
   comment: '',
@@ -87,7 +90,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="profile" class="container-fluid">
+  <div v-if="profile" class="container-fluid m-0 p-0">
     <div class="row me-0 align-items-center bg-forestGreen">
       <div class="col-12 text-center p-3 pt-5">
         <h3 class="fw-bold text-white">{{ profile.name }}</h3>
@@ -97,35 +100,35 @@ onMounted(() => {
       </div>
       <div class="col-12 text-center text-white pt-4 fs-4">
         Reputation
+        <div v-if="profile.id != user.id">
+          <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
+              data-bs-auto-close="outside">
+              Review Profile
+            </button>
+            <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
+              <div class="mb-3">
+                <label for="comment" class="form-label">Say a Few Words About This User</label>
+                <input v-model="reputation.comment" type="text" name="comment" class="form-control" id="commentInput">
+              </div>
+              <div class="mb-3">
+                <label for="ratingProfile" class="form-label">Rating</label>
+                <select v-model="reputation.rating" name="ratingProfile" class="form-control" id="profileRating" >
+                  <option value="+1"><span>Good Spud</span></option>
+                  <option value="-1" selected><span>Bad Spud</span></option>
+                </select>
+              </div>
+              <button v-if="!reviewedAlready" type="submit" class="btn btn-primary">Submit</button>
+              <button class="btn btn-primary" v-else disabled>Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
       <div class="col-12 d-flex justify-content-center align-items-center mt-1">
         <img v-if="profile.reputation < 0" class="rotten-spud-img pe-3 pb-2 selectable"
           src="/src/assets/img/rottenSpud.png" alt="">
         <img v-else class="spud-img pe-3 selectable" src="/src/assets/img/spuditions.png" alt="">
         <h5 class="text-white"> {{ profile.reputation }}</h5>
-      </div>
-      <div v-if="profile.id != user.id">
-        <div class="dropdown">
-          <button type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
-            data-bs-auto-close="outside">
-            Review Profile
-          </button>
-          <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
-            <div class="mb-3">
-              <label for="comment" class="form-label">Say a Few Words About This User</label>
-              <input v-model="reputation.comment" type="text" name="comment" class="form-control" id="commentInput">
-            </div>
-            <div class="mb-3">
-              <label for="ratingProfile" class="form-label">Rating</label>
-              <select v-model="reputation.rating" name="ratingProfile" class="form-control" id="profileRating" >
-                <option value="+1"><span>Good Spud</span></option>
-                <option value="-1" selected><span>Bad Spud</span></option>
-              </select>
-            </div>
-            <button v-if="!reviewedAlready" type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-primary" v-else disabled>Submit</button>
-          </form>
-        </div>
       </div>
     </div>
     <div class="row justify-content-center pt-4 pb-5 bg-forestGreen">
@@ -145,7 +148,7 @@ onMounted(() => {
     <div class="row justify-content-center">
       <h1 class="text-dark text-center my-5">Threads:</h1>
       <div class v-for="thread in threads" :key="thread?.id">
-        <ThreadCard :thread?="thread"/>
+        <ThreadCard :thread="thread"/>
       </div>
     </div>
   </div>
