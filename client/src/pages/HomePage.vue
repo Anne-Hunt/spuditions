@@ -139,8 +139,15 @@ onMounted(() => {
 
 
 <style scoped lang="scss">
-.parkFont {
-	font-size: 20px;
+
+a {
+  color: inherit; 
+  text-decoration: none; 
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: white; 
 }
 
 .video-container {
@@ -188,6 +195,31 @@ onMounted(() => {
 }
 
 @media screen and (max-width: 767px) {
+
+	// REVIEW still not mobile friendly
+	
+   /* mobile view style */
+
+	.overlay {
+    position: absolute;
+    width: 100%;
+    left: 10%;
+    top: 40%;
+    padding: 0;
+
+    /* overlay style */
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 10px; 
+}
+
+.customSize {
+    font-size: 40px;
+    color: white; 
+    padding: 15px; 
+}
+
+ /* ----------------------------- */
+
 	.vidText {
 		display: contents;
 	}
@@ -219,7 +251,7 @@ onMounted(() => {
 
 .imgText {
 	display: flex;
-	background-image: url('https://images.unsplash.com/photo-1599584290793-3cef41047738?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+	background-image: url('https://images.pexels.com/photos/1834399/pexels-photo-1834399.jpeg?auto=compress&cs=tinysrgb&w=800');
 	background-position: center;
 	max-width: 100%;
 	height: 65dvh;
@@ -361,5 +393,4 @@ onMounted(() => {
 	}
 }
 
-.class {}
 </style>
