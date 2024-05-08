@@ -71,6 +71,7 @@ onMounted(() => {
           </div>
       </div>
   </div>
+  <ForumRules/>
   </section>
 </template>
 

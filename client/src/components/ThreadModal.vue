@@ -88,6 +88,9 @@ onMounted(()=>{
         <label for="thread-tags">Tag</label>
         <input v-model="threadData.tags" type="text" class="form-control" id="thread-tags" minLength="2" maxLength="10">
       </div>
+      <div>
+          By posting you are agreeing to the forum rules.
+      </div>
       <button type="submit" class="btn btn-bgLightBlue float-end mt-2">Submit</button>
     </form>
   </div>
