@@ -23,8 +23,10 @@ async function getParks() {
 function setCarouselParks() {
 	try {
 		AppState.carouselParks = []
-		let randomIndex = (Math.floor((Math.random() * (AppState.parks.length -= 3))))
-		AppState.carouselParks.push(AppState.parks[randomIndex], AppState.parks[randomIndex + 1], AppState.parks[randomIndex + 2])
+		for(let i = 0;  i < 4; i++){
+			let randomIndex = (Math.floor((Math.random() * (AppState.parks.length))))
+			AppState.carouselParks.push(AppState.parks[randomIndex])
+		}
 		logger.log('parks in carousel', AppState.carouselParks)
 	} catch (error) {
 		logger.error("unable to select carousel parks", error)
