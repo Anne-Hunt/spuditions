@@ -135,4 +135,5 @@ onMounted(() => {
   border-radius: 50em;
   aspect-ratio: 1/1;
 }
+
 </style>
