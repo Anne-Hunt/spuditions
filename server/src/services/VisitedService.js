@@ -7,7 +7,7 @@ class VisitedService {
 
     //!SECTION - Gets visited status for users
     async getVisited(creatorId) {
-        const visited = await dbContext.Visited.find({ creatorId: creatorId })
+        const visited = await dbContext.Visited.find({ creatorId: creatorId }).populate('park')
         return visited
     }
 

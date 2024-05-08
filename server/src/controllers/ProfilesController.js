@@ -1,5 +1,7 @@
+import { postsService } from '../services/PostsService.js'
 import { profileService } from '../services/ProfileService.js'
 import { reputationService } from '../services/ReputationService.js'
+import { threadsService } from '../services/ThreadsService.js'
 import { visitedService } from '../services/VisitedService.js'
 import BaseController from '../utils/BaseController'
 
@@ -12,12 +14,32 @@ export class ProfilesController extends BaseController {
             .get('/:profileId', this.getProfile)
             .get('/:profileId/reputation', this.getReputationOnProfile)
             .get('/:profileId/visited', this.getVisited)
+            .get('/:profileId/threads', this.getThreads)
+            .get('/:profileId/posts', this.getPosts)
     }
 
     async searchProfile(request, response, next) {
         try {
             const profiles = await profileService.searchProfile(request.query)
             response.send(profiles)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getThreads(request, response, next) {
+        try {
+            const threads = await threadsService.getThreadsByProfile(request.params.profileId)
+            response.send(threads)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getPosts(request, response, next) {
+        try {
+            const posts = await postsService.getPostsByProfile(request.params.profileId)
+            response.send(posts)
         } catch (error) {
             next(error)
         }

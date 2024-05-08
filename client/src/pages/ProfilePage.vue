@@ -17,6 +17,9 @@ async function getProfile(){
   try {
     await profileService.getProfile(route.params.profileId)
     await profileService.getReputation(route.params.profileId)
+    await profileService.getThreads(route.params.profileId)
+    await profileService.getPosts(route.params.profileId)
+    await profileService.getVisited(route.params.profileId)
   } catch (error) {
     Pop.toast("Could not get profile", 'error')
     logger.error(error)
