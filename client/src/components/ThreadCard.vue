@@ -33,15 +33,36 @@ async function destroyThread(threadId) {
 	<div v-if="thread" class="card bg-teal p-2 m-4 my-2 pb-0">
 		<div class="row py-2">
 			<div class="px-4 col-12 d-flex">
-				<div>
-					<img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="image of creator">
+				<div class="vWall pe-3">
+					<div class="text-center mb-2">
+						<img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="image of creator">
+					</div>
+
+					<!-- SECTION: Roles -->
+					<div v-if="userId.role == Moderator">
+						<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
+					</div>
+
+					<div v-if="userId.role == Member">
+						<div class="p-1 text-center text-white rounded roleTag2">Member</div>
+					</div>
+
+					<div v-if="userId.role == Banned">
+						<div class="p-1 text-center text-white rounded roleTag3">Banned</div>
+					</div>
 				</div>
 
 				<div class="pe-5 ps-3 w-100">
 					<span class="fw-bold fs-5"><span v-for="tag in thread?.tags" :key="tag"
 							class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> {{
 								thread?.title }}</span>
-					<p class="w-100" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p>
+					<!-- <p class="w-100 mt-3" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p> -->
+					<div v-if="thread.body.length <= (149)">
+						<p class="w-100 mt-3">{{ thread?.body }}</p>
+					</div>
+					<div v-else>
+						<p class="w-100 mt-3">{{ thread?.body.split(' ').slice(0, 30).join(' ') + "..." }}</p>
+					</div>
 				</div>
 
 				<div>
@@ -63,6 +84,10 @@ async function destroyThread(threadId) {
 	text-overflow: ellipsis;
 }
 
+.word-break {
+	overflow-wrap: anywhere;
+}
+
 .profile-img {
 	height: 50px;
 	width: fit-content;
@@ -76,5 +101,21 @@ async function destroyThread(threadId) {
 	height: 45px;
 	border-radius: 50em;
 	aspect-ratio: 1/1;
+}
+
+.roleTag1 {
+	background-color: rgba(149, 0, 255, 0.6);
+}
+
+.roleTag2 {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.roleTag3 {
+	background-color: rgba(255, 0, 0, 0.6);
+}
+
+.vWall {
+	border-right: solid #888888 3px;
 }
 </style>
