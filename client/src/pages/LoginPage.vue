@@ -30,7 +30,7 @@ async function handleLogin() {
         <label>Password</label>
         <input v-model="formData.password" type="password" class="form-control mb-3">
 
-        <button class="btn px-5 btn-primary">Login</button>
+        <button class="btn px-5 btn-forestGreen">Login</button>
     </form>
 </template>
 
