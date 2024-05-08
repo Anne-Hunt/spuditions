@@ -11,8 +11,8 @@ export class ParksController extends BaseController {
         this.router
             .get('', this.getParks)
             .get('/search', this.searchParks)
-            .get('/:parkId', this.getParkById)
             .get('/:parkId/visited', this.getVisitedByPark)
+            .get('/:parkId', this.getParkById)
             .use(Authware.AuthGuard)
     }
 

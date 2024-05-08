@@ -12,17 +12,16 @@ class VisitedService {
     }
 
     async getVisitedByPark(parkId) {
-        const visited = await dbContext.Visited.find({ parkId: parkId }).populate('creator')
+        const visited = await dbContext.Visited.find({ parkId: parkId }).populate('creator', '-ip -password -email')
         return visited
     }
 
     async postVisited(visitedData) {
-        //*FIXME - THIS MAKES MAD CRAZY ERRORS
         const previous = await dbContext.Visited.find({ parkId: visitedData.parkId, creatorId: visitedData.creatorId })
         if (previous.length != 0) throw new Error('You already left a review for this park.')
 
         const visit = await dbContext.Visited.create(visitedData)
-        const visited = visit.populate('creator', '-password -email')
+        const visited = visit.populate('creator', '-ip -password -email')
         return visited
     }
 
