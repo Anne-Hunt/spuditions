@@ -101,7 +101,9 @@ onMounted(() => {
         <div class="row py-2">
             <div class="px-4 col-12 d-flex mb-3">
                 <div>
-                    <img class="mt-1 profile-img d-inline" :src="threads.creator?.picture" :alt="threads.creator?.name"><span class="d-inline">{{ threads.creator.name }}</span>
+                  <RouterLink :to="{name: 'Profile', params: {profileId: threads?.creatorId}}">
+                    <img class="mt-1 profile-img d-inline" :src="threads.creator?.picture" :alt="threads.creator?.name"><span class="d-inline text-black">{{ threads.creator.name }}</span>
+                  </RouterLink>
                 </div>
                 <div class="pe-5 ps-3 w-100">
                   <span class="fw-bold fs-5">{{ threads?.title }}</span>
@@ -151,4 +153,5 @@ onMounted(() => {
   border-radius: 50em;
   aspect-ratio: 1/1;
 }
+
 </style>
