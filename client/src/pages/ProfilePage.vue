@@ -99,9 +99,9 @@ onMounted(() => {
     </div>
     <div class="row justify-content-center">
       <h1 class="text-dark text-center my-5">Threads:</h1>
-      <!-- <div class v-for="thread in threads" :key="thread.id">
+      <div class v-for="thread in threads" :key="thread.id">
         <ThreadCard :thread="thread"/>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
