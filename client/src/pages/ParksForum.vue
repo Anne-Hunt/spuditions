@@ -47,17 +47,19 @@ onMounted(() => {
             <h1 class="d-inline">Parks Chat</h1>
             <form>
         <div class="">
-          <label for="parkChoose">Choose a Park:</label>
+          <label class="p-2" for="parkChoose">Choose a Park:</label>
           <select name="parkChoose" v-model="parkChosen" id="parksList">
             <option v-for="park in parks" :key="park.id" :value="park.id">{{ park.name }}</option>
           </select>
         </div>
       </form>
-            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-primary rounded text-white float-end">Create Thread <i class="mdi mdi-plus"></i></button>
+      <div class="p-2 ">
+            <h5 class="py-3">Explore park discussions, from general chatter to specific spots – pick your park above!</h5>
+            </div>
+            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn bg-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
             <ModalWrap modalId="create-thread-modal">
               <ThreadModal/>
             </ModalWrap>
-            <h5 class="py-3">discuss parks in general or specific parks - select park above</h5>
           </div>
         </div>
 
@@ -75,5 +77,9 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
+
+.btn.bg-forestGreen:hover {
+  background-color: var(--lightGreen);
+    }
 
 </style>
