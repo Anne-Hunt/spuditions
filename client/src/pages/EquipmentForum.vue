@@ -33,7 +33,7 @@ onMounted(() => {
     <Sidebar/>
 
     <!-- //!SECTION - Main section of the page -->
-    <div class="col-12 col-md-12 col-lg-10">
+    <div class="col-12 col-md-12 col-lg-10 mb-4">
       <!-- //!SECTION - Create Post button -->
       <div class="row me-0">
         <div class="col-12">

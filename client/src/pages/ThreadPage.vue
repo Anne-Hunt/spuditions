@@ -92,7 +92,7 @@ onMounted(() => {
     <Sidebar/>
 
     <!-- //!SECTION - Main section of the page -->
-    <div class="col-12 col-md-12 col-lg-10">
+    <div class="col-12 col-md-12 col-lg-10 mt-4">
       <!-- //!SECTION - Create Post button -->
       <div class="row me-0">
         <!-- //!SECTION - Thread card -->
@@ -109,8 +109,8 @@ onMounted(() => {
             </form>
           </div>
         </div>
-        <div v-for="post in posts" :key="post.id">
-          <CommentCard :post="post"/>
+        <div class="my-4 mx-3">
+          <CommentCard v-for="post in posts" :key="post.id" :post="post"/>
         </div>
       </div>
   </div>

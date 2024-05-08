@@ -28,7 +28,7 @@ async function destroyPost(postId) {
 
 <template>
 	<div class="col-9">
-		<div class="card bg-teal p-2 m-4">
+		<div class="card bg-teal p-2 m-2 my-3">
 			<div class="row">
 				<div class="col-12 d-flex">
 
