@@ -7,7 +7,7 @@ import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 class PostsService {
     async getPostsByProfile(profileId) {
-        const posts = await dbContext.Post.find({ profileId: profileId }).populate('creator', '-email -ip -password')
+        const posts = await dbContext.Post.find({ creatorId: profileId }).populate('creator', '-email -ip -password')
         return posts
     }
     //!SECTION - searches posts from search bar - decided to remove functionality

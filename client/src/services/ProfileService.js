@@ -20,11 +20,11 @@ class ProfileService{
       const posts = response.data.map(postData => new Post(postData))
       AppState.posts = posts
     }
-    async getThreads(profileId) {
-      AppState.threads = []
+    async getThreadsByProfile(profileId) {
+      AppState.profileThreads = []
       const response = await api.get(`api/profiles/${profileId}/threads`)
       const threads = response.data.map(threadData => new Thread(threadData))
-      AppState.threads = threads
+      AppState.profileThreads = threads
     }
     async searchProfiles(searchQuery) {
         AppState.profiles = []
@@ -36,7 +36,8 @@ class ProfileService{
     async getProfile(profileId){
       AppState.activeProfile = null
       const response = await api.get(`api/profiles/${profileId}`)
-      AppState.activeProfile = new Profile(response.data)
+      const profile = new Profile(response.data)
+      AppState.activeProfile = profile
     }
 
     async getReputation(profileId) {

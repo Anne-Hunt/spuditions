@@ -1,7 +1,5 @@
 <script setup>
-import { computed } from "vue";
 import { Thread } from "../models/Thread.js";
-import { AppState } from "../AppState.js";
 
 
 defineProps({thread: Thread, fullView: {type: Boolean, default: false}})

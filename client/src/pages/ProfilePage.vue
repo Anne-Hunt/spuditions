@@ -1,12 +1,12 @@
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { profileService } from "../services/ProfileService.js";
 import { useRoute } from "vue-router";
 import { logger } from "../utils/Logger.js";
 import ThreadCard from "../components/ThreadCard.vue";
-import { threadsService } from "../services/ThreadsService.js";
+import { reputationService } from "../services/ReputationService.js";
 
 const route = useRoute()
 
@@ -15,31 +15,73 @@ const user = computed(()=> AppState.account)
 const reviewedAlready = computed(()=> AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
 const threads = computed(() => AppState.profileThreads)
 
+const reputation = ref({
+  comment: '',
+  rating: 0
+})
+
 async function getProfile(){
   try {
     await profileService.getProfile(route.params.profileId)
-    await profileService.getReputation(route.params.profileId)
-    await profileService.getThreads(route.params.profileId)
-    await profileService.getPosts(route.params.profileId)
-    await profileService.getVisited(route.params.profileId)
   } catch (error) {
     Pop.toast("Could not get profile", 'error')
     logger.error(error)
   }
 }
 
+async function getReputation(){
+  try {
+    await profileService.getReputation(route.params.profileId)
+  } catch (error) {
+    Pop.toast("Could not get reputation", 'error')
+    logger.error("unable to get reputation", error)
+  }
+}
+
+async function getVisited(){
+  try {
+    await profileService.getVisited(route.params.profileId)
+  } catch (error) {
+    Pop.toast("Could not get reputation", 'error')
+    logger.error("unable to get reputation", error)
+  }
+}
+
+async function getPosts(){
+  try {
+    await profileService.getPosts(route.params.profileId)
+  } catch (error) {
+    Pop.toast("Could not get reputation", 'error')
+    logger.error("unable to get reputation", error)
+  }
+}
+
 async function getProfileThreads(){
   try {
-    await threadsService.getProfileThreads(route.params.profileId)
+    await profileService.getThreadsByProfile(route.params.profileId)
   } catch (error) {
     Pop.toast("Could not get profile's threads", 'error')
     logger.error(error)
   }
 }
 
+async function createReputation(){
+  try {
+    const repData = reputation.value
+    await reputationService.createReputation(repData)
+    reputation.value = {comment: '', rating: 0}
+  } catch (error) {
+    Pop.toast("Unable to review profile at this time", 'error')
+    logger.error("unable to create reputation", error)
+  }
+}
+
 onMounted(() => {
   getProfile()
   getProfileThreads()
+  getVisited()
+  getPosts()
+  getReputation()
 })
 
 </script>
@@ -68,14 +110,17 @@ onMounted(() => {
             data-bs-auto-close="outside">
             Review Profile
           </button>
-          <form class="dropdown-menu p-4">
+          <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
             <div class="mb-3">
               <label for="comment" class="form-label">Say a Few Words About This User</label>
-              <input type="text" name="comment" class="form-control" id="commentInput">
+              <input v-model="reputation.comment" type="text" name="comment" class="form-control" id="commentInput">
             </div>
             <div class="mb-3">
               <label for="ratingProfile" class="form-label">Rating</label>
-              <input type="password" name="ratingProfile" class="form-control" id="profileRating" >
+              <select v-model="reputation.rating" name="ratingProfile" class="form-control" id="profileRating" >
+                <option value="+1"><span>Good Spud</span></option>
+                <option value="-1" selected><span>Bad Spud</span></option>
+              </select>
             </div>
             <button v-if="!reviewedAlready" type="submit" class="btn btn-primary">Submit</button>
             <button class="btn btn-primary" v-else disabled>Submit</button>
@@ -99,9 +144,9 @@ onMounted(() => {
     </div>
     <div class="row justify-content-center">
       <h1 class="text-dark text-center my-5">Threads:</h1>
-      <!-- <div class v-for="thread in threads" :key="thread.id">
-        <ThreadCard :thread="thread"/>
-      </div> -->
+      <div class v-for="thread in threads" :key="thread?.id">
+        <ThreadCard :thread?="thread"/>
+      </div>
     </div>
   </div>
 </template>

@@ -6,8 +6,8 @@ import { Forbidden } from "../utils/Errors.js"
 class VisitedService {
 
     //!SECTION - Gets visited status for users
-    async getVisited(creatorId) {
-        const visited = await dbContext.Visited.find({ creatorId: creatorId }).populate('park')
+    async getVisited(profileId) {
+        const visited = await dbContext.Visited.find({ creatorId: profileId }).populate('park')
         return visited
     }
 

@@ -7,7 +7,7 @@ import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 class ThreadsService {
     async getThreadsByProfile(profileId) {
-        const threads = await dbContext.Thread.find({ profileId: profileId }).populate('creator', '-email -ip -password')
+        const threads = await dbContext.Thread.find({ creatorId: profileId }).populate('creator', '-email -ip -password')
         return threads
     }
     async searchThreads(query) {

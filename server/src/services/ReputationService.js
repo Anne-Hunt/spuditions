@@ -16,12 +16,12 @@ class ReputationService {
         return reputation
     }
 
-    async postReputation(reputationData, userInfo) {
-        if (reputationData.senderId == userInfo.id) throw new Error("You can't leave reputation on your own profile.")
+    async postReputation(reputationData, creatorId, user) {
+        if (reputationData.profileId == creatorId) throw new Error("You can't leave reputation on your own profile.")
         const previousReputation = await dbContext.Reputation.find({ creatorId: reputationData.creatorId, profileId: reputationData.profileId })
 
         if (previousReputation.length != 0) throw new Error("You can't leave reputation on this user because you've already given them reputation in the past.")
-        if (userInfo.role == "Banned") throw new Error("Banned users cannot leave reputation.")
+        if (user.role == "Banned") throw new Error("Banned users cannot leave reputation.")
 
         const reputation = await dbContext.Reputation.create(reputationData)
         return reputation
