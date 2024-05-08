@@ -76,7 +76,6 @@
 }
 
 .topnav div {
-  padding-top: 80px;
   padding-right: 20px;
   font-size: 20px;
   color: white;
