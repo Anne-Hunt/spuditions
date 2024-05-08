@@ -40,12 +40,6 @@ class ThreadsService{
     const threads = response.data.map(threadData => new Thread(threadData))
     AppState.threads = threads
   }
-  
-  async getSingleThread() {
-    const response = await api.get(`api/threads/:threadId`)
-    const thread = response.data.map(threadData => new Thread(threadData))
-        AppState.activeThread = thread
-    }
       
     async editThread(threadData, threadId){
         const response = await api.put(`api/threads/:threadId`, threadData)
@@ -59,10 +53,9 @@ class ThreadsService{
     async destroyThread(threadId){
         const response = await api.delete(`api/threads/${threadId}`)
         logger.log("You deleted this comment", response.data)
-        const threadDelete = AppState.threads.findIndex(thread => thread.id == threadId)
+        const threadToDelete = AppState.threads.findIndex(thread => thread.id == threadId)
         Pop.success("You deleted this comment")
-        AppState.activeThread.section.splice(1)
-        AppState.threads.splice(threadDelete, 1)
+        AppState.threads.splice(threadToDelete, 1)
     }
       
 }

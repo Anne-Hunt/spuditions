@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar.vue";
 import ThreadCard from "../components/ThreadCard.vue";
 import { AppState } from "../AppState.js";
 import { threadsService } from "../services/ThreadsService.js";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 import CommentCard from "../components/CommentCard.vue";
@@ -14,6 +14,7 @@ const threads = computed(() => AppState.activeThread)
 const route = useRoute()
 const posts = computed(()=> AppState.posts)
 const account = computed(() => AppState.account)
+const router = useRouter()
 
 
 async function getPostByThreadId(){
@@ -60,12 +61,17 @@ async function createPost(){
   }
 }
 
+const sectionToPath = {"general chat": "General Chat Forum", "equipment": "Equipment Forum", "park": "Parks Forum", "find group": "Groups Forum" }
+
 async function destroyThread(threadId){
   try {
     const wantsToDestroy = await Pop.confirm("Are you sure you want to delete this thread?")
     if(!wantsToDestroy) return
+
+    const section = AppState.activeThread.section
     logger.log("Destroying thread", threadId)
     await threadsService.destroyThread(threadId)
+    router.push({name: sectionToPath[section]})
   } catch (error) {
     Pop.toast("Could not delete thread", 'error')
     logger.error(error)
