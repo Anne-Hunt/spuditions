@@ -31,11 +31,13 @@ async function destroyPost(postId){
           <div class="card bg-teal p-2 m-4">
             <div class="row">
             <div class="col-12 col-md-1">
-              <img class="comment-img d-inline" :src="post?.creator.picture" alt="Michael">
+              <RouterLink :to="{name: 'Profile', params: {profileId: post?.creatorId}}">
+                <img class="comment-img d-inline" :src="post?.creator.picture" alt="Michael">
+              </RouterLink>
             </div>
             <div class="col-10 col-sm-11 col-md-10">
               <p class="d-inline ps-2">{{ post?.creator.name }}</p>
-              <p class="ps-2">{{ (post?.createdAt).toDateString() }}</p>
+              <p class="ps-2">{{ (post?.createdAt)?.toDateString() }}</p>
             </div>
             <div v-if="post?.creatorId == account.id" class="col-1 col-sm-1 col-md-1">
               <button @click="destroyPost(post.id)" class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
