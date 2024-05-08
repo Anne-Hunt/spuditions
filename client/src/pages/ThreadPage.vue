@@ -50,7 +50,7 @@ async function createPost(){
   try {
     logger.log("Creating a post", postData)
     await postsService.createPost(postData.value)
-    
+
     resetForm()
   } catch (error) {
     Pop.toast("Could not create post", 'error')
@@ -79,14 +79,14 @@ onMounted(() => {
         <div class="col-12">
           <div v-if="threads" class="card bg-teal p-2 m-4 my-2 pb-0">
         <div class="row py-2">
-            <div class="px-4 col-12 d-flex">
+            <div class="px-4 col-12 d-flex mb-3">
                 <div>
                     <img class="mt-1 profile-img d-inline" :src="threads.creator?.picture" :alt="threads.creator?.name"><span class="d-inline">{{ threads.creator.name }}</span>
                 </div>
                 <div class="pe-5 ps-3 w-100">
                   <span class="fw-bold fs-5">{{ threads?.title }}</span>
                   <p class="w-100" >{{ threads?.body }}</p>
-                  <span v-for="tag in threads?.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> 
+                  <span v-for="tag in threads?.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span>
                 </div>
             </div>
             <div class="col-12">
