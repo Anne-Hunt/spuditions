@@ -14,7 +14,7 @@ import { logger } from '../utils/Logger.js';
 
 const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
-const userId = computed(() => AppState.account.id)
+const userId = computed(() => AppState.account?.id)
 const visited = computed(() => AppState.visited)
 
 const route = useRoute()
