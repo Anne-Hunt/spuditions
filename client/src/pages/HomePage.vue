@@ -187,7 +187,7 @@ onMounted(() => {
 	}
 }
 
-@media screen and (min-width: 768px) and (max-width: 900px) {
+@media screen and (max-width: 767px) {
 	.vidText {
 		display: contents;
 	}
@@ -210,7 +210,7 @@ onMounted(() => {
 	}
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 	.vidText {
 		display: none;
 	}
@@ -271,4 +271,95 @@ onMounted(() => {
 	width: 50%;
 	text-align: center;
 }
+
+@media screen and (min-width: 425px) and (max-width: 767px) {
+	.overlay {
+		position: absolute;
+		width: 50%;
+		// height: 65vh;
+		left: 11%;
+		top: 40%;
+		padding: 0;
+
+		@keyframes typing {
+			from {
+				width: 0
+			}
+		}
+
+		.typewriter {
+			width: 38ch;
+			animation: typing 2s steps(27);
+			font-family: monospace;
+			font-size: 1em;
+		}
+
+		.customSize {
+			display: flex;
+			justify-content: center;
+			font-size: 23px;
+		}
+	}
+}
+
+@media screen and (min-width: 375px) and (max-width: 424px) {
+	.overlay {
+		position: absolute;
+		width: 50%;
+		// height: 65vh;
+		left: 5%;
+		top: 40%;
+		padding: 0;
+
+		@keyframes typing {
+			from {
+				width: 0
+			}
+		}
+
+		.typewriter {
+			width: 38ch;
+			animation: typing 2s steps(27);
+			font-family: monospace;
+			font-size: 1em;
+		}
+
+		.customSize {
+			display: flex;
+			justify-content: center;
+			font-size: 23px;
+		}
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 374px) {
+	.overlay {
+		position: absolute;
+		width: 50%;
+		left: 10%;
+		top: 40%;
+		padding: 0;
+
+		@keyframes typing {
+			from {
+				width: 0
+			}
+		}
+
+		.typewriter {
+			width: 30ch;
+			animation: typing 2s steps(27);
+			font-family: monospace;
+			font-size: 1em;
+		}
+
+		.customSize {
+			display: flex;
+			justify-content: center;
+			font-size: 20px;
+		}
+	}
+}
+
+.class {}
 </style>
