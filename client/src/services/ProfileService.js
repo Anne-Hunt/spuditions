@@ -25,12 +25,5 @@ class ProfileService{
       AppState.reputation = reputations
   }
 }
-
-      async getProfile(profileId){
-        AppState.activeProfile = null
-        const response = await api.get(`api/profiles/${profileId}`)
-        AppState.activeProfile = response.data
-      }
-    }
     
 export const profileService = new ProfileService()
