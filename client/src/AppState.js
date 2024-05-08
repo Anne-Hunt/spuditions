@@ -43,7 +43,7 @@ export const AppState = reactive({
   /**@type {Profile[]} */
   profiles: [],
 
-  /**@type {Profile[]} */
+  /**@type {Thread[]} */
   profileThreads: [],
 
   activeProfile: null,

@@ -11,12 +11,12 @@ class ProfileService {
 
         let result = JSON.parse(JSON.stringify(profile))
         const reputation = await dbContext.Reputation.aggregate([
-            { $match: { receiverId: new mongoose.Types.ObjectId(id) } },
+            { $match: { profileId: new mongoose.Types.ObjectId(id) } },
             {
                 $group:
                 {
                     _id: null,
-                    score: { $sum: "$amount" }
+                    score: { $sum: "$rating" }
                 }
             }
         ])
