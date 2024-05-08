@@ -8,5 +8,6 @@ export class Visited{
         this.userRating = data.userRating
         this.creator = data.creator
         this.park = data.park
+        this.id = data.id
     }
 }

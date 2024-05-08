@@ -95,16 +95,22 @@ onMounted(() => {
       <div class="col-12 text-center p-3 pt-5">
         <h3 class="fw-bold text-white">{{ profile.name }}</h3>
       </div>
-      <div class="col-12 text-center">
+      <div class="col-12 text-center text-white pt-4 fs-4">
+    <a class="text-light" data-bs-toggle="offcanvas" href="#reputationOffCanvas" role="button" aria-controls="reputationOffCanvas">
+      <div class="col-12">
         <img class="profile-img" :src="profile.picture" alt="">
       </div>
-      <div class="col-12 text-center text-white pt-4 fs-4">
-        Reputation
-        <div v-if="profile.id != user.id">
+      Reputation
+    </a>
+        <div v-if="(profile.id != user.id)">
           <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
+            <button v-if="!reviewedAlready" type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
               data-bs-auto-close="outside">
               Review Profile
+            </button>
+            <button v-else disabled type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
+              data-bs-auto-close="outside">
+              Already Reviewed
             </button>
             <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
               <div class="mb-3">
@@ -125,10 +131,24 @@ onMounted(() => {
         </div>
       </div>
       <div class="col-12 d-flex justify-content-center align-items-center mt-1">
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="reputationOffCanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Profile Reviews</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body p-1">
+    <div class="rounded bg-secondary text-light my-1" v-for="rep in reps" :key="rep?.id">
+      <img :src="rep.creator?.picture" :alt="rep.creator?.name"><strong>{{ rep.creator?.name }}</strong>
+      {{ rep?.comment }}
+    </div>
+  </div>
+</div>
         <img v-if="profile.reputation < 0" class="rotten-spud-img pe-3 pb-2 selectable"
           src="/src/assets/img/rottenSpud.png" alt="">
         <img v-else class="spud-img pe-3 selectable" src="/src/assets/img/spuditions.png" alt="">
         <h5 class="text-white"> {{ profile.reputation }}</h5>
+
       </div>
     </div>
     <div class="row justify-content-center pt-4 pb-5 bg-forestGreen">
@@ -144,6 +164,22 @@ onMounted(() => {
           </div>
         </div>
       </div>
+    </div>
+    <div>
+      <div class="accordion" id="visitedAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        See where {{ profile.name }} has gone
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#visitedAccordion">
+      <div class="accordion-body">
+        <span v-for="visit in visits" :key="visit.id">{{ visit.park.name }}</span>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
     <div class="row justify-content-center">
       <h1 class="text-dark text-center my-5">Threads:</h1>
