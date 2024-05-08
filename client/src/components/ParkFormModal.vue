@@ -29,14 +29,13 @@ async function createVisited() {
 		}
 
 		// NOTE closes Modal after submit
-		Modal.getOrCreateInstance('#create-thread-modal').hide()
+		Modal.getOrCreateInstance('#parkFormModal').hide()
 	}
 	catch (error) {
 		Pop.error(error);
 	}
 }
 </script>
-
 
 <template>
 	<div class="modal fade" id="parkFormModal" tabindex="-1" aria-labelledby="parkFormModalLabel" aria-hidden="true">
