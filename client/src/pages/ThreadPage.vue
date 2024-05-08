@@ -106,7 +106,7 @@ onMounted(() => {
           </div>
         </div>
         <div v-for="post in posts" :key="post.id">
-          <CommentCard/>
+          <CommentCard :post="post"/>
         </div>
       </div>
   </div>
