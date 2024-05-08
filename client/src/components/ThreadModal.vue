@@ -35,7 +35,7 @@ async function createThread(){
     await threadsService.createThread(threadData.value)
     resetForm()
 
-    Modal.getOrCreateInstance('create-thread-modal').hide()  
+    Modal.getOrCreateInstance('create-thread-modal').hide()
     router.push({ name: "Threads", params: AppState.activeThread.id })
   } catch (error) {
     Pop.toast("Could not create post", 'error')
@@ -63,11 +63,11 @@ onMounted(()=>{
     <form @submit.prevent="createThread()">
       <div>
         <label for="thread-title">Title</label>
-        <input v-model="threadData.title" type="text" class="form-control" id="thread-title" required minlength="2" maxLength="20">
+        <input v-model="threadData.title" type="text" class="form-control" id="thread-title" required minlength="2" maxLength="30">
       </div>
       <div>
         <label for="thread-body">Thread</label>
-        <textarea v-model="threadData.body" type="text" class="form-control" id="thread-body" required minLength="5" maxLength="300" rows="5"></textarea>
+        <textarea v-model="threadData.body" type="text" class="form-control" id="thread-body" required minLength="5" maxLength="1000" rows="5"></textarea>
       </div>
       <div>
         <label for="selectSection">Select Topic</label>
@@ -86,7 +86,7 @@ onMounted(()=>{
       </div>
       <div>
         <label for="thread-tags">Tag</label>
-        <input v-model="threadData.tags" type="text" class="form-control" id="thread-tags" required minLength="2" maxLength="10">
+        <input v-model="threadData.tags" type="text" class="form-control" id="thread-tags" minLength="2" maxLength="10">
       </div>
       <button type="submit" class="btn btn-bgLightBlue float-end mt-2">Submit</button>
     </form>

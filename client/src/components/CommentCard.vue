@@ -1,7 +1,11 @@
 <script setup>
+import { computed } from "vue";
 import { Post } from "../models/Post.js";
+import { AppState } from "../AppState.js";
 
 defineProps({post: Post})
+
+const account = computed(() => AppState.account)
 
 </script>
 
@@ -15,17 +19,13 @@ defineProps({post: Post})
             </div>
             <div class="col-10 col-sm-11 col-md-10">
               <p class="d-inline ps-2">{{ post?.creator.name }}</p>
-              <p class="ps-2">"Days ago"</p>
+              <p class="ps-2">{{ (post?.createdAt).toDateString() }}</p>
             </div>
-            <!-- //FIXME - Add "v-if" to delete button -->
-            <div class="col-1 col-sm-1 col-md-1">
+            <div v-if="post?.creatorId == account.id" class="col-1 col-sm-1 col-md-1">
               <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
             <div class="col-12">
               <p>{{ post?.body }}</p>
-            </div>
-            <div class="col-12">
-              <h3 class="d-inline float-end px-3">{{ post?.threadId }}</h3>
             </div>
           </div>
         </div>

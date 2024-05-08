@@ -14,7 +14,7 @@ import { logger } from '../utils/Logger.js';
 
 const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
-const userId = computed(() => AppState.account.id)
+const userId = computed(() => AppState.account?.id)
 const visited = computed(() => AppState.visited)
 
 const route = useRoute()
@@ -86,7 +86,7 @@ async function getVisitedByPark() {
 
 const isVisited = computed(() => {
 
-	const review = AppState.visited.find(review => review.creatorId == userId.value)
+	const review = AppState.visited?.find(review => review.creatorId == userId.value)
 
 	return review != undefined
 });

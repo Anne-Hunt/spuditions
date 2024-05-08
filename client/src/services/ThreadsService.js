@@ -2,6 +2,7 @@ import { AppState } from "../AppState.js"
 import { Post } from "../models/Post.js"
 import { Thread } from "../models/Thread.js"
 import { logger } from "../utils/Logger.js"
+import Pop from "../utils/Pop.js"
 import { api } from "./AxiosService.js"
 
 
@@ -55,9 +56,12 @@ class ThreadsService{
         AppState.activeThread = thread
     }
       
-    async deleteThread(threadId){
-        await api.delete(`api/thread/:threadId`)
-        const threadDelete = AppState.threads.findIndex(threadId)
+    async destroyThread(threadId){
+        const response = await api.delete(`api/threads/${threadId}`)
+        logger.log("You deleted this comment", response.data)
+        const threadDelete = AppState.threads.findIndex(thread => thread.id == threadId)
+        Pop.success("You deleted this comment")
+        AppState.activeThread.section.splice(1)
         AppState.threads.splice(threadDelete, 1)
     }
       
