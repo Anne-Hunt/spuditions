@@ -86,7 +86,7 @@ async function getVisitedByPark() {
 
 const isVisited = computed(() => {
 
-	const review = AppState.visited.find(review => review.creatorId == userId.value)
+	const review = AppState.visited?.find(review => review.creatorId == userId.value)
 
 	return review != undefined
 });
