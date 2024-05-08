@@ -12,10 +12,12 @@ import { postsService } from "../services/PostsService.js";
 
 const threads = computed(() => AppState.activeThread)
 const route = useRoute()
+const posts = computed(()=> AppState.posts)
 
 async function getPostByThreadId(){
   try {
-    await postsService.getPostByThreadId()
+    const threadId = route.params.threadId
+    await postsService.getPostByThreadId(threadId)
   } catch (error) {
     Pop.toast("Could not get posts for this thread", 'error')
     logger.error(error)
@@ -25,6 +27,7 @@ async function getPostByThreadId(){
 async function getThreadById(){
   try {
     await threadsService.getThreadById(route.params.threadId)
+    getPostByThreadId()
   } catch (error) {
     Pop.toast("Could not get thread by id", 'error')
     logger.error(error)
@@ -51,13 +54,12 @@ async function createPost(){
     resetForm()
   } catch (error) {
     Pop.toast("Could not create post", 'error')
-    console.error(error)
+    logger.error(error)
   }
 }
 
 onMounted(() => {
   getThreadById()
-  getPostByThreadId()
 })
 
 </script>
@@ -75,7 +77,23 @@ onMounted(() => {
       <div class="row me-0">
         <!-- //!SECTION - Thread card -->
         <div class="col-12">
-          <ThreadCard :thread="threads" :fullView="true"/>
+          <div v-if="threads" class="card bg-teal p-2 m-4 my-2 pb-0">
+        <div class="row py-2">
+            <div class="px-4 col-12 d-flex">
+                <div>
+                    <img class="mt-1 profile-img d-inline" :src="threads.creator?.picture" :alt="threads.creator?.name"><span class="d-inline">{{ threads.creator.name }}</span>
+                </div>
+                <div class="pe-5 ps-3 w-100">
+                  <span class="fw-bold fs-5">{{ threads?.title }}</span>
+                  <p class="w-100" >{{ threads?.body }}</p>
+                  <span v-for="tag in threads?.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> 
+                </div>
+            </div>
+            <div class="col-12">
+
+            </div>
+        </div>
+    </div>
         </div>
         <div class="col-12">
           <div class="card p-2 mx-4 mt-3 bg-teal">
@@ -87,7 +105,9 @@ onMounted(() => {
             </form>
           </div>
         </div>
-        <CommentCard/>
+        <div v-for="post in posts" :key="post.id">
+          <CommentCard/>
+        </div>
       </div>
   </div>
   </section>
@@ -96,5 +116,12 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
-
+.profile-img{
+  height: 50px;
+  width: fit-content;
+  aspect-ratio: 1/1;
+  border-radius: 50em;
+  object-fit: cover;
+  object-position: center
+}
 </style>

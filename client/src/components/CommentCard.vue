@@ -14,7 +14,7 @@ defineProps({post: Post})
               <img class="comment-img d-inline" :src="post?.creator.picture" alt="Michael">
             </div>
             <div class="col-10 col-sm-11 col-md-10">
-              <p class="d-inline ps-2">{ post?.creator.name }</p>
+              <p class="d-inline ps-2">{{ post?.creator.name }}</p>
               <p class="ps-2">"Days ago"</p>
             </div>
             <!-- //FIXME - Add "v-if" to delete button -->
@@ -22,10 +22,10 @@ defineProps({post: Post})
               <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
             <div class="col-12">
-              <p>{ post.body }</p>
+              <p>{{ post?.body }}</p>
             </div>
             <div class="col-12">
-              <h3 class="d-inline float-end px-3">{ post.threadId }</h3>
+              <h3 class="d-inline float-end px-3">{{ post?.threadId }}</h3>
             </div>
           </div>
         </div>

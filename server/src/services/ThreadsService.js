@@ -27,8 +27,8 @@ class ThreadsService {
     //!SECTION - Gets a thread by its id
     async getThreadById(threadId) {
         const thread = await dbContext.Thread.findById(threadId)
-        if (!thread) throw new Error(`No thread with the id ${threadId}`)
         await thread.populate('creator')
+        if (!thread) throw new Error(`No thread with the id ${threadId}`)
         return thread
     }
 

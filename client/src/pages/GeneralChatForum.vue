@@ -7,6 +7,7 @@ import ModalWrap from "../components/ModalWrap.vue";
 import ThreadModal from "../components/ThreadModal.vue";
 import { threadsService } from "../services/ThreadsService.js";
 import Pop from "../utils/Pop.js";
+import { logger } from "../utils/Logger.js";
 
 const threads = computed(() => AppState.threads)
 
@@ -15,7 +16,7 @@ async function getThreads(){
     await threadsService.getThreads()
   } catch (error) {
     Pop.toast("Could not get threads", 'error')
-    console.error(error)
+    logger.error(error)
   }
 }
 

@@ -12,11 +12,11 @@ defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
         <div class="row py-2">
             <div class="px-4 col-12 d-flex">
                 <div>
-                    <img class="mt-1 profile-img d-inline" :src="thread.creator.picture" alt="Michael">
+                    <img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="Michael">
                 </div>
                 <div class="pe-5 ps-3 w-100">
-                    <span class="fw-bold fs-5"><span v-for="tag in thread.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> {{ thread.title }}</span>
-                    <p class="w-100" :class="{ 'noWrap' : !fullView }">{{ thread.body }}</p>
+                    <span class="fw-bold fs-5"><span v-for="tag in thread?.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> {{ thread?.title }}</span>
+                    <p class="w-100" :class="{ 'noWrap' : !fullView }">{{ thread?.body }}</p>
                 </div>
             </div>
             <div class="col-12">

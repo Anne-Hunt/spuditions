@@ -1,10 +1,19 @@
 import { AppState } from "../AppState.js"
+import { Post } from "../models/Post.js"
 import { Thread } from "../models/Thread.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
 
 class ThreadsService{
+
+  async getPostByThreadId(threadId) {
+    const response = await api.get(`api/threads/${threadId}/posts`)
+    logger.log("Got posts on this thread", response.data)
+    const posts = response.data.map(postData => new Post(postData))
+    AppState.posts = posts
+  }
+  
   async createThread(threadData) {
     const response = await api.post('api/threads', threadData)
     logger.log("Creating a thread", response.data)
