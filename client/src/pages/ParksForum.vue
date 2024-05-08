@@ -60,10 +60,7 @@ onMounted(() => {
       <div class="p-2 ">
             <h5 class="py-3">Explore park discussions, from general chatter to specific spots – pick your park above!</h5>
             </div>
-            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
-            <ModalWrap modalId="create-thread-modal">
-              <ThreadModal/>
-            </ModalWrap>
+
           </div>
         </div>
 
