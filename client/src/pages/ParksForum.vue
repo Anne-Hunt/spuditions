@@ -45,10 +45,14 @@ onMounted(() => {
         <div class="col-12">
           <div class="p-3 mt-3 fw-bold">
             <h1 class="d-inline">Parks Chat</h1>
+            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn bg-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
+            <ModalWrap modalId="create-thread-modal">
+              <ThreadModal/>
+            </ModalWrap>
             <form>
         <div class="">
           <label class="p-2" for="parkChoose">Choose a Park:</label>
-          <select name="parkChoose" v-model="parkChosen" id="parksList">
+          <select name="parkChoose" v-model="parkChosen" id="parksList" class="rounded">
             <option v-for="park in parks" :key="park.id" :value="park.id">{{ park.name }}</option>
           </select>
         </div>
@@ -56,10 +60,6 @@ onMounted(() => {
       <div class="p-2 ">
             <h5 class="py-3">Explore park discussions, from general chatter to specific spots – pick your park above!</h5>
             </div>
-            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn bg-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
-            <ModalWrap modalId="create-thread-modal">
-              <ThreadModal/>
-            </ModalWrap>
           </div>
         </div>
 
@@ -71,6 +71,7 @@ onMounted(() => {
           </div>
       </div>
   </div>
+  <ForumRules/>
   </section>
 </template>
 
