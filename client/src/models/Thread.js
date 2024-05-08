@@ -8,5 +8,6 @@ export class Thread {
         this.title = data.title
         this.body = data.body
         this.tags = data.tags
+        this.section = data.section
     }
 }

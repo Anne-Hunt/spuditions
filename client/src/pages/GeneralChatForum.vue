@@ -9,7 +9,7 @@ import { threadsService } from "../services/ThreadsService.js";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 
-const threads = computed(() => AppState.threads)
+const threads = computed(() => AppState.threads.filter((thread) => thread.section == 'general chat'))
 
 async function getThreads(){
   try {

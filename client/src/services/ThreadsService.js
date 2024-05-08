@@ -19,6 +19,7 @@ class ThreadsService{
     logger.log("Creating a thread", response.data)
     const thread = new Thread(response.data)
     AppState.threads.unshift(thread)
+    AppState.activeThread = thread
   }
   async getThreads(){
     const response = await api.get('api/threads')

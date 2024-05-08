@@ -1,55 +1,62 @@
 <script setup>
-import CommentCard from "../components/CommentCard.vue";
-import ModalWrap from "../components/ModalWrap.vue";
+import { computed, onMounted } from "vue";
 import Sidebar from "../components/Sidebar.vue";
 import ThreadCard from "../components/ThreadCard.vue";
+import { AppState } from "../AppState.js";
+import ModalWrap from "../components/ModalWrap.vue";
 import ThreadModal from "../components/ThreadModal.vue";
+import { threadsService } from "../services/ThreadsService.js";
+import Pop from "../utils/Pop.js";
+import { logger } from "../utils/Logger.js";
 
+const threads = computed(() => AppState.threads.filter((thread) => thread.section == 'equipment'))
+
+async function getThreads(){
+  try {
+    await threadsService.getThreads()
+  } catch (error) {
+    Pop.toast("Could not get threads", 'error')
+    logger.error(error)
+  }
+}
+
+onMounted(() => {
+  getThreads()
+})
 
 </script>
 
 
 <template>
- <!-- //!SECTION - Sticky sidebar -->
+  <!-- //!SECTION - Sticky sidebar -->
   <section class="row me-0">
     <Sidebar/>
-  
-<!-- //!SECTION - Main section of the page -->
-<div class="col-12 col-md-12 col-lg-10">
-  <!-- //!SECTION - Create Post button -->
-  <div class="row me-0">
-    <div class="col-12">
-      <div class="p-3 mt-3 fw-bold">
-        <h1 class="d-inline">Equipment Forum</h1>
-        <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-primary rounded text-white float-end">Create Post <i class="mdi mdi-plus"></i></button>
-        <ModalWrap modalId="create-thread-modal">
-          <ThreadModal/>
-        </ModalWrap>
-        <h5 class="py-3">ask others for equipment recommendations</h5>
+
+    <!-- //!SECTION - Main section of the page -->
+    <div class="col-12 col-md-12 col-lg-10">
+      <!-- //!SECTION - Create Post button -->
+      <div class="row me-0">
+        <div class="col-12">
+          <div class="p-3 mt-3 fw-bold">
+            <h1 class="d-inline">General Chat</h1>
+            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-primary rounded text-white float-end">Create Thread <i class="mdi mdi-plus"></i></button>
+            <ModalWrap modalId="create-thread-modal">
+              <ThreadModal/>
+            </ModalWrap>
+            <h5 class="py-3">discuss multiple topics</h5>
+          </div>
+        </div>
+
+        <!-- //!SECTION - Thread card -->
+        <!-- //FIXME - Need to replace info with profiles and stuff -->
+        <div v-for="thread in threads" :key="thread?.id" class="col-12">
+          <router-link :to="{ name: 'Thread Page', params: {threadId: thread.id}}">
+            <ThreadCard :thread="thread"/>
+          </router-link>
+          </div>
       </div>
-    </div>
-
-    
-    <!-- //!SECTION - Thread card -->
-    <!-- //FIXME - Need to replace info with profiles and stuff -->
-    <div class="col-12">
-      <ThreadCard/>
-    </div>
-
-  <!-- //!SECTION - Leave comment button -->
-  <div class="col-12">
-    <button class="btn btn-primary float-end me-4 collapse" id="comments" >Leave Comment <i class="mdi mdi-plus"></i></button>
   </div>
-</div>    
-  
-  <!-- //!SECTION - Comments -->
-  <!-- //FIXME - Need to v-for over these comments -->
-  <div class="row me-0 justify-content-end">
-    <CommentCard class="collapse" id="comments"/>
-  </div>
-  
-</div>
-</section>
+  </section>
 </template>
 
 
