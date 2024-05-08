@@ -16,13 +16,13 @@ class PostsService {
     //!SECTION - Creates posts by accessing the model and forming it to the data
     async createPost(postData) {
         const post = await dbContext.Post.create(postData)
-        await post.populate('creator')
+        await post.populate('creator', '-email -id -password')
         return post
     }
 
     //!SECTION - Gets the posts on a specific thread
     async getThreadPosts(threadId) {
-        const posts = await dbContext.Post.find({ threadId: threadId }).populate('creator')
+        const posts = await dbContext.Post.find({ threadId: threadId }).populate('creator', '-email -id -password')
         return posts
     }
     //!SECTION - edits specific post, checks for user's ownership or moderator

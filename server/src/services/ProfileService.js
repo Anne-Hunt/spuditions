@@ -4,7 +4,7 @@ import { AccountSchema } from '../models/Account.js'
 import { QueryBuilder } from '../utils/QueryBuilder.js'
 class ProfileService {
     async getProfileById(id) {
-        const profile = await dbContext.Account.findById(id, '-password -ip')
+        const profile = await dbContext.Account.findById(id, '-email -password -ip')
 
         await profile.populate('threadCount')
         await profile.populate('postCount')
@@ -29,13 +29,13 @@ class ProfileService {
     async searchProfile(searchQuery) {
         const query = QueryBuilder.build(AccountSchema, searchQuery)
 
-        const profiles = await dbContext.Account.find(query, '-password -ip')
+        const profiles = await dbContext.Account.find(query, '-email -password -ip')
 
         return profiles
     }
 
     async findProfiles(query) {
-        const profiles = await dbContext.Account.find(query, '-password -ip')
+        const profiles = await dbContext.Account.find(query, '-email -password -ip')
         return profiles
     }
 }
