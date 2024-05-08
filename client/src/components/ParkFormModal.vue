@@ -29,7 +29,7 @@ async function createVisited() {
 		}
 
 		// NOTE closes Modal after submit
-		Modal.getOrCreateInstance('#parkFormModal').hide()
+		Modal.getOrCreateInstance('#create-thread-modal').hide()
 	}
 	catch (error) {
 		Pop.error(error);

@@ -34,8 +34,8 @@ async function createThread(){
     logger.log("Creating a post", threadData)
     await threadsService.createThread(threadData.value)
     resetForm()
-    //FIXME -- check modal ID
-    // Modal.getOrCreateInstance('#threadModal').hide()
+
+    Modal.getOrCreateInstance('create-thread-modal').hide()  
     router.push({ name: "Threads", params: AppState.activeThread.id })
   } catch (error) {
     Pop.toast("Could not create post", 'error')

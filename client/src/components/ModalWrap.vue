@@ -21,9 +21,9 @@ defineProps({modalId: String})
       role="document"
     >
     <div class="modal-content">
-        <div class="modal-header">
+        <!-- <div class="modal-header">
           {{ modalId }}
-        </div>
+        </div> -->
         <div class="modal-body">
           <slot>
             Content here
