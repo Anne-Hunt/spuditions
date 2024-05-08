@@ -39,7 +39,13 @@ onMounted(() => {
 
     <!-- //!SECTION - Main section of the page -->
     <div class="col-12 col-md-12 col-lg-10">
-      <form>
+
+      <!-- //!SECTION - Create Post button -->
+      <div class="row me-0">
+        <div class="col-12">
+          <div class="p-3 mt-3 fw-bold">
+            <h1 class="d-inline">Parks Chat</h1>
+            <form>
         <div class="">
           <label for="parkChoose">Choose a Park:</label>
           <select name="parkChoose" v-model="parkChosen" id="parksList">
@@ -47,16 +53,11 @@ onMounted(() => {
           </select>
         </div>
       </form>
-      <!-- //!SECTION - Create Post button -->
-      <div class="row me-0">
-        <div class="col-12">
-          <div class="p-3 mt-3 fw-bold">
-            <h1 class="d-inline">General Chat</h1>
             <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-primary rounded text-white float-end">Create Thread <i class="mdi mdi-plus"></i></button>
             <ModalWrap modalId="create-thread-modal">
               <ThreadModal/>
             </ModalWrap>
-            <h5 class="py-3">discuss multiple topics</h5>
+            <h5 class="py-3">discuss parks in general or specific parks - select park above</h5>
           </div>
         </div>
 

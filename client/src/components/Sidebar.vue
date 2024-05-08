@@ -10,7 +10,7 @@
       <router-link :to="{ name: 'General Chat Forum' }">
         <div>General</div>
       </router-link>
-      <router-link :to="{ name: 'Parks List' }">
+      <router-link :to="{ name: 'Parks Forum' }">
         <div>Parks</div>
       </router-link>
       <router-link :to="{ name: 'Groups Forum' }">
@@ -29,7 +29,7 @@
       <router-link :to="{ name: 'General Chat Forum' }">
         <div>General</div>
       </router-link>
-      <router-link :to="{ name: 'Parks List' }">
+      <router-link :to="{ name: 'Parks Forum' }">
         <div>Parks</div>
       </router-link>
       <router-link :to="{ name: 'Groups Forum' }">

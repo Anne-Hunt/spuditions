@@ -27,9 +27,9 @@ const routes = [
     component: loadPage('GeneralChatForum')
   },
   {
-    path: '/parksList',
-    name: 'Parks List',
-    component: loadPage('ParksList')
+    path: '/parksForum',
+    name: 'Parks Forum',
+    component: loadPage('ParksForum')
   },
   {
     path: '/forums/parks',
