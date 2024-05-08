@@ -69,7 +69,7 @@
           <div class="col-12 col-md-3 pt-2 order-1 text-center">
             <img class="dev-img" src="/src/assets/img/anne.jpg" alt="Anne">
           </div>
-          <div class="col-12 col-md-9 pb-2 order-2">
+          <div class="col-12 col-md-9 pb-2 order-2 mb-5">
             <h1>Anne</h1>
             <p class="fs-5 text-start">Anne began her career as a college English instructor teaching writing and rhetoric before tranisitoning to digital marketing in niche markets and finally full stack web development. She is constantly creating new projects and writing code. For more information please follow the links to Github or LinkedIn.</p>
           </div>
@@ -77,14 +77,15 @@
       </div>
 
     </div>
-    <div class="text-center">
+    <!-- got rid of contact us since it didn't seem important -->
+    <!-- <div class="text-center">
       <h1>Contact Us</h1>
       <p><i class="mdi mdi-icon"></i></p>
     </div>
     <div class="col-12 text-center">
       <p>(208) 832-2913</p>
       <p>iemail@gmail.com</p>
-    </div>
+    </div> -->
   </section>
 </template>
 
