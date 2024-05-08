@@ -143,13 +143,13 @@ onMounted(() => {
 <style scoped lang="scss">
 
 a {
-  color: inherit; 
-  text-decoration: none; 
+  color: inherit;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: white; 
+  color: white;
 }
 
 .video-container {
@@ -210,14 +210,14 @@ a:hover {
     padding: 0;
 
     /* overlay style */
-    background-color: rgba(0, 0, 0, 0.5); 
-    border-radius: 10px; 
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
 .customSize {
     font-size: 40px;
-    color: white; 
-    padding: 15px; 
+    color: white;
+    padding: 15px;
 }
 
  /* ----------------------------- */
