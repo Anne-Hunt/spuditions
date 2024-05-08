@@ -35,7 +35,7 @@ async function handleRegister() {
         <label>Password</label>
         <input v-model="formData.password" type="password" class="form-control mb-3">
 
-        <button class="btn px-5 btn-primary">Register</button>
+        <button class="btn px-5 btn-forestGreen">Register</button>
     </form>
 </template>
 

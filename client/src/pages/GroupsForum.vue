@@ -39,11 +39,11 @@ onMounted(() => {
         <div class="col-12">
           <div class="p-3 mt-3 fw-bold">
             <h1 class="d-inline">Find a Group</h1>
-            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-primary rounded text-white float-end">Create Thread <i class="mdi mdi-plus"></i></button>
             <ModalWrap modalId="create-thread-modal">
               <ThreadModal/>
             </ModalWrap>
-            <h5 class="py-3">discuss activities and groups</h5>
+            <h5 class="py-3">Discuss activities and groups!</h5>
+            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end">Create Thread <i class="mdi mdi-plus"></i></button>
           </div>
         </div>
 
@@ -62,5 +62,9 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
+
+.btn.bg-forestGreen:hover {
+  background-color: var(--lightGreen);
+    }
 
 </style>
