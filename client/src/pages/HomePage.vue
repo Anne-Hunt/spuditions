@@ -105,7 +105,7 @@ onMounted(() => {
 					<div class="bg-Gray rounded p-3 me-2 ms-2">
 						<div class="my-2 text-center">
 							<i class="mdi mdi-magnify fs-4 me-2"></i>
-							<span class="fs-4 me-3">Find A Park</span>
+							<span class="fs-4 me-3">Search For More</span>
 						</div>
 						<form @submit.prevent="search()">
 							<div class="form-floating mb-3">
@@ -197,7 +197,7 @@ a:hover {
 @media screen and (max-width: 767px) {
 
 	// REVIEW still not mobile friendly
-	
+
    /* mobile view style */
 
 	.overlay {
