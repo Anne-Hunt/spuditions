@@ -23,7 +23,7 @@ async function getParks() {
 function setCarouselParks() {
 	try {
 		AppState.carouselParks = []
-		for(let i = 0;  i < 4; i++){
+		for (let i = 0; i < 4; i++) {
 			let randomIndex = (Math.floor((Math.random() * (AppState.parks.length))))
 			AppState.carouselParks.push(AppState.parks[randomIndex])
 		}
@@ -99,7 +99,7 @@ onMounted(() => {
 		</div>
 	</section>
 
-	<section class="container-fluid bg-lightGreen py-4 rounded">
+	<section class="container-fluid bg-lightGreen py-4">
 		<!-- Adjusted container class for full-width background -->
 		<div class="row">
 			<div class="col-12 col-md-3">
@@ -141,15 +141,14 @@ onMounted(() => {
 
 
 <style scoped lang="scss">
-
 a {
-  color: inherit; 
-  text-decoration: none; 
-  transition: color 0.3s ease;
+	color: inherit;
+	text-decoration: none;
+	transition: color 0.3s ease;
 }
 
 a:hover {
-  color: white; 
+	color: white;
 }
 
 .video-container {
@@ -200,27 +199,27 @@ a:hover {
 
 	// REVIEW still not mobile friendly
 
-   /* mobile view style */
+	/* mobile view style */
 
 	.overlay {
-    position: absolute;
-    width: 100%;
-    left: 10%;
-    top: 40%;
-    padding: 0;
+		position: absolute;
+		width: 100%;
+		left: 10%;
+		top: 40%;
+		padding: 0;
 
-    /* overlay style */
-    background-color: rgba(0, 0, 0, 0.5); 
-    border-radius: 10px; 
-}
+		/* overlay style */
+		background-color: rgba(0, 0, 0, 0.5);
+		border-radius: 10px;
+	}
 
-.customSize {
-    font-size: 40px;
-    color: white; 
-    padding: 15px; 
-}
+	.customSize {
+		font-size: 40px;
+		color: white;
+		padding: 15px;
+	}
 
- /* ----------------------------- */
+	/* ----------------------------- */
 
 	.vidText {
 		display: contents;
@@ -244,12 +243,12 @@ a:hover {
 	}
 }
 
-@media only screen and (max-width: 767px) {
-	.vidText {
-		display: none;
-	}
+// @media only screen and (max-width: 767px) {
+// 	.vidText {
+// 		display: none;
+// 	}
 
-}
+// }
 
 .imgText {
 	display: flex;
@@ -309,7 +308,7 @@ a:hover {
 @media screen and (min-width: 425px) and (max-width: 767px) {
 	.overlay {
 		position: absolute;
-		width: 50%;
+		width: 78%;
 		// height: 65vh;
 		left: 11%;
 		top: 40%;
@@ -339,11 +338,11 @@ a:hover {
 @media screen and (min-width: 375px) and (max-width: 424px) {
 	.overlay {
 		position: absolute;
-		width: 50%;
+		width: 88%;
 		// height: 65vh;
 		left: 5%;
 		top: 40%;
-		padding: 0;
+		padding: 0px;
 
 		@keyframes typing {
 			from {
@@ -369,10 +368,11 @@ a:hover {
 @media screen and (min-width: 320px) and (max-width: 374px) {
 	.overlay {
 		position: absolute;
-		width: 50%;
-		left: 10%;
+		width: 88%;
+		left: 6%;
 		top: 40%;
-		padding: 0;
+		padding-left: 10px;
+		padding-right: 10px;
 
 		@keyframes typing {
 			from {
@@ -394,5 +394,4 @@ a:hover {
 		}
 	}
 }
-
 </style>

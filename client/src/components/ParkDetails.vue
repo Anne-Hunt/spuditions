@@ -84,6 +84,14 @@ async function getVisitedByPark() {
 }
 
 
+const avgRating = computed(() => {
+    if (visited.value == null) return 0
+    if (visited.value.length == 0) return 0
+    let sum = 0
+    visited.value?.forEach(x => sum += x.userRating)
+    return Math.round(sum / visited.value?.length)
+})
+
 const isVisited = computed(() => {
 
 	const review = AppState.visited?.find(review => review.creatorId == userId.value)
@@ -162,11 +170,11 @@ onMounted(() => {
 
 						<!-- Park Ratings -->
 						<div class="d-flex align-items-center justify-content-center justify-content-md-start">
-							<i class="mdi mdi-star p-1 fs-5"></i>
-							<i class="mdi mdi-star p-1 fs-5"></i>
-							<i class="mdi mdi-star p-1 fs-5"></i>
-							<i class="mdi mdi-star p-1 fs-5"></i>
-							<span class="selectable ms-4 fontColorDk">800 ratings</span>
+                            <div v-if="avgRating != null && avgRating != 0">
+                                <i class="mdi mdi-star p-1 fs-5" v-for="index in avgRating" :key="index"></i>
+                            </div>
+
+							<span class="selectable ms-4 fontColorDk">{{ visited?.length }} ratings</span>
 						</div>
 					</div>
 					<!-- Park Info -->
