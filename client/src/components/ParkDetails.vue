@@ -236,28 +236,29 @@ onMounted(() => {
 
 				<!-- SECTION: Costs box -->
 				<div class="accordion accordion-item col-12 col-md-5 mb-5 order-2 order-md-1" id="accordion2">
-					<h2 class="accordion-header">
-						<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
-							data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-							<!-- Image instead of dropdown arrow -->
-							<img src="/src/assets/img/spuditions.png" alt="Dropdown Arrow" class="spudDropDown">
+    <h2 class="accordion-header">
+        <button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <!-- Dropdown arrow icon -->
+            <i class="mdi mdi-chevron-down spudDropDown"></i>
 
-							<div>
-								<h3 class="text-center">Costs:</h3>
-								<i class="mdi mdi-information-outline fs6 color"></i>&nbsp;
-								<i class="fs7">Non-resident charges are included on top of resident charges</i>
-							</div>
-						</button>
-					</h2>
+            <div>
+                <h3 class="text-center">Costs:</h3>
+                <i class="mdi mdi-information-outline fs6 color"></i>&nbsp;
+                <i class="fs7">Non-resident charges are included on top of resident charges</i>
+            </div>
+        </button>
+    </h2>
 
-					<div id="flush-collapseTwo" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordion2">
-						<div class="accordion-body">
-							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
-								{{ cost }}
-							</li>
-						</div>
-					</div>
-				</div>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordion2">
+        <div class="accordion-body">
+            <li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+                {{ cost }}
+            </li>
+        </div>
+    </div>
+</div>
+
 
 
 				<!-- SECTION: Park description box -->
@@ -265,9 +266,8 @@ onMounted(() => {
 					<h2 class="accordion-header">
 						<button class="accordion-button collapsed mt-3 text-center" type="button" data-bs-toggle="collapse"
 							data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-							<!-- Image instead of dropdown arrow -->
-							<img src="/src/assets/img/spuditions.png" alt="Dropdown Arrow" class="spudDropDown">
-
+                             <!-- Dropdown arrow icon -->
+                       <i class="mdi mdi-chevron-down spudDropDown"></i>
 							<div>
 								<i class="fs7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</i>
@@ -283,9 +283,10 @@ onMounted(() => {
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
+
+		
 		<!-- Costs Box -->
 		<!-- <div class="col-12 col-md-6 mt-3 mb-4 mt-md-5 mb-md-5">
 					<div class="box mb-3">
