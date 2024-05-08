@@ -16,6 +16,7 @@ const reviewedAlready = computed(()=> AppState.reputation.find(reputation => rep
 async function getProfile(){
   try {
     await profileService.getProfile(route.params.profileId)
+    await profileService.getReputation(route.params.profileId)
   } catch (error) {
     Pop.toast("Could not get profile", 'error')
     logger.error(error)
@@ -62,6 +63,7 @@ onMounted(() => {
               <input type="password" name="ratingProfile" class="form-control" id="profileRating" >
             </div>
             <button v-if="!reviewedAlready" type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" v-else disabled>Submit</button>
           </form>
         </div>
       </div>

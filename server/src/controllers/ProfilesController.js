@@ -9,9 +9,9 @@ export class ProfilesController extends BaseController {
         this.router
             .get('', this.getProfiles)
             .get('/search', this.searchProfile)
-            .get('/:id', this.getProfile)
-            .get('/:id/reputation', this.getReputationOnProfile)
-            .get('/:id/visited', this.getVisited)
+            .get('/:profileId', this.getProfile)
+            .get('/:profileId/reputation', this.getReputationOnProfile)
+            .get('/:profileId/visited', this.getVisited)
     }
 
     async searchProfile(request, response, next) {
@@ -25,7 +25,7 @@ export class ProfilesController extends BaseController {
 
     async getVisited(request, response, next) {
         try {
-            const visited = await visitedService.getVisited(request.params.id)
+            const visited = await visitedService.getVisited(request.params.profileId)
             response.send(visited)
         } catch (error) {
             next(error)
@@ -34,7 +34,7 @@ export class ProfilesController extends BaseController {
 
     async getReputationOnProfile(request, response, next) {
         try {
-            const reputation = await reputationService.getReputationOnProfile(request.params.id)
+            const reputation = await reputationService.getReputationOnProfile(request.params.profileId)
             response.send(reputation)
         } catch (error) {
             next(error)

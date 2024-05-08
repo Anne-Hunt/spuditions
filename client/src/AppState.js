@@ -5,6 +5,7 @@ import { Thread } from './models/Thread.js'
 import { Post } from './models/Post.js'
 import { Profile } from './models/Profile.js'
 import { Visited } from './models/Visited.js'
+import { Reputation } from './models/Reputation.js'
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -44,6 +45,7 @@ export const AppState = reactive({
 
   activeProfile: null,
 
+  /**@type {Reputation[]} */
   reputation: [],
 
   searchTerm: '',
