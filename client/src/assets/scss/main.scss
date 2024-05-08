@@ -2,6 +2,13 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
+.pfp {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100vw;
+}
+
 @font-face {
     font-family: "NationalPark";
     src: url("/src/assets/fonts/NationalPark-All-Fonts/woff/NationalPark-Regular.woff") format('woff');
