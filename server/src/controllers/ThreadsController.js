@@ -51,7 +51,7 @@ export class ThreadsController extends BaseController {
     //!SECTION - Gets threads from the thread service
     async getThreads(request, response, next) {
         try {
-            const threads = await threadsService.getThreads()
+            const threads = await threadsService.getThreads(request.query)
             response.send(threads)
         } catch (error) {
             next(error)
