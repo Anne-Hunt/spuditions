@@ -21,8 +21,8 @@ class VisitedService {
         if (previous.length != 0) throw new Error('You already left a review for this park.')
 
         const visit = await dbContext.Visited.create(visitedData)
-        const visited = visit.populate('creator', '-ip -password -email')
-        return visited
+        await visit.populate('creator', '-ip -password -email')
+        return visit
     }
 
     async destroyVisited(visitedId, userInfo) {
