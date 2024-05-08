@@ -32,16 +32,21 @@ async function destroyThread(threadId) {
 <template>
 	<div v-if="thread" class="card bg-teal p-2 m-4 my-2 pb-0">
 		<div class="row py-2">
-			<div class="px-4 col-12 d-flex">
-				<div>
+			<div class="px-4 col-12 d-flex gap-2">
+				<router-link :to="{name: 'Profile', params: { profileId: thread.creator.id }}" class="text-center">
 					<img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="image of creator">
-				</div>
+                    <div v-if="fullView" class="mt-1 fw-bold text-black">
+                        {{ thread.creator.name }}
+                    </div>
+				</router-link>
 
-				<div class="pe-5 ps-3 w-100">
-					<span class="fw-bold fs-5"><span v-for="tag in thread?.tags" :key="tag"
-							class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> {{
+				<div class="pe-5 ps-3 w-100" :class="{ 'mb-2': fullView }">
+					<span class="fw-bold fs-5"><span v-if="!fullView"
+							class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ thread?.tags[0] }}</span> {{
 								thread?.title }}</span>
 					<p class="w-100" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p>
+                    <span v-if="fullView"
+							class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ thread?.tags[0] }}</span>
 				</div>
 
 				<div>
