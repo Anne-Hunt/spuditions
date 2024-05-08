@@ -48,7 +48,6 @@ onMounted(() => {
         </div>
 
         <!-- //!SECTION - Thread card -->
-        <!-- //FIXME - Need to replace info with profiles and stuff -->
         <div v-for="thread in threads" :key="thread?.id" class="col-12">
           <router-link :to="{ name: 'Thread Page', params: {threadId: thread.id}}">
             <ThreadCard :thread="thread"/>

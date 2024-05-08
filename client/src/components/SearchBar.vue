@@ -31,7 +31,6 @@ async function search(){
 
 </script>
 
-<!-- //FIXME - This is just a static form rn, still need to add functionality -->
 <template>
 	<form class="me-md-4" @submit.prevent="search()">
 		<div class="input-group">
