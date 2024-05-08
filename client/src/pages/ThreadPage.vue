@@ -13,6 +13,8 @@ import { postsService } from "../services/PostsService.js";
 const threads = computed(() => AppState.activeThread)
 const route = useRoute()
 const posts = computed(()=> AppState.posts)
+const account = computed(() => AppState.account)
+
 
 async function getPostByThreadId(){
   try {
@@ -58,6 +60,18 @@ async function createPost(){
   }
 }
 
+async function destroyThread(threadId){
+  try {
+    const wantsToDestroy = await Pop.confirm("Are you sure you want to delete this thread?")
+    if(!wantsToDestroy) return
+    logger.log("Destroying thread", threadId)
+    await threadsService.destroyThread(threadId)
+  } catch (error) {
+    Pop.toast("Could not delete thread", 'error')
+    logger.error(error)
+  }
+}
+
 onMounted(() => {
   getThreadById()
 })
@@ -89,8 +103,8 @@ onMounted(() => {
                   <span v-for="tag in threads?.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> 
                 </div>
             </div>
-            <div class="col-12">
-
+            <div v-if="threads?.creatorId == account.id" class="col-12 col-sm-12 col-md-12">
+                <button @click="destroyThread(threads.id)" class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
         </div>
     </div>
@@ -116,6 +130,7 @@ onMounted(() => {
 
 
 <style lang="scss" scoped>
+
 .profile-img{
   height: 50px;
   width: fit-content;
@@ -123,5 +138,11 @@ onMounted(() => {
   border-radius: 50em;
   object-fit: cover;
   object-position: center
+}
+
+.delete-post{
+  height: 45px;
+  border-radius: 50em;
+  aspect-ratio: 1/1;
 }
 </style>

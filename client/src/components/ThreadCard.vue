@@ -6,7 +6,6 @@ import { AppState } from "../AppState.js";
 
 defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
 
-const account = computed(() => AppState.account)
 
 </script>
 
@@ -22,9 +21,6 @@ const account = computed(() => AppState.account)
                     <span class="fw-bold fs-5"><span v-for="tag in thread?.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> {{ thread?.title }}</span>
                     <p class="w-100" :class="{ 'noWrap' : !fullView }">{{ thread?.body }}</p>
                 </div>
-            </div>
-            <div v-if="thread?.creatorId == account.id" class="col-12 col-sm-12 col-md-12">
-                <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
         </div>
     </div>
@@ -46,4 +42,6 @@ const account = computed(() => AppState.account)
   object-fit: cover;
   object-position: center
 }
+
+
 </style>
