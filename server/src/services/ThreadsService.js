@@ -15,6 +15,7 @@ class ThreadsService {
     //!SECTION - Creates a thread forming data from the thread model
     async createThread(threadData) {
         const thread = await dbContext.Thread.create(threadData)
+        await thread.populate('creator', '-email -ip -password')
         return thread
     }
 
