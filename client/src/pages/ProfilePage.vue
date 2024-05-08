@@ -14,6 +14,9 @@ const profile = computed(() => AppState.activeProfile)
 const user = computed(()=> AppState.account)
 const reviewedAlready = computed(()=> AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
 const threads = computed(() => AppState.profileThreads)
+const posts = computed(()=> AppState.posts)
+const visits = computed(()=> AppState.visited)
+const reps = computed(()=> AppState.reputation)
 
 const reputation = ref({
   comment: '',
@@ -87,45 +90,65 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="profile" class="container-fluid">
+  <div v-if="profile" class="container-fluid m-0 p-0">
     <div class="row me-0 align-items-center bg-forestGreen">
       <div class="col-12 text-center p-3 pt-5">
         <h3 class="fw-bold text-white">{{ profile.name }}</h3>
       </div>
-      <div class="col-12 text-center">
+      <div class="col-12 text-center text-white pt-4 fs-4">
+    <a class="text-light" data-bs-toggle="offcanvas" href="#reputationOffCanvas" role="button" aria-controls="reputationOffCanvas">
+      <div class="col-12">
         <img class="profile-img" :src="profile.picture" alt="">
       </div>
-      <div class="col-12 text-center text-white pt-4 fs-4">
-        Reputation
+      Reputation
+    </a>
+        <div v-if="(profile.id != user.id)">
+          <div class="dropdown">
+            <button v-if="!reviewedAlready" type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
+              data-bs-auto-close="outside">
+              Review Profile
+            </button>
+            <button v-else disabled type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
+              data-bs-auto-close="outside">
+              Already Reviewed
+            </button>
+            <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
+              <div class="mb-3">
+                <label for="comment" class="form-label">Say a Few Words About This User</label>
+                <input v-model="reputation.comment" type="text" name="comment" class="form-control" id="commentInput">
+              </div>
+              <div class="mb-3">
+                <label for="ratingProfile" class="form-label">Rating</label>
+                <select v-model="reputation.rating" name="ratingProfile" class="form-control" id="profileRating" >
+                  <option value="+1"><span>Good Spud</span></option>
+                  <option value="-1" selected><span>Bad Spud</span></option>
+                </select>
+              </div>
+              <button v-if="!reviewedAlready" type="submit" class="btn btn-primary">Submit</button>
+              <button class="btn btn-primary" v-else disabled>Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
       <div class="col-12 d-flex justify-content-center align-items-center mt-1">
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="reputationOffCanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Profile Reviews</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body p-1">
+    <div class="rounded bg-secondary text-light my-1" v-for="rep in reps" :key="rep?.id">
+      <img :src="rep.creator?.picture" :alt="rep.creator?.name"><strong>{{ rep.creator?.name }}</strong>
+      {{ rep?.comment }}
+    </div>
+  </div>
+</div>
         <img v-if="profile.reputation < 0" class="rotten-spud-img pe-3 pb-2 selectable"
           src="/src/assets/img/rottenSpud.png" alt="">
         <img v-else class="spud-img pe-3 selectable" src="/src/assets/img/spuditions.png" alt="">
         <h5 class="text-white"> {{ profile.reputation }}</h5>
-      </div>
-      <div v-if="profile.id != user.id">
-        <div class="dropdown">
-          <button type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
-            data-bs-auto-close="outside">
-            Review Profile
-          </button>
-          <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
-            <div class="mb-3">
-              <label for="comment" class="form-label">Say a Few Words About This User</label>
-              <input v-model="reputation.comment" type="text" name="comment" class="form-control" id="commentInput">
-            </div>
-            <div class="mb-3">
-              <label for="ratingProfile" class="form-label">Rating</label>
-              <select v-model="reputation.rating" name="ratingProfile" class="form-control" id="profileRating" >
-                <option value="+1"><span>Good Spud</span></option>
-                <option value="-1" selected><span>Bad Spud</span></option>
-              </select>
-            </div>
-            <button v-if="!reviewedAlready" type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-primary" v-else disabled>Submit</button>
-          </form>
-        </div>
+
       </div>
     </div>
     <div class="row justify-content-center pt-4 pb-5 bg-forestGreen">
@@ -142,10 +165,26 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <div>
+      <div class="accordion" id="visitedAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        See where {{ profile.name }} has gone
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#visitedAccordion">
+      <div class="accordion-body">
+        <span v-for="visit in visits" :key="visit.id">{{ visit.park.name }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
     <div class="row justify-content-center">
       <h1 class="text-dark text-center my-5">Threads:</h1>
       <div class v-for="thread in threads" :key="thread?.id">
-        <ThreadCard :thread?="thread"/>
+        <ThreadCard :thread="thread"/>
       </div>
     </div>
   </div>
