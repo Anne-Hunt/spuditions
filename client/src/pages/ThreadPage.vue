@@ -92,30 +92,12 @@ onMounted(() => {
     <Sidebar/>
 
     <!-- //!SECTION - Main section of the page -->
-    <div class="col-12 col-md-12 col-lg-10">
+    <div class="col-12 col-md-12 col-lg-10 mt-4">
       <!-- //!SECTION - Create Post button -->
       <div class="row me-0">
         <!-- //!SECTION - Thread card -->
         <div class="col-12">
-          <div v-if="threads" class="card bg-teal p-2 m-4 my-2 pb-0">
-        <div class="row py-2">
-            <div class="px-4 col-12 d-flex mb-3">
-                <div>
-                  <RouterLink :to="{name: 'Profile', params: {profileId: threads?.creatorId}}">
-                    <img class="mt-1 profile-img d-inline" :src="threads.creator?.picture" :alt="threads.creator?.name"><span class="d-inline text-black">{{ threads.creator.name }}</span>
-                  </RouterLink>
-                </div>
-                <div class="pe-5 ps-3 w-100">
-                  <span class="fw-bold fs-5">{{ threads?.title }}</span>
-                  <p class="w-100" >{{ threads?.body }}</p>
-                  <span v-for="tag in threads?.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span>
-                </div>
-            </div>
-            <div v-if="threads?.creatorId == account.id" class="col-12 col-sm-12 col-md-12">
-                <button @click="destroyThread(threads.id)" class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
-            </div>
-        </div>
-    </div>
+          <ThreadCard :thread="threads" :fullView="true"/>
         </div>
         <div class="col-12">
           <div class="card p-2 mx-4 mt-3 bg-teal">
@@ -127,8 +109,8 @@ onMounted(() => {
             </form>
           </div>
         </div>
-        <div v-for="post in posts" :key="post.id">
-          <CommentCard :post="post"/>
+        <div class="my-4 mx-3">
+          <CommentCard v-for="post in posts" :key="post.id" :post="post"/>
         </div>
       </div>
   </div>

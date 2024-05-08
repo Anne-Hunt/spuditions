@@ -82,7 +82,7 @@ onMounted(() => {
 			</div>
 			<div v-if="threadData.section == 'park'" class="my-3">
 				<label for="selectPark" class="me-3">Select Park</label>
-				<select v-model="threadData.section" name="selectPark" id="selectpark">
+				<select v-model="threadData.tags" name="selectPark" id="selectpark">
 					<option v-for="park in parks" :key="park.id" :value="park.id">{{ park.name }}</option>
 				</select>
 			</div>

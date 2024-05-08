@@ -5,7 +5,7 @@
 
 <template>
 
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#forumRules" aria-controls="forumRules">
+<button class="btn btn-dkGreen" type="button" data-bs-toggle="offcanvas" data-bs-target="#forumRules" aria-controls="forumRules">
   Forum Rules
 </button>
 
@@ -37,4 +37,8 @@
 .spud{
     max-width: 90%;
 }
+
+.btn.btn-dkGreen:hover {
+  background-color: var(--lightGreen);
+    }
 </style>

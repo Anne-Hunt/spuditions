@@ -49,7 +49,6 @@ onUnmounted(() => {
 
 </script>
 
-<!-- //FIXME - Build out search page -->
 <template>
 <div class="container justify-content-center mt-3">
     <div class="row" v-for="park in parks" :key="park.id">

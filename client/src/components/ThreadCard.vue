@@ -52,10 +52,11 @@ async function destroyThread(threadId) {
 					</div>
 				</div>
 
-				<div class="pe-5 ps-3 w-100">
-					<span class="fw-bold fs-5"><span v-for="tag in thread?.tags" :key="tag"
-							class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> {{
-								thread?.title }}</span>
+				<div class="pe-5 ps-3 w-100" :class="{ 'mb-2': fullView }">
+					<span class="fw-bold fs-5"><span v-if="!fullView"
+							class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ thread?.tags[0] }}</span>
+						{{
+							thread?.title }}</span>
 					<!-- <p class="w-100 mt-3" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p> -->
 					<div v-if="thread.body.length <= (149)">
 						<p class="w-100 mt-3">{{ thread?.body }}</p>

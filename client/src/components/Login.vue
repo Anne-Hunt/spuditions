@@ -28,7 +28,7 @@ function logout() {
 						<img :src="account?.picture || user?.picture" alt="account photo" height="40" class="pfp" />
 					</div>
 				</div>
-				<div class="dropdown-menu dropdown-menu-sm-end dropdown-menu-start p-0" aria-labelledby="authDropdown">
+				<div class="dropdown-menu dropdown-menu-sm-end dropdown-menu-start p-0" style="z-index: 1021;" aria-labelledby="authDropdown">
 					<div class="list-group">
 						<router-link :to="{ name: 'Account' }">
 							<div class="list-group-item dropdown-item list-group-item-action">

@@ -23,6 +23,7 @@ async function clearSearch(){
 async function search(){
 	try {
 		this.router.push({ name: "Search Page", params: { query: searchQuery.value } })
+		searchQuery.value = ''
 	} catch (error) {
 		logger.error('search failed', error)
 		Pop.toast("Unable to search", 'error')
@@ -31,7 +32,6 @@ async function search(){
 
 </script>
 
-<!-- //FIXME - This is just a static form rn, still need to add functionality -->
 <template>
 	<form class="me-md-4" @submit.prevent="search()">
 		<div class="input-group">
