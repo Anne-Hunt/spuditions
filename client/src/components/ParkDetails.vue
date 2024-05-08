@@ -14,7 +14,7 @@ import { logger } from '../utils/Logger.js';
 
 const park = computed(() => AppState.activePark)
 const activities = computed(() => AppState.activePark?.activities)
-const userId = computed(() => AppState.account.id)
+const userId = computed(() => AppState.account?.id)
 const visited = computed(() => AppState.visited)
 
 const route = useRoute()
@@ -86,7 +86,7 @@ async function getVisitedByPark() {
 
 const isVisited = computed(() => {
 
-	const review = AppState.visited.find(review => review.creatorId == userId.value)
+	const review = AppState.visited?.find(review => review.creatorId == userId.value)
 
 	return review != undefined
 });
@@ -149,7 +149,7 @@ onMounted(() => {
 					<img class="img-fluid rounded imgShadow" :src="park?.imgUrl" alt="">
 					<!-- Overlay for Park Website Link -->
 					<a :href="park?.webUrl" target="_blank" class="mb-2 mb-md-3 parkWebsiteLink rounded widthCustom">
-						Click Here For Park Website
+						Visit the Park's Website
 					</a>
 				</div>
 			</div>
@@ -263,7 +263,7 @@ onMounted(() => {
 							<div>
 								<i class="fs7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</i>
-								<h4 class="text-center">Click Here To Learn More:</h4>
+								<h4 class="text-center">About {{ park.name }}</h4>
 							</div>
 						</button>
 					</h2>

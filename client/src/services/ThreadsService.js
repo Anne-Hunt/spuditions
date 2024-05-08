@@ -2,11 +2,12 @@ import { AppState } from "../AppState.js"
 import { Post } from "../models/Post.js"
 import { Thread } from "../models/Thread.js"
 import { logger } from "../utils/Logger.js"
+import Pop from "../utils/Pop.js"
 import { api } from "./AxiosService.js"
 
 
 class ThreadsService{
-
+  
   async getPostByThreadId(threadId) {
     const response = await api.get(`api/threads/${threadId}/posts`)
     logger.log("Got posts on this thread", response.data)
@@ -33,33 +34,37 @@ class ThreadsService{
     const thread = new Thread(response.data)
     AppState.activeThread = thread
   }
+  async getProfileThreads(profileId) {
+    AppState.profileThreads = []
+    const response = await api.get(`api/threads?creatorId=${profileId}`)
+    logger.log("Got threads by this profile", response.data)
+    const threads = response.data.map(threads => new Thread(threads))
+    AppState.profileThreads = threads
+  }
   async searchThreads(searchQuery) {
     AppState.threads = []
     const response = await api.get(`api/threads/search?query=${searchQuery}`)
     const threads = response.data.map(threadData => new Thread(threadData))
     AppState.threads = threads
   }
-  
-  async getSingleThread() {
-    const response = await api.get(`api/threads/:threadId`)
-    const thread = response.data.map(threadData => new Thread(threadData))
-        AppState.activeThread = thread
-    }
       
-    async editThread(threadData, threadId){
-        const response = await api.put(`api/threads/:threadId`, threadData)
-        const thread = new Thread(response.data)
-        const asThread = AppState.threads.findIndex(threadId)
-        AppState.threads.splice(asThread, 1)
-        AppState.threads.push(thread)
-        AppState.activeThread = thread
-    }
+  async destroyThread(threadId){
+      const response = await api.delete(`api/threads/${threadId}`)
+      logger.log("Deleted thread", response.data)
+      const threadToDelete = AppState.threads.findIndex(thread => thread.id == threadId)
+      Pop.success("Deleted thread")
+      AppState.threads.splice(threadToDelete, 1)
+  }
+
+    // async editThread(threadData, threadId){
+    //     const response = await api.put(`api/threads/:threadId`, threadData)
+    //     const thread = new Thread(response.data)
+    //     const asThread = AppState.threads.findIndex(threadId)
+    //     AppState.threads.splice(asThread, 1)
+    //     AppState.threads.push(thread)
+    //     AppState.activeThread = thread
+    // }
       
-    async deleteThread(threadId){
-        await api.delete(`api/thread/:threadId`)
-        const threadDelete = AppState.threads.findIndex(threadId)
-        AppState.threads.splice(threadDelete, 1)
-    }
       
 }
       export const threadsService = new ThreadsService()

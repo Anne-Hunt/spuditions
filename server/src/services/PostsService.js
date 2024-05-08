@@ -6,6 +6,10 @@ import { QueryBuilder } from "../utils/QueryBuilder.js"
 
 
 class PostsService {
+    async getPostsByProfile(profileId) {
+        const posts = await dbContext.Post.find({ creatorId: profileId }).populate('creator', '-email -ip -password')
+        return posts
+    }
     //!SECTION - searches posts from search bar - decided to remove functionality
     // async searchPosts(query) {
     //     const searchQuery = QueryBuilder.build(PostSchema, query)
@@ -16,13 +20,13 @@ class PostsService {
     //!SECTION - Creates posts by accessing the model and forming it to the data
     async createPost(postData) {
         const post = await dbContext.Post.create(postData)
-        await post.populate('creator')
+        await post.populate('creator', '-email -ip -password')
         return post
     }
 
     //!SECTION - Gets the posts on a specific thread
     async getThreadPosts(threadId) {
-        const posts = await dbContext.Post.find({ threadId: threadId }).populate('creator')
+        const posts = await dbContext.Post.find({ threadId: threadId }).populate('creator', '-email -ip -password')
         return posts
     }
     //!SECTION - edits specific post, checks for user's ownership or moderator

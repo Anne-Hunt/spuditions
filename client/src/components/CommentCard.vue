@@ -1,7 +1,27 @@
 <script setup>
+import { computed } from "vue";
 import { Post } from "../models/Post.js";
+import { AppState } from "../AppState.js";
+import { logger } from "../utils/Logger.js";
+import { postsService } from "../services/PostsService.js";
+import Pop from "../utils/Pop.js";
 
 defineProps({post: Post})
+
+const account = computed(() => AppState.account)
+
+async function destroyPost(postId){
+  try {
+    const wantsToDestroy = await Pop.confirm("Are you sure you want to delete this post?")
+    if(!wantsToDestroy) return
+
+    logger.log("Destroying post", postId)
+    await postsService.destroyPost(postId)
+  } catch (error) {
+    Pop.toast("Could not delete this post", 'error')
+    logger.error(error)
+  }
+}
 
 </script>
 
@@ -11,21 +31,19 @@ defineProps({post: Post})
           <div class="card bg-teal p-2 m-4">
             <div class="row">
             <div class="col-12 col-md-1">
-              <img class="comment-img d-inline" :src="post?.creator.picture" alt="Michael">
+              <RouterLink :to="{name: 'Profile', params: {profileId: post?.creatorId}}">
+                <img class="comment-img d-inline" :src="post?.creator.picture" alt="Michael">
+              </RouterLink>
             </div>
             <div class="col-10 col-sm-11 col-md-10">
               <p class="d-inline ps-2">{{ post?.creator.name }}</p>
-              <p class="ps-2">"Days ago"</p>
+              <p class="ps-2">{{ (post?.createdAt)?.toDateString() }}</p>
             </div>
-            <!-- //FIXME - Add "v-if" to delete button -->
-            <div class="col-1 col-sm-1 col-md-1">
-              <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
+            <div v-if="post?.creatorId == account.id" class="col-1 col-sm-1 col-md-1">
+              <button @click="destroyPost(post.id)" class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
             <div class="col-12">
               <p>{{ post?.body }}</p>
-            </div>
-            <div class="col-12">
-              <h3 class="d-inline float-end px-3">{{ post?.threadId }}</h3>
             </div>
           </div>
         </div>

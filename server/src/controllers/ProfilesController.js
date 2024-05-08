@@ -1,5 +1,7 @@
+import { postsService } from '../services/PostsService.js'
 import { profileService } from '../services/ProfileService.js'
 import { reputationService } from '../services/ReputationService.js'
+import { threadsService } from '../services/ThreadsService.js'
 import { visitedService } from '../services/VisitedService.js'
 import BaseController from '../utils/BaseController'
 
@@ -9,9 +11,11 @@ export class ProfilesController extends BaseController {
         this.router
             .get('', this.getProfiles)
             .get('/search', this.searchProfile)
-            .get('/:id', this.getProfile)
-            .get('/:id/reputation', this.getReputationOnProfile)
-            .get('/:id/visited', this.getVisited)
+            .get('/:profileId', this.getProfile)
+            .get('/:profileId/reputation', this.getReputationOnProfile)
+            .get('/:profileId/visited', this.getVisited)
+            .get('/:profileId/threads', this.getThreads)
+            .get('/:profileId/posts', this.getPosts)
     }
 
     async searchProfile(request, response, next) {
@@ -23,9 +27,27 @@ export class ProfilesController extends BaseController {
         }
     }
 
+    async getThreads(request, response, next) {
+        try {
+            const threads = await threadsService.getThreadsByProfile(request.params.profileId)
+            response.send(threads)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getPosts(request, response, next) {
+        try {
+            const posts = await postsService.getPostsByProfile(request.params.profileId)
+            response.send(posts)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async getVisited(request, response, next) {
         try {
-            const visited = await visitedService.getVisited(request.params.id)
+            const visited = await visitedService.getVisited(request.params.profileId)
             response.send(visited)
         } catch (error) {
             next(error)
@@ -34,7 +56,7 @@ export class ProfilesController extends BaseController {
 
     async getReputationOnProfile(request, response, next) {
         try {
-            const reputation = await reputationService.getReputationOnProfile(request.params.id)
+            const reputation = await reputationService.getReputationOnProfile(request.params.profileId)
             response.send(reputation)
         } catch (error) {
             next(error)
@@ -52,7 +74,7 @@ export class ProfilesController extends BaseController {
 
     async getProfile(req, res, next) {
         try {
-            const profile = await profileService.getProfileById(req.params.id)
+            const profile = await profileService.getProfileById(req.params.profileId)
             res.send(profile)
         } catch (error) {
             next(error)

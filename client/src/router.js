@@ -27,11 +27,6 @@ const routes = [
     component: loadPage('GeneralChatForum')
   },
   {
-    path: '/parksForum',
-    name: 'Parks Forum',
-    component: loadPage('ParksForum')
-  },
-  {
     path: '/forums/parks',
     name: 'Parks Forum',
     component: loadPage('ParksForum')

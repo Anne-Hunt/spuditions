@@ -6,24 +6,23 @@ import { Forbidden } from "../utils/Errors.js"
 class VisitedService {
 
     //!SECTION - Gets visited status for users
-    async getVisited(creatorId) {
-        const visited = await dbContext.Visited.find({ creatorId: creatorId })
+    async getVisited(profileId) {
+        const visited = await dbContext.Visited.find({ creatorId: profileId }).populate('park')
         return visited
     }
 
     async getVisitedByPark(parkId) {
-        const visited = await dbContext.Visited.find({ parkId: parkId }).populate('creator')
+        const visited = await dbContext.Visited.find({ parkId: parkId }).populate('creator', '-ip -password -email')
         return visited
     }
 
     async postVisited(visitedData) {
-        //*FIXME - THIS MAKES MAD CRAZY ERRORS
         const previous = await dbContext.Visited.find({ parkId: visitedData.parkId, creatorId: visitedData.creatorId })
         if (previous.length != 0) throw new Error('You already left a review for this park.')
 
         const visit = await dbContext.Visited.create(visitedData)
-        const visited = visit.populate('creator', '-password -email')
-        return visited
+        await visit.populate('creator', '-ip -password -email')
+        return visit
     }
 
     async destroyVisited(visitedId, userInfo) {

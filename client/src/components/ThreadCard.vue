@@ -4,6 +4,7 @@ import { Thread } from "../models/Thread.js";
 
 defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
 
+
 </script>
 
 
@@ -18,9 +19,6 @@ defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
                     <span class="fw-bold fs-5"><span v-for="tag in thread?.tags" :key="tag" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ tag }}</span> {{ thread?.title }}</span>
                     <p class="w-100" :class="{ 'noWrap' : !fullView }">{{ thread?.body }}</p>
                 </div>
-            </div>
-            <div class="col-12">
-
             </div>
         </div>
     </div>
@@ -42,4 +40,6 @@ defineProps({thread: Thread, fullView: {type: Boolean, default: false}})
   object-fit: cover;
   object-position: center
 }
+
+
 </style>
