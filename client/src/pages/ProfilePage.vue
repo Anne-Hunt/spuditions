@@ -175,7 +175,9 @@ onMounted(() => {
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#visitedAccordion">
       <div class="accordion-body">
-        <span v-for="visit in visits" :key="visit.id">{{ visit.park.name }}</span>
+        <span class="p-2" v-for="visit in visits" :key="visit.id">
+            {{ visit.park.name }}
+        </span>
       </div>
     </div>
   </div>
