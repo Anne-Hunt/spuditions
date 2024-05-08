@@ -28,11 +28,11 @@
         </div>
       </div>
       
-      <div class="col-12">
+      <div class="col-12 ms-2">
         <div class="row align-items-center">
           <div class="col-12 col-md-9 order-2 order-md-1">
             <h1 class="text-end">Emma</h1>
-            <p class="fs-5 text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
+            <p class="fs-5 text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus dolore dolorem doloribus laboriosam, aliquid aut!</p>
           </div>
           <div class="col-12 col-md-3 order-1 order-md-2 text-center">
             <img class="dev-img" src="/src/assets/img/emma.jpg" alt="Emma">
@@ -52,11 +52,11 @@
         </div>
       </div>
 
-      <div class="col-12">
+      <div class="col-12 ms-2">
         <div class="row align-items-center">
           <div class="col-12 col-md-9 order-2 order-md-1">
             <h1 class="text-end">Tara</h1>
-            <p class="fs-5 text-end">Hey there! My name is Tara, and I began my passion for Graphic and Web Design at North Idaho College. I originally wanted to just pursue Graphic Design and Photography but realized I really enjoyed Web Development, so I figured why not combine them all. I am currently still on my way learning as much as I can as a Full Stack Web Developer and can't wait to get find a job in that field! </p>
+            <p class="fs-5 text-left">Hey there! My name is Tara, and I began my passion for Graphic and Web Design at North Idaho College. I originally wanted to just pursue Graphic Design and Photography but realized I really enjoyed Web Development, so I figured why not combine them all. I am currently still on my way learning as much as I can as a Full Stack Web Developer and can't wait to get find a job in that field! </p>
           </div>
           <div class="col-12 col-md-3 order-1 order-md-2 text-center">
             <img class="dev-img" src="/src/assets/img/tara2.jpg" alt="Angela">
