@@ -8,7 +8,7 @@
     <div class="text-center my-5 px-5">
       <h1>Our Story</h1>
       <div class="spuds text-center ms-2">
-      <img class="spudLogo mt-4 me-2" src="/src/assets/img/spuditions.png" alt="spuditions logo">
+      <img class="spudLogo mt-5 me-2" src="/src/assets/img/spuditions.png" alt="spuditions logo">
       </div>
       <p>Once upon a time in the wild world of web development, there were five brave souls embarking on a quest to create a cool project. Armed with keyboards, memes, and a seemingly endless supply of caffeine, a group of students ventured forth into the treacherous jungle of HTML, CSS, JavaScript, Vue, and Express. We hope you enjoyed our project Spuditions!</p>
     </div>
@@ -117,7 +117,7 @@
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
-  width: 30px; 
+  width: 40px; 
   height: auto;
   animation: dance 2s infinite; 
 }
