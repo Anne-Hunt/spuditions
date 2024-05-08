@@ -44,6 +44,8 @@ export const AppState = reactive({
 
   activeProfile: null,
 
+  reputation: []
+
   searchTerm: '',
   webcam: '',
 })
