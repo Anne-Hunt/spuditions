@@ -33,7 +33,7 @@ onMounted(() => {
     <Sidebar/>
 
     <!-- //!SECTION - Main section of the page -->
-    <div class="col-12 col-md-12 col-lg-10">
+    <div class="col-12 col-md-12 col-lg-10 mb-4">
       <!-- //!SECTION - Create Post button -->
       <div class="row me-0">
         <div class="col-12">
@@ -48,7 +48,6 @@ onMounted(() => {
         </div>
 
         <!-- //!SECTION - Thread card -->
-        <!-- //FIXME - Need to replace info with profiles and stuff -->
         <div v-for="thread in threads" :key="thread?.id" class="col-12">
           <router-link :to="{ name: 'Thread Page', params: {threadId: thread.id}}">
             <ThreadCard :thread="thread"/>
