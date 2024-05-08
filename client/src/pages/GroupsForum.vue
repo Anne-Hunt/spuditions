@@ -63,8 +63,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 
-.btn.bg-forestGreen:hover {
+.btn.btn-forestGreen:hover {
   background-color: var(--lightGreen);
     }
-
 </style>
