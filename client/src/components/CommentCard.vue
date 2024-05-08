@@ -2,10 +2,26 @@
 import { computed } from "vue";
 import { Post } from "../models/Post.js";
 import { AppState } from "../AppState.js";
+import { logger } from "../utils/Logger.js";
+import { postsService } from "../services/PostsService.js";
+import Pop from "../utils/Pop.js";
 
 defineProps({post: Post})
 
 const account = computed(() => AppState.account)
+
+async function destroyPost(postId){
+  try {
+    const wantsToDestroy = await Pop.confirm("Are you sure you want to delete this post?")
+    if(!wantsToDestroy) return
+
+    logger.log("Destroying post", postId)
+    await postsService.destroyPost(postId)
+  } catch (error) {
+    Pop.toast("Could not delete this post", 'error')
+    logger.error(error)
+  }
+}
 
 </script>
 
@@ -22,7 +38,7 @@ const account = computed(() => AppState.account)
               <p class="ps-2">{{ (post?.createdAt).toDateString() }}</p>
             </div>
             <div v-if="post?.creatorId == account.id" class="col-1 col-sm-1 col-md-1">
-              <button class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
+              <button @click="destroyPost(post.id)" class="btn btn-danger fs-5 float-end delete-post"><i class="mdi mdi-trash-can"></i></button>
             </div>
             <div class="col-12">
               <p>{{ post?.body }}</p>
