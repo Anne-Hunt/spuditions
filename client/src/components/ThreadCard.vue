@@ -39,7 +39,7 @@ async function destroyThread(threadId) {
                         <span class="d-block fs-6 fw-bold">{{ thread.creator.name }}</span>
                         <span class="d-block fs-6">{{ thread.creator.role }}</span>
                     </div>
-                    <div class="ps-4 pt-4" style="max-width: 83%;">
+                    <div class="ps-4" :class="{'pt-4': !fullView, 'pt-2 pb-3': fullView }" style="max-width: 83%;">
                         <div class="d-block">
                             <span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 rounded me-2">{{ thread.tags[0] }}</span>
                             <span class="fs-5 fw-bold">{{ thread.title }}</span>
