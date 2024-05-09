@@ -44,7 +44,7 @@ async function destroyThread(threadId) {
                             <span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 rounded me-2">{{ thread.tags[0] }}</span>
                             <span class="fs-5 fw-bold">{{ thread.title }}</span>
                         </div>
-                        <div class="noWrap pt-2">
+                        <div :class="{'noWrap pt-2' : !fullView, 'py-2' : fullView}">
                             {{ thread.body }}
                         </div>
                     </div>
