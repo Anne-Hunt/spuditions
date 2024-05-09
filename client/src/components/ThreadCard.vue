@@ -36,13 +36,16 @@ async function destroyThread(threadId) {
 				<div class="vWall pe-3">
 					<div class="text-center">
 						<img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="image of creator">
-                        <p class="mt-1 mb-1 fw-bold">{{ thread.creator.name }}</p>
+						<p class="mt-1 mb-1 fw-bold">{{ thread.creator.name }}</p>
 
-                        <div v-if="thread.creator.role == 'Moderator'" class="p-1 text-center text-white rounded roleTag1">Moderator</div>
+						<div v-if="thread.creator.role == 'Moderator'" class="p-1 text-center text-white rounded roleTag1">
+							Moderator</div>
 
-                        <div v-if="thread.creator.role == 'Member'" class="p-1 text-center text-white rounded roleTag2">Member</div>
+						<div v-if="thread.creator.role == 'Member'" class="p-1 text-center text-white rounded roleTag2">Member
+						</div>
 
-                        <div v-if="thread.creator.role == 'Banned'" class="p-1 text-center text-white rounded roleTag3">Banned</div>
+						<div v-if="thread.creator.role == 'Banned'" class="p-1 text-center text-white rounded roleTag3">Banned
+						</div>
 					</div>
 				</div>
 
@@ -53,7 +56,6 @@ async function destroyThread(threadId) {
 						</span>
 						{{ thread?.title }}
 					</span>
-					<!-- <p class="w-100 mt-3" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p> -->
 					<div>
 						<p class="w-100 mt-3 pe-4" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p>
 					</div>
