@@ -11,8 +11,8 @@ import { reputationService } from "../services/ReputationService.js";
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
-const account = computed(() => AppState.account)
-const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == account.value.id))
+const user = computed(() => AppState.account)
+const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
 const threads = computed(() => AppState.profileThreads)
 const posts = computed(() => AppState.posts)
 const visits = computed(() => AppState.visited)
@@ -106,8 +106,7 @@ onMounted(() => {
 					</div>
 					Reputation
 				</a>
-
-				<div v-if="(profile.id != account?.id)">
+				<div v-if="(profile.id != user.id)">
 					<div class="dropdown">
 						<button v-if="!reviewedAlready" type="button"
 							class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown"
@@ -137,66 +136,6 @@ onMounted(() => {
 						</form>
 					</div>
 				</div>
-
-
-
-
-
-				<!-- <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel"
-					aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h1 class="modal-title fs-5" id="profileModalLabel">Leave a Review!</h1>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-
-								<div v-if="(profile.id != account?.id)">
-									<div class="dropdown">
-										<button v-if="!reviewedAlready" type="button"
-											class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown"
-											aria-expanded="false" data-bs-auto-close="outside">
-											Review Profile
-										</button>
-										<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
-											data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-											Already Reviewed
-										</button>
-
-										<form @submit.prevent="createReputation()">
-
-											<div class="form-floating mb-3 text-center">
-												<label for="comment" class="form-label">Say a Few Words About This User</label>
-
-												<input v-model="reputation.comment" type="text" name="comment" class="form-control"
-													id="commentInput">
-											</div>
-
-											<div class="form-floating mb-3">
-
-												<label for="ratingProfile" class="form-label">Rating</label>
-												<select v-model="reputation.rating" name="ratingProfile" class="form-control"
-													id="profileRating">
-													<option value="+1"><span>Good Spud</span></option>
-													<option value="-1" selected><span>Bad Spud</span></option>
-												</select>
-											</div>
-
-											<div class="text-end">
-												<button v-if="!reviewedAlready" type="submit"
-													class="btn btn-orange text-light">Submit</button>
-												<button class="btn btn-forestGreen" v-else disabled>Submit</button>
-											</div>
-
-										</form>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div> -->
 			</div>
 
 
@@ -209,9 +148,9 @@ onMounted(() => {
 						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 					</div>
 					<div class="offcanvas-body p-1">
-						<div class="rounded bg-secondary text-light my-1" v-for="rep in reps" :key="rep?.id">
-							<img :src="rep.creator?.picture" :alt="rep.creator?.name"><strong>{{ rep.creator?.name
-								}}</strong>
+						<div class="rounded bg-teal text-light my-1 p-1" v-for="rep in reps" :key="rep?.id">
+							<img class="reviewerImg" :src="rep.creator?.picture" :alt="rep.creator?.name"><strong
+								class="p-1">{{ rep.creator?.name }}</strong>
 							{{ rep?.comment }}
 						</div>
 					</div>
@@ -242,12 +181,12 @@ onMounted(() => {
 			<div class="accordion" id="visitedAccordion">
 				<div class="accordion-item">
 					<h2 class="accordion-header">
-						<button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
+						<button class="accordion-button fw-bold text-center" type="button" data-bs-toggle="collapse"
 							data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							See where {{ profile.name }} has gone
+							<span>See where {{ profile.name }} has gone</span>
 						</button>
 					</h2>
-					<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#visitedAccordion">
+					<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#visitedAccordion">
 						<div class="accordion-body">
 							<span class="p-2 parkName" v-for="visit in visits" :key="visit.id">
 								{{ visit.park.name }}
@@ -288,6 +227,15 @@ onMounted(() => {
 	width: fit-content;
 	object-fit: cover;
 	object-position: center;
+}
+
+.reviewerImg {
+	height: 40px;
+	width: fit-content;
+	aspect-ratio: 1/1;
+	border-radius: 50em;
+	object-fit: cover;
+	object-position: center
 }
 
 // .inner-border{

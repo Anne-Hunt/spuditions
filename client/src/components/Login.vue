@@ -35,6 +35,11 @@ function logout() {
 								Manage Account
 							</div>
 						</router-link>
+						<RouterLink :to="{ name: 'Profile', params: {profileId: account.id}}">
+							<div class="list-group-item dropdown-item list-group-item-action">
+								View Public Profile
+							</div>
+						</RouterLink>
 						<button @click="logout()"
 							class="list-group-item dropdown-item list-group-item-action text-danger selectable">
 							<i class="mdi mdi-logout"></i>

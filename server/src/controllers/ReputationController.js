@@ -25,8 +25,8 @@ export class ReputationController extends BaseController {
         try {
             const reputationData = request.body
             const user = request.userInfo
-            const creatorId = user.id
-            const reputation = await reputationService.postReputation(reputationData, creatorId, user)
+            reputationData.creatorId = user.id
+            const reputation = await reputationService.postReputation(reputationData, user)
             response.send(reputation)
         } catch (error) {
             next(error)

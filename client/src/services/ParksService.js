@@ -19,7 +19,8 @@ class ParksService {
     const response = await api.get('api/parks')
     logger.log('Got parks!', response.data)
     const parks = response.data.map(parkData => new Park(parkData))
-    AppState.parks = parks
+    const sortedParks = parks.sort((a, b)=> a.name.localeCompare(b.name)) //this sorts the array by the name key, alphabetically, comparing each name to the next and shuffling them until they're in descending alphabetical order
+    AppState.parks = sortedParks
   }
 
   //!SECTION - Gets one park by its id
