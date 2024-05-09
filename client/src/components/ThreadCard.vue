@@ -50,7 +50,7 @@ async function destroyThread(threadId) {
 					<div class="ps-4" :class="{ 'pt-4': !fullView, 'pt-2 pb-3': fullView }"
 						:style="!fullView ? 'max-width: 83%;' : ''">
 						<div class="d-block">
-							<span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 rounded me-2">{{ thread.tags[0]
+							<span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 text-light rounded me-2">{{ thread.tags[0]
 								}}</span>
 							<span class="fs-5 fw-bold">{{ thread.title }}</span>
 						</div>
