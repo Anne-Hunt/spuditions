@@ -78,7 +78,7 @@ async function createReputation() {
 		reputation.value = { comment: '', rating: 0 }
 	} catch (error) {
 		Pop.toast("Unable to review profile at this time", 'error')
-		logger.error("unable to create reputation", error)
+		logger.error("unable to create reputation.", error)
 	}
 }
 
@@ -93,8 +93,6 @@ onMounted(() => {
 </script>
 
 <template>
-
-
 
 	<div v-if="profile" class="container-fluid m-0 p-0">
 		<div class="row me-0 align-items-center bg-forestGreen">
@@ -185,35 +183,39 @@ onMounted(() => {
 					src="/src/assets/img/rottenSpud.png" alt="">
 				<img v-else class="spud-img pe-3 selectable" src="/src/assets/img/spuditions.png" alt="">
 				<h5 class="text-white"> {{ profile.reputation }}</h5>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="reputationOffCanvas" aria-labelledby="offcanvasLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasLabel">Profile Reviews</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body p-1">
-    <div class="text-dark p-2" v-if="!reps.length">
-      No one has reviewed this user yet. Be the first!
-      <form @submit.prevent="createReputation()" class="p-4">
-              <div class="mb-3">
-                <label for="comment" class="form-label">Say a Few Words About This User</label>
-                <input v-model="reputation.comment" type="text" name="comment" class="form-control" id="commentInput">
-              </div>
-              <div class="mb-3">
-                <label for="ratingProfile" class="form-label">Rating</label>
-                <select v-model="reputation.rating" name="ratingProfile" class="form-control" id="profileRating" >
-                  <option value="+1"><span>Good Spud</span></option>
-                  <option value="-1" selected><span>Bad Spud</span></option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-orange text-light">Submit</button>
-            </form>
-    </div>
-    <div class="rounded bg-teal text-light my-1 p-1" v-for="rep in reps" :key="rep?.id">
-      <img class="reviewerImg" :src="rep.creator?.picture" :alt="rep.creator?.name"><strong class="p-1">{{ rep.creator?.name }}</strong>
-      {{ rep?.comment }}
-    </div>
-  </div>
-</div>
+				<div class="offcanvas offcanvas-start" tabindex="-1" id="reputationOffCanvas"
+					aria-labelledby="offcanvasLabel">
+					<div class="offcanvas-header">
+						<h5 class="offcanvas-title" id="offcanvasLabel">Profile Reviews</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body p-1">
+						<div class="text-dark p-2" v-if="!reps.length">
+							No one has reviewed this user yet. Be the first!
+							<form @submit.prevent="createReputation()" class="p-4">
+								<div class="mb-3">
+									<label for="comment" class="form-label">Say a Few Words About This User</label>
+									<input v-model="reputation.comment" type="text" name="comment" class="form-control"
+										id="commentInput">
+								</div>
+								<div class="mb-3">
+									<label for="ratingProfile" class="form-label">Rating</label>
+									<select v-model="reputation.rating" name="ratingProfile" class="form-control"
+										id="profileRating">
+										<option value="+1"><span>Good Spud</span></option>
+										<option value="-1" selected><span>Bad Spud</span></option>
+									</select>
+								</div>
+								<button type="submit" class="btn btn-orange text-light">Submit</button>
+							</form>
+						</div>
+						<div class="rounded bg-teal text-light my-1 p-1" v-for="rep in reps" :key="rep?.id">
+							<img class="reviewerImg" :src="rep.creator?.picture" :alt="rep.creator?.name"><strong
+								class="p-1">{{ rep.creator?.name }}</strong>
+							{{ rep?.comment }}
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row justify-content-center pt-4 pb-5 bg-forestGreen mx-0">
