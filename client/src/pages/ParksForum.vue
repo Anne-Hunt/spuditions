@@ -10,6 +10,7 @@ import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 
 const parks = computed(()=> AppState.parks)
+const account = computed(() => AppState.account)
 
 const filterPark = ref('park')
 
@@ -89,7 +90,8 @@ onMounted(() => {
         <div class="col-12">
           <div class="p-3 mt-3 fw-bold">
             <h1 class="d-inline">Parks Chat</h1>
-            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
+            <button v-if="!account" disabled data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
+            <button v-else data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mb-2">Create Thread <i class="mdi mdi-plus"></i></button>
             <ModalWrap modalId="create-thread-modal">
               <ThreadModal/>
             </ModalWrap>
