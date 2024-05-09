@@ -85,11 +85,11 @@ async function getVisitedByPark() {
 
 
 const avgRating = computed(() => {
-    if (visited.value == null) return 0
-    if (visited.value.length == 0) return 0
-    let sum = 0
-    visited.value?.forEach(x => sum += x.userRating)
-    return Math.round(sum / visited.value?.length)
+	if (visited.value == null) return 0
+	if (visited.value.length == 0) return 0
+	let sum = 0
+	visited.value?.forEach(x => sum += x.userRating)
+	return Math.round(sum / visited.value?.length)
 })
 
 const isVisited = computed(() => {
@@ -170,9 +170,9 @@ onMounted(() => {
 
 						<!-- Park Ratings -->
 						<div class="d-flex align-items-center justify-content-center justify-content-md-start">
-                            <div v-if="avgRating != null && avgRating != 0">
-                                <i class="mdi mdi-star p-1 fs-5" v-for="index in avgRating" :key="index"></i>
-                            </div>
+							<div v-if="avgRating != null && avgRating != 0">
+								<i class="mdi mdi-star p-1 fs-5" v-for="index in avgRating" :key="index"></i>
+							</div>
 
 							<span class="selectable ms-4 fontColorDk">{{ visited?.length }} ratings</span>
 						</div>
@@ -236,28 +236,34 @@ onMounted(() => {
 
 				<!-- SECTION: Costs box -->
 				<div class="accordion accordion-item col-12 col-md-5 mb-5 order-2 order-md-1" id="accordion2">
-    <h2 class="accordion-header">
-        <button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            <!-- Dropdown arrow icon -->
-            <i class="mdi mdi-chevron-down spudDropDown"></i>
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed mt-3 text-center" type="button" data-bs-toggle="collapse"
+							data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+							<!-- Dropdown arrow icon -->
+							<i class="mdi mdi-chevron-down spudDropDown"></i>
 
-            <div>
-                <h3 class="text-center">Costs:</h3>
-                <i class="mdi mdi-information-outline fs6 color"></i>&nbsp;
-                <i class="fs7">Non-resident charges are included on top of resident charges</i>
-            </div>
-        </button>
-    </h2>
+							<div>
+								<h4 class="text-center">Costs:</h4>
+							</div>
+						</button>
+					</h2>
 
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordion2">
-        <div class="accordion-body">
-            <li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
-                {{ cost }}
-            </li>
-        </div>
-    </div>
-</div>
+					<div id="flush-collapseTwo" class="accordion-collapse collapse" v-if="park.costs"
+						data-bs-parent="#accordion2">
+						<div class="accordion-body">
+
+							<div class="text-center mb-4">
+								<i class="mdi mdi-information-outline fs-5 color"></i>&nbsp;
+								<i class="fs-5">Non-resident charges are included on top of resident charges</i>
+							</div>
+
+							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
+								{{ cost }}
+							</li>
+
+						</div>
+					</div>
+				</div>
 
 
 
@@ -266,11 +272,9 @@ onMounted(() => {
 					<h2 class="accordion-header">
 						<button class="accordion-button collapsed mt-3 text-center" type="button" data-bs-toggle="collapse"
 							data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                             <!-- Dropdown arrow icon -->
-                       <i class="mdi mdi-chevron-down spudDropDown"></i>
+							<!-- Dropdown arrow icon -->
+							<i class="mdi mdi-chevron-down spudDropDown"></i>
 							<div>
-								<i class="fs7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								</i>
 								<h4 class="text-center">About {{ park.name }}</h4>
 							</div>
 						</button>
@@ -286,7 +290,7 @@ onMounted(() => {
 			</div>
 		</div>
 
-		
+
 		<!-- Costs Box -->
 		<!-- <div class="col-12 col-md-6 mt-3 mb-4 mt-md-5 mb-md-5">
 					<div class="box mb-3">

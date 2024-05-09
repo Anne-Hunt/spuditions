@@ -30,40 +30,34 @@ async function destroyThread(threadId) {
 
 
 <template>
-	<div v-if="thread" class="card bg-teal p-2 m-4 my-2 pb-0">
-		<div class="row py-2">
-			<div class="px-4 col-12 d-flex">
-				<div class="vWall pe-3">
-					<div class="text-center">
-						<img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="image of creator">
-                        <p class="mt-1 mb-1 fw-bold">{{ thread.creator.name }}</p>
+	<div v-if="thread" class="container-fluid my-2">
+		<div class="row justify-content-center">
+			<div :class="{ 'col-10': !fullView, 'col-12': fullView }">
+				<div class="card bg-teal rounded flex-row d-flex" style="min-width: 0;">
+					<div class="ps-4 py-3 text-center">
+						<img :src="thread.creator.picture" class="pfp" height="40" alt="">
+						<span class="d-block fs-6 fw-bold">{{ thread.creator.name }}</span>
+						<span class="d-block fs-6" :class="{
+							'roleTag1': thread.creator.role == 'Moderator',
+							'roleTag2': thread.creator.role == 'Member',
+							'roleTag3': thread.creator.role == 'Banned'
+						}">
 
-                        <div v-if="thread.creator.role == 'Moderator'" class="p-1 text-center text-white rounded roleTag1">Moderator</div>
+							{{ thread.creator.role }}
 
-                        <div v-if="thread.creator.role == 'Member'" class="p-1 text-center text-white rounded roleTag2">Member</div>
-
-                        <div v-if="thread.creator.role == 'Banned'" class="p-1 text-center text-white rounded roleTag3">Banned</div>
-					</div>
-				</div>
-
-				<div class="pe-5 ps-3 w-100" :class="{ 'mb-2': fullView }">
-					<span class="fw-bold fs-5">
-						<span v-if="!fullView" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{
-							thread?.tags[0] }}
 						</span>
-						{{ thread?.title }}
-					</span>
-					<!-- <p class="w-100 mt-3" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p> -->
-					<div>
-						<p class="w-100 mt-3 pe-4" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p>
 					</div>
-				</div>
-
-				<div>
-					<!-- <button v-if="thread.creatorId == userId" @click.prevent="destroyThread(thread.id)"
-						class="btn btn-danger fs-5 float-end delete-post" :title="`Delete Comment`">
-						<i class="mdi mdi-trash-can"></i>
-					</button> -->
+					<div class="ps-4" :class="{ 'pt-4': !fullView, 'pt-2 pb-3': fullView }"
+						:style="!fullView ? 'max-width: 83%;' : ''">
+						<div class="d-block">
+							<span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 rounded me-2">{{ thread.tags[0]
+								}}</span>
+							<span class="fs-5 fw-bold">{{ thread.title }}</span>
+						</div>
+						<div :class="{ 'noWrap pt-2': !fullView, 'py-2': fullView }">
+							{{ thread.body }}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -91,25 +85,28 @@ async function destroyThread(threadId) {
 	object-position: center
 }
 
+.roleTag1 {
+	// background-color: #9500ff99;
+	color: #9500ff;
+}
+
+.roleTag2 {
+	// background-color: #00000080;
+	color: #5b5b5b
+}
+
+.roleTag3 {
+	// background-color: #ff000099;
+	color: #ff0000;
+}
+
+// .vWall {
+// 	border-right: solid var(--bs-forestGreen) 1px;
+// }
+
 .delete-post {
 	height: 45px;
 	border-radius: 50em;
 	aspect-ratio: 1/1;
-}
-
-.roleTag1 {
-	background-color: rgba(149, 0, 255, 0.6);
-}
-
-.roleTag2 {
-	background-color: rgba(0, 0, 0, 0.5);
-}
-
-.roleTag3 {
-	background-color: rgba(255, 0, 0, 0.6);
-}
-
-.vWall {
-	border-right: solid var(--bs-forestGreen) 1px;
 }
 </style>
