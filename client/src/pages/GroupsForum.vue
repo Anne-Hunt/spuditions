@@ -56,8 +56,8 @@ onMounted(() => {
           </router-link>
           </div>
       </div>
-      <ForumRules/>
     </div>
+    <ForumRules/>
   </section>
 </template>
 
