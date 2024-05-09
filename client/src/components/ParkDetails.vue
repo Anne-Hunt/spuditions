@@ -252,9 +252,9 @@ onMounted(() => {
 						data-bs-parent="#accordion2">
 						<div class="accordion-body">
 
-							<div class="text-center mb-3">
-								<i class="mdi mdi-information-outline fs6 color"></i>&nbsp;
-								<i class="fs7">Non-resident charges are included on top of resident charges</i>
+							<div class="text-center mb-4">
+								<i class="mdi mdi-information-outline fs-5 color"></i>&nbsp;
+								<i class="fs-5">Non-resident charges are included on top of resident charges</i>
 							</div>
 
 							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
