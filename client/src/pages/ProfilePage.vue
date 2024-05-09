@@ -7,12 +7,15 @@ import { useRoute } from "vue-router";
 import { logger } from "../utils/Logger.js";
 import ThreadCard from "../components/ThreadCard.vue";
 import { reputationService } from "../services/ReputationService.js";
+import ProfileModal from "../components/ProfileModal.vue";
+
+
 
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
 const user = computed(() => AppState.account)
-const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
+const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == user.value?.id))
 const threads = computed(() => AppState.profileThreads)
 const posts = computed(() => AppState.posts)
 const visits = computed(() => AppState.visited)
@@ -137,6 +140,16 @@ onMounted(() => {
 						</form>
 					</div>
 				</div>
+
+			</div>
+			<div class="col-12 text-center text-white pt-4 fs-4">
+				<a class="text-light" data-bs-toggle="offcanvas" href="#reputationOffCanvas" role="button"
+					aria-controls="reputationOffCanvas">
+					<div class="col-12">
+						<img class="profile-img" :src="profile.picture" alt="">
+					</div>
+					Reputation
+				</a>
 			</div>
 <!-- OFFCANVAS -->
 			<div class="col-12 d-flex justify-content-center align-items-center mt-1">
@@ -219,7 +232,7 @@ onMounted(() => {
 			<div class="accordion" id="visitedAccordion">
 				<div class="accordion-item">
 					<h2 class="accordion-header">
-						<button class="accordion-button fw-bold text-center" type="button" data-bs-toggle="collapse"
+						<button class="accordion-button fw-bold text-center me-0" type="button" data-bs-toggle="collapse"
 							data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 							<span>See where {{ profile.name }} has gone</span>
 						</button>
