@@ -11,7 +11,7 @@ import { profileService } from '../services/ProfileService.js';
 
 const profile = computed(() => AppState.activeProfile)
 const user = computed(() => AppState.account)
-const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
+const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == user.value?.id))
 const threads = computed(() => AppState.profileThreads)
 const posts = computed(() => AppState.posts)
 const visits = computed(() => AppState.visited)
