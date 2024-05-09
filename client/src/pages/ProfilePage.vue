@@ -156,7 +156,7 @@ onMounted(() => {
 
       </div>
     </div>
-    <div class="row justify-content-center pt-4 pb-5 bg-forestGreen">
+    <div class="row justify-content-center pt-4 pb-5 bg-forestGreen mx-0">
       <div class="col-6 rounded bg-lightGreen p-3">
         <div class="row">
           <div class="col-12 col-md-6 inner-border">
@@ -189,7 +189,7 @@ onMounted(() => {
   </div>
 </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mx-0">
       <h1 class="text-dark text-center my-5">Threads:</h1>
       <div class v-for="thread in threads" :key="thread?.id">
         <ThreadCard :thread="thread"/>
