@@ -87,8 +87,8 @@ onUnmounted(() => {
 
   
   .section-line {
-    border-top: 2px solid #333; /* Change the color of the line and adjust its thickness */
-    margin-bottom: 20px; /* Add some space between the line and the content */
+    border-top: 2px solid #B8914C; 
+    margin-bottom: 20px; 
   }
   </style>
   
