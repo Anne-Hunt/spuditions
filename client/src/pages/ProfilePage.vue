@@ -78,7 +78,7 @@ async function createReputation() {
 		reputation.value = { comment: '', rating: 0 }
 	} catch (error) {
 		Pop.toast("Unable to review profile at this time", 'error')
-		logger.error("unable to create reputation", error)
+		logger.error("unable to create reputation.", error)
 	}
 }
 
@@ -97,47 +97,57 @@ onMounted(() => {
 	<div v-if="profile" class="container-fluid m-0 p-0">
 		<div class="row me-0 align-items-center bg-forestGreen">
 			<div class="col-12 text-center p-3 pt-5">
-<!-- PROFILE IMAGE AND NAME-->
-				<h3 class="fw-bold text-white">{{ profile.name }}</h3>
-			</div>
-			<div class="col-12 text-center text-white pt-4 fs-4">
-<!-- OFFCANVAS BUTTON-->
-				<a class="text-light" data-bs-toggle="offcanvas" href="#reputationOffCanvas" role="button"
-					aria-controls="reputationOffCanvas">
-					<div class="col-12">
-						<img class="profile-img" :src="profile.picture" alt="">
-					</div>
-					Reputation
-				</a>
-<!-- REVIEW DROPDOWN -->
-				<div v-if="(profile.id != user.id)">
-					<div class="dropdown">
-						<button v-if="!reviewedAlready" type="button"
-							class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown"
-							aria-expanded="false" data-bs-auto-close="outside">
-							Review Profile
-						</button>
-						<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
-							data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-							Already Reviewed
-						</button>
-						<form @submit.prevent="createReputation()" class="dropdown-menu p-4">
-							<div class="mb-3">
-								<label for="comment" class="form-label">Say a Few Words About This User</label>
-								<input v-model="reputation.comment" type="text" name="comment" class="form-control"
-									id="commentInput">
+				<div>
+					<h3 class="fw-bold text-white mb-3">{{ profile.name }}</h3>
+				</div>
+
+
+				<div class="d-flex justify-content-center">
+					<div v-if="(profile.id != user?.id)">
+						<div class="dropdown">
+
+
+							<div>
+								<button v-if="!reviewedAlready" class="btn btn-orange text-light dropdown-toggle float-end"
+									title="Leave Profile Review" data-bs-toggle="modal" data-bs-target="#profileRatingModal">
+									Review Profile
+								</button>
+
+								<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
+									data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+									Already Reviewed
+								</button>
 							</div>
-							<div class="mb-3">
-								<label for="ratingProfile" class="form-label">Rating</label>
-								<select v-model="reputation.rating" name="ratingProfile" class="form-control"
-									id="profileRating">
-									<option value="+1"><span>Good Spud</span></option>
-									<option value="-1" selected><span>Bad Spud</span></option>
-								</select>
-							</div>
-							<button v-if="!reviewedAlready" type="submit" class="btn btn-orange text-light">Submit</button>
-							<button class="btn btn-forestGreen" v-else disabled>Submit</button>
-						</form>
+
+
+							<!-- <button v-if="!reviewedAlready" type="button"
+								class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown"
+								aria-expanded="false" data-bs-auto-close="outside">
+								Review Profile
+							</button>
+							<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
+								data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+								Already Reviewed
+							</button> -->
+
+							<!-- <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
+								<div class="mb-3">
+									<label for="comment" class="form-label">Say a Few Words About This User</label>
+									<input v-model="reputation.comment" type="text" name="comment" class="form-control"
+										id="commentInput">
+								</div>
+								<div class="mb-3">
+									<label for="ratingProfile" class="form-label">Rating</label>
+									<select v-model="reputation.rating" name="ratingProfile" class="form-control"
+										id="profileRating">
+										<option value="+1"><span>Good Spud</span></option>
+										<option value="-1" selected><span>Bad Spud</span></option>
+									</select>
+								</div>
+								<button v-if="!reviewedAlready" type="submit" class="btn btn-orange text-light">Submit</button>
+								<button class="btn btn-forestGreen" v-else disabled>Submit</button>
+							</form> -->
+						</div>
 					</div>
 				</div>
 
@@ -151,7 +161,8 @@ onMounted(() => {
 					Reputation
 				</a>
 			</div>
-<!-- OFFCANVAS -->
+
+
 			<div class="col-12 d-flex justify-content-center align-items-center mt-1">
 
 				<div class="offcanvas offcanvas-start" tabindex="-1" id="reputationOffCanvas"
@@ -205,15 +216,9 @@ onMounted(() => {
 						</div>
 					</div>
 				</div>
-				<img v-if="profile.reputation < 0" class="rotten-spud-img pe-3 pb-2 selectable"
-					src="/src/assets/img/rottenSpud.png" alt="">
-				<img v-else class="spud-img pe-3 selectable" src="/src/assets/img/spuditions.png" alt="">
-				<h5 class="text-white"> {{ profile.reputation }}</h5>
-
 			</div>
 		</div>
-<!-- COUNTS -->
-		<div class="row justify-content-center pt-4 pb-5 bg-forestGreen m-0">
+		<div class="row justify-content-center pt-4 pb-5 bg-forestGreen mx-0">
 			<div class="col-6 rounded bg-lightGreen p-3">
 				<div class="row">
 					<div class="col-12 col-md-6 inner-border">
@@ -228,7 +233,7 @@ onMounted(() => {
 				</div>
 			</div>
 		</div>
-<!-- Accordion for VISITED -->
+		<div>
 			<div class="accordion" id="visitedAccordion">
 				<div class="accordion-item">
 					<h2 class="accordion-header">
@@ -247,14 +252,15 @@ onMounted(() => {
 				</div>
 			</div>
 		</div>
-<!-- THREADS -->
-		<div class="row justify-content-center m-0 p-3">
-			<h1 class="text-dark text-center">Threads:</h1>
+		<div class="row justify-content-center m-0 p-0">
+			<h1 class="text-dark text-center my-5">Threads:</h1>
 			<div class v-for="thread in threads" :key="thread?.id">
 				<ThreadCard :thread="thread" />
 			</div>
 		</div>
+	</div>
 
+	<ProfileModal />
 </template>
 
 <style lang="scss" scoped>

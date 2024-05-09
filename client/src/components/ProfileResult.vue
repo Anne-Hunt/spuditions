@@ -7,11 +7,12 @@ defineProps({profile: Profile})
 
 
 <template>
-    
-<div class="col-md-4 col-6">
-<img class="profilePic rounded-circle mb-2" :src="profile.picture" :alt="profile.name">
-<h5>{{ profile.name }}</h5>
-</div>
+	<RouterLink :to="{name: 'Profile', params: {profileId: profile.id}}">
+		<div class="col-md-4 col-6 fontColor">
+			<img class="profilePic rounded-circle mb-2" :src="profile.picture" :alt="profile.name">
+			<h5>{{ profile.name }}</h5>
+		</div>
+	</RouterLink>
 </template>
 
 
@@ -23,5 +24,13 @@ defineProps({profile: Profile})
 	border-radius: 50em;
 	object-fit: cover;
 	object-position: center
+}
+
+.fontColor {
+    color: var(--forestGreen);
+}
+
+.fontColor:hover {
+    color: var(--lightGreen);
 }
 </style>
