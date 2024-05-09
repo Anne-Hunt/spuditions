@@ -90,6 +90,9 @@ onMounted(() => {
 </script>
 
 <template>
+  
+
+  
   <div v-if="profile" class="container-fluid m-0 p-0">
     <div class="row me-0 align-items-center bg-forestGreen">
       <div class="col-12 text-center p-3 pt-5">
@@ -104,11 +107,11 @@ onMounted(() => {
     </a>
         <div v-if="(profile.id != user.id)">
           <div class="dropdown">
-            <button v-if="!reviewedAlready" type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
+            <button v-if="!reviewedAlready" type="button" class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
               data-bs-auto-close="outside">
               Review Profile
             </button>
-            <button v-else disabled type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
+            <button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
               data-bs-auto-close="outside">
               Already Reviewed
             </button>
@@ -124,12 +127,14 @@ onMounted(() => {
                   <option value="-1" selected><span>Bad Spud</span></option>
                 </select>
               </div>
-              <button v-if="!reviewedAlready" type="submit" class="btn btn-primary">Submit</button>
-              <button class="btn btn-primary" v-else disabled>Submit</button>
+              <button v-if="!reviewedAlready" type="submit" class="btn btn-orange text-light">Submit</button>
+              <button class="btn btn-forestGreen" v-else disabled>Submit</button>
             </form>
           </div>
         </div>
       </div>
+
+
       <div class="col-12 d-flex justify-content-center align-items-center mt-1">
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="reputationOffCanvas" aria-labelledby="offcanvasLabel">
@@ -158,6 +163,7 @@ onMounted(() => {
             <h4 class="text-white rounded bg-forestGreen text-center p-2">Threads</h4>
             <h1 class="text-white text-center">{{ profile.threadCount }}</h1>
           </div>
+
           <div class="col-12 col-md-6">
             <h4 class="text-white rounded bg-forestGreen text-center p-2">Posts</h4>
             <h1 class="text-white text-center">{{ profile.postCount }}</h1>
@@ -169,13 +175,13 @@ onMounted(() => {
       <div class="accordion" id="visitedAccordion">
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         See where {{ profile.name }} has gone
       </button>
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#visitedAccordion">
       <div class="accordion-body">
-        <span class="p-2" v-for="visit in visits" :key="visit.id">
+        <span class="p-2 parkName" v-for="visit in visits" :key="visit.id">
             {{ visit.park.name }}
         </span>
       </div>
@@ -216,9 +222,9 @@ onMounted(() => {
   object-position: center;
 }
 
-.inner-border{
-  border-right: 2px solid white;
-}
+// .inner-border{
+//   border-right: 2px solid white;
+// }
 
 .bottom-border{
   margin-top: 60px;
@@ -226,4 +232,23 @@ onMounted(() => {
   margin-left: 30px;
   border-bottom: 4px solid white;
 }
+
+.accordion-button {
+    border-top-left-radius: var(--bs-accordion-inner-border-radius);
+    border-top-right-radius: var(--bs-accordion-inner-border-radius);
+    background-color: white;
+    color: var(--dkGreen);
+
+    .accordion-button:focus {
+    z-index: 3;
+    outline: 0;
+}
+}
+
+.parkName {
+  color: var(--orange);
+}
+
+
+
 </style>
