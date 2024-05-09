@@ -237,24 +237,30 @@ onMounted(() => {
 				<!-- SECTION: Costs box -->
 				<div class="accordion accordion-item col-12 col-md-5 mb-5 order-2 order-md-1" id="accordion2">
 					<h2 class="accordion-header">
-						<button class="accordion-button collapsed mt-3" type="button" data-bs-toggle="collapse"
+						<button class="accordion-button collapsed mt-3 text-center" type="button" data-bs-toggle="collapse"
 							data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
 							<!-- Dropdown arrow icon -->
 							<i class="mdi mdi-chevron-down spudDropDown"></i>
 
 							<div>
-								<h3 class="text-center">Costs:</h3>
-								<i class="mdi mdi-information-outline fs6 color"></i>&nbsp;
-								<i class="fs7">Non-resident charges are included on top of resident charges</i>
+								<h4 class="text-center">Costs:</h4>
 							</div>
 						</button>
 					</h2>
 
-					<div id="flush-collapseTwo" class="accordion-collapse collapse" v-if="park" data-bs-parent="#accordion2">
+					<div id="flush-collapseTwo" class="accordion-collapse collapse" v-if="park.costs"
+						data-bs-parent="#accordion2">
 						<div class="accordion-body">
+
+							<div class="text-center mb-3">
+								<i class="mdi mdi-information-outline fs6 color"></i>&nbsp;
+								<i class="fs7">Non-resident charges are included on top of resident charges</i>
+							</div>
+
 							<li v-for="cost in park?.costs" :key="cost" class="fs-5 mb-2">
 								{{ cost }}
 							</li>
+
 						</div>
 					</div>
 				</div>
@@ -269,8 +275,6 @@ onMounted(() => {
 							<!-- Dropdown arrow icon -->
 							<i class="mdi mdi-chevron-down spudDropDown"></i>
 							<div>
-								<i class="fs7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								</i>
 								<h4 class="text-center">About {{ park.name }}</h4>
 							</div>
 						</button>
