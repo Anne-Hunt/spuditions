@@ -97,7 +97,7 @@ onMounted(() => {
         <div class="">
           <label class="p-2" for="parkChoose">Choose a Park:</label>
           <select name="parkChoose" v-model="filterPark" id="parksList" class="rounded">
-            <option @change="filterPark = park.name" v-for="park in parks" :key="park.name" :value="park.id">{{ park.name }}</option>
+            <option @change="filterPark = park.name" v-for="park in parks" :key="park.name" :value="park.name">{{ park.name }}</option>
           </select>
         </div>
       </form>
