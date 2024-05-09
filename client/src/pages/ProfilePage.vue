@@ -195,7 +195,7 @@ onMounted(() => {
 
 			</div>
 		</div>
-		<div class="row justify-content-center pt-4 pb-5 bg-forestGreen">
+		<div class="row justify-content-center pt-4 pb-5 bg-forestGreen mx-0">
 			<div class="col-6 rounded bg-lightGreen p-3">
 				<div class="row">
 					<div class="col-12 col-md-6 inner-border">
