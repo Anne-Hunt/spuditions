@@ -103,21 +103,13 @@ onMounted(() => {
 		<!-- Adjusted container class for full-width background -->
 		<div class="row">
 			<div class="col-12">
-
 				<div class="d-flex align-items-center justify-content-center">
-					<div class="bg-Gray rounded p-3 me-2 ms-2 me-md-3 w-100">
-						<div class="my-2 text-center">
-							<i class="mdi mdi-magnify fs-4 me-2"></i>
-							<span class="fs-4 me-3">Search For More</span>
-						</div>
+					<div class="bg-Gray rounded p-2 w-100">
 						<form @submit.prevent="search()">
-							<div class="form-floating mb-3">
-								<input class="form-control rounded" type="text" v-model="searchQuery" id="searchBar">
-								<!-- Added v-model for two-way binding -->
-								<label for="searchBar" class="text-light"></label>
+							<div class="input-group p-3">
+								<input v-model="searchQuery" type="text" class="form-control" placeholder="" aria-label="Search Button" aria-describedby="searchButton">
+								<button class="btn btn-beigeSand" type="button" id="searchButton"><i class="mdi mdi-magnify fs-4 me-2"></i>Search</button>
 							</div>
-							<!-- Adjusted button width -->
-							<button type="submit" class="btn bg-beigeSand w-100">SEARCH</button>
 						</form>
 					</div>
 				</div>

@@ -1,11 +1,9 @@
 <script setup>
 import { computed, onMounted, onUnmounted } from 'vue';
 import { AppState } from '../AppState.js';
-import Navbar from '../components/Navbar.vue';
 import ParkResult from '../components/ParkResult.vue';
 import ThreadResult from '../components/ThreadResult.vue';
 import ProfileResult from '../components/ProfileResult.vue'
-import SearchBar from '../components/SearchBar.vue';
 import { useRoute } from 'vue-router';
 import Pop from '../utils/Pop.js';
 import { threadsService } from '../services/ThreadsService.js';
@@ -51,35 +49,44 @@ onUnmounted(() => {
 
 <template>
     <div class="container justify-content-center mt-3">
-      <div v-if="parks.length > 0">
+<!-- profile -->
+
+      <div v-if="profiles.length > 0">
         <div class="section-container">
-          <h2 class="section-title fw-bold">Parks</h2>
+          <h2 class="section-title fw-bold mt-5">Profiles</h2>
           <hr class="section-line">
         </div>
-        <div class="row" v-for="park in parks" :key="park.id">
+        <div class="row mb-4" v-for="profile in profiles" :key="profile.id">
+          <ProfileResult :profile="profile"/>
+        </div>
+      </div>
+
+
+      <!-- parks -->
+      <div v-if="parks.length > 0">
+        <div class="section-container">
+          <h2 class="section-title fw-bold mt-5">Parks</h2>
+          <hr class="section-line">
+        </div>
+        <div class="row mb-4" v-for="park in parks" :key="park.id">
           <ParkResult :park="park"/>
         </div>
         <hr>
       </div>
+
+      
+      <!-- threads -->
       <div v-if="threads.length > 0">
         <div class="section-container">
-          <h2 class="section-title fw-bold">Threads</h2>
+          <h2 class="section-title fw-bold mt-5">Threads</h2>
           <hr class="section-line">
         </div>
-        <div class="row" v-for="thread in threads" :key="thread.id">
+        <div class="row mb-4" v-for="thread in threads" :key="thread.id">
           <ThreadResult :thread="thread"/>
         </div>
-   
-      </div>
-      <div v-if="profiles.length > 0">
-        <div class="section-container">
-          <h2 class="section-title fw-bold">Profiles</h2>
-          <hr class="section-line">
-        </div>
-        <div class="row" v-for="profile in profiles" :key="profile.id">
-          <ProfileResult :profile="profile"/>
-        </div>
-      </div>
+   </div>
+
+
     </div>
   </template>
   
