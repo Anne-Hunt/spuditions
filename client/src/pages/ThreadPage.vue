@@ -98,6 +98,7 @@ onMounted(() => {
         <!-- //!SECTION - Thread card -->
         <div class="col-12">
           <ThreadCard :thread="threads" :fullView="true"/>
+          <button @click="destroyThread(threads.id)" v-if="threads.creatorId == account.id" class="btn btn-danger float-end me-4"><i class="mdi mdi-delete"></i> Delete thread</button>
         </div>
         <div class="col-12">
           <div class="card p-2 mx-4 mt-3 bg-teal">
