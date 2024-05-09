@@ -34,23 +34,16 @@ async function destroyThread(threadId) {
 		<div class="row py-2">
 			<div class="px-4 col-12 d-flex">
 				<div class="vWall pe-3">
-					<div class="text-center mb-2">
+					<div class="text-center">
 						<img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="image of creator">
-                        <p class="mt-1 fw-bold">{{ thread.creator.name }}</p>
-					</div>
+                        <p class="mt-1 mb-1 fw-bold">{{ thread.creator.name }}</p>
 
-					<!-- SECTION: Roles -->
-					<div v-if="account?.role == 'Moderator'">
-						<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
-					</div>
+                        <div v-if="thread.creator.role == 'Moderator'" class="p-1 text-center text-white rounded roleTag1">Moderator</div>
 
-					<!-- <div v-if="userId.role == Member">
-						<div class="p-1 text-center text-white rounded roleTag2">Member</div>
-					</div>
+                        <div v-if="thread.creator.role == 'Member'" class="p-1 text-center text-white rounded roleTag2">Member</div>
 
-					<div v-if="userId.role == Banned">
-						<div class="p-1 text-center text-white rounded roleTag3">Banned</div>
-					</div> -->
+                        <div v-if="thread.creator.role == 'Banned'" class="p-1 text-center text-white rounded roleTag3">Banned</div>
+					</div>
 				</div>
 
 				<div class="pe-5 ps-3 w-100" :class="{ 'mb-2': fullView }">
