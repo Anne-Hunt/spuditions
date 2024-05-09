@@ -35,6 +35,7 @@ async function destroyThread(threadId) {
 			<div :class="{ 'col-10': !fullView, 'col-12': fullView }">
 				<div class="card bg-teal rounded flex-row d-flex" style="min-width: 0;">
 					<div class="ps-4 py-3 text-center">
+						<RouterLink :to="{ name: 'Profile', params:{ profileId: thread?.creatorId}}">
 						<img :src="thread.creator.picture" class="pfp" height="40" alt="">
 						<span class="d-block fs-6 fw-bold">{{ thread.creator.name }}</span>
 						<span class="d-block fs-6" :class="{
@@ -46,6 +47,7 @@ async function destroyThread(threadId) {
 							{{ thread.creator.role }}
 
 						</span>
+					</RouterLink>
 					</div>
 					<div class="ps-4" :class="{ 'pt-4': !fullView, 'pt-2 pb-3': fullView }"
 						:style="!fullView ? 'max-width: 83%;' : ''">
