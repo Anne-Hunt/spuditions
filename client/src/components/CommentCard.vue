@@ -10,6 +10,8 @@ defineProps({ post: Post })
 
 const account = computed(() => AppState.account)
 
+
+
 async function destroyPost(postId) {
 	try {
 		const wantsToDestroy = await Pop.confirm("Are you sure you want to delete this comment?")
@@ -33,13 +35,19 @@ async function destroyPost(postId) {
 				<div class="col-12 d-flex">
 
 					<RouterLink :to="{ name: 'Profile', params: { profileId: post?.creatorId } }">
-						<img class="comment-img d-inline ms-1" :src="post?.creator.picture" alt="Michael">
+						<div>
+							<img class="comment-img d-inline ms-1" :src="post?.creator.picture" alt="Michael">
+						</div>
+
+						<div v-if="account?.role == 'Moderator'">
+							<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
+						</div>
 					</RouterLink>
 					<div class="w-100">
 						<p class="d-inline ps-2 fw-bold">{{ post?.creator.name }}</p>
 						<p class="ps-2">{{ post?.createdAtFormatted }}</p>
 					</div>
-					<div v-if="post?.creatorId == account.id" class="col-1 col-sm-1 col-md-1">
+					<div v-if="post?.creatorId == account?.id" class="col-1 col-sm-1 col-md-1">
 						<button @click="destroyPost(post.id)" class="btn btn-danger fs-5 float-end delete-post"><i
 								class="mdi mdi-trash-can"></i></button>
 					</div>
@@ -67,5 +75,9 @@ async function destroyPost(postId) {
 	height: 45px;
 	border-radius: 50em;
 	aspect-ratio: 1/1;
+}
+
+.roleTag1 {
+	background-color: rgba(149, 0, 255, 0.6);
 }
 </style>

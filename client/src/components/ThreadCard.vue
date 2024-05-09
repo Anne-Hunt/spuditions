@@ -9,7 +9,7 @@ import { logger } from "../utils/Logger.js";
 
 defineProps({ thread: Thread, fullView: { type: Boolean, default: false } })
 
-const userId = computed(() => AppState.account?.id)
+const account = computed(() => AppState.account)
 
 
 async function destroyThread(threadId) {
@@ -34,35 +34,28 @@ async function destroyThread(threadId) {
 		<div class="row py-2">
 			<div class="px-4 col-12 d-flex">
 				<div class="vWall pe-3">
-					<div class="text-center mb-2">
+					<div class="text-center">
 						<img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="image of creator">
-					</div>
+                        <p class="mt-1 mb-1 fw-bold">{{ thread.creator.name }}</p>
 
-					<!-- SECTION: Roles -->
-					<div v-if="userId.role == Moderator">
-						<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
-					</div>
+                        <div v-if="thread.creator.role == 'Moderator'" class="p-1 text-center text-white rounded roleTag1">Moderator</div>
 
-					<div v-if="userId.role == Member">
-						<div class="p-1 text-center text-white rounded roleTag2">Member</div>
-					</div>
+                        <div v-if="thread.creator.role == 'Member'" class="p-1 text-center text-white rounded roleTag2">Member</div>
 
-					<div v-if="userId.role == Banned">
-						<div class="p-1 text-center text-white rounded roleTag3">Banned</div>
+                        <div v-if="thread.creator.role == 'Banned'" class="p-1 text-center text-white rounded roleTag3">Banned</div>
 					</div>
 				</div>
 
 				<div class="pe-5 ps-3 w-100" :class="{ 'mb-2': fullView }">
-					<span class="fw-bold fs-5"><span v-if="!fullView"
-							class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{ thread?.tags[0] }}</span>
-						{{
-							thread?.title }}</span>
+					<span class="fw-bold fs-5">
+						<span v-if="!fullView" class="bg-forestGreen rounded px-3 text-white fw-light fs-6 py-1 me-2">{{
+							thread?.tags[0] }}
+						</span>
+						{{ thread?.title }}
+					</span>
 					<!-- <p class="w-100 mt-3" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p> -->
-					<div v-if="thread.body.length <= (149)">
-						<p class="w-100 mt-3">{{ thread?.body }}</p>
-					</div>
-					<div v-else>
-						<p class="w-100 mt-3">{{ thread?.body.split(' ').slice(0, 30).join(' ') + "..." }}</p>
+					<div>
+						<p class="w-100 mt-3 pe-4" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p>
 					</div>
 				</div>
 
@@ -117,6 +110,6 @@ async function destroyThread(threadId) {
 }
 
 .vWall {
-	border-right: solid #888888 3px;
+	border-right: solid var(--bs-forestGreen) 1px;
 }
 </style>
