@@ -175,11 +175,11 @@ onMounted(() => {
       <div class="accordion" id="visitedAccordion">
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        See where {{ profile.name }} has gone
+      <button class="accordion-button fw-bold text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <span>See where {{ profile.name }} has gone</span>
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#visitedAccordion">
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#visitedAccordion">
       <div class="accordion-body">
         <span class="p-2 parkName" v-for="visit in visits" :key="visit.id">
             {{ visit.park.name }}

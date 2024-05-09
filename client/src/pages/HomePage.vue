@@ -102,9 +102,9 @@ onMounted(() => {
 	<section class="container-fluid bg-lightGreen py-4">
 		<!-- Adjusted container class for full-width background -->
 		<div class="row">
-			<div class="col-12 col-md-4 col-lg-3">
+			<div class="col-12">
 
-				<div class="d-flex align-items-center justify-content-center verticalLine">
+				<div class="d-flex align-items-center justify-content-center">
 					<div class="bg-Gray rounded p-3 me-2 ms-2 me-md-3 w-100">
 						<div class="my-2 text-center">
 							<i class="mdi mdi-magnify fs-4 me-2"></i>
@@ -123,14 +123,17 @@ onMounted(() => {
 				</div>
 
 			</div>
-			<div class="col-12 col-md-8 col-lg-9">
-				<h4 class="text-center fw-bold mb-5 mt-5 mt-md-1 fs-3">All Parks: (sorted A-Z)</h4>
-				<div class="row row-cols-1 row-cols-md-3 g-3">
-					<div v-for="park in parks" :key="park.id" class="col parkFont">
-						<!-- Adjusted column width for small screens -->
-						<RouterLink :to="{ name: 'Park Details', params: { parkId: park.id } }">
-							<p>{{ park.name }}</p>
-						</RouterLink>
+			<div class="row">
+
+				<div class="col-12 col-md-8 col-lg-9">
+					<h4 class="text-center fw-bold mb-5 mt-5 mt-md-1 fs-3">All Parks: (sorted A-Z)</h4>
+					<div class="row row-cols-1 row-cols-md-3 g-3">
+						<div v-for="park in parks" :key="park.id" class="col parkFont">
+							<!-- Adjusted column width for small screens -->
+							<RouterLink :to="{ name: 'Park Details', params: { parkId: park.id } }">
+								<p>{{ park.name }}</p>
+							</RouterLink>
+						</div>
 					</div>
 				</div>
 			</div>
