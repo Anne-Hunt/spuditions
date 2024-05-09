@@ -26,9 +26,7 @@
 					</div>
 					<div class="col-12 col-md-9 pb-2 order-2">
 						<h1>Jarrett</h1>
-						<p class="fs-5 text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt alias
-							numquam ab! At voluptatibus sit temporibus ratione error itaque consequatur modi cum enim possimus
-							dolore dolorem doloribus laboriosam, aliquid aut!</p>
+						<p class="fs-5 text-start">Howdy! I'm Jarrett, I started my journey by watching youtube tutorials and making video game mods since I was 12-13. I like anything art-related including graphic art, music, etc. I look forward to learning more about Computer Science as a whole and plan to move to Seattle after graduation :>)</p>
 					</div>
 				</div>
 			</div>
