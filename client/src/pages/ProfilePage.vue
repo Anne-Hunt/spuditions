@@ -11,8 +11,8 @@ import { reputationService } from "../services/ReputationService.js";
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
-const account = computed(()=> AppState.account)
-const reviewedAlready = computed(()=> AppState.reputation.find(reputation => reputation.creatorId == account.value.id))
+const user = computed(()=> AppState.account)
+const reviewedAlready = computed(()=> AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
 const threads = computed(() => AppState.profileThreads)
 const posts = computed(()=> AppState.posts)
 const visits = computed(()=> AppState.visited)
@@ -105,7 +105,7 @@ onMounted(() => {
       </div>
       Reputation
     </a>
-        <div v-if="(profile.id != account?.id)">
+        <div v-if="(profile.id != user.id)">
           <div class="dropdown">
             <button v-if="!reviewedAlready" type="button" class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
               data-bs-auto-close="outside">
@@ -133,7 +133,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
-    </div>
+
 
       <div class="col-12 d-flex justify-content-center align-items-center mt-1">
 
@@ -143,8 +143,8 @@ onMounted(() => {
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body p-1">
-    <div class="rounded bg-teal my-1 p-1" v-for="rep in reps" :key="rep?.id">
-      <img class="reviewerImg" :src="rep.creator?.picture" :alt="rep.creator?.name"><strong class="p-1"> {{ rep.creator?.name }} </strong>
+    <div class="rounded bg-secondary text-light my-1" v-for="rep in reps" :key="rep?.id">
+      <img :src="rep.creator?.picture" :alt="rep.creator?.name"><strong>{{ rep.creator?.name }}</strong>
       {{ rep?.comment }}
     </div>
   </div>
@@ -156,7 +156,7 @@ onMounted(() => {
 
       </div>
     </div>
-    <div class="row justify-content-center pt-4 pb-5 bg-forestGreen mx-0">
+    <div class="row justify-content-center pt-4 pb-5 bg-forestGreen">
       <div class="col-6 rounded bg-lightGreen p-3">
         <div class="row">
           <div class="col-12 col-md-6 inner-border">
@@ -175,12 +175,11 @@ onMounted(() => {
       <div class="accordion" id="visitedAccordion">
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         See where {{ profile.name }} has gone
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#visitedAccordion">
-    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#visitedAccordion">
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#visitedAccordion">
       <div class="accordion-body">
         <span class="p-2 parkName" v-for="visit in visits" :key="visit.id">
             {{ visit.park.name }}
@@ -190,14 +189,13 @@ onMounted(() => {
   </div>
 </div>
     </div>
-    <div class="row justify-content-center mx-0">
+    <div class="row justify-content-center">
       <h1 class="text-dark text-center my-5">Threads:</h1>
       <div class v-for="thread in threads" :key="thread?.id">
         <ThreadCard :thread="thread"/>
       </div>
     </div>
   </div>
-
 </template>
 
 <style lang="scss" scoped>
@@ -206,14 +204,6 @@ onMounted(() => {
   width: fit-content;
   aspect-ratio: 1/1;
   border-radius: 50em;
-  object-fit: cover;
-  object-position: center
-}
-
-.off-canvas-img{
-  height: 95px;
-  padding-right: 10px;
-  width: 100px;
   object-fit: cover;
   object-position: center
 }
@@ -248,21 +238,11 @@ onMounted(() => {
     border-top-right-radius: var(--bs-accordion-inner-border-radius);
     background-color: white;
     color: var(--dkGreen);
-}
 
-
-.accordion-button:focus {
+    .accordion-button:focus {
     z-index: 3;
     outline: 0;
 }
-
-.reviewerImg{
-  height: 40px;
-	width: fit-content;
-	aspect-ratio: 1/1;
-	border-radius: 50em;
-	object-fit: cover;
-	object-position: center
 }
 
 .parkName {
