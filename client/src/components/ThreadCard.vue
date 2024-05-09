@@ -31,27 +31,37 @@ async function destroyThread(threadId) {
 
 <template>
 	<div v-if="thread" class="container-fluid my-2">
-        <div class="row justify-content-center">
-            <div :class="{ 'col-10': !fullView, 'col-12': fullView }">
-                <div class="card bg-teal rounded flex-row d-flex" style="min-width: 0;">
-                    <div class="ps-4 py-3 text-center">
-                        <img :src="thread.creator.picture" class="pfp" height="40" alt="">
-                        <span class="d-block fs-6 fw-bold">{{ thread.creator.name }}</span>
-                        <span class="d-block fs-6">{{ thread.creator.role }}</span>
-                    </div>
-                    <div class="ps-4" :class="{'pt-4': !fullView, 'pt-2 pb-3': fullView }" :style="!fullView ? 'max-width: 83%;' : ''">
-                        <div class="d-block">
-                            <span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 rounded me-2">{{ thread.tags[0] }}</span>
-                            <span class="fs-5 fw-bold">{{ thread.title }}</span>
-                        </div>
-                        <div :class="{'noWrap pt-2' : !fullView, 'py-2' : fullView}">
-                            {{ thread.body }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="row justify-content-center">
+			<div :class="{ 'col-10': !fullView, 'col-12': fullView }">
+				<div class="card bg-teal rounded flex-row d-flex" style="min-width: 0;">
+					<div class="ps-4 py-3 text-center">
+						<img :src="thread.creator.picture" class="pfp" height="40" alt="">
+						<span class="d-block fs-6 fw-bold">{{ thread.creator.name }}</span>
+						<span class="d-block fs-6" :class="{
+							'roleTag1': thread.creator.role == 'Moderator',
+							'roleTag2': thread.creator.role == 'Member',
+							'roleTag3': thread.creator.role == 'Banned'
+						}">
+
+							{{ thread.creator.role }}
+
+						</span>
+					</div>
+					<div class="ps-4" :class="{ 'pt-4': !fullView, 'pt-2 pb-3': fullView }"
+						:style="!fullView ? 'max-width: 83%;' : ''">
+						<div class="d-block">
+							<span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 rounded me-2">{{ thread.tags[0]
+								}}</span>
+							<span class="fs-5 fw-bold">{{ thread.title }}</span>
+						</div>
+						<div :class="{ 'noWrap pt-2': !fullView, 'py-2': fullView }">
+							{{ thread.body }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 
@@ -75,25 +85,28 @@ async function destroyThread(threadId) {
 	object-position: center
 }
 
+.roleTag1 {
+	// background-color: #9500ff99;
+	color: #9500ff;
+}
+
+.roleTag2 {
+	// background-color: #00000080;
+	color: #5b5b5b
+}
+
+.roleTag3 {
+	// background-color: #ff000099;
+	color: #ff0000;
+}
+
+// .vWall {
+// 	border-right: solid var(--bs-forestGreen) 1px;
+// }
+
 .delete-post {
 	height: 45px;
 	border-radius: 50em;
 	aspect-ratio: 1/1;
-}
-
-.roleTag1 {
-	background-color: rgba(149, 0, 255, 0.6);
-}
-
-.roleTag2 {
-	background-color: rgba(0, 0, 0, 0.5);
-}
-
-.roleTag3 {
-	background-color: rgba(255, 0, 0, 0.6);
-}
-
-.vWall {
-	border-right: solid var(--bs-forestGreen) 1px;
 }
 </style>
