@@ -111,7 +111,7 @@ onMounted(() => {
             </form>
           </div>
         </div>
-        <div class="my-4 mx-3">
+        <div class="my-4 px-4">
           <CommentCard v-for="post in posts" :key="post.id" :post="post"/>
         </div>
       </div>
