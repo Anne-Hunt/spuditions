@@ -143,8 +143,8 @@ onMounted(() => {
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body p-1">
-    <div class="rounded bg-secondary text-light my-1" v-for="rep in reps" :key="rep?.id">
-      <img :src="rep.creator?.picture" :alt="rep.creator?.name"><strong>{{ rep.creator?.name }}</strong>
+    <div class="rounded bg-teal my-1 p-1" v-for="rep in reps" :key="rep?.id">
+      <img class="reviewerImg" :src="rep.creator?.picture" :alt="rep.creator?.name"><strong class="p-1"> {{ rep.creator?.name }} </strong>
       {{ rep?.comment }}
     </div>
   </div>
@@ -179,7 +179,7 @@ onMounted(() => {
         See where {{ profile.name }} has gone
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#visitedAccordion">
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#visitedAccordion">
       <div class="accordion-body">
         <span class="p-2 parkName" v-for="visit in visits" :key="visit.id">
             {{ visit.park.name }}
@@ -243,6 +243,15 @@ onMounted(() => {
     z-index: 3;
     outline: 0;
 }
+}
+
+.reviewerImg{
+  height: 40px;
+	width: fit-content;
+	aspect-ratio: 1/1;
+	border-radius: 50em;
+	object-fit: cover;
+	object-position: center
 }
 
 .parkName {
