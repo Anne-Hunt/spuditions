@@ -5,6 +5,8 @@ import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import { postsService } from "../services/PostsService.js";
 import Pop from "../utils/Pop.js";
+import { RouterLink } from "vue-router";
+
 
 defineProps({ post: Post })
 
@@ -31,29 +33,42 @@ async function destroyPost(postId) {
 <template>
 	<div class="col-9">
 		<div class="card bg-teal p-2 m-2 my-3">
-			<div class="row">
-				<div class="col-12 d-flex">
+			<div class="row py-2 d-flex">
+				<div class="px-4 col-11 d-flex">
+					<div class="vWall pe-3">
+						<div class="text-center">
+							<RouterLink :to="{ name: 'Profile', params: { profileId: post?.creatorId } }">
+								<div>
+									<img class="comment-img d-inline ms-1 mb-3" :src="post?.creator.picture"
+										alt="picture of creator">
+								</div>
 
-					<RouterLink :to="{ name: 'Profile', params: { profileId: post?.creatorId } }">
-						<div>
-							<img class="comment-img d-inline ms-1" :src="post?.creator.picture" alt="Michael">
-						</div>
+								<div v-if="account?.role == 'Moderator'">
+									<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
+								</div>
 
-						<div v-if="account?.role == 'Moderator'">
-							<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
+								<div v-if="account?.role == 'Member'" class="p-1 text-center text-white rounded roleTag2">Member
+								</div>
+
+								<div v-if="account?.role == 'Banned'" class="p-1 text-center text-white rounded roleTag3">Banned
+								</div>
+							</RouterLink>
 						</div>
-					</RouterLink>
-					<div class="w-100">
-						<p class="d-inline ps-2 fw-bold">{{ post?.creator.name }}</p>
-						<p class="ps-2">{{ post?.createdAtFormatted }}</p>
 					</div>
-					<div v-if="post?.creatorId == account?.id" class="col-1 col-sm-1 col-md-1">
-						<button @click="destroyPost(post.id)" class="btn btn-danger fs-5 float-end delete-post"><i
-								class="mdi mdi-trash-can"></i></button>
+
+					<div class="ps-3">
+						<p class="d-inline fw-bold">{{ post?.creator.name }}</p>
+						<p>{{ post?.createdAtFormatted }}</p>
+
+						<div class="w-100">
+							<p>{{ post?.body }}</p>
+						</div>
 					</div>
+
 				</div>
-				<div class="col-12">
-					<p class="ps-2">{{ post?.body }}</p>
+				<div v-if="post?.creatorId == account?.id" class="col-1 col-sm-1 col-md-1">
+					<button @click="destroyPost(post.id)" class="btn btn-danger fs-5 float-end delete-post"><i
+							class="mdi mdi-trash-can"></i></button>
 				</div>
 			</div>
 		</div>
@@ -79,5 +94,17 @@ async function destroyPost(postId) {
 
 .roleTag1 {
 	background-color: rgba(149, 0, 255, 0.6);
+}
+
+.roleTag2 {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.roleTag3 {
+	background-color: rgba(255, 0, 0, 0.6);
+}
+
+.vWall {
+	border-right: solid var(--bs-forestGreen) 1px;
 }
 </style>
