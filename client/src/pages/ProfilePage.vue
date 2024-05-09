@@ -144,7 +144,7 @@ onMounted(() => {
   </div>
   <div class="offcanvas-body p-1">
     <div class="rounded bg-secondary text-light my-1" v-for="rep in reps" :key="rep?.id">
-      <img :src="rep.creator?.picture" :alt="rep.creator?.name"><strong>{{ rep.creator?.name }}</strong>
+      <img class="off-canvas-img" :src="rep.creator?.picture" :alt="rep.creator?.name"><strong>{{ rep.creator?.name }}</strong>
       {{ rep?.comment }}
     </div>
   </div>
@@ -204,6 +204,14 @@ onMounted(() => {
   width: fit-content;
   aspect-ratio: 1/1;
   border-radius: 50em;
+  object-fit: cover;
+  object-position: center
+}
+
+.off-canvas-img{
+  height: 95px;
+  padding-right: 10px;
+  width: 100px;
   object-fit: cover;
   object-position: center
 }
