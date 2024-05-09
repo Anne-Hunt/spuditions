@@ -15,7 +15,7 @@ const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
 const user = computed(() => AppState.account)
-const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
+const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == user.value?.id))
 const threads = computed(() => AppState.profileThreads)
 const posts = computed(() => AppState.posts)
 const visits = computed(() => AppState.visited)
@@ -105,7 +105,7 @@ onMounted(() => {
 
 
 				<div class="d-flex justify-content-center">
-					<div v-if="(profile.id != user.id)">
+					<div v-if="(profile.id != user?.id)">
 						<div class="dropdown">
 
 
@@ -218,11 +218,6 @@ onMounted(() => {
 						</div>
 					</div>
 				</div>
-				<img v-if="profile.reputation < 0" class="rotten-spud-img pe-3 pb-2 selectable"
-					src="/src/assets/img/rottenSpud.png" alt="">
-				<img v-else class="spud-img pe-3 selectable" src="/src/assets/img/spuditions.png" alt="">
-				<h5 class="text-white"> {{ profile.reputation }}</h5>
-
 			</div>
 		</div>
 		<div class="row justify-content-center pt-4 pb-5 bg-forestGreen mx-0">
@@ -244,7 +239,7 @@ onMounted(() => {
 			<div class="accordion" id="visitedAccordion">
 				<div class="accordion-item">
 					<h2 class="accordion-header">
-						<button class="accordion-button fw-bold text-center" type="button" data-bs-toggle="collapse"
+						<button class="accordion-button fw-bold text-center me-0" type="button" data-bs-toggle="collapse"
 							data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 							<span>See where {{ profile.name }} has gone</span>
 						</button>
@@ -259,7 +254,7 @@ onMounted(() => {
 				</div>
 			</div>
 		</div>
-		<div class="row justify-content-center">
+		<div class="row justify-content-center m-0 p-0">
 			<h1 class="text-dark text-center my-5">Threads:</h1>
 			<div class v-for="thread in threads" :key="thread?.id">
 				<ThreadCard :thread="thread" />
