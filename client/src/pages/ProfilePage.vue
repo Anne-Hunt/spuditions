@@ -143,6 +143,23 @@ onMounted(() => {
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body p-1">
+    <div class="text-dark p-2" v-if="!reps.length">
+      No one has reviewed this user yet. Be the first!
+      <form @submit.prevent="createReputation()" class="p-4">
+              <div class="mb-3">
+                <label for="comment" class="form-label">Say a Few Words About This User</label>
+                <input v-model="reputation.comment" type="text" name="comment" class="form-control" id="commentInput">
+              </div>
+              <div class="mb-3">
+                <label for="ratingProfile" class="form-label">Rating</label>
+                <select v-model="reputation.rating" name="ratingProfile" class="form-control" id="profileRating" >
+                  <option value="+1"><span>Good Spud</span></option>
+                  <option value="-1" selected><span>Bad Spud</span></option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-orange text-light">Submit</button>
+            </form>
+    </div>
     <div class="rounded bg-teal text-light my-1 p-1" v-for="rep in reps" :key="rep?.id">
       <img class="reviewerImg" :src="rep.creator?.picture" :alt="rep.creator?.name"><strong class="p-1">{{ rep.creator?.name }}</strong>
       {{ rep?.comment }}
