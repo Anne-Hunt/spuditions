@@ -43,13 +43,13 @@ async function destroyThread(threadId) {
 						<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
 					</div>
 
-					<div v-if="userId.role == Member">
+					<!-- <div v-if="userId.role == Member">
 						<div class="p-1 text-center text-white rounded roleTag2">Member</div>
 					</div>
 
 					<div v-if="userId.role == Banned">
 						<div class="p-1 text-center text-white rounded roleTag3">Banned</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="pe-5 ps-3 w-100" :class="{ 'mb-2': fullView }">
