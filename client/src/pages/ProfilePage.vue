@@ -78,7 +78,7 @@ async function createReputation() {
 		reputation.value = { comment: '', rating: 0 }
 	} catch (error) {
 		Pop.toast("Unable to review profile at this time", 'error')
-		logger.error("unable to create reputation", error)
+		logger.error("unable to create reputation.", error)
 	}
 }
 
