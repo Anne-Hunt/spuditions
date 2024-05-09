@@ -47,7 +47,7 @@
           </div>
           <div class="col-12 col-md-9 pb-2 order-2">
             <h1>Kyler</h1>
-            <p class="fs-5 text-start">Kyler has a background in teaching STEM, robotics, and construction management for four years. He is now transitioning into a career doing full stack development. Kyler looks forward to continue learning new things every day and furthering his career in the development world.</p>
+            <p class="fs-5 text-start">Kyler has a background in teaching STEM, robotics, and working in construction management for four years. He is now transitioning into a career doing full stack development. Kyler looks forward to continue learning new things every day and furthering his career in the development world.</p>
           </div>
         </div>
       </div>
