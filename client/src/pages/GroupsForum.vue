@@ -10,6 +10,7 @@ import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 
 const threads = computed(() => AppState.threads.filter((thread) => thread.section == 'find group'))
+const account = computed(() => AppState.account)
 
 async function getThreads(){
   try {
@@ -43,7 +44,8 @@ onMounted(() => {
               <ThreadModal/>
             </ModalWrap>
             <h5 class="py-3">Discuss activities and groups!</h5>
-            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end">Create Thread <i class="mdi mdi-plus"></i></button>
+            <button v-if="!account" disabled data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end">Create Thread <i class="mdi mdi-plus"></i></button>
+            <button v-else data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mb-2">Create Thread <i class="mdi mdi-plus"></i></button>
           </div>
         </div>
 
@@ -54,8 +56,8 @@ onMounted(() => {
           </router-link>
           </div>
       </div>
-      <ForumRules/>
     </div>
+    <ForumRules/>
   </section>
 </template>
 

@@ -50,23 +50,45 @@ onUnmounted(() => {
 </script>
 
 <template>
-<div class="container justify-content-center mt-3">
-    <div class="row" v-for="park in parks" :key="park.id">
-        <ParkResult :park="park"/>
+    <div class="container justify-content-center mt-3">
+      <div v-if="parks.length > 0">
+        <div class="section-container">
+          <h2 class="section-title">Parks</h2>
+          <hr class="section-line">
+        </div>
+        <div class="row" v-for="park in parks" :key="park.id">
+          <ParkResult :park="park"/>
+        </div>
+        <hr>
+      </div>
+      <div v-if="threads.length > 0">
+        <div class="section-container">
+          <h2 class="section-title">Threads</h2>
+          <hr class="section-line">
+        </div>
+        <div class="row" v-for="thread in threads" :key="thread.id">
+          <ThreadResult :thread="thread"/>
+        </div>
+   
+      </div>
+      <div v-if="profiles.length > 0">
+        <div class="section-container">
+          <h2 class="section-title">Profiles</h2>
+          <hr class="section-line">
+        </div>
+        <div class="row" v-for="profile in profiles" :key="profile.id">
+          <ProfileResult :profile="profile"/>
+        </div>
+      </div>
     </div>
-    <hr>
-    <div class="row" v-for="thread in threads" :key="thread.id">
-        <ThreadResult :thread="thread"/>
-    </div>
-    <hr>
-    <div class="row" v-for="profile in profiles" :key="profile.id">
-        <ProfileResult :profile="profile"/>
-    </div>
-</div>
+  </template>
+  
+  <style lang="scss" scoped>
 
-</template>
-
-
-<style lang="scss" scoped>
-
-</style>
+  
+  .section-line {
+    border-top: 2px solid #B8914C; 
+    margin-bottom: 20px; 
+  }
+  </style>
+  

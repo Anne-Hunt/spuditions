@@ -10,6 +10,7 @@ import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 
 const parks = computed(()=> AppState.parks)
+const account = computed(() => AppState.account)
 
 const filterPark = ref('park')
 
@@ -22,43 +23,6 @@ function filterMaker(){
   AppState.parks.forEach(park => filter.push({name: park.name, id: park.id}))
 } 
 
-// const filter = [
-  // {name: 'Ashton to Tetonia Trail'},
-  // {name: 'Bear Lake'},
-  // {name: 'Bruneau Dunes'},
-  // {name: 'Castle Rocks'},
-  // {name: 'City of Rocks'},
-  // {name: "Couer d'Alene Parkway"},
-  // {name: "Coeur d'Alene's Old Mission"},
-  // {name: "Dworshak"},
-  // {name: "Eagle Island"},
-  // {name: "Farragut"},
-  // {name: "Harriman"},
-  // {name: "Hells Gate"},
-  // {name: "Henry's Lake"},
-  // {name: "Heyburn"},
-  // {name: "Lake Wolcott"},
-  // {name: "Land of the Yankee Fork"},
-  // {name: "Lucky Peak"},
-  // {name: "Massacre Rocks"},
-  // {name: "McCroskey"},
-  // {name: "Ponderosa"},
-  // {name: "Priest Lake"},
-  // {name: "Round Lake"},
-  // {name: "Thousand Springs"},
-  // {name: "Three Island Crossing"},
-  // {name: "Trail of the Coeur d'Alenes"},
-  // {name: "Winchester Lake"},
-  // {name: "Yellowstone"},
-  // {name: "Craters of the Moon"},
-  // {name: "Oregon Trail"},
-  // {name: "California Trail"},
-  // {name: "Lewis & Clark Trail"},
-  // {name: "Nez Perce"},
-  // {name: "Ice Age Floods"},
-  // {name: "Hagerman Fossil Beds"},
-  // {name: "Minidoka"}]
-// ]
 async function getThreads(){
   try {
     await threadsService.getThreads()
@@ -89,7 +53,8 @@ onMounted(() => {
         <div class="col-12">
           <div class="p-3 mt-3 fw-bold">
             <h1 class="d-inline">Parks Chat</h1>
-            <button data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
+            <button v-if="!account" disabled data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mt-2 ms-2">Create Thread <i class="mdi mdi-plus"></i></button>
+            <button v-else data-bs-toggle="modal" data-bs-target="#create-thread-modal" class="btn btn-forestGreen rounded text-white float-end mb-2">Create Thread <i class="mdi mdi-plus"></i></button>
             <ModalWrap modalId="create-thread-modal">
               <ThreadModal/>
             </ModalWrap>
@@ -97,7 +62,7 @@ onMounted(() => {
         <div class="">
           <label class="p-2" for="parkChoose">Choose a Park:</label>
           <select name="parkChoose" v-model="filterPark" id="parksList" class="rounded">
-            <option @change="filterPark = park.name" v-for="park in parks" :key="park.name" :value="park.id">{{ park.name }}</option>
+            <option @change="filterPark = park.name" v-for="park in parks" :key="park.name" :value="park.name">{{ park.name }}</option>
           </select>
         </div>
       </form>
