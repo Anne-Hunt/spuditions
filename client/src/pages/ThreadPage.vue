@@ -105,7 +105,8 @@ onMounted(() => {
               <div class="mt-3 mx-3">
                 <textarea v-model="postData.body" placeholder="Share your thoughts..." type="text" class="form-control" id="post-body" required minLength="5" maxLength="300" rows="5"></textarea>
               </div>
-              <button class="btn btn-bgLightBlue float-end mt-2">Submit</button>
+              <button v-if="!account" disabled class="btn btn-bgLightBlue float-end mt-2">Submit</button>
+              <button v-else class="btn btn-bgLightBlue float-end mt-2">Submit</button>
             </form>
           </div>
         </div>
