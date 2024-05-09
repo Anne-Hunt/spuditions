@@ -32,14 +32,14 @@ async function destroyThread(threadId) {
 <template>
 	<div v-if="thread" class="container-fluid my-2">
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div :class="{ 'col-10': !fullView, 'col-12': fullView }">
                 <div class="card bg-teal rounded flex-row d-flex" style="min-width: 0;">
                     <div class="ps-4 py-3 text-center">
                         <img :src="thread.creator.picture" class="pfp" height="40" alt="">
                         <span class="d-block fs-6 fw-bold">{{ thread.creator.name }}</span>
                         <span class="d-block fs-6">{{ thread.creator.role }}</span>
                     </div>
-                    <div class="ps-4" :class="{'pt-4': !fullView, 'pt-2 pb-3': fullView }" style="max-width: 83%;">
+                    <div class="ps-4" :class="{'pt-4': !fullView, 'pt-2 pb-3': fullView }" :style="!fullView ? 'max-width: 83%;' : ''">
                         <div class="d-block">
                             <span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 rounded me-2">{{ thread.tags[0] }}</span>
                             <span class="fs-5 fw-bold">{{ thread.title }}</span>

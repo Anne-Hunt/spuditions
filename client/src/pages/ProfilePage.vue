@@ -11,8 +11,8 @@ import { reputationService } from "../services/ReputationService.js";
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
-const user = computed(()=> AppState.account)
-const reviewedAlready = computed(()=> AppState.reputation.find(reputation => reputation.creatorId == user.value.id))
+const account = computed(()=> AppState.account)
+const reviewedAlready = computed(()=> AppState.reputation.find(reputation => reputation.creatorId == account.value.id))
 const threads = computed(() => AppState.profileThreads)
 const posts = computed(()=> AppState.posts)
 const visits = computed(()=> AppState.visited)
@@ -102,7 +102,7 @@ onMounted(() => {
       </div>
       Reputation
     </a>
-        <div v-if="(profile.id != user.id)">
+        <div v-if="(profile.id != account?.id)">
           <div class="dropdown">
             <button v-if="!reviewedAlready" type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false"
               data-bs-auto-close="outside">
