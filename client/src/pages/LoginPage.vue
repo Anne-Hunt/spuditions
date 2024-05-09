@@ -23,15 +23,26 @@ async function handleLogin() {
 
 
 <template>
-    <form class="mt-5 px-5" @submit.prevent="handleLogin()">
-        <label>Email</label>
-        <input v-model="formData.email" type="email" class="form-control mb-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-7 col-11">
+                <form class="mt-5 px-5" @submit.prevent="handleLogin()">
+                    <h1 class="text-center mb-3">Login</h1>
 
-        <label>Password</label>
-        <input v-model="formData.password" type="password" class="form-control mb-3">
+                    <label>Email</label>
+                    <input v-model="formData.email" type="email" class="form-control mb-3" required>
 
-        <button class="btn px-5 btn-forestGreen">Login</button>
-    </form>
+                    <label>Password</label>
+                    <input v-model="formData.password" type="password" class="form-control mb-3" required>
+
+                    <div class="text-center">
+                        <button class="btn px-5 btn-forestGreen">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 
