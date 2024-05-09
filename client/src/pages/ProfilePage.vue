@@ -7,6 +7,9 @@ import { useRoute } from "vue-router";
 import { logger } from "../utils/Logger.js";
 import ThreadCard from "../components/ThreadCard.vue";
 import { reputationService } from "../services/ReputationService.js";
+import ProfileModal from "../components/ProfileModal.vue";
+
+
 
 const route = useRoute()
 
@@ -96,7 +99,60 @@ onMounted(() => {
 	<div v-if="profile" class="container-fluid m-0 p-0">
 		<div class="row me-0 align-items-center bg-forestGreen">
 			<div class="col-12 text-center p-3 pt-5">
-				<h3 class="fw-bold text-white">{{ profile.name }}</h3>
+				<div>
+					<h3 class="fw-bold text-white mb-3">{{ profile.name }}</h3>
+				</div>
+
+
+				<div class="d-flex justify-content-center">
+					<div v-if="(profile.id != user.id)">
+						<div class="dropdown">
+
+
+							<div>
+								<button v-if="!reviewedAlready" class="btn btn-orange text-light dropdown-toggle float-end"
+									title="Leave Profile Review" data-bs-toggle="modal" data-bs-target="#profileRatingModal">
+									Review Profile
+								</button>
+
+								<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
+									data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+									Already Reviewed
+								</button>
+							</div>
+
+
+							<!-- <button v-if="!reviewedAlready" type="button"
+								class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown"
+								aria-expanded="false" data-bs-auto-close="outside">
+								Review Profile
+							</button>
+							<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
+								data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+								Already Reviewed
+							</button> -->
+
+							<!-- <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
+								<div class="mb-3">
+									<label for="comment" class="form-label">Say a Few Words About This User</label>
+									<input v-model="reputation.comment" type="text" name="comment" class="form-control"
+										id="commentInput">
+								</div>
+								<div class="mb-3">
+									<label for="ratingProfile" class="form-label">Rating</label>
+									<select v-model="reputation.rating" name="ratingProfile" class="form-control"
+										id="profileRating">
+										<option value="+1"><span>Good Spud</span></option>
+										<option value="-1" selected><span>Bad Spud</span></option>
+									</select>
+								</div>
+								<button v-if="!reviewedAlready" type="submit" class="btn btn-orange text-light">Submit</button>
+								<button class="btn btn-forestGreen" v-else disabled>Submit</button>
+							</form> -->
+						</div>
+					</div>
+				</div>
+
 			</div>
 			<div class="col-12 text-center text-white pt-4 fs-4">
 				<a class="text-light" data-bs-toggle="offcanvas" href="#reputationOffCanvas" role="button"
@@ -106,36 +162,6 @@ onMounted(() => {
 					</div>
 					Reputation
 				</a>
-				<div v-if="(profile.id != user.id)">
-					<div class="dropdown">
-						<button v-if="!reviewedAlready" type="button"
-							class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown"
-							aria-expanded="false" data-bs-auto-close="outside">
-							Review Profile
-						</button>
-						<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
-							data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-							Already Reviewed
-						</button>
-						<form @submit.prevent="createReputation()" class="dropdown-menu p-4">
-							<div class="mb-3">
-								<label for="comment" class="form-label">Say a Few Words About This User</label>
-								<input v-model="reputation.comment" type="text" name="comment" class="form-control"
-									id="commentInput">
-							</div>
-							<div class="mb-3">
-								<label for="ratingProfile" class="form-label">Rating</label>
-								<select v-model="reputation.rating" name="ratingProfile" class="form-control"
-									id="profileRating">
-									<option value="+1"><span>Good Spud</span></option>
-									<option value="-1" selected><span>Bad Spud</span></option>
-								</select>
-							</div>
-							<button v-if="!reviewedAlready" type="submit" class="btn btn-orange text-light">Submit</button>
-							<button class="btn btn-forestGreen" v-else disabled>Submit</button>
-						</form>
-					</div>
-				</div>
 			</div>
 
 
@@ -203,6 +229,8 @@ onMounted(() => {
 			</div>
 		</div>
 	</div>
+
+	<ProfileModal />
 </template>
 
 <style lang="scss" scoped>
