@@ -9,7 +9,7 @@ import { logger } from "../utils/Logger.js";
 
 defineProps({ thread: Thread, fullView: { type: Boolean, default: false } })
 
-const userId = computed(() => AppState.account?.id)
+const account = computed(() => AppState.account)
 
 
 async function destroyThread(threadId) {
@@ -36,10 +36,11 @@ async function destroyThread(threadId) {
 				<div class="vWall pe-3">
 					<div class="text-center mb-2">
 						<img class="mt-1 profile-img d-inline" :src="thread?.creator.picture" alt="image of creator">
+                        <p class="mt-1 fw-bold">{{ thread.creator.name }}</p>
 					</div>
 
 					<!-- SECTION: Roles -->
-					<div v-if="userId.role == Moderator">
+					<div v-if="account?.role == 'Moderator'">
 						<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
 					</div>
 
@@ -60,11 +61,8 @@ async function destroyThread(threadId) {
 						{{ thread?.title }}
 					</span>
 					<!-- <p class="w-100 mt-3" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p> -->
-					<div v-if="thread.body.length <= (149)">
-						<p class="w-100 mt-3">{{ thread?.body }}</p>
-					</div>
-					<div v-else>
-						<p class="w-100 mt-3">{{ thread?.body.split(' ').slice(0, 30).join(' ') + "..." }}</p>
+					<div>
+						<p class="w-100 mt-3 pe-4" :class="{ 'noWrap': !fullView }">{{ thread?.body }}</p>
 					</div>
 				</div>
 
@@ -119,6 +117,6 @@ async function destroyThread(threadId) {
 }
 
 .vWall {
-	border-right: solid #888888 3px;
+	border-right: solid var(--bs-forestGreen) 1px;
 }
 </style>
