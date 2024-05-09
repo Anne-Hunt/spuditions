@@ -9,6 +9,9 @@ import Pop from "../utils/Pop.js";
 defineProps({ post: Post })
 
 const account = computed(() => AppState.account)
+const userId = computed(() => AppState.account?.id)
+
+
 
 async function destroyPost(postId) {
 	try {
@@ -33,7 +36,13 @@ async function destroyPost(postId) {
 				<div class="col-12 d-flex">
 
 					<RouterLink :to="{ name: 'Profile', params: { profileId: post?.creatorId } }">
-						<img class="comment-img d-inline ms-1" :src="post?.creator.picture" alt="Michael">
+						<div>
+							<img class="comment-img d-inline ms-1" :src="post?.creator.picture" alt="Michael">
+						</div>
+
+						<div v-if="userId.role == Moderator">
+							<div class="p-1 text-center text-white rounded roleTag1">Moderator</div>
+						</div>
 					</RouterLink>
 					<div class="w-100">
 						<p class="d-inline ps-2 fw-bold">{{ post?.creator.name }}</p>
@@ -45,7 +54,7 @@ async function destroyPost(postId) {
 					</div>
 				</div>
 				<div class="col-12">
-					<p>{{ post?.body }}</p>
+					<p class="ps-2">{{ post?.body }}</p>
 				</div>
 			</div>
 		</div>
@@ -67,5 +76,9 @@ async function destroyPost(postId) {
 	height: 45px;
 	border-radius: 50em;
 	aspect-ratio: 1/1;
+}
+
+.roleTag1 {
+	background-color: rgba(149, 0, 255, 0.6);
 }
 </style>

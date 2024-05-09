@@ -16,7 +16,7 @@ import { searchService } from '../services/SearchService.js';
 const parks = computed(()=> AppState.parks)
 const profiles = computed(()=> AppState.profiles)
 const threads = computed(()=> AppState.threads)
-const posts = computed(()=> AppState.posts)
+// const posts = computed(()=> AppState.posts)
 
 const route = useRoute()
 
