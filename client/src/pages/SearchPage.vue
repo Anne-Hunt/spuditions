@@ -1,11 +1,9 @@
 <script setup>
 import { computed, onMounted, onUnmounted } from 'vue';
 import { AppState } from '../AppState.js';
-import Navbar from '../components/Navbar.vue';
 import ParkResult from '../components/ParkResult.vue';
 import ThreadResult from '../components/ThreadResult.vue';
 import ProfileResult from '../components/ProfileResult.vue'
-import SearchBar from '../components/SearchBar.vue';
 import { useRoute } from 'vue-router';
 import Pop from '../utils/Pop.js';
 import { threadsService } from '../services/ThreadsService.js';
