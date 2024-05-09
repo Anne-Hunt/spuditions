@@ -175,10 +175,11 @@ onMounted(() => {
       <div class="accordion" id="visitedAccordion">
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         See where {{ profile.name }} has gone
       </button>
     </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#visitedAccordion">
     <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#visitedAccordion">
       <div class="accordion-body">
         <span class="p-2 parkName" v-for="visit in visits" :key="visit.id">
@@ -204,6 +205,14 @@ onMounted(() => {
   width: fit-content;
   aspect-ratio: 1/1;
   border-radius: 50em;
+  object-fit: cover;
+  object-position: center
+}
+
+.off-canvas-img{
+  height: 95px;
+  padding-right: 10px;
+  width: 100px;
   object-fit: cover;
   object-position: center
 }
