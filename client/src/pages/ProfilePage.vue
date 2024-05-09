@@ -133,7 +133,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
-
+    </div>
 
       <div class="col-12 d-flex justify-content-center align-items-center mt-1">
 
@@ -247,11 +247,12 @@ onMounted(() => {
     border-top-right-radius: var(--bs-accordion-inner-border-radius);
     background-color: white;
     color: var(--dkGreen);
+}
 
-    .accordion-button:focus {
+
+.accordion-button:focus {
     z-index: 3;
     outline: 0;
-}
 }
 
 .reviewerImg{
