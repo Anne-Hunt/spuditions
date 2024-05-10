@@ -26,6 +26,7 @@ export class ProfilesController extends BaseController {
         try {
             const profileId = request.params.profileId
             const profile = await accountService.banAccount(profileId)
+            response.send(profile)
         } catch (error) {
             next(error)
         }
