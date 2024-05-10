@@ -48,6 +48,13 @@ function sanitizeBody(body) {
 }
 
 class AccountService {
+    async banAccount(profileId) {
+        const account = await dbContext.Account.findById(profileId)
+        if (!account) throw new Error("No user")
+        account.role = 'Banned'
+        await account.save()
+        return account
+    }
 
     async editAccount(userInfo, accountData) {
         const account = await dbContext.Account.findById(userInfo.id, '-password -ip')

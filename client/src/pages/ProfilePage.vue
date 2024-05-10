@@ -35,6 +35,15 @@ async function getProfile() {
 	}
 }
 
+async function banProfile(){
+	try {
+		await profileService.banProfile(route.params.profileId)
+	} catch (error) {
+		Pop.toast("Unable to ban user at this time", 'error')
+		logger.error("Unable to ban user", error)
+	}
+}
+
 async function getReputation() {
 	try {
 		await profileService.getReputation(route.params.profileId)
@@ -114,39 +123,16 @@ onMounted(() => {
 								</button>
 
 								<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
-									data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-									Already Reviewed
-								</button>
-							</div>
-
-
-							<!-- <button v-if="!reviewedAlready" type="button"
-								class="btn btn-orange text-light dropdown-toggle float-end" data-bs-toggle="dropdown"
-								aria-expanded="false" data-bs-auto-close="outside">
-								Review Profile
-							</button>
-							<button v-else disabled type="button" class="btn btn-orange dropdown-toggle float-end"
 								data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
 								Already Reviewed
-							</button> -->
-
-							<!-- <form @submit.prevent="createReputation()" class="dropdown-menu p-4">
-								<div class="mb-3">
-									<label for="comment" class="form-label">Say a Few Words About This User</label>
-									<input v-model="reputation.comment" type="text" name="comment" class="form-control"
-										id="commentInput">
-								</div>
-								<div class="mb-3">
-									<label for="ratingProfile" class="form-label">Rating</label>
-									<select v-model="reputation.rating" name="ratingProfile" class="form-control"
-										id="profileRating">
-										<option value="+1"><span>Good Spud</span></option>
-										<option value="-1" selected><span>Bad Spud</span></option>
-									</select>
-								</div>
-								<button v-if="!reviewedAlready" type="submit" class="btn btn-orange text-light">Submit</button>
-								<button class="btn btn-forestGreen" v-else disabled>Submit</button>
-							</form> -->
+								</button>
+							<div v-if="account.role == 'Moderator'" class="dropdown-center">
+							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-hammer"></i> BAN</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" @click="banProfile()">Ban</a></li>
+							</ul>
+							</div>
+							</div>
 						</div>
 					</div>
 				</div>

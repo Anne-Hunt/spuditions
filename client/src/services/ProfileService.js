@@ -9,6 +9,12 @@ import { api } from "./AxiosService.js"
 
 
 class ProfileService{
+	async banProfile(profileId) {
+    const response = await api.delete(`api/profiles/${profileId}`)
+    logger.log("Profile is banned", response.data)
+    const banned = AppState.profiles.findIndex(profile => profileId == profile.id)
+    AppState.profiles.splice(banned, 1)
+	}
     async getVisited(profileId) {
       AppState.visited = []
       const response = await api.get(`api/profiles/${profileId}/visited`)

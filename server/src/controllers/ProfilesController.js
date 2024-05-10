@@ -1,8 +1,10 @@
+import { accountService } from '../services/AccountService.js'
 import { postsService } from '../services/PostsService.js'
 import { profileService } from '../services/ProfileService.js'
 import { reputationService } from '../services/ReputationService.js'
 import { threadsService } from '../services/ThreadsService.js'
 import { visitedService } from '../services/VisitedService.js'
+import { Authware } from '../utils/Authware.js'
 import BaseController from '../utils/BaseController'
 
 export class ProfilesController extends BaseController {
@@ -16,8 +18,17 @@ export class ProfilesController extends BaseController {
             .get('/:profileId/visited', this.getVisited)
             .get('/:profileId/threads', this.getThreads)
             .get('/:profileId/posts', this.getPosts)
+            .use(Authware.AuthGuard)
     }
 
+    async banProfile(request, response, next) {
+        try {
+            const profileId = request.params.profileId
+            const profile = await accountService.banAccount(profileId)
+        } catch (error) {
+            next(error)
+        }
+    }
     async searchProfile(request, response, next) {
         try {
             const profiles = await profileService.searchProfile(request.query)
