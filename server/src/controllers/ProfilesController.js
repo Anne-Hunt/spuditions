@@ -19,6 +19,7 @@ export class ProfilesController extends BaseController {
             .get('/:profileId/threads', this.getThreads)
             .get('/:profileId/posts', this.getPosts)
             .use(Authware.AuthGuard)
+            .delete('/:profileId', this.banProfile)
     }
 
     async banProfile(request, response, next) {
