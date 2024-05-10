@@ -51,7 +51,7 @@ class PostsService {
             if (postToDelete.creatorId != userInfo.id) {
                 postToDelete.body = "[This post was removed by a moderator]"
                 await postToDelete.save()
-                return { status: 200, message: "Deleted post." }
+                return { status: 200, message: "Soft deleted post." }
             }
             await postToDelete.deleteOne()
             return { status: 200, message: "Deleted post." }

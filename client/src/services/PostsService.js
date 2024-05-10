@@ -21,20 +21,24 @@ class PostsService{
         const posts = response.data.map(postData => new Post(postData))
         AppState.posts = posts
       }
-      
+
       async getPostByThreadId(threadId) {
         const response = await api.get(`api/threads/${threadId}/posts`)
         logger.log("Got posts on this thread", response.data)
         const posts = response.data.map(postData => new Post(postData))
         AppState.posts = posts
       }
-      
+
       async destroyPost(postId) {
         const response = await api.delete(`api/posts/${postId}`)
         logger.log("Deleted post", response.data)
         const postToDelete = AppState.posts.findIndex(post => post.id == postId)
         Pop.success("Deleted post")
-        AppState.posts.splice(postToDelete, 1)
+        if (!response.data.includes('Soft delete')) {
+            AppState.posts.splice(postToDelete, 1)
+        } else {
+            AppState.posts.find(post => post.id == postId).body = "[This post was removed by a moderator]"
+        }
       }
       async getPostsByUser(){
         AppState.posts = []
