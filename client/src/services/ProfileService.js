@@ -4,6 +4,7 @@ import { Profile } from "../models/Profile.js"
 import { Reputation } from "../models/Reputation.js"
 import { Thread } from "../models/Thread.js"
 import { Visited } from "../models/Visited.js"
+import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
 
@@ -31,6 +32,7 @@ class ProfileService{
         const response = await api.get(`api/profiles/search?query=${searchQuery}`)
         const profiles = response.data.map(profileData => new Profile(profileData))
         AppState.profiles = profiles
+        logger.log(profiles)
       }
     
     async getProfile(profileId){

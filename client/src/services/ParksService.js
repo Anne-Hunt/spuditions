@@ -12,6 +12,7 @@ class ParksService {
     const response = await api.get(`api/parks/search?query=${searchQuery}`)
     const parks = response.data.map(parkData => new Park(parkData))
     AppState.parks = parks
+    logger.log(parks)
   }
 
 //!SECTION - Gets all parks to the page
