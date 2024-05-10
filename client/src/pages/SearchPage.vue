@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, onUnmounted } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { AppState } from '../AppState.js';
 import ParkResult from '../components/ParkResult.vue';
 import ThreadResult from '../components/ThreadResult.vue';
@@ -10,15 +10,29 @@ import { threadsService } from '../services/ThreadsService.js';
 import { profileService } from '../services/ProfileService.js';
 import { parksService } from '../services/ParksService.js';
 import { searchService } from '../services/SearchService.js';
+import { logger } from '../utils/Logger.js';
 
 const parks = computed(()=> AppState.parks)
 const profiles = computed(()=> AppState.profiles)
 const threads = computed(()=> AppState.threads)
+const searchTerm = computed(()=> AppState.searchTerm)
 // const posts = computed(()=> AppState.posts)
-
+const searchQuery = ref('')
 const route = useRoute()
+// const routes = route.params.searchTerm
 
 async function search() {
+    try {
+        await parksService.searchParks(route.params.query)
+       await profileService.searchProfiles(route.params.query)
+		await threadsService.searchThreads(route.params.query)
+    }
+    catch (error){
+      Pop.error(error);
+    }
+}
+
+async function searchAll() {
     try {
         await parksService.searchParks(route.params.query)
 		await profileService.searchProfiles(route.params.query)
@@ -37,6 +51,14 @@ async function clearSearch(){
 	}
 }
 
+watch(
+  () => route.fullPath,
+  async() => {
+    logger.log("route fullPath updated", route.fullPath);
+    searchAll()
+  }
+);
+
 onMounted(() => {
     search()
 })
@@ -44,7 +66,6 @@ onMounted(() => {
 onUnmounted(() => {
     clearSearch()
 })
-
 </script>
 
 <template>

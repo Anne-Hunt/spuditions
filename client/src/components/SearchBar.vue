@@ -22,6 +22,7 @@ async function clearSearch(){
 
 async function search(){
 	try {
+		await searchService.searchTerms(searchQuery)
 		this.router.push({ name: "Search Page", params: { query: searchQuery.value } })
 		searchQuery.value = ''
 	} catch (error) {

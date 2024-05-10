@@ -46,6 +46,7 @@ class ThreadsService{
     const response = await api.get(`api/threads/search?query=${searchQuery}`)
     const threads = response.data.map(threadData => new Thread(threadData))
     AppState.threads = threads
+    logger.log(threads)
   }
       
   async destroyThread(threadId){
