@@ -78,7 +78,7 @@ async function destroyPost(postId) {
 					</div>
 
 				</div>
-				<div v-if="post?.creatorId == account?.id" class="col-md-1 d-flex justify-content-md-end">
+				<div v-if="post?.creatorId == account?.id || account?.role == 'Moderator'" class="col-md-1 d-flex justify-content-md-end">
 					<button @click="destroyPost(post.id)" class="btn btn-danger fs-5 float-end delete-post"><i
 							class="mdi mdi-trash-can"></i></button>
 				</div>

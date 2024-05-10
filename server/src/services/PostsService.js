@@ -46,9 +46,19 @@ class PostsService {
         const postToDelete = await dbContext.Post.findById(postId)
 
         if (!postToDelete) throw new Error(`No post with the id ${postId}`)
-        if (userInfo.role != 'Moderator') {
-            if (postToDelete.creatorId != userInfo.id) throw new Forbidden("You cannot delete posts that you did not create.")
+
+        if (userInfo.role == 'Moderator') {
+            if (postToDelete.creatorId != userInfo.id) {
+                postToDelete.body = "[This post was removed by a moderator]"
+                await postToDelete.save()
+                return { status: 200, message: "Deleted post." }
+            }
+            await postToDelete.deleteOne()
+            return { status: 200, message: "Deleted post." }
         }
+
+        if (postToDelete.creatorId != userInfo.id) throw new Forbidden("You cannot delete posts that you did not create.")
+
         await postToDelete.deleteOne()
         return { status: 200, message: "Deleted post." }
     }

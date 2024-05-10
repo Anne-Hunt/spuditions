@@ -14,8 +14,8 @@ import ProfileModal from "../components/ProfileModal.vue";
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
-const user = computed(() => AppState.account)
-const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == user.value?.id))
+const account = computed(() => AppState.account)
+const reviewedAlready = computed(() => AppState.reputation.find(reputation => reputation.creatorId == account.value?.id))
 const threads = computed(() => AppState.profileThreads)
 const posts = computed(() => AppState.posts)
 const visits = computed(() => AppState.visited)
@@ -103,11 +103,11 @@ onMounted(() => {
 
 
 				<div class="d-flex justify-content-center">
-					<div v-if="(profile.id != user?.id)">
+					<div v-if="(profile.id != account?.id)">
 						<div class="dropdown">
 
 
-							<div>
+							<div v-if="account">
 								<button v-if="!reviewedAlready" class="btn btn-orange text-light dropdown-toggle float-end"
 									title="Leave Profile Review" data-bs-toggle="modal" data-bs-target="#profileRatingModal">
 									Review Profile
