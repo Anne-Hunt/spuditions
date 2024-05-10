@@ -32,7 +32,7 @@ async function destroyThread(threadId) {
 <template>
 	<div v-if="thread" class="container-fluid my-2">
 		<div class="row justify-content-center">
-			<div :class="{ 'col-10': !fullView, 'col-12': fullView }">
+			<div :class="{ 'col-md-10 col-12': !fullView, 'col-12': fullView }">
 				<div class="card bg-teal rounded flex-row d-flex" style="min-width: 0;">
 					<div class="ps-4 py-3 text-center">
 						<RouterLink :to="{ name: 'Profile', params:{ profileId: thread.creatorId}}">
@@ -50,7 +50,7 @@ async function destroyThread(threadId) {
 						</span>
 					</div>
 					<div class="ps-4" :class="{ 'pt-4': !fullView, 'pt-2 pb-3': fullView }"
-						:style="!fullView ? 'max-width: 83%;' : ''">
+						:style="!fullView ? 'max-width: 55vw;' : ''">
 						<div class="d-block">
 							<span v-if="thread.tags.length > 0" class="bg-forestGreen px-2 py-1 text-light rounded me-2">{{ thread.tags[0]
 								}}</span>
