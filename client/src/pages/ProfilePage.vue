@@ -9,8 +9,6 @@ import ThreadCard from "../components/ThreadCard.vue";
 import { reputationService } from "../services/ReputationService.js";
 import ProfileModal from "../components/ProfileModal.vue";
 
-
-
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
@@ -126,7 +124,7 @@ onMounted(() => {
 								data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
 								Already Reviewed
 								</button>
-							<div v-if="account.role == 'Moderator'" class="dropdown-center">
+							<div v-if="account.role == 'Moderator' && profile.role != 'Banned'" class="dropdown-center">
 							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-hammer"></i> BAN</button>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" @click="banProfile()">Ban</a></li>
