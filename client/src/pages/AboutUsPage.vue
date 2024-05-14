@@ -15,7 +15,7 @@
 				students ventured forth into the treacherous jungle of HTML, CSS, JavaScript, Vue, and Express. We hope you
 				enjoyed our project Spuditions!</p>
 		</div>
-		<h1 class="text-center mt-2">Meet the dev team</h1>
+		<h1 class="text-center mt-2">Meet the dev team </h1>
 		<hr>
 		<div class="row mt-5">
 
