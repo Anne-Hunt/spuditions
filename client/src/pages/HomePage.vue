@@ -6,7 +6,7 @@ import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import { router } from "../router.js";
 // @ts-ignore
-import video from '../assets/video/hero-video.mp4';
+import videoPath from '../assets/video/hero-video.mp4';
 
 const searchQuery = ref('')
 const parks = computed(() => AppState.parks)
@@ -58,7 +58,7 @@ onMounted(() => {
 	<!-- Video Hero -->
 	<section class="position-relative imgText">
 		<video id="video" class="video-container vidText" autoplay loop muted>
-			<source :src="video" type="video/mp4">
+			<source :src="videoPath" type="video/mp4">
 		</video>
 		<div class="d-flex justify-content-center">
 			<div class="container-fluid overlay">
