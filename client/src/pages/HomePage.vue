@@ -6,7 +6,7 @@ import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import { router } from "../router.js";
 // @ts-ignore
-import videoPath from '../assets/video/hero-video.mp4';
+import videoPath from '../assets/Video/hero-video.mp4';
 // updated file path
 
 const searchQuery = ref('')
