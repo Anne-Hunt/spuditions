@@ -7,3 +7,7 @@ services:
       - spuditions-env
     ports:
       - "3000:3000"
+  secrets.JWTRS256_KEY:
+    file: server/jwtRS256.key
+  secrets.JWTRS256_KEY_PUB:
+    file: server/jwtRS256.key.pub
