@@ -1,6 +1,6 @@
 # SPUDITIONS
 
-created by Anne Hunt
+created by Anne Hunt, Jarrett Cameron, Kyler Liscinski, Tara Platt, and Emma Wood
 
 Live Link: [SPUDITIONS](https://www.spuditions.com)
 
