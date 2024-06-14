@@ -17,7 +17,8 @@ class AuthService {
     }
 
     async validateToken(token) {
-        const key = await fs.readFile('./jwtRS256.key')
+        //const key = await fs.readFile('./jwtRS256.key')
+        const key = atob(process.env.JWTRS256)
         try {
             return await jwt.verify(token, key)
         } catch (error) {
@@ -29,7 +30,8 @@ class AuthService {
         const user = await dbContext.Account.findById(id)
         if (!user) throw new Error('Could not find user with ID.')
 
-        const key = await fs.readFile('./jwtRS256.key')
+        //const key = await fs.readFile('./jwtRS256.key')
+        const key = atob(process.env.JWTRS256)
         const token = jwt.sign({ _id: user.id }, key, { algorithm: 'RS256', expiresIn: '1d', issuer: "Spuditions" })
         return token
 
