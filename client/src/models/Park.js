@@ -8,7 +8,7 @@ export class Park {
       this.imgUrl = data.imgUrl
       this.webUrl = data.webUrl
       this.description = data.description
-      this.location = data.location
+      this.location = data.location.replaceAll('°','')
       this.address = data.address
       this.type = data.type
       this.costs = data.cost
